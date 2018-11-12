@@ -1,0 +1,346 @@
+/*General*/
+
+.button-clean {
+	border: none;
+	background: none;
+}
+
+
+// .col-md-12 {
+// 	max-width: 100%;
+// 	padding-left: 15%;
+// 	padding-right: 15%;
+// }
+
+.produkt-top-left {
+	
+	h2 {
+		font-weight: bold;
+	}
+}
+
+.bxp-cart-group {
+	background: #f6f6f6;
+	border-radius: 10px !important;
+	margin: 20px 0 30px;
+	padding: 30px;
+	border: 1px solid #bbb;
+}
+
+.shop-product {
+	border-bottom: solid;
+	border-color: #eaeaea;
+	margin-bottom: 30px;
+	padding-bottom: 30px;
+	border-width: 1px;
+
+	.img-container {
+	    width: 11%;
+		
+		.img-vis {
+			height: auto;
+			max-width: 70px;
+			margin-top: 19px;
+		}
+	}
+
+	.main-container {
+		width: 89%;
+
+		.header {
+	    	h3 {
+	    		font-weight: bold;
+	    		font-size: 19px;
+	    	}
+		}
+		.shop-item-container {
+
+				.shop-item-left {
+					width: 60%;
+					font-size: 13px;
+				}
+
+				.shop-item-right {
+					width: 40%;
+					text-align: right;
+
+					label {
+						display: block;
+					}
+
+					.bxp-shop-select {
+						width: 150px;
+						background:none;
+						border-radius: 5px;
+						padding: 4px 6px;
+						font-size: 1em;
+						border:1px solid #dedede;
+						background-color: #e0e0e0;
+					}
+				}
+		}
+
+		.product-hint {
+			padding-top: 10px;
+
+			.img-leuchte {
+				width: 5%;
+			}
+
+			.p-marg {
+		   		font-size: 11px;
+		   		width: 77%;
+		   		margin-left: 6%;
+			}
+			
+			#shop-birne {
+				.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#515562;}
+				.st1{fill:#EACB43;}
+				.st2{fill:#515562;}
+				.st3{opacity:0.2;}
+				.st4{fill:#FFFFFF;}
+			}
+
+			.middle {
+				max-width: 370px;
+				width: 50%;
+				margin-right: 10%;
+			}
+
+			.visitenkarte {
+				color: black;
+			    font-size: 80%;
+			    background-color: #f4f4f4;
+			    padding: 10px;
+			    border: 1px solid #bbb;
+			    position: relative;
+
+			    b {
+			    	text-transform: uppercase;
+			    	margin-bottom: 15px!important;
+			    }
+
+			    p {
+			    	margin: 5px 0 0;
+			    }
+
+			    .siegel-style {
+			    	padding-top: 20px;
+			    }
+
+			    .icon-style {
+
+			    	&:hover i {
+			    		color: #005484;
+			    	}
+
+			    	font-size: 25px;
+			    	color: #0074b7;
+			    	position: absolute;
+			    	right: 0;
+			    	bottom: 15px;
+			    }
+			    
+			}
+
+			.item-info {
+				width: 40%;
+
+				p {
+					font-size: 11px!important;
+				}
+			}
+		}
+	}
+
+}
+
+
+.select-anschr {
+	width: 100%;
+		
+		.rech-anschr {
+			width: 50%;
+		}
+
+		.lief-anschr {
+			width: 22%;
+		}
+	}
+
+	
+.form-container {
+
+	width: 65%;
+
+	.rest-address {
+
+		// .bxp-label {
+	 //    width: 18%;
+	 //    margin-top: 6px;
+		// }
+
+		// .bxp-input {
+		//     width: 50%;
+		//     margin-left: 2%;
+		// }
+		// .bxp-input-plz {
+		// 	width: 20%;
+		//     margin-left: 2%;
+		// }
+
+		// .bxp-label-ort {
+		// 	width: 10%;
+		// 	margin-left: 5%;
+		// 	margin-top: 6px;
+		// }
+
+		// .bxp-input-ort {
+
+		// 	width: 45%;
+
+		// 	input {
+		// 		width: 100%;
+		// 		margin:0;
+		// 	}
+		// }
+	}
+}
+
+
+.konto-uberschrift {
+	color: #0074b7;
+	text-align: center;
+	margin-bottom: 8%;
+}
+
+.bxp-container {
+	width: 100%;
+	
+		.edit-profil {
+			width: 18%;
+			margin-left: 14%;
+			height: 125px;
+
+			.fa {
+			    background: #0074b7;
+			    width: 55px;
+			    height: 55px;
+			    border-radius: 50%;
+			    text-align: center;
+			    line-height: 55px;
+			    vertical-align: middle;
+			    margin-left: 120%;
+			    margin-top: 45%;
+			}
+
+			&:hover i {
+				color: #0074b7;
+
+				&.fa {
+					background: #FFFFFF;
+					border: 2px solid;
+				}
+			}
+
+			.fa-user {
+				font-size:25px;
+				color: #FFFFFF;
+			}
+
+			.text-profil {
+				color: #0074b7;
+				font-weight: bold;
+				margin-left: 41%;
+				margin-top: 0;
+			}
+		}
+
+		.edit-mail {	
+			width: 18%;
+			margin-left: 5%;
+			height: 125px;
+
+			.fa {
+			    background: #0074b7;
+			    width: 55px;
+			    height: 55px;
+			    border-radius: 50%;
+			    text-align: center;
+			    line-height: 55px;
+			    vertical-align: middle;
+			    margin-left: 120%;
+			    margin-top: 45%;
+			}
+
+			&:hover i {
+				color: #0074b7;
+
+				&.fa {
+					background: #FFFFFF;
+					border: 2px solid;
+				}
+			}
+
+			.fa-envelope {
+				font-size:25px;
+				color: #FFFFFF;
+			}
+
+			.text-profil {
+				color: #0074b7;
+				margin-left: 26%;
+				margin-top: 0;
+				font-weight: bold;
+			}
+		}
+
+		.edit-passwort {
+			width: 18%;
+			height: 125px;
+			margin-left: 5%;
+			
+			.fa {
+			    background: #0074b7;
+			    width: 55px;
+			    height: 55px;
+			    border-radius: 50%;
+			    text-align: center;
+			    line-height: 55px;
+			    vertical-align: middle;
+			    margin-left: 120%;
+			    margin-top: 45%;
+			}
+
+			&:hover i {
+				color: #0074b7;
+
+				&.fa {
+					background: #FFFFFF;
+					border: 2px solid;
+				}
+			}
+
+			.fa-lock {
+				font-size:25px;
+				color: #FFFFFF;
+			}
+
+			.text-profil {
+				color: #0074b7;
+				margin-left: 35%;
+				margin-top: 0;
+				font-weight: bold;
+			}
+		}
+
+		.bauexperts-box {
+			margin-top: 0;
+		}
+
+}
+
+
+
+
+

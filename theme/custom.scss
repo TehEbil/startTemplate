@@ -1,0 +1,2643 @@
+/* here you can put your own css to customize and override the theme */
+
+$bauexBlue : #00A6EB;
+$bauexBlue : #0074b7;
+$bauexGrau : #454D4D;
+$bauexDarkBlue : #364150;
+$red : #C0392B;
+$successGreen : #26A65B;
+
+/* Moh&Can und jetzt auch Necati Bereich: */
+
+.animation-disabled .toggle-group {
+  transition: none !important;
+  -webkit-transition: none !important;
+}
+
+.pac-container {
+  z-index: 10025 !important;
+}
+
+html {
+	overflow-y: scroll; 
+}
+
+.bauexperts-blue {
+	color: $bauexBlue!important;
+}
+
+.bauexperts-blue-bg {
+	background-color: $bauexBlue!important;
+}
+
+.success-color {
+	color: $successGreen!important;
+}
+
+.success-color-bg {
+	background-color: $successGreen!important;
+}
+
+.large-icon {
+	font-size: 64px;
+}
+
+.inline-block {
+	display: inline-block!important;
+}
+
+.hover-text-field {
+	
+	position: relative;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	.animate-show {
+		display: none;
+		// position: absolute;
+		// right: -2px;
+		// top: 2px;
+		margin-left: 10px;
+
+		.fa-pencil {
+			font-size: 12px;
+		}
+
+		.fa-trash {
+			position: absolute;
+			right: 2px;
+			top: 2px;
+		}
+
+		button {
+			width: auto!important;
+			min-width: auto!important;
+			border: none!important;
+			background: none!important;
+			padding: 0!important;
+			margin: 0 1px;
+
+			i {
+				color: #7d7d7d;
+				font-size: 15px;
+
+				&.fa.fa-trash {
+					font-size: 18px;
+					margin-left: 3px;
+				}
+			}
+			
+			&:hover i {
+				color: $bauexBlue;
+
+				&.fa-trash {
+					// color: #F03434;
+				}
+			}
+		}
+
+	}
+
+	&:hover {
+		 .animate-show {
+		 	display: inline-block!important;
+
+		 }
+	}
+
+	.bxp-grundatensatz:hover & {
+		.animate-show {
+			display: inline-block!important;
+		}
+	}
+}
+
+
+// .animate-show.ng-hide-add,
+// .animate-show.ng-hide-remove {
+//     display: inline-block !important;
+// }
+
+.lieferschein-rechnung-adresse-group {
+  background-color: lightgrey;
+}
+
+.bxp-openedDetails1 {
+	background-color: #ffffff;
+  position: fixed;
+  width: 340px;
+  top:50px;
+  right: 0;
+  height: calc(100vh - 50px);
+  box-shadow: 0 0 13px 2px rgba(0,0,0,.2);
+}
+
+.thumb {
+  width: 100px;
+  height: 100px;
+  // float: none;
+  // position: relative;
+  // top: 7px;
+  margin: 20px 20px 20px 0;
+}
+
+/* Moh&Can Bereich Ende */
+
+// html {
+//   /* scrollbar fix (prevent ugly left pull for lower content sites) */
+//   overflow-y: scroll;
+// }
+
+.activex {
+	// background-color: $bauexBlue;
+	// color: #f8f8f8;
+}
+
+.page-header.navbar .page-logo .logo-default {
+	margin-top: 12px;
+}
+
+// .page-footer-fixed .page-container {
+// 	margin-bottom: 0!important;
+// }
+
+.modal {
+	text-align: center;
+}
+
+.modal-lg {
+	// width: 95%;
+	width: auto;
+	display: inline-block;
+    // max-width: 95%;
+    text-align: left;
+}
+
+@media screen and (min-width: 992px) {
+
+  .modal-lg {
+  	width: auto;
+   //  max-width: 1050px;
+  }
+
+}
+
+.modal-box
+{
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.modal-content {
+	top: 30px;
+	border-radius: 10px!important;
+	background-color: #f6f6f6!important;
+}
+
+@media screen and (min-width: 992px) {
+  
+  .modal-box {
+    width: 50%;
+    padding: 30px;
+  }
+
+}
+
+.modal-backdrop {
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ height:100%;
+ width:100%;
+ background: #000;
+ z-index: 1;
+ opacity: 0.5;
+}
+
+.modal-holder {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background: transparent;
+  z-index: 2;
+  padding: 30px 15px;
+}
+
+.float-left {
+ float: left;
+}
+
+.float-right {
+ float: right;
+}
+
+.group:before,
+.group:after {
+ content: "";
+ display: table;
+}
+
+.group:after {
+ clear: both;
+}
+
+.ta-left {
+	text-align: left;
+}
+
+.ta-right {
+	text-align: right;
+}
+
+.ta-center {
+	text-align: center;
+}
+
+.modal-content {
+	background:none;
+}
+
+.bxp-form {
+	.bxp-container {
+		// border: 1px solid #d1d1d1;
+		// padding: 18px 0 0;
+		//background-color: #F5F5F5;
+		// background-color: #F6F6F6;
+		// width: 100%;
+		// border-radius: 10px!important;
+
+		.bxp-input:focus {
+			border: 1px solid $bauexBlue;
+			outline: none;
+		    box-shadow: 0 0 3px $bauexBlue!important;
+		}
+
+		.form-group {
+			span {
+				width: auto!important; //todo: kritisch, da unten nicht gut gelöst -> span 100% suchen
+			}
+		}
+
+		.nav-tabs {
+			padding: 0 20px;
+			margin-bottom: 0;
+			margin-top: 10px;
+			margin-left: -1px;
+
+			> li {
+				// margin: 0 18px;
+			}
+
+			> li > a {
+					border:none;
+					border-bottom: 3px solid transparent;
+					color: #6b6b6b;
+					padding: 18px 0;
+					margin: 0;
+					margin: 0 18px 0;
+				}
+
+			> li > a:hover {
+					background: none;
+					color: $bauexBlue;
+					// background-color: $bauexBlue;
+					border-bottom: 3px solid $bauexBlue;
+				}
+
+			> li.active > a,
+				.nav-tabs > li.active > a:focus,
+				.nav-tabs > li.active > a:hover {
+					background: none;
+					border-bottom: 3px solid $bauexBlue;
+					color: $bauexBlue;
+					// background-color: $bauexBlue;
+				}
+		}
+
+		.tab-content {
+			min-height: 600px;
+			padding: 22px 25px;
+			// padding: 26px 34px 12px;
+		}
+	}
+
+	@media screen and (min-width: 992px) {
+	  .bxp-container {
+	    width: 1020px;
+	  }
+	}
+
+	@media screen and (min-width: 1200px) {
+	  // .bxp-container {
+	  //   width: 1150px;
+	  // }
+	}
+
+	.bxp-col-6 {
+		width: 100%;
+		float: none;
+		padding: 0;
+	}
+
+	@media screen and (min-width: 850px) {
+
+	  .bxp-col-6 {
+	  	width: 45%;
+	  	float: left;
+	  	padding-left: 15px;
+	  }
+
+	  .bxp-col-6:first-child {
+	  	width: 55%;
+	  	float: left;
+	  	padding-left: 0;
+	  	padding-right:15px;
+	  }
+
+	}
+
+	.form-group {
+		margin-bottom: 18px;
+
+		select {
+			width: 100%;
+			border: 1px solid #c2cad8;
+			padding: 6px 12px;
+		}
+	}
+
+	.bxp-form-note {
+	    font-weight: bold;
+	    margin: 10px 0 20px;
+	}
+
+	.form-group-tel {
+		margin-top: 17px;
+	}
+
+	.bxp-label {
+		width: 100%;
+		margin-top: 6px;
+	}
+
+	.form-geburtstag .bxp-label {
+		width: 100%;
+	}
+
+	.bxp-input {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.form-geburtstag .bxp-input {
+		width: 70%;
+	}
+
+	@media (min-width: 580px) {
+		.bxp-label {
+			width: 18%;
+			margin-top: 6px;
+		}
+
+		.form-geburtstag .bxp-label {
+			width: 28%;
+		}
+
+		.bxp-input {
+			width: 80%;
+			margin-left: 2%;
+		}
+
+		.form-geburtstag .bxp-input {
+			width: 70%;
+		}
+	}
+
+	// Gender and Title in one line
+
+	.bxp-input-gender {
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 20px;
+
+		@media (min-width: 580px) {
+			& {
+				width: 80%;
+				margin-left: 2%;
+				margin-bottom: 20px;
+			}
+		}
+
+		.form-control {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+
+
+	// making the input field larger (width)
+
+	.bxp-input-large {
+		width: 80%!important;
+	}
+
+	.bxp-input-large-margin-bottom {
+		margin-bottom: 18px!important;
+	}
+
+	.bxp-label-title {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.bxp-input-title {
+		width: 100%;
+		margin-left: 0;
+
+		.form-control {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+
+	@media (min-width: 580px) {
+
+	  .bxp-input-gender {
+	  	width: 33%;
+	  	margin-left: 2%;
+	  	margin-bottom: 0;
+
+	  	.form-control {
+	  		width: 100%;
+	  		margin-left: 0;
+	  	}
+	  }
+
+	  .bxp-label-title {
+	  	width: 15%;
+	  	margin-left: 2%;
+	  }
+
+	  .bxp-input-title {
+	  	width: 30%;
+	  	margin-left: 0;
+
+	  	.form-control {
+	  		width: 100%;
+	  		margin-left: 0;
+	  	}
+	  }
+
+	}
+
+	// Street and Country in one line
+
+	.bxp-input-street {
+		width: 45%;
+		margin-left: 5%;
+	}
+
+	.bxp-label-land {
+		margin-left: 5%;
+		width: 10%;
+	}
+
+	.bxp-input-land {
+		width: 15%;
+	}
+
+	@media (min-width: 580px) {
+
+		.bxp-input-street {
+			width: 40%;
+			margin-left: 5%;
+		}
+
+		.bxp-label-land {
+			margin-left: 5%;
+			width: 15%;
+		}
+
+		.bxp-input-land {
+			width: 15%;
+		}
+
+	}
+
+	// Zip and City in one line
+
+	.bxp-input-plz {
+		width: 100%;
+	}
+
+	.bxp-label-ort {
+		width: 100%;
+		margin-left: 0%;
+		margin-top: 6px;
+	}
+
+	.bxp-input-ort {
+		width: 100%;
+
+		input {
+			width: 100%;
+			margin:0;
+		}
+	}
+
+	@media (min-width: 580px) {
+		.bxp-input-plz {
+			width: 20%;
+		}
+
+		.bxp-label-ort {
+			width: 10%;
+			margin-left: 5%;
+			margin-top: 6px;
+		}
+
+		.bxp-input-ort {
+			width: 45%;
+
+			input {
+				width: 100%;
+				margin:0;
+			}
+		}
+	}
+
+	// Checkbox Container
+
+	.checkbox-container {
+
+		@media (min-width: 580px) {
+			& {
+				padding-left: 20%;
+			}
+		}
+
+		label {
+			display: block;
+		}
+	}
+}
+
+.bxp-form-container {
+	// padding: 20px 20px 0;
+}
+
+.bxp-button-container {
+
+	border-top: 1px solid #d1d1d1;
+	padding: 18px 25px 12px;
+	// padding: 0;
+	// text-align: right;
+	// background-color: #EEEEEE;
+
+	@media (min-width: 580px) {
+		& {
+			padding: 18px 35px 12px;
+		}
+	}
+
+	&.compact {
+		padding-right: 0;
+		padding-left: 0;
+
+		button + button {
+			margin-left: 12px!important;
+		}
+	}
+
+	&.fixed {
+		button {
+			display: block;
+			margin-bottom: 20px;
+		}
+	}
+
+	button {
+		// width: 100%;
+		// margin-bottom: 16px;
+	}
+
+	@media (min-width: 580px) {
+		button + button {
+			margin-left: 25px;
+		}
+	}
+
+	&.fixed button + button {
+		margin-left: 0;
+	}
+
+	// .btn.default {
+	// 	background-color: #c6c6c6;
+	// 	border: 1px solid #c6c6c6;
+	// 	color: #444;
+
+	// 	&:hover {
+	// 		background-color: darken(#c6c6c6, 10%);
+	// 		border-color: darken(#c6c6c6, 10%);
+	// 		color: #444;
+	// 	}
+	// }
+
+	.float-left, .float-right {
+		float: none!important;
+		// padding-right: 40px;
+	}
+
+	span {
+		width: 100%;
+	}
+
+	@media (min-width: 580px)  {
+		span {
+			width: auto;
+		}
+
+		button {
+			width: auto;
+		}
+
+		button + button {
+			// margin-left: 12px;
+		}
+
+		.float-left {
+			float: left!important;
+		}
+
+		.float-right {
+			float: right!important;
+		}
+	}
+}
+
+.tab-content {
+
+	.bxp-button-container {
+		background:none;
+		border: none;
+		padding-bottom: 20px;
+	}
+
+	button {
+		min-width: 110px;
+	}
+
+	table .even {
+		background: darken(#F5F5F5, 5%);
+	}
+}
+
+// Modal Ansprechpartner
+
+.bxp-inner-modal {
+	max-width: 560px;
+	padding: 20px!important; //todo: important möglichst vermeiden
+	margin: 0 auto;
+
+	&.bxp-container {
+		border-bottom-right-radius: 0!important;
+		border-bottom-left-radius: 0!important;
+	}
+	
+}
+
+// #formAP button {
+// 	margin: 0 15px;
+// }
+
+.modal-content { 
+
+	.btn {
+		padding: 12px;
+		// margin-left: 0;
+	}
+		
+	.ui-select-match .btn {
+		padding: 6px 12px;
+	}
+}
+
+.bxp-header-modal {
+    padding: 20px;
+    border-bottom: 1px solid #d1d1d1;
+    // margin-bottom: 20px;
+
+    h3 {
+    	font-size: 21px;
+    	margin: 0;
+    	color: $bauexBlue;
+    	font-weight: 400;
+    }
+}
+
+// Individuelle Felder
+
+.bxp-individual-fields {
+
+	.bxp-add-grundatensatz {
+		margin-top: 28px;
+		display: inline-block;
+		text-align: center;
+	}
+
+	.form-group {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 10px;
+
+		&:nth-child(2n+1) + .bxp-add-grundatensatz {
+			margin-left: 5%;
+		}
+	}
+
+	i {
+		color: $bauexBlue;
+	}
+
+	.fa-trash {
+		top: 8px!important;
+	}
+
+	.hover-edit-trigger {
+	    width: 100%;
+	    float: none;
+	    margin-bottom: 5px;
+
+	    .hover-text-field {
+	    	padding: 6px 4px;
+	    	height: 34px;
+
+	    	i {
+	    		color: $bauexBlue!important;
+	    	}
+
+	    	.fa-pencil {
+	    		font-size: 9px;
+	    		color: #888;
+	    	}
+	    }
+
+	    &:hover {
+	    	cursor: pointer;
+	    }
+
+	    input {
+	    	height: 34px;
+	    	padding: 6px 3px;
+	    	background-color: #fff;
+	    	border: 1px solid #c2cad8;
+	    }
+	}
+	
+	.hover-text-field,
+	.bxp-input {
+		width: 100%;
+		margin: 0;
+	}
+
+	.hover-text-field {
+		padding: 6px 0;
+	}
+
+	.bxp-button-container {
+		margin-top: 20px;
+	}
+
+	@media (min-width: 580px) {
+
+		.form-group {
+			float: left;
+			width: 47.5%;
+			margin-left: 5%;
+		}
+
+		.form-group:nth-child(2n+1) {
+			margin-left: 0;
+			clear: both;
+		}
+
+		.hover-edit-trigger {
+		    width: 30%;
+		    float: left;
+		}
+
+		.hover-text-field,
+		.bxp-input {
+			// width: 70%;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.hover-edit-trigger {
+		    width: 25%;
+		}
+		
+		.hover-text-field,
+		.bxp-input {
+			// width: 75%;
+		}
+	}
+
+}
+
+
+// Upload Tab
+
+.bxp-upload-container {
+	// margin-top: 50px;
+	p {
+		margin-top: 5px;
+	}
+
+	.bxp-upload-field {
+	    background: #fff;
+	    border-radius: 5px!important;
+	    border: 1px solid #ddd;
+	    height: 135px;
+	    width: 180px;
+	    padding: 36px 0px;
+	    font-size: 40px;
+	    margin: 0 20px 0 0;
+	    cursor: pointer;
+
+	    &:hover {
+	    	background: $bauexBlue;
+	    	border: 1px solid $bauexBlue;
+	    }
+
+	    i {
+	    	color: $bauexBlue;
+	    }
+
+	    &:hover i {
+	    	color: #fff;
+	    }
+
+	}
+}
+
+.bxp-dokumentenname {
+	margin-bottom: 20px;
+}
+
+.bxp-hochladen {
+	margin-top: 12px;
+	border:none;
+	background-color: $bauexBlue;
+	color: #f8f8f8;
+	padding: 6px 10px;
+}
+
+// Link zum Editieren von Grunddaten
+
+.bxp-edit {
+	font-size: 12px;
+	text-align: right;
+	display: inline-block;
+	margin-top: 5px;
+}
+
+// Tab Statistik -> Tabelle Einstellungen
+
+.bxp-grunddaten {
+
+	.bxp-table-container {
+		padding: 20px;
+	}
+
+	padding-bottom: 10px;
+
+	table {
+		margin-bottom: 15px;
+
+		td {
+			padding: 0!important;
+			
+			.bxp-grundatensatz {
+				padding: 8px;
+
+				&.activex,
+				&:hover {
+					cursor: pointer;
+					color: #f8f8f8;
+					background-color: $bauexBlue;
+				}
+
+				input {
+					color: #444;
+					border: none;
+					background: #dbdbdb;
+				}
+			}
+		}
+	}
+
+	.bxp-add-grundatensatz {
+		display: inline-block;
+		font-size: 21px;
+		margin-top: 5px;
+	}
+
+}
+
+.bxp-statistik span {
+	display: block;
+}
+
+// Form Anschriften
+
+#formAnschrift .bxp-container {
+	padding-bottom: 0;
+}
+
+.bxp-form-anschrift .bxp-container {
+	// padding: 22px 36px;
+	padding: 20px;
+	max-width: 900px;
+
+	.anschrift-bezeichnung input {
+		width: 100%;
+	}
+
+	.anschrift-type {
+		margin: 18px 0 14px;
+	}
+
+	.anschrift-verwendung label {
+		display: block;
+	}
+}
+
+// Giving Table Rows Pointer 
+
+.dataTable tbody tr {
+
+	&:nth-child(2n) {
+		background-color: #F2F2F2;
+	}
+
+	&:hover,&.selected {
+		background-color: darken($bauexBlue, 10%)!important;
+		color: #f8f8f8!important;
+		cursor: pointer;
+	}
+}
+
+
+.page-header-fixed .page-container {
+	// height: 100vh;
+	margin-top: 0;
+	// padding-bottom: 50px; // todo: später komplett rausnehmen
+	padding-top: 50px;
+	// position: static!important;
+	
+	.page-content-wrapper {
+	    // height: 100%;
+	    // overflow-y: auto;
+	    // background-color: #f5f7f9; // todo später löschen
+	    background-color: #f1f1f1;
+	}
+
+}
+
+.page-content-wrapper .page-content {
+	// min-height: auto!important;
+	// height: 100vh!important;
+	background-color: inherit;
+
+	.page-title {
+		margin-top: 0;
+		// font-size: 26px;
+		font-weight: 400;
+		color: $bauexBlue;
+	}
+}
+
+// Button Container on the bottom of the Content-Page
+
+.myAjaxController .bxp-button-container {
+    // position: fixed;
+    // bottom: 20px;
+    // width: 100%;
+    // right: 0;
+}
+
+.myAjaxController .bxp-button-container.fixed {
+
+	position: fixed;
+	top: 47%;
+    // left: 0;
+    right: 10px;
+    padding: 0;
+    padding-right: 0;
+    // background-color: $bauexDarkBlue;
+    border:none;
+
+    .btn {
+		// padding: 14px 16px;
+		// min-width: 180px!important;
+		// margin-left: 0!important;
+
+		.fa-angle-up {
+			font-size: 18px;
+			margin-right: 10px;
+		}
+    }
+}
+
+.bxp-openedDetails1 + .bxp-button-container.fixed {
+	right: 345px;
+
+	.bxp-rounded-button.details i::before {
+		content: "\f101";
+	}
+}
+
+@media (min-width: 992px) {
+	.myAjaxController .bxp-button-container.fixed {
+	    // left: 235px;
+	    // padding-right: 235px;
+
+	  //   .btn {
+			// padding: 14px 16px;
+			// min-width: 180px!important;
+			// margin-left: 0!important;
+	  //   }
+	}
+}
+
+// todo: Button Style Logic neu nachen da sonst Duplikat mit bxp-button-container
+
+.bxp-container {
+	button {
+		// min-width: 180px;
+		width: 100%;
+		margin-bottom: 16px;
+		padding: 14px 16px;
+	}
+
+	& .tab-content button {
+		padding: 8px 12px;
+	}
+
+	span {
+		width: 100%;
+	}
+
+	@media (min-width: 580px)  {
+		span {
+			width: auto;
+		}
+
+		button {
+			width: auto;
+			margin-bottom: 0;
+		}
+
+		button + button {
+			margin-left: 25px;
+		}
+
+	}
+}
+
+// Button AP Anlegen
+
+.btn-ap-anlegen {
+	background:none;
+
+	i {
+		margin-right: 5px;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: #dedede;
+	}
+}
+
+// Table Uploads
+
+table.table-uploads td {
+	padding: 0!important;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	.bxp-grundatensatz {
+		padding: 8px;
+
+		&:hover {
+			background: $bauexBlue;
+			color: #fff;
+		}
+	}
+}
+
+.table-uploads {
+	list-style: none;
+	padding: 0;
+	border: none;
+
+	li {
+		margin-bottom: 14px;
+
+		.hover-text-field {
+			border: 1px solid #dedede;
+			background-color: #fff;
+			padding: 12px 16px;
+			border-radius: 5px !important;
+			box-shadow: 0px 1px 0px 0 rgba(0,0,0,.2);
+
+			.fa-pencil {
+				position: absolute;
+				top: 14px;
+				right: 30px;
+			}
+
+			.fa-trash {
+				top: 14px;
+				right: 5px;
+			}
+
+			.fa-cloud-download {
+				font-size: 24px;
+				position: absolute;
+				top: 17px;
+				color: $bauexBlue;
+				margin-left: 14px;
+
+				&:hover {
+					color: $bauexDarkBlue;
+				}
+			}
+		}
+	}
+}
+
+// Button Overrides
+
+.btn {
+	border-radius: 5px!important;
+	min-width: 170px;
+
+	&.big {
+		padding: 12px 15px;
+		font-size: 16px;
+	}
+
+
+
+	&.default {
+		background: none!important;
+		font-weight: 600;
+		// border:none!important;
+		color: $bauexBlue!important;
+		border-color: $bauexBlue!important;
+
+		&:hover {
+			// border-color: #cecece!important;
+		}
+	}
+
+	&.btn-primary {
+		background-color: $bauexBlue;
+		border:1px solid $bauexBlue;
+		
+
+		&:hover {
+			background-color: darken($bauexBlue, 10%);
+			border-color: darken($bauexBlue, 10%);
+		}
+	}
+}
+
+
+// Page Header
+
+.page-header.navbar {
+    background-color: #fff;
+    color: #333333;
+    border-bottom: 1px solid #dedede;
+    // box-shadow: 0 1px 6px 0px rgba(0,0,0,.1);
+
+    .page-logo {
+    	background-color: #fff;
+    	height: 49px;
+
+    	#bauexperts-logo {
+    		max-width: 50px;
+    		margin-top: 5px;
+
+    		.st4 {
+    			// display: none;
+    		}
+    	}
+
+	}
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover,
+.page-header.navbar .top-menu .navbar-nav > li.dropdown.open .dropdown-toggle {
+    background-color: $bauexBlue;
+    color: #f8f8f8;
+
+    i {
+    	color: #f8f8f8;
+    }
+}
+
+// Breadcrumb und theme Panel
+
+.page-bar,
+.theme-panel {
+	display: none;//todo: später aus html komplett rausnehmen
+}
+
+// Sidebar
+
+.page-sidebar {
+	background-color: #303F55;
+}
+
+.page-sidebar .page-sidebar-menu > li > a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {
+    border-top: none;
+    color: #f8f8f8;
+    line-height: 36px;
+}
+
+.page-sidebar .page-sidebar-menu > li.active.open > a,
+.page-sidebar .page-sidebar-menu > li.active > a,
+.page-sidebar .page-sidebar-menu > li > a:hover,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active.open > a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a {
+    background: $bauexBlue!important;
+    border-top-color: transparent;
+    color: #fff;
+}
+
+.page-sidebar .page-sidebar-menu > li > a > i[class*="icon-"],
+.page-sidebar .page-sidebar-menu > li > a > i[class^="icon-"],
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i[class*="icon-"],
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > i[class^="icon-"] {
+    color: #9DB9CC;
+    margin-right: 8px;
+}
+
+.page-sidebar .page-sidebar-menu > li > a:hover > i[class*="icon-"],
+.page-sidebar .page-sidebar-menu > li.active > a > i[class*="icon-"],
+.page-sidebar .page-sidebar-menu > li > a:hover > i[class^="icon-"],
+.page-sidebar .page-sidebar-menu > li.active > a > i[class^="icon-"],
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a:hover > i[class*="icon-"],
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > i[class*="icon-"],
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a:hover > i[class^="icon-"],
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > i[class^="icon-"] {
+    color: #f8f8f8;
+}
+
+.page-sidebar .page-sidebar-menu > li.active > a > .selected,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li.active > a > .selected {
+	top: 16px;
+	display: none;
+}
+
+.page-sidebar .page-sidebar-menu li:hover > a > .arrow.open::before,
+.page-sidebar .page-sidebar-menu li:hover > a > .arrow::before,
+.page-sidebar .page-sidebar-menu li > a > .arrow.open::before,
+.page-sidebar .page-sidebar-menu li > a > .arrow::before,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li:hover > a > .arrow.open::before,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li:hover > a > .arrow::before,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow.open::before,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu li > a > .arrow::before {
+    color: #f8f8f8!important;
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu > li.active > a,
+.page-sidebar .page-sidebar-menu .sub-menu > li.open > a,
+.page-sidebar .page-sidebar-menu .sub-menu > li:hover > a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.active > a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li.open > a,
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu > li:hover > a {
+    background: #5C697A !important;
+    color: #e1e1e1;
+}
+
+// Modal Opacity Test
+
+.modal-backdrop.in {
+	opacity: 0.9!important;
+}
+
+// Warning Modal
+
+.bxp-warning-modal-body {
+	padding: 40px 20px 20px;
+	background: #fff;
+	border-top-left-radius: 5px!important;
+	border-top-right-radius: 5px!important;
+	.fa.fa-exclamation-triangle {
+	    display: block;
+	    font-size: 64px;
+	    padding: 30px 0 12px;
+	    color: #F4D03F;
+	}
+
+	p {
+		margin-bottom: 0;
+	}
+}
+
+.bxp-warning-modal-footer {
+
+	background: #fff;
+	padding: 20px;
+	border-bottom-left-radius: 5px!important;
+	border-bottom-right-radius: 5px!important;
+
+	button {
+		width: 47%;
+		min-width: auto;
+
+		&:first-child {
+			margin-right: 6%;
+		}
+	}
+}
+
+// Roundes Buttons
+
+.bxp-rounded-button {
+	opacity: 1;
+	border:none!important;
+	background:none;
+	min-width: auto!important;
+	min-height: auto!important;
+	padding:0!important;
+	width: 60px!important;
+	height: 60px;
+	border-radius: 50%!important;
+	line-height: 60px!important;
+	display: inline-block;
+	color: #fff;
+	text-align: center;
+	background-color: #f8f8f8;
+	box-shadow: 0 12px 17px 2px rgba(0, 0, 0, 0.1), 0 5px 22px 4px rgba(0, 0, 0, 0.08), 0 7px 8px -4px rgba(0, 0, 0, 0.16);
+	
+	&.small {
+		width: 40px!important;
+		height: 40px!important;
+		line-height: 40px!important;
+		box-shadow: none!important;
+	}
+
+	&.tiny {
+		width: 30px!important;
+		height: 30px!important;
+		line-height: 30px!important;
+		box-shadow: none!important;
+	}
+
+	&.add {
+		background-color: $bauexBlue;
+
+		&:hover {
+			background-color: darken($bauexBlue, 10%);
+		}
+	}
+
+	& i {
+		font-size: 18px;
+		color: #f8f8f8;
+	}
+
+	&.small i {
+		font-size: 16px;
+	}
+
+	&.tiny i {
+		font-size: 14px;
+	}
+
+	&.edit {
+
+		background-color: $bauexBlue;
+
+		& i {
+			// color: $bauexBlue;
+			
+		}
+
+		&:hover {
+			// background-color: $bauexBlue;
+			background-color: darken($bauexBlue, 10%);
+
+			i {
+				// color: #f8f8f8;
+			}
+		}
+	}
+
+	&.delete {
+
+		background-color: $red;
+
+		& i {
+			color: #f8f8f8;
+		}
+
+		&:hover {
+			background-color: darken($red, 10%);
+
+		}
+	}
+
+	&.delete.fixed {
+		position: fixed;
+		right: 10px;
+		bottom: 0;
+	}
+
+	&.details {
+
+		& i {
+			color: $bauexBlue;
+		}
+
+		&:hover {
+			background-color: $bauexBlue;
+
+			i {
+				color: #f8f8f8;
+			}
+
+		}
+	}
+
+}
+
+// btn disabled override
+
+.animate-hidden {
+	position: relative;
+	right: 0;
+	transition: 0.15s ease;
+	transition-property: right, opacity;
+	opacity:1;
+	display: block;
+}
+
+.btn.disabled,
+.btn.disabled:hover,
+.bxp-rounded-button[disabled],
+.bxp-rounded-button[disabled]:hover,
+.btn[disabled],
+.btn[disabled]:hover,
+fieldset[disabled] .btn:hover,
+fieldset[disabled] .btn {
+    cursor: not-allowed;
+    filter: alpha(opacity=100);
+    // -webkit-box-shadow: none;
+    // box-shadow: none;
+    // background-color: #DCDCDC;
+    // right: -300px;
+    // opacity: 0;
+    // display: none;
+    color: #A9A9A9;
+    // transition: 0.15s ease;
+    // transition-property: right, opacity;
+    // border-color: #DCDCDC;
+    // border-right-color: darken(#dcdcdc, 25%);
+
+    &.btn-border-right {
+		// border-right-color: #b8b8b8;
+    }
+}
+
+.nothing-to-see[disabled],
+.nothing-to-see[disabled]:hover {
+    right: -300px;
+    opacity: 0;
+    display: none;
+    transition: 0.15s ease;
+	transition-property: right, opacity;
+}
+
+.btn {
+	// border-right-color: darken(#dcdcdc, 25%);
+
+	&.btn-border-right {
+		// border-right: 1px solid #b8b8b8;
+	}
+}
+
+// Haupt AP
+
+.haupt-ap {
+	max-width: 100%;
+
+	@media (min-width: 580px) {
+		& {
+			max-width: 50%;
+		}
+	}
+}
+
+// Anschriften -> Selection "Lieferschein" and "Rechnung"
+
+.bxp-lieferschein-rechnung {
+
+	.lieferschein-rechnung-adresse {
+
+		margin-top: 20px;
+
+		p {
+			margin: 0 0 5px;
+		}
+	}
+
+	margin-top: 20px;
+
+	.block-lieferschein,
+	.block-rechnung {
+		width: 100%;
+
+		.bxp-label {
+			width: 30%;
+		}
+
+		.bxp-input {
+			width: 68%;
+		}
+	}
+
+	.block-lieferschein {
+		margin-right: 0;
+		margin-bottom: 20px;
+	}
+
+	@media (min-width: 580px) {
+		.block-lieferschein,
+		.block-rechnung {
+			width: 49%;
+
+			.bxp-label {
+				width: 32%;
+			}
+
+			.bxp-input {
+				width: 66%;
+			}
+		}
+
+		.block-lieferschein {
+			margin-right: 2%;
+			margin-bottom: 0;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.block-lieferschein,
+		.block-rechnung {
+
+			.bxp-label {
+				width: 25%;
+			}
+
+			.bxp-input {
+				width: 73%;
+			}
+		}
+	}
+}
+
+// .nav-tabs {
+// 	padding: 0;
+// 	margin-bottom: 0;
+// 	margin-left: -1px;
+
+// 	> li > a {
+// 			border:none!important;
+// 			// border-bottom: 2px solid transparent;
+// 			color: #6b6b6b;
+// 			padding: 18px;
+// 			margin: 0;
+// 			// margin: 0 10px 0;
+// 		}
+
+// 	> li > a:hover {
+// 			border:none!important;
+// 			background: none;
+// 			color: #f8f8f8;
+// 			background-color: $bauexBlue;
+// 			// border-bottom: 2px solid #0074B7;
+// 		}
+
+// 	> li.active > a,
+// 		.nav-tabs > li.active > a:focus,
+// 		.nav-tabs > li.active > a:hover {
+// 			// border-bottom: 2px solid #0074B7;
+// 			border:none!important;
+// 			color: #f8f8f8!important;
+// 			background-color: $bauexBlue!important;
+// 		}
+// }
+
+// Details Box
+
+.bxp-openedDetails2 {
+
+	.nav-tabs {
+		border-bottom: 1px solid #ccc;
+	}
+
+	.tab-content {
+		padding: 20px;
+
+		&.tab-content-notizen {
+			.notiz-item {
+				display: block;
+				margin-top: 5px;
+			}
+		}
+
+		ul {
+			padding: 0;
+			margin: 0;
+			list-style: none;
+
+			li {
+				border-radius: 4px!important;
+				-webkit-border-radius: 4px!important;
+				-moz-border-radius: 4px!important;
+				padding: 15px;
+				box-shadow: 0 2px 2px #c0c0c0;
+				-moz-box-shadow: 0 2px 2px #c0c0c0;
+				-webkit-box-shadow: 0 2px 2px #c0c0c0;
+				background-color: #fff;
+				margin-bottom: 18px;
+				float: left;
+				width: 49%;
+				margin-right: 2%;
+
+				&:nth-child(2n) {
+					// clear: both;
+					margin-right: 0;
+				}
+
+				&:hover,
+				& label:hover {
+					cursor: default;
+				}
+
+				input {
+					width: 100%;
+					border: 1px solid #dedede;
+				}
+			}
+		}
+	}
+
+	.table {
+		margin: 0;
+	}
+
+	.icon-plus {
+		font-size: 24px;
+	}
+
+	.table + a {
+		display: inline-block;
+		margin-top: 18px;
+	}
+
+}
+
+// Datentable Kundendaten
+
+#grid1,
+.bauexperts-box,
+.dataTables_wrapper {
+    border: 1px solid #DDDDDD;
+    padding: 0!important;
+    border: 1px solid #dedede;
+    background-color: #fff;
+    border-radius: 5px !important;
+    box-shadow: 0px 1px 0px 0 rgba(0,0,0,.2);
+    // height: auto!important; //todo: warum hat das Plugin hier heights definiert?
+}
+
+.bauexperts-box + .bauexperts-box {
+	margin-top: 36px;
+}
+
+#grid1 {
+	height: 65vh;
+	width: 100%;
+
+	.ui-grid-top-panel {
+		background: #f2f2f2;
+	}
+
+	.ui-grid-header-cell-row {
+		color: $bauexBlue;
+	}
+
+	.ui-grid-row.ui-grid-row-selected > [ui-grid-row] > .ui-grid-cell {
+		background-color: $bauexBlue;
+		color: #f8f8f8;
+	}
+}
+
+.ui-grid-viewport {
+	// height: auto!important; //todo: warum hat das Plugin hier heights definiert?
+}
+
+.bauexperts-box,
+.dataTables_wrapper {
+    padding: 25px!important;
+}
+
+.centered {
+	width: 96%;
+	margin: 0 auto;
+	
+	@media (min-width: 1300px) {
+		& {
+			width: 1100px;
+		}
+	}
+}
+
+// Signup Page - General Class
+
+.signup-register,
+.signup-login {
+	display: inline-block;
+	padding: 5px 15px;
+	background-color: $bauexBlue;
+	color: #fff;
+	border-radius: 5px!important;
+	border: 1px solid $bauexBlue;
+	margin: 8px 10px;
+
+	&:focus,
+	&:hover {
+		text-decoration: none;
+		background-color: #fff;
+		color: $bauexBlue;
+	}
+}
+
+.signup-login {
+	margin: 8px 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: inline-block;
+}
+
+.signup-section {
+
+	padding: 80px 0;
+
+	&.dark {
+		background-color: #2A374B;
+		color: #CED5D9;
+	}
+
+	h2 {
+
+		color: $bauexBlue;
+		font-weight: 400;
+		font-size: 40px;
+		margin-bottom: 40px;
+	}
+
+	&.dark {
+		h2 {
+			color: #f0f0f0;
+			font-weight: 400;
+			font-size: 40px;
+			margin-bottom: 40px;
+		}
+	}
+
+	.signup-section-intro {
+		font-size: 20px;
+		line-height: 1.8;
+		max-width: 920px;
+		margin: 0 auto;
+	}
+}
+
+// Signup Page - Registration Section
+
+.register-section {
+	
+	// background: url('/pictures/bg-register.jpg') no-repeat top center;
+	// background-size: cover;
+	// padding: 20px 0;
+	// position: relative;
+
+	.register-info {
+		width: 100%;
+		margin-right: 0;
+
+		@media (min-width: 900px) {
+			& {
+				width: 51%;
+				margin-right: 5%;
+			}
+		}
+
+		.register-info-header {
+
+			// padding-top: 30px;
+
+			.logo-wrapper {
+				width: 100%;
+				margin-left: 0;
+				padding-top: 20px;
+				text-align: center;
+
+				#bauexperts-logo {
+					max-width: 200px;
+				}
+
+				@media (min-width: 600px) {
+					& {
+						width: 28%;
+						margin-left: 5%;
+						padding-top: 20px;
+						text-align: left;
+					}
+				}
+			}
+
+			.text-wrapper {
+				width: 100%;
+				margin-left: 0;
+
+				&.float-left {
+					text-align: center;
+				}
+
+				@media (min-width: 600px) {
+					&.float-left {
+						width: 67%;
+						margin-left: 0;
+						text-align: left;
+					}
+				}
+
+				h1 {
+					color: $bauexBlue;
+					font-weight: 400;
+					font-size: 24px;
+
+					@media (min-width: 600px) {
+						& {
+							font-size: 28px;
+						}
+					}
+				}
+
+				.intro {
+					font-size: 15px;
+					color: #666666;
+					margin: 0;
+					line-height: 1.6;
+
+					@media (min-width: 600px) {
+						& {
+						}
+					}
+				}
+			}
+
+		}
+
+		.group {
+			margin-bottom: 26px;
+		}
+
+		.group:last-child {
+			margin-bottom: 0;
+		}
+
+		.register-vorteile {
+
+			margin-top: 28px;
+			padding-top: 28px;
+			border-top: 1px solid #d0d0d0;
+			text-align: center;
+
+			@media (min-width: 600px) {
+				& {
+					text-align: left;
+				}
+			}
+
+			.vorteile-bild {
+				width: 100%;
+				margin-right: 0;
+				margin-bottom: 6px;
+
+				svg {
+					max-width: 80px;
+
+					&.svg-auftrag {
+						.st0{fill:#DFE0E1;}
+						.st1{fill:none;stroke:#BCC0C4;stroke-width:2;stroke-miterlimit:10;}
+						.st2{fill:none;stroke:#2A5082;stroke-width:2;stroke-miterlimit:10;}
+						.st3{fill:#FFFFFF;stroke:#2A5082;stroke-width:2;stroke-miterlimit:10;}
+						.st4{fill:#DFE0E1;stroke:#2A5082;stroke-width:2;stroke-miterlimit:10;}
+						.st5{fill:$bauexBlue;stroke:#2A5082;stroke-width:2;stroke-miterlimit:10;}
+					}
+
+					&.svg-werbung {
+						.st0{fill:#DFE0E1;}
+                        .st1{fill:#FFFFFF;}
+                        .st2{fill:$bauexBlue;}
+                        .st3{fill:none;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+                        .st4{fill:none;stroke:#BCBFC3;stroke-width:2;stroke-miterlimit:10;}
+					}
+
+					&.svg-laufzeit {
+						.st0{fill:#DFE0E1;}
+						.st1{fill:none;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+						.st2{fill:#FFFFFF;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+						.st3{fill:$bauexBlue;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+						.st4{fill:$bauexBlue;stroke:#2D5183;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+						.st5{fill:none;stroke:#2D5183;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
+						.st6{fill:#F03434;}
+					}
+
+					&.svg-charge {
+						.st0{fill:#DFE0E1;}
+						.st1{fill:#FFFFFF;}
+						.st2{fill:$bauexBlue;}
+						.st3{fill:none;stroke:#2A5082;stroke-width:2;stroke-miterlimit:10;}
+						.st4{fill:#F03434;}
+					}
+				}
+
+				@media (min-width: 600px) {
+					& {
+						width: 12%;
+						margin-right: 2%;
+					}
+				}
+
+				@media (min-width: 900px) {
+					& {
+						width: 18%;
+						margin-right: 6%;
+					}
+				}
+
+				@media (min-width: 1300px) {
+					& {
+						width: 18%;
+						margin-right: 3%;
+					}
+				}
+			}
+
+			.vorteile-text {
+				
+				width: 100%;
+
+				@media (min-width: 600px) {
+					& {
+						width: 86%;
+					}
+				}
+
+				@media (min-width: 900px) {
+					& {
+						width: 76%;
+					}
+				}
+
+				@media (min-width: 1300px) {
+					& {
+						width: 79%;
+					}
+				}
+
+				h3 {
+					color: $bauexBlue;
+					font-size: 19px;
+					font-weight: 600;
+					text-transform: uppercase;
+					margin: 4px 0 5px;
+				}
+
+				p {
+					margin: 0;
+					font-size: 13px;
+					color: #676767;
+					line-height: 1.6;
+				}
+			}
+
+		}
+
+		.reg-button-mobile {
+			display: block;
+			margin-top: 20px;
+			padding: 14px 5px;
+			font-size: 16px;
+
+			@media (min-width: 900px) {
+				& {
+					display: none;
+				}
+			}
+		}
+
+		.kontaktseite & {
+
+			.text-wrapper {
+				margin-bottom: 24px;
+			}
+
+			.kontaktdaten {
+
+				p {
+					font-size: 21px;
+					margin: 18px 0;
+
+					.fa-envelope {
+						margin-right: 10px;
+					}
+				}
+			}
+			
+		}
+	}
+
+	.register-form {
+		width: 100%;
+		margin-top: 0;
+		margin-bottom: 40px;
+
+		.kontaktseite & {
+			margin-top: 40px;
+		}
+
+		h3 {
+			font-weight: 400;
+		}
+
+		@media (min-width: 900px) {
+			& {
+				width: 44%;
+				// margin-top: 40px;
+			}
+
+			.kontaktseite & {
+				margin-top: 0;
+			}
+
+		}
+	}
+
+	.register-fussnote {
+		p {
+			font-size: 13px;
+			color: #666666;
+			margin-top: 50px;
+			text-align: center;
+
+			@media (min-width: 600px) {
+				& {
+					text-align: left;
+					margin-top: 30px;
+				}
+			}
+		}
+	}
+
+
+}
+
+// Signup Page - Vorteile Section
+
+.vorteile-section {
+
+	.vorteile-wrapper {
+		margin: 120px 0 80px;
+
+		@media (min-width: 1300px) {
+			& .centered {
+				width: 1250px;
+			}
+		}
+
+		.vorteile-item {
+
+			width: 100%;
+			margin-right: 0;
+			margin-bottom: 70px;
+
+			@media (min-width: 900px) {
+				&  {
+					margin-bottom: 60px;
+				}
+			}
+
+			@media (min-width: 900px) {
+				&  {
+					width: 49%;
+					margin-right: 2%;
+				}
+			}
+
+			@media (min-width: 1100px) {
+				&  {
+					width: 47%;
+					margin-right: 6%;
+				}
+			}
+
+			&:nth-child(2n) {
+				margin-right: 0;
+			}
+
+			&:nth-child(2n+1) {
+				clear: both;
+			}
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+
+			.vorteile-item-bild {
+				width: 100%;
+				margin-right: 0;
+				text-align: center;
+				margin-bottom: 10px;
+				
+				svg {
+					max-width: 140px;
+				}
+
+				@media (min-width: 600px) {
+					&  {
+						width: 30%;
+						margin-right: 5%;
+						margin-bottom: 0;
+
+						svg {
+							max-width: 200px;
+						}
+					}
+				}
+
+				#vorteile-auftrag {
+					.st0{fill:#f8f8f8;}
+					.st1{fill:$bauexBlue;}
+				}
+
+				#vorteile-kundenstamm,
+				#vorteile-netzwerk {
+					.st0{fill:$bauexBlue;}
+					.st1{fill:#f8f8f8;}
+					.st2{fill:#888;}
+				}
+
+				#vorteile-weiterbildung {
+					.st0{fill:#f8f8f8;}
+					.st1{fill:$bauexBlue;}
+				}
+
+				#vorteile-werbeauftritt {
+					.st0{fill:#EFF0F0;}
+					.st1{fill:#FFFFFF;}
+					.st2{fill:#B9BBBD;}
+					.st3{fill:#CDCDCD;}
+					.st4{fill:#E4E4E5;}
+					.st5{opacity:0.3;}
+					.st6{fill:#4E8DC4;}
+					.st7{opacity:0.2;}
+					.st8{fill:#010101;}
+					.st9{fill:#818183;}
+					.st10{fill:#CED0D1;}
+					.st11{fill:#59595B;}
+					.st12{fill:#FAFAFA;}
+					.st13{opacity:0.3;fill:#FFFFFF;}
+					.st14{fill:#333333;}
+					.st15{opacity:0.1;fill:#231F1F;}
+					.st16{fill:#A4A6A9;}
+					.st17{fill:#424042;}
+					.st18{fill:#6E6F71;}
+					.st19{opacity:0.5;fill:#424042;}
+					.st20{fill:#EDEDED;}
+					.st21{opacity:0.34;fill:#EDEDED;}
+					.st22{opacity:0.39;fill:#EDEDED;}
+					.st23{opacity:0.4;fill:#EDEDED;}
+					.st24{opacity:0.76;fill:#EDEDED;}
+					.st25{opacity:0.46;fill:#EDEDED;}
+					.st26{opacity:0.25;fill:#EDEDED;}
+					.st27{opacity:0.72;fill:#EDEDED;}
+					.st28{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#A4A4A3;stroke-width:0.216;stroke-miterlimit:22.9256;}
+					.st29{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#1A1A19;stroke-width:0.5;stroke-miterlimit:22.9256;}
+					.st30{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#1A1A19;stroke-width:0.216;stroke-miterlimit:22.9256;}
+					.st31{fill-rule:evenodd;clip-rule:evenodd;fill:#90908E;}
+					.st32{fill-rule:evenodd;clip-rule:evenodd;fill:#3F6EB1;}
+					.st33{fill-rule:evenodd;clip-rule:evenodd;fill:#515756;}
+					.st34{fill-rule:evenodd;clip-rule:evenodd;fill:#4B4A4A;}
+					.st35{fill:#90908E;}
+					.st36{font-family:'TrebuchetMS-Bold';}
+					.st37{font-size:0.5942px;}
+					.st38{fill:#64676B;}
+					.st39{fill-rule:evenodd;clip-rule:evenodd;fill:#64676B;}
+					.st40{fill-rule:evenodd;clip-rule:evenodd;fill:#4E8DC4;}
+				}
+
+				#vorteile-backoffice {
+					.st0{fill:#FFFFFF;}
+					.st1{fill:$bauexBlue;}
+				}
+
+				#vorteile-vorlagen {
+					.st0{opacity:0.2;fill:#414042;}
+					.st1{fill:#FFFFFF;}
+					.st2{fill:#CFCFCF;}
+					.st3{fill:#C9C9C9;}
+					.st4{fill:url(#SVGID_1_);}
+					.st5{fill:url(#SVGID_2_);}
+					.st6{fill:url(#SVGID_3_);}
+					.st7{fill:url(#SVGID_4_);}
+					.st8{fill:$bauexBlue;}
+					.st9{fill:#C7C7C7;}
+					.st10{fill:url(#SVGID_5_);}
+					.st11{fill:url(#SVGID_6_);}
+				}
+			}
+
+			.vorteile-item-text {
+				width: 100%;
+				text-align: center;
+
+				@media (min-width: 600px) {
+					&  {
+						width: 65%;
+						text-align: left;
+					}
+				}
+
+				h3 {
+					font-weight: 600;
+					color: #f8f8f8;
+					font-size: 24px;
+					margin-top: 0;
+				}
+
+				ul,
+				p {
+					font-size: 15px;
+					line-height: 1.6;
+					margin-top: 0;
+				}
+
+				ul {
+					margin-top: 10px;
+					line-height: 1.8;
+					padding: 0;
+					list-style:none;
+
+					li {
+						padding-left: 24px;
+						position: relative;
+
+						i {
+							position: relative;
+							top: 0;
+							left: 0;
+
+							@media (min-width: 600px) {
+								&  {
+									position: absolute;
+									top: 7px;
+								}
+							}
+						}
+					}
+				}
+			}
+
+		}
+	}
+	
+}
+
+// Signup Page - FAQ Section
+
+.faq-section {
+	.btn {
+		margin: 50px 0;
+	}
+}
+
+// Signup Page - Footer Section
+
+.footer-section {
+	ul {
+		list-style: none;
+		padding: 0;
+		margin: 20px 0;
+		font-size: 12px;
+
+		li {
+			display: inline-block;
+			margin: 0 5px;
+
+			a {
+				color: #676767;
+				font-weight: 400;
+
+			}
+		}
+	}
+}
+
+// Signedup Link
+
+.signedup-section {
+
+	padding-top: 150px;
+
+	h2 {
+	    font-size: 36px;
+	    margin-bottom: 16px;
+	}
+
+	.signup-section-intro {
+		line-height: 1.5;
+	}
+
+	#signedup-email {
+		width: 200px;
+		.st0{fill:#E9EAEB;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+		.st1{fill:#FFFFFF;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+		.st2{fill:$bauexBlue;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+		.st3{fill:none;stroke:#2D5183;stroke-width:2;stroke-miterlimit:10;}
+	}
+
+	.signedup-mail-again {
+		max-width: 800px;
+		margin: 0 auto;
+	}
+}
+
+
+// Downloadsseite
+
+.downloads-block {
+}
+
+.panel-heading {
+	padding: 0;
+}
+
+.panel-heading a {
+	display: block;
+	padding: 14px 0 20px;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.panel-default {
+	border: none;
+}
+
+.panel-default > .panel-heading + .panel-collapse > .panel-body {
+    border: none;
+}
+
+.panel-default > .panel-heading {
+    color: #333;
+    background-color: #fff;
+    border-color: #fff;
+}
+
+.panel-body {
+}
+
+.download-item {
+
+	span {
+		display: block;
+		margin: 10px 0;
+		padding: 10px;
+		border: 1px solid #dedede;
+		background-color: #f0f0f0;
+		position: relative;
+		padding-left: 50px;
+
+		.fa-cloud-download {
+			font-size: 24px;
+			position: absolute;
+			top: 14px;
+			color: $bauexBlue;
+			margin-left: 14px;
+			left: 0;
+		}
+
+		&:hover {
+			cursor: pointer;
+			color: #fff;
+			background-color: $bauexBlue;
+			border-color: $bauexBlue;
+
+			.fa-cloud-download {
+				color: #fff;
+			}
+		}
+	}
+
+	
+}
+
+.panel-collapse.in.collapse > .panel-body {
+	// background-color: #dedede;
+}
+
+.accordion-toggle {
+	position: relative;
+}
+
+.accordion-toggle:after {
+	content: "\f107";
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	text-rendering: auto;
+	position: absolute;
+	right: 0;
+	top: 5px;
+	font-size: 28px;
+	color: $bauexBlue;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.accordion-toggle[aria-expanded=true] {
+	color: $bauexBlue;
+}
+
+.accordion-toggle[aria-expanded=true]:after {
+	content: "\f106";
+}
+
+.infobox-block {
+	width: 40%;
+}
+
+// FORM SV
+
+#formSV {
+	.bxp-col-6 {
+	    width: 50%!important;
+	    float: left;
+	    padding-left: 15px;
+	}
+
+	.bxp-col-6:first-child {
+	    width: 50%!important;
+	    float: left;
+	    padding-left: 0;
+	    padding-right: 15px;
+	}
+
+	.input-group-addon {
+		display: inline-block;
+		margin-left: 2%!important;
+		width: 10%!important;
+		padding: 9px 0px!important;
+		border-right: none!important;
+
+		+ input {
+			width: 70%!important;
+			margin-left: 0!important;
+		}
+	}
+
+}
+
+
+.tab-sv-leistungen {
+
+	.leistung-kategorie-title {
+		display: block;
+	}
+
+	.group .float-left {
+		width: 24%;
+		margin-right: 1%;
+	}
+
+	label {
+		display: block;
+		margin-top: 10px;
+	}
+}
+
+// Login Main
+
+.login-main {
+	margin: 0 auto;
+	width: 500px;
+	margin-top: 120px;
+	// background: #F6F6F6!important;
+	padding: 10px 50px!important;
+
+	#bauexperts-logo {
+		width: 180px;
+	}
+
+	input {
+		background: #f6f6f6!important;
+
+		&:focus {
+			border: 1px solid $bauexBlue;
+			outline: none;
+		    box-shadow: 0 0 3px $bauexBlue!important;
+		}
+	}
+
+	.btn {
+		width: 100%!important;
+		padding: 10px 12px!important;
+		margin-top: 10px;
+	}
+
+	h3 {
+		margin-bottom: 20px;
+		line-height: 1.5;
+		font-size: 24px;
+		font-weight: 400;
+	}
+}
+
+
+
+.ui-select-toggle:hover {
+	cursor: pointer;
+}
+
+.bxp-input-grundatensatz {
+    // border: none;
+    border: 1px solid #bbb;
+    // background: #dbdbdb;
+    background: #fff;
+    padding: 6px;
+}
+
+
+// Bauexperts-Logo SVG
+
+#bauexperts-logo {
+	max-width: 100%;
+	.st0{fill:#406EB1;}
+	.st1{fill:$bauexGrau;}
+	.st2{fill-rule:evenodd;clip-rule:evenodd;fill:$bauexGrau;}
+	.st3{fill-rule:evenodd;clip-rule:evenodd;fill:#406EB1;}
+	.st4{fill:$bauexGrau;}
+	.st5{fill:$bauexGrau;}
+}
+
+
+// Infobox
+
+.infobox {
+	border:1px solid #dedede;
+	padding: 20px;
+}
+
+// Kontaktseite 
+
+
+
+
+
+
+
+

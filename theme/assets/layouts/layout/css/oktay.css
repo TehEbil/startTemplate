@@ -1,0 +1,199 @@
+/*General*/
+.button-clean {
+  border: none;
+  background: none; }
+
+.produkt-top-left h2 {
+  font-weight: bold; }
+
+.bxp-cart-group {
+  background: #f6f6f6;
+  border-radius: 10px !important;
+  margin: 20px 0 30px;
+  padding: 30px;
+  border: 1px solid #bbb; }
+
+.shop-product {
+  border-bottom: solid;
+  border-color: #eaeaea;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-width: 1px; }
+  .shop-product .img-container {
+    width: 11%; }
+    .shop-product .img-container .img-vis {
+      height: auto;
+      max-width: 70px;
+      margin-top: 19px; }
+  .shop-product .main-container {
+    width: 89%; }
+    .shop-product .main-container .header h3 {
+      font-weight: bold;
+      font-size: 19px; }
+    .shop-product .main-container .shop-item-container .shop-item-left {
+      width: 60%;
+      font-size: 13px; }
+    .shop-product .main-container .shop-item-container .shop-item-right {
+      width: 40%;
+      text-align: right; }
+      .shop-product .main-container .shop-item-container .shop-item-right label {
+        display: block; }
+      .shop-product .main-container .shop-item-container .shop-item-right .bxp-shop-select {
+        width: 150px;
+        background: none;
+        border-radius: 5px;
+        padding: 4px 6px;
+        font-size: 1em;
+        border: 1px solid #dedede;
+        background-color: #e0e0e0; }
+    .shop-product .main-container .product-hint {
+      padding-top: 10px; }
+      .shop-product .main-container .product-hint .img-leuchte {
+        width: 5%; }
+      .shop-product .main-container .product-hint .p-marg {
+        font-size: 11px;
+        width: 77%;
+        margin-left: 6%; }
+      .shop-product .main-container .product-hint #shop-birne .st0 {
+        fill-rule: evenodd;
+        clip-rule: evenodd;
+        fill: #515562; }
+      .shop-product .main-container .product-hint #shop-birne .st1 {
+        fill: #EACB43; }
+      .shop-product .main-container .product-hint #shop-birne .st2 {
+        fill: #515562; }
+      .shop-product .main-container .product-hint #shop-birne .st3 {
+        opacity: 0.2; }
+      .shop-product .main-container .product-hint #shop-birne .st4 {
+        fill: #FFFFFF; }
+      .shop-product .main-container .product-hint .middle {
+        max-width: 370px;
+        width: 50%;
+        margin-right: 10%; }
+      .shop-product .main-container .product-hint .visitenkarte {
+        color: black;
+        font-size: 80%;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border: 1px solid #bbb;
+        position: relative; }
+        .shop-product .main-container .product-hint .visitenkarte b {
+          text-transform: uppercase;
+          margin-bottom: 15px !important; }
+        .shop-product .main-container .product-hint .visitenkarte p {
+          margin: 5px 0 0; }
+        .shop-product .main-container .product-hint .visitenkarte .siegel-style {
+          padding-top: 20px; }
+        .shop-product .main-container .product-hint .visitenkarte .icon-style {
+          font-size: 25px;
+          color: #0074b7;
+          position: absolute;
+          right: 0;
+          bottom: 15px; }
+          .shop-product .main-container .product-hint .visitenkarte .icon-style:hover i {
+            color: #005484; }
+      .shop-product .main-container .product-hint .item-info {
+        width: 40%; }
+        .shop-product .main-container .product-hint .item-info p {
+          font-size: 11px !important; }
+
+.select-anschr {
+  width: 100%; }
+  .select-anschr .rech-anschr {
+    width: 50%; }
+  .select-anschr .lief-anschr {
+    width: 22%; }
+
+.form-container {
+  width: 65%; }
+
+.konto-uberschrift {
+  color: #0074b7;
+  text-align: center;
+  margin-bottom: 8%; }
+
+.bxp-container {
+  width: 100%; }
+  .bxp-container .edit-profil {
+    width: 18%;
+    margin-left: 14%;
+    height: 125px; }
+    .bxp-container .edit-profil .fa {
+      background: #0074b7;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 55px;
+      vertical-align: middle;
+      margin-left: 120%;
+      margin-top: 45%; }
+    .bxp-container .edit-profil:hover i {
+      color: #0074b7; }
+      .bxp-container .edit-profil:hover i.fa {
+        background: #FFFFFF;
+        border: 2px solid; }
+    .bxp-container .edit-profil .fa-user {
+      font-size: 25px;
+      color: #FFFFFF; }
+    .bxp-container .edit-profil .text-profil {
+      color: #0074b7;
+      font-weight: bold;
+      margin-left: 41%;
+      margin-top: 0; }
+  .bxp-container .edit-mail {
+    width: 18%;
+    margin-left: 5%;
+    height: 125px; }
+    .bxp-container .edit-mail .fa {
+      background: #0074b7;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 55px;
+      vertical-align: middle;
+      margin-left: 120%;
+      margin-top: 45%; }
+    .bxp-container .edit-mail:hover i {
+      color: #0074b7; }
+      .bxp-container .edit-mail:hover i.fa {
+        background: #FFFFFF;
+        border: 2px solid; }
+    .bxp-container .edit-mail .fa-envelope {
+      font-size: 25px;
+      color: #FFFFFF; }
+    .bxp-container .edit-mail .text-profil {
+      color: #0074b7;
+      margin-left: 26%;
+      margin-top: 0;
+      font-weight: bold; }
+  .bxp-container .edit-passwort {
+    width: 18%;
+    height: 125px;
+    margin-left: 5%; }
+    .bxp-container .edit-passwort .fa {
+      background: #0074b7;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 55px;
+      vertical-align: middle;
+      margin-left: 120%;
+      margin-top: 45%; }
+    .bxp-container .edit-passwort:hover i {
+      color: #0074b7; }
+      .bxp-container .edit-passwort:hover i.fa {
+        background: #FFFFFF;
+        border: 2px solid; }
+    .bxp-container .edit-passwort .fa-lock {
+      font-size: 25px;
+      color: #FFFFFF; }
+    .bxp-container .edit-passwort .text-profil {
+      color: #0074b7;
+      margin-left: 35%;
+      margin-top: 0;
+      font-weight: bold; }
+  .bxp-container .bauexperts-box {
+    margin-top: 0; }

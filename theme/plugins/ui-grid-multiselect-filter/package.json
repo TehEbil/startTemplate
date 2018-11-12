@@ -1,0 +1,41 @@
+{
+  "_from": "ui-grid-multiselect-filter",
+  "_id": "ui-grid-multiselect-filter@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-bP5u6Q1j8UF8+jpyZjko/XlkBiFsaQEWuW7+qDb2eQUGchIl7TEfSiOQFHM5m2LxZiledTf4nXXEJvv7UvVK/g==",
+  "_location": "/ui-grid-multiselect-filter",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "ui-grid-multiselect-filter",
+    "name": "ui-grid-multiselect-filter",
+    "escapedName": "ui-grid-multiselect-filter",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/ui-grid-multiselect-filter/-/ui-grid-multiselect-filter-1.0.0.tgz",
+  "_shasum": "5fb6817013b0e51a6a69dd4c5a0320541a4e3197",
+  "_spec": "ui-grid-multiselect-filter",
+  "_where": "C:\\Users\\Friedhoff\\Documents\\GitHub\\Projekt-Bauexperts\\theme",
+  "bundleDependencies": false,
+  "dependencies": {},
+  "deprecated": false,
+  "description": "This is a ui-grid plugin to **filter** the grid's data.",
+  "devDependencies": {
+    "concurrently": "^2.0.0",
+    "lite-server": "^2.2.0"
+  },
+  "license": "ISC",
+  "name": "ui-grid-multiselect-filter",
+  "scripts": {
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,18 @@
+<!-- <div class="bxp-header-modal modal-title">
+	<h3>{{title}}</h3>
+</div> -->
+<div class="modal-body bxp-warning-modal-body" ng-class="{ 'sv-danger': svFlag == 'sv-danger', 'sv-success': svFlag == 'sv-success' }">
+	<i ng-if="svFlag != 'sv-success'" class="fa fa-exclamation-triangle"></i>
+	<i ng-if="svFlag == 'sv-success' && !isPastePrompt" class="icon-check success-color large-icon"></i>
+  	<p>{{text}}</p>
+</div>
+
+
+<div class="bxp-warning-modal-footer group">
+	<!-- <button ng-if="choice=='changed'" type="button" class="btn btn-primary float-left" data-ng-click="ok(); $event.stopPropagation()">Verwerfen</button> -->
+	<!-- <button ng-if="choice=='sure' || choice=='reject' || choice=='complain'" type="button" class="btn btn-primary float-left" data-ng-click="ok(); $event.stopPropagation()">{{param2}}</button> -->
+	<button ng-if="choice!='otherid'" type="button" class="btn btn-primary float-left" data-ng-click="ok(); $event.stopPropagation()">{{param2}}</button>
+	<button ng-if="choice=='otherid' && !isPastePrompt" type="button" class="btn btn-primary btn-warn" data-ng-click="ok(); $event.stopPropagation()">OK</button>
+	<button ng-if="choice=='otherid' && isPastePrompt" type="button" class="btn btn-primary btn-warn btn-data-übernehmen" data-ng-click="ok(FormCtrl.pasteData); $event.stopPropagation()">Übernehmen</button>
+	<button ng-if="choice!='otherid' || isPastePrompt" type="button" class="btn default float-left" data-ng-click="cancel(); $event.stopPropagation()">Abbrechen</button>
+</div>

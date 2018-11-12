@@ -1,0 +1,47 @@
+<div class="dashboard-flex two">
+
+    <div class="dashboard-statistic" ng-if="!isEmployee">
+        <div class="statistic-item bauexperts-box" ng-class="vm.getStornoClass(vm.statistics.stornoRate.val, vm.statistics.stornoRate.avg, true)">
+
+            <h3>Stornoquote (2018)</h3>
+            <div class="statistic-item-value">
+                {{vm.statistics.stornoRate.val | number}} %
+            </div>
+            <div class="statistic-item-average float-left">
+                &Oslash;: {{vm.statistics.stornoRate.avg}} % | Ihr Rang: {{vm.statistics.stornoRate.pos}}/{{vm.statistics.stornoRate.len}}
+            </div>
+        </div>
+
+
+        <div class="statistic-item bauexperts-box" ng-class="vm.getStornoClass(vm.statistics.salesPerAuftrag.val, vm.statistics.salesPerAuftrag.avg)">
+            <h3>Nettoumsatz pro Auftrag (2018)</h3>
+            <div class="statistic-item-value">
+                {{vm.statistics.salesPerAuftrag.val | currency}}
+            </div>
+            <div class="statistic-item-average float-left">
+                &Oslash;: {{vm.statistics.salesPerAuftrag.avg | currency}} | Ihr Rang: {{vm.statistics.salesPerAuftrag.pos}}/{{vm.statistics.salesPerAuftrag.len}}
+            </div>
+        </div>
+
+        <div class="statistic-item bauexperts-box" ng-class="vm.getStornoClass(vm.statistics.salesPerAnfrage.val, vm.statistics.salesPerAnfrage.avg)">
+            <h3>Nettoumsatz pro Anfrage (2018)</h3>
+            <div class="statistic-item-value">
+                {{vm.statistics.salesPerAnfrage.val | currency}}
+            </div>
+            <div class="statistic-item-average float-left">
+                &Oslash;: {{vm.statistics.salesPerAnfrage.avg | currency}} | Ihr Rang: {{vm.statistics.salesPerAnfrage.pos}}/{{vm.statistics.salesPerAnfrage.len}}
+            </div>
+        </div>
+
+        <div class="statistic-item bauexperts-box"  ng-class="vm.getStornoClass(vm.statistics.totalSales.val, vm.statistics.totalSales.avg)">
+            <h3>Nettoumsatz (2018)</h3>
+            <div class="statistic-item-value">
+                {{vm.statistics.totalSales.val | currency:'€':0}}
+            </div>
+            <div class="statistic-item-average float-left">
+                Ihr Rang: {{vm.statistics.totalSales.pos}}/{{vm.statistics.totalSales.len}}
+            </div>
+        </div>
+
+    </div>
+</div>

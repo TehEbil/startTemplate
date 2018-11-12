@@ -1,0 +1,25 @@
+{
+  "testUsers": [
+    {
+      "id": 1,
+      "name": "Ali Osman",
+      "uploads": [
+        {
+          "id": 1,
+          "filename": "file1.txt",
+          "filepath": "public/uploads/file1.txt",
+          "oldfilename": "expFile.txt",
+          "refName": "file1.txt",
+          "date": "2018-11-12T11:39:29.137Z"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "name": "expFile.txt",
+      "path": "public/uploads/file1.txt",
+      "id": 1
+    }
+  ]
+}

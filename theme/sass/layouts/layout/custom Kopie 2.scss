@@ -1,0 +1,757 @@
+/* here you can put your own css to customize and override the theme */
+
+.activex {
+	background-color: #286090;
+	color: #f8f8f8;
+}
+
+.page-header.navbar .page-logo .logo-default {
+	margin-top: 12px;
+}
+
+// .page-footer-fixed .page-container {
+// 	margin-bottom: 0!important;
+// }
+
+.modal {
+	text-align: center;
+}
+
+.modal-lg {
+	// width: 95%;
+	width: auto;
+	display: inline-block;
+    // max-width: 95%;
+    text-align: left;
+}
+
+@media screen and (min-width: 992px) {
+
+  .modal-lg {
+  	width: auto;
+   //  max-width: 1050px;
+  }
+
+}
+
+.modal-box
+{
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
+  padding: 15px;
+  border-radius: 4px;
+  box-shadow: 1px 2px 5px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.modal-content {
+	top: 30px;
+}
+
+@media screen and (min-width: 992px)
+{
+  .modal-box
+  {
+    width: 50%;
+    padding: 30px;
+  }
+}
+
+.modal-backdrop
+{
+ position: fixed;
+ top: 0px;
+ left: 0px;
+ height:100%;
+ width:100%;
+ background: #000;
+ z-index: 1;
+ opacity: 0.5;
+}
+
+.modal-holder
+{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height:100%;
+  width:100%;
+  background: transparent;
+  z-index: 2;
+  padding: 30px 15px;
+}
+
+.float-left {
+ float: left;
+}
+
+.float-right {
+ float: right;
+}
+
+.group:before,
+.group:after {
+ content: "";
+ display: table;
+}
+
+.group:after {
+ clear: both;
+}
+
+.ta-left {
+	text-align: left;
+}
+
+.ta-right {
+	text-align: right;
+}
+
+.ta-center {
+	text-align: center;
+}
+
+.bxp-form {
+	.bxp-container {
+		border: 1px solid #d1d1d1;
+		padding: 18px 0 0;
+		//background-color: #F5F5F5;
+		background-color: #ECECEC;
+		// width: 100%;
+
+		.nav-tabs {
+			padding: 0 14px;
+			margin-bottom: 0;
+
+			> li > a {
+					border:none;
+					border-bottom: 2px solid transparent;
+					color: #6b6b6b;
+					padding: 10px 8px;
+					margin: 0 10px 0;
+				}
+
+			> li > a:hover {
+					background: none;
+					color: #0074B7;
+					border-bottom: 2px solid #0074B7;
+				}
+
+			> li.active > a,
+				.nav-tabs > li.active > a:focus,
+				.nav-tabs > li.active > a:hover {
+					background: none;
+					border:none;
+					border-bottom: 2px solid #0074B7;
+					color: #0074B7;
+				}
+		}
+
+		.tab-content {
+			min-height: 600px;
+			padding: 22px 25px;
+			// padding: 26px 34px 12px;
+		}
+	}
+
+	@media screen and (min-width: 992px) {
+	  .bxp-container {
+	    width: 1020px;
+	  }
+	}
+
+	@media screen and (min-width: 1200px) {
+	  // .bxp-container {
+	  //   width: 1150px;
+	  // }
+	}
+
+	.bxp-col-6 {
+		width: 100%;
+		float: none;
+		padding: 0;
+	}
+
+	@media screen and (min-width: 850px) {
+
+	  .bxp-col-6 {
+	  	width: 45%;
+	  	float: left;
+	  	padding-left: 15px;
+	  }
+
+	  .bxp-col-6:first-child {
+	  	width: 55%;
+	  	float: left;
+	  	padding-left: 0;
+	  	padding-right:15px;
+	  }
+
+	}
+
+	.form-group {
+		margin-bottom: 18px;
+
+		select {
+			width: 100%;
+			border: 1px solid #c2cad8;
+			padding: 6px 12px;
+		}
+	}
+
+	.bxp-form-note {
+	    font-weight: bold;
+	    margin: 10px 0 20px;
+	}
+
+	.form-group-tel {
+		margin-top: 17px;
+	}
+
+	.bxp-label {
+		width: 18%;
+		margin-top: 6px;
+	}
+
+	.form-geburtstag .bxp-label {
+		width: 28%;
+	}
+
+	.bxp-input {
+		width: 80%;
+		margin-left: 2%;
+	}
+
+	.form-geburtstag .bxp-input {
+		width: 70%;
+	}
+
+	// Gender and Title in one line
+
+	.bxp-input-gender {
+		width: 80%;
+		margin-left: 2%;
+		margin-bottom: 20px;
+
+		.form-control {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+
+	.bxp-label-title {
+		width: 18%;
+		margin-left: 0;
+	}
+
+	.bxp-input-title {
+		width: 80%;
+		margin-left: 2%;
+
+		.form-control {
+			width: 100%;
+			margin-left: 0;
+		}
+	}
+
+	@media (min-width: 580px) {
+
+	  .bxp-input-gender {
+	  	width: 33%;
+	  	margin-left: 2%;
+	  	margin-bottom: 0;
+
+	  	.form-control {
+	  		width: 100%;
+	  		margin-left: 0;
+	  	}
+	  }
+
+	  .bxp-label-title {
+	  	width: 15%;
+	  	margin-left: 2%;
+	  }
+
+	  .bxp-input-title {
+	  	width: 30%;
+	  	margin-left: 0;
+
+	  	.form-control {
+	  		width: 100%;
+	  		margin-left: 0;
+	  	}
+	  }
+
+	}
+
+	// Street and Country in one line
+
+	.bxp-input-street {
+		width: 45%;
+		margin-left: 5%;
+	}
+
+	.bxp-label-land {
+		margin-left: 5%;
+		width: 10%;
+	}
+
+	.bxp-input-land {
+		width: 15%;
+	}
+
+	@media (min-width: 580px) {
+
+		.bxp-input-street {
+			width: 40%;
+			margin-left: 5%;
+		}
+
+		.bxp-label-land {
+			margin-left: 5%;
+			width: 15%;
+		}
+
+		.bxp-input-land {
+			width: 15%;
+		}
+
+	}
+
+	// Zip and City in one line
+
+	.bxp-input-plz {
+		width: 20%;
+	}
+
+	.bxp-label-ort {
+		width: 10%;
+		margin-left: 5%;
+	}
+
+	.bxp-input-ort {
+		width: 45%;
+
+		input {
+			width: 100%;
+			margin:0;
+		}
+	}
+
+	// Checkbox Container
+
+	.checkbox-container {
+		padding-left: 20%;
+
+		label {
+			display: block;
+		}
+	}
+}
+
+.bxp-form-container {
+	// padding: 20px 20px 0;
+}
+
+// Button-Container
+
+.bxp-button-container {
+
+	border-top: 1px solid #d1d1d1;
+	padding: 18px 35px 12px;
+	// text-align: right;
+	background-color: #EEEEEE;
+
+	button {
+		min-width: 140px;
+		width: 100%;
+		margin-bottom: 16px;
+	}
+
+	button + button {
+		margin-left: 0;
+	}
+
+	.btn.default {
+		background-color: #DCDCDC;
+		border: 1px solid #D0D0D0;
+
+		&:hover {
+			background-color: darken(#DCDCDC, 10%);
+		}
+	}
+
+	.float-left, .float-right {
+		float: none!important;
+	}
+
+	span {
+		width: 100%;
+	}
+
+	@media (min-width: 580px)  {
+		span {
+			width: auto;
+		}
+
+		button {
+			width: auto;
+			margin-bottom: 0;
+		}
+
+		button + button {
+			margin-left: 12px;
+		}
+
+		.float-left {
+			float: left!important;
+		}
+
+		.float-right {
+			float: right!important;
+		}
+	}
+}
+
+.tab-content {
+
+	.bxp-button-container {
+		background:none;
+		border: none;
+		padding-bottom: 20px;
+	}
+
+	button {
+		min-width: 110px;
+	}
+
+	table .even {
+		background: darken(#F5F5F5, 5%);
+	}
+}
+
+// Inner Modal Ansprechpartner
+
+.bxp-inner-modal {
+	max-width: 560px;
+	padding: 20px!important; //todo: important möglichst vermeiden
+	margin: 0 auto;
+}
+
+// Individuelle Felder
+
+.bxp-individual-fields {
+
+	.form-group {
+		float: none;
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 10px;
+	}
+
+	.hover-edit-trigger {
+	    width: 100%;
+	    float: none;
+	    margin-bottom: 5px;
+
+	    .hover-text-field {
+	    	padding: 6px 4px;
+	    	height: 34px;
+
+	    	.icon-pencil {
+	    		font-size: 9px;
+	    		color: #888;
+	    	}
+	    }
+
+	    &:hover {
+	    	cursor: pointer;
+	    }
+
+	    input {
+	    	height: 34px;
+	    	padding: 6px 3px;
+	    	background-color: #fff;
+	    	border: 1px solid #c2cad8;
+	    }
+	}
+
+	.bxp-input {
+		width: 100%;
+		margin: 0;
+	}
+
+	.bxp-button-container {
+		margin-top: 20px;
+	}
+
+	@media (min-width: 580px) {
+
+		.form-group {
+			float: left;
+			width: 47.5%;
+			margin-left: 5%;
+		}
+
+		.form-group:nth-child(2n+1) {
+			margin-left: 0;
+			clear: both;
+		}
+
+		.hover-edit-trigger {
+		    width: 30%;
+		    float: left;
+		}
+
+		.bxp-input {
+			width: 70%;
+		}
+	}
+
+	@media (min-width: 992px) {
+		.hover-edit-trigger {
+		    width: 25%;
+		}
+
+		.bxp-input {
+			width: 75%;
+		}
+	}
+
+}
+
+
+// Upload Tab
+
+.bxp-upload-container {
+	// margin-top: 50px;
+	p {
+		margin-top: 5px;
+	}
+
+	.bxp-upload-field {
+	    background: #fff;
+	    border-radius: 5px!important;
+	    border: 1px solid #ddd;
+	    height: 135px;
+	    width: 180px;
+	    padding: 36px 0px;
+	    font-size: 40px;
+	    margin: 0 20px 0 0;
+	    cursor: pointer;
+
+	    &:hover {
+	    	background: #286090;
+	    	border: 1px solid #286090;
+	    }
+
+	    i {
+	    	color: #286090;
+	    }
+
+	    &:hover i {
+	    	color: #fff;
+	    }
+
+	}
+}
+
+// Link zum Editieren von Grunddaten
+
+.bxp-edit {
+	font-size: 12px;
+	text-align: right;
+}
+
+// Tab Statistik -> Tabelle Einstellungen
+
+.bxp-grunddaten {
+
+	padding-bottom: 10px;
+
+	table {
+		margin-bottom: 5px;
+
+		td {
+			padding: 0!important;
+			
+			.bxp-grundatensatz {
+				padding: 8px;
+
+				&:hover {
+					cursor: pointer;
+				}
+
+				input {
+					color: #444;
+					border: none;
+					background: #dbdbdb;
+				}
+			}
+		}
+	}
+
+	.bxp-add-grundatensatz {
+		display: inline-block;
+		font-size: 21px;
+		margin-top: 5px;
+	}
+
+	.bxp-input-grundatensatz {
+	    border: none;
+	    background: #dbdbdb;
+	    padding: 6px;
+	}
+	
+}
+
+.bxp-statistik span {
+	display: block;
+}
+
+// Form Anschriften
+
+.bxp-form-anschrift .bxp-container {
+	padding: 22px 36px;
+	max-width: 900px;
+
+	.anschrift-bezeichnung input {
+		width: 100%;
+	}
+
+	.anschrift-type {
+		margin: 18px 0 14px;
+	}
+
+	.anschrift-verwendung label {
+		display: block;
+	}
+}
+
+// Giving Table Rows Pointer 
+
+.dataTable tbody tr {
+
+	&:nth-child(2n) {
+		background-color: #F2F2F2;
+	}
+
+	&:hover,&.selected {
+		background-color: #0074b7!important;
+		color: #f8f8f8!important;
+		cursor: pointer;
+	}
+}
+
+
+.page-header-fixed .page-container {
+	height: 100vh;
+	margin-top: 0;
+	padding-bottom: 50px;
+	padding-top: 50px;
+	position: static!important;
+	
+	.page-content-wrapper {
+	    height: 100%;
+	    overflow-y: auto;
+	    background-color: #fff;
+	}
+
+}
+
+.page-content-wrapper .page-content {
+	min-height: auto!important;
+	// height: 100vh!important;
+	background-color: #eaeaea;
+}
+
+// Button Container on the bottom of the Content-Page
+
+.myAjaxController .bxp-button-container {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    right: 0;
+}
+
+.myAjaxController .bxp-button-container.fixed {
+    left: 235px;
+    right: auto;
+    padding: 8px 35px;
+    padding-right: 285px;
+    background-color: #364150;
+}
+
+// todo: Button Style Logic neu nachen da sonst Duplikat mit bxp-button-container
+
+.bxp-container {
+	button {
+		min-width: 140px;
+		width: 100%;
+		margin-bottom: 16px;
+	}
+
+	button + button {
+		margin-left: 0;
+	}
+
+	span {
+		width: 100%;
+	}
+
+	@media (min-width: 580px)  {
+		span {
+			width: auto;
+		}
+
+		button {
+			width: auto;
+			margin-bottom: 0;
+		}
+
+		button + button {
+			margin-left: 12px;
+		}
+
+	}
+}
+
+// Button AP Anlegen
+
+.btn-ap-anlegen {
+	background:none;
+
+	i {
+		margin-right: 5px;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: #dedede;
+	}
+}
+
+// Table Uploads
+
+table.table-uploads td {
+	padding: 0!important;
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	.bxp-grundatensatz {
+		padding: 8px;
+
+		&:hover {
+			background: #286090;
+			color: #fff;
+		}
+	}
+}
+
+
+
+
+
