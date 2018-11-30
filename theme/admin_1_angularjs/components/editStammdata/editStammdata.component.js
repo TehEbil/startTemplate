@@ -45,14 +45,12 @@
         vm.mastercopy = angular.copy(vm.items);
 
         vm.newEntry = newEntry;
-        vm.closeModal = closeModal;
         vm.onSelect = onSelect;
         vm.editEntry = editEntry;
         vm.deleteEntry = deleteEntry;
         vm.saveEntry = saveEntry;
         vm.cancelEntry = cancelEntry;
         vm.closeModal = closeModal;
-        vm.closeModal2 = closeModal2;
         vm.editStatus = false;
 
         $scope.state = true;
