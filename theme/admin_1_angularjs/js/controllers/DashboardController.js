@@ -43,7 +43,6 @@
             /* File Deletion Callback */
 
             vm.uploads.splice(vm.uploads.findIndex(o => o.id == id), 1);
-
             $rootScope.sharedService.alert("File has been deleted", "success");
         } 
 
