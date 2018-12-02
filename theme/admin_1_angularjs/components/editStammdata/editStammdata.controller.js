@@ -12,13 +12,14 @@
 
         var vm = this;
         $scope.state = true;
+        console.log(vm);
  
         vm.newEntry = newEntry;
         vm.onSelect = onSelect;
+        // vm.cancelEntry = cancelEntry;
         vm.editEntry = editEntry;
         vm.deleteEntry = deleteEntry;
         vm.saveEntry = saveEntry;
-        vm.cancelEntry = cancelEntry;
         vm.closeModal = closeModal;
 
         init();
@@ -30,20 +31,20 @@
             vm.editStatus = false;
 
             vm.typeKind = getId.title;
-            vm.items = getId.data || [];
+            vm.items = angular.copy(getId.data) || [];
             vm.selected = getId.selected;
             console.log(vm.selected);
             if(getId.type)
                 vm.type = getId.type;
 
-            vm.master = angular.copy(vm.items);
+            vm.master = angular.copy(getId.data);
         }
 
         function getIndex(id) {
             if(id === -1)
                 return $rootScope.sharedService.alert("ID not set", "danger");
 
-            if(vm.items || vm.items.length <= 0)
+            if(vm.items && vm.items.length <= 0)
                 return $rootScope.sharedService.alert("No items", "danger");
              
             var idx = vm.items.findIndex(o => o.id === id);
@@ -55,7 +56,8 @@
 
 
         function newEntry() {
-            var obj = {"id": helperFuncs.maxId(vm.items), "value": vm.newItem};
+            console.log("hi");
+            var obj = {"id": helperFuncs.maxId(vm.items) + 1, "value": vm.newItem};
             vm.items.push(obj);
 
             if(typeof vm.onsave === "function")
@@ -113,7 +115,8 @@
             else {
                 $scope.sharedService.showConfirmDialog("sure","Löschen").then(function () {
                     $scope.$close();
-                }
+                    vm.items = vm.master;
+                })
             }
         };
 
@@ -123,6 +126,11 @@
         //     vm.editStatus = false;
         //     vm.items[vm.selected].value = vm.tmpVar;
         // }
+
+        function onSelect() {
+            // vm.master = vm.items;
+            $scope.$close(vm.items);
+        }
 
         // function onSelect() {
         //     var obj = MainDataService.getCopiedData();
@@ -138,7 +146,6 @@
         //     else
         //         $scope.$close();
         // }
-
 
         // function loadData() {
         //     StammdatenHandler.getData().then(({data}) => {

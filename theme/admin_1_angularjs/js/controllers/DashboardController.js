@@ -18,6 +18,7 @@
 
         vm.testMessage = "HELLO, welcome to this WORLD!";
         vm.uploads = [];
+        vm.testMasterData = [];
 
         /* demonstration of vm.uploads */
 
@@ -52,6 +53,7 @@
                 callback: onsave
             }
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
+            // modalService.openComponentModal('bxpStammdata').then((data) => {
             modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then((data) => {
                 /* vm.uploads has to be saved to the data (e.g. customer) it belongs to */
                 console.log("Modal closed, vm.uploads now = ", vm.uploads)

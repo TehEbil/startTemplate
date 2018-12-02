@@ -4,7 +4,7 @@
 /*jshint asi:true*/
 /*jshint forin:false*/
 /*jshint shadow:true*/
-console.time(1)
+console.time("Time to boot")
 
 /* server */
 const express = require('express');
@@ -98,7 +98,7 @@ server.listen(serverPort, () => {
   console.log('JSON Server is running');
 })
 
-console.timeEnd(1)
+console.timeEnd("Time to boot")
 
 
 
@@ -124,7 +124,7 @@ function loggerLog(req, type, text, obj = undefined) {
 		});
 	else
 		logger.log(type, {
-			hinweis: "Kein req vorhanden!",
+			info: "No req available!",
 			message: text,
 			obj
 		});

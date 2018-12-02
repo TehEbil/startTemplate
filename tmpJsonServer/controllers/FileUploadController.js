@@ -2,6 +2,10 @@ var fs = require('fs');
 var test = require('../middlewareserver.js')
 FileUploadController = function() {};
 
+if (!fs.existsSync("public/uploads")){
+    fs.mkdirSync("public/uploads");
+}
+
 FileUploadController.prototype.uploadFile = function(req, res) {
   var list = [];
 

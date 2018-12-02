@@ -540,7 +540,7 @@ function maxId(arr) {
                 return console.error("Fehler bei deleteEntry");
 
             var idx = vm.uploads.findIndex(o => o.id == id);
-            $rootScope.sharedService.showConfirmDialog("sure").then(function () {
+            $rootScope.sharedService.showConfirmDialog("delete").then(function () {
                 if (vm.ondelete)
                     vm.ondelete(vm.uploads[idx].id);
             });

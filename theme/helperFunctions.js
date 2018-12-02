@@ -5,4 +5,6 @@ const helperFuncs = {
         return (x == "-Infinity") ? 0 : x;
     }
 }
-export default helperFuncs;
+
+if(typeof module !== "undefined")
+    module.exports.helperFuncs = helperFuncs;

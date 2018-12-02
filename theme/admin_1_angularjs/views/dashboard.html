@@ -49,14 +49,8 @@
         </div>
 
         <div>
-            <h4>editSTammdata</h4>
-            <p> We already got a Stammdata(= master data) administration, it can be used as follows:</p>
-            <bxp-upload-component make-disabled="false" hide-content="false" uploadtype="normal" onsave="vm.onsave" uploads="vm.uploads" ondelete="vm.deleteUpload">
-            </bxp-upload-component>
-            
-            <bxp-edit-stammdata>
-                
-            </bxp-edit-stammdata>
+            <h4>editStammdata</h4>
+            <bxp-stammdata save="vm.onsave" data="vm.testMasterData"></bxp-stammdata>
         </div>
     </div>
 </div>
