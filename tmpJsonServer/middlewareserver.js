@@ -80,7 +80,7 @@ const db = routerx.db;
 db._.mixin(lodashId);
 db._.mixin(mixins);
 
-
+console.log("hi");
 
 clientServer_app.use('/', express.static(__dirname + '/../theme/admin_1_angularjs/'));
 clientServer_app.use('/', express.static(__dirname + '/../theme/'));
