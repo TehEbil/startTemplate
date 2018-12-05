@@ -171,6 +171,17 @@ function maxId(arr) {
 	return (x == "-Infinity") ? 0 : x;
 }
 
+function getDbItems() {
+	var items = db.get('stammDaten');
+
+	return items;
+}
+
+function writeToDbByFieldName(fieldName, dataOject) {
+	var items = db.get(fieldName).push(dataOject).write();
+	return items;
+}
+
 /* routing */
 
 server.post('/uploadDoc', multipartyMiddleware, FileUploadController.uploadFile);
@@ -190,4 +201,16 @@ server.get('/dashboard', (req, res, next) => {
         todayAuftraegeMonth: 500
     };
     res.json(data);
+});
+
+server.post('/editStammdata', (req, res) => {
+
+	
+		res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body[0]));
+
+
+	// res.json(req.body[0]);
+	
+
+	
 });
