@@ -5,7 +5,8 @@
         .module('MetronicApp')
         .component('bxpStammdata', {
             bindings: {
-                data: '='
+                data: '=',
+                save: '='
             },
             controller: StammdataController,
             controllerAs: 'vm',
@@ -18,7 +19,7 @@
     function StammdataController($rootScope, $scope, $http, $timeout, $stateParams, $state, modalService, localStorageService) {
 
         var vm = this;
-        $scope.state = true;
+        vm.state = true;
  
         vm.editData = editData;
         vm.onsave = onsave;
@@ -51,8 +52,14 @@
 
                 for(let stat of data)
                     vm.data.push(stat);
-                
-                console.log("Modal closed, vm.uploads now = ", vm.uploads)
+
+                // TODO: Save Operations
+                $http.post(`${$rootScope.ip}editStammdata`, vm.data).then((res) => {
+                    console.log(res)
+                });
+
+
+                console.log("Modal closed, vm.uploads now = ", vm.data)
             });
         }
     }
