@@ -28,7 +28,11 @@
         init();
 
         function init() {
-            console.log("hi");
+            $http.get(`${$rootScope.ip}stammDaten`).then((res) => {
+                vm.data = res.data
+                console.log(vm.data);
+                console.log(res);
+            });
         }
 
         function onsave(item) {
