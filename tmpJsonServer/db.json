@@ -21,5 +21,20 @@
       "path": "public/uploads/file1.txt",
       "id": 1
     }
-  ]
+  ],
+  "stammDaten": {
+    "customers": {
+      "sources": [
+        {
+          "id": 1,
+          "value": "dfsgdg"
+        }
+      ],
+      "categories": []
+    },
+    "orders": {
+      "sources": [],
+      "categories": []
+    }
+  }
 }
