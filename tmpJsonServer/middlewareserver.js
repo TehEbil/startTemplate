@@ -182,6 +182,11 @@ function writeToDbByFieldName(fieldName, dataOject) {
 	return items;
 }
 
+function getDataByFieldName(fieldname) {
+	var items = db.get(fieldname).value();
+	return items;
+}
+
 /* routing */
 
 server.post('/uploadDoc', multipartyMiddleware, FileUploadController.uploadFile);
@@ -205,12 +210,10 @@ server.get('/dashboard', (req, res, next) => {
 
 server.post('/editStammdata', (req, res) => {
 
+	res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body[0]));
 	
-		res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body[0]));
+});
 
-
-	// res.json(req.body[0]);
-	
-
-	
+server.get('/stammDaten', (req, res) => {
+	res.json(getDataByFieldName('stammDaten.customers.sources'));
 });
