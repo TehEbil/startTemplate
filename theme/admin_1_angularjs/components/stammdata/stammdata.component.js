@@ -52,13 +52,22 @@
             }
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
+
+                vm.lastAdded = [];
+                var count = vm.data.length;
+
+
                 vm.data.splice(0, vm.data.length);
 
                 for(let stat of data)
                     vm.data.push(stat);
 
+                vm.lastAdded = data.filter((item) => {
+                    return item.id > count;
+                })
+
                 // TODO: Save Operations
-                $http.post(`${$rootScope.ip}editStammdata`, vm.data).then((res) => {
+                $http.post(`${$rootScope.ip}editStammdata`, vm.lastAdded).then((res) => {
                     console.log(res)
                 });
 

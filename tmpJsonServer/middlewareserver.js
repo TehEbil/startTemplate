@@ -171,20 +171,58 @@ function maxId(arr) {
 	return (x == "-Infinity") ? 0 : x;
 }
 
-function getDbItems() {
-	var items = db.get('stammDaten');
+function writeToDbByFieldName(fieldName, dataObject) {
+	console.log('====================================');
+	console.log('Original dataObject', dataObject);
+	console.log('====================================');
+	var items = [];
 
-	return items;
-}
+ 	for(let item of dataObject){
+		let tempId = checkIds(fieldName, item);
 
-function writeToDbByFieldName(fieldName, dataOject) {
-	var items = db.get(fieldName).push(dataOject).write();
+		console.log('====================================');
+		console.log('tempId', tempId);
+		console.log('====================================');
+		if (tempId != false) {
+			items = getDataByFieldName(fieldName);
+			item.id = items.length + 1;
+		}
+
+		console.log('====================================');
+		console.log('last obj version ',item);
+		console.log('====================================');
+		items = db.get(fieldName).push(item).write();
+	}
+
 	return items;
 }
 
 function getDataByFieldName(fieldname) {
 	var items = db.get(fieldname).value();
 	return items;
+}
+
+function checkIds(fieldName, obj) {
+	var items = db.get(fieldName).value();
+	
+	console.log('====================================');
+	console.log(items);
+	console.log('====================================');
+
+	if (typeof items != 'undefined') {
+
+		var filtered = items.filter(function (item){
+			return item.id === obj.id;
+		})
+		
+		return filtered;
+	}
+
+	console.log('====================================');
+	console.log('checkIds', items);
+	console.log('====================================');
+	return false;
+	
 }
 
 /* routing */
@@ -209,8 +247,7 @@ server.get('/dashboard', (req, res, next) => {
 });
 
 server.post('/editStammdata', (req, res) => {
-
-	res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body[0]));
+	res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body));
 	
 });
 
