@@ -171,57 +171,69 @@ function maxId(arr) {
 	return (x == "-Infinity") ? 0 : x;
 }
 
+/**
+ * if you use this method,
+ * you can write send datas in db.json file by entred object field path
+ * @param {string} fieldName 
+ * @param {Object} dataObject 
+ */
 function writeToDbByFieldName(fieldName, dataObject) {
-	console.log('====================================');
-	console.log('Original dataObject', dataObject);
-	console.log('====================================');
-	var items = [];
+	var items = []; // creating object to send
 
- 	for(let item of dataObject){
-		let tempId = checkIds(fieldName, item);
+ 	for(let item of dataObject){ // we are walking around in the dataObject sent to us
+		let tempId = checkIds(fieldName, item); // we are checking duplicate ids
 
-		console.log('====================================');
-		console.log('tempId', tempId);
-		console.log('====================================');
-		if (tempId != false) {
-			items = getDataByFieldName(fieldName);
-			item.id = items.length + 1;
+		if (tempId != false) { // if we have any duplicate id, we have to change them for fix dıplicate problem! 
+			items = getDataByFieldName(fieldName); // getting all datas via db.json
+			item.id = items.length + 1; 
+			/**
+			 * we have to change duplicate item id to last index id,
+			 * because we have a problem this point! 
+			 * the reason why we experience problems when users do transactions at the same time 
+			 * is that we assign the process according to the last element 
+			 * of the list in the child component. So we have to change id is here!
+			 * 
+			 * Or we have to find another solution...
+			 */
 		}
 
-		console.log('====================================');
-		console.log('last obj version ',item);
-		console.log('====================================');
-		items = db.get(fieldName).push(item).write();
+		items = db.get(fieldName).push(item).write(); // we add to edited data in the db.json file 
 	}
 
 	return items;
 }
 
+/**
+ * if you use this method, 
+ * you can return all all saved datas by the entered object field path
+ * @param {string} fieldname 
+ */
 function getDataByFieldName(fieldname) {
 	var items = db.get(fieldname).value();
 	return items;
 }
 
+/**
+ * if you use this mothod, 
+ * you can check if the id values of the last added elements 
+ * in the list are already in the elements that have been added.
+ * 
+ * @param {string} fieldName 
+ * @param {Object} obj
+ */
 function checkIds(fieldName, obj) {
-	var items = db.get(fieldName).value();
-	
-	console.log('====================================');
-	console.log(items);
-	console.log('====================================');
+	var items = getDataByFieldName(fieldName); // Get saved datas on db.json
 
-	if (typeof items != 'undefined') {
+	if (typeof items != 'undefined') { // any register? 
 
-		var filtered = items.filter(function (item){
+		var filtered = items.filter(function (item){ // find duplicate id 
 			return item.id === obj.id;
 		})
 		
-		return filtered;
+		return filtered; // return duplicate object
 	}
 
-	console.log('====================================');
-	console.log('checkIds', items);
-	console.log('====================================');
-	return false;
+	return false; // empty list
 	
 }
 
