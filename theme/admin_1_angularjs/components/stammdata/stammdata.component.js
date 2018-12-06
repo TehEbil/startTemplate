@@ -53,24 +53,22 @@
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
-                vm.lastAdded = [];
-                var count = vm.data.length;
+                vm.lastAdded = []; // we need an empty Object for last added items 
 
+                var count = vm.data.length; // we need to learn vm.data.length for detect last added items
 
                 vm.data.splice(0, vm.data.length);
 
                 for(let stat of data)
                     vm.data.push(stat);
 
-                vm.lastAdded = data.filter((item) => {
+                vm.lastAdded = data.filter((item) => { // find last added items by original list element count
                     return item.id > count;
                 })
 
-                // TODO: Save Operations
                 $http.post(`${$rootScope.ip}editStammdata`, vm.lastAdded).then((res) => {
                     console.log(res)
                 });
-
 
                 console.log("Modal closed, vm.uploads now = ", vm.data)
             });
