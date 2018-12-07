@@ -179,8 +179,18 @@ function maxId(arr) {
  */
 function writeToDbByFieldName(fieldName, dataObject) {
 	var items = []; // creating object to send
+	
+	/** For Deleted Items */
+	for(let item of dataObject.deleted){
+		items = db.get(fieldName).remove({ id: item.id }).write();
+	}
+	/** For Edited Items */
+	for(let item of dataObject.edited){
+		items = db.get(fieldName).find({ id: item.id }).assign({ value: item.value }).write();
+	}
 
- 	for(let item of dataObject){ // we are walking around in the dataObject sent to us
+	/** For Added Items */
+ 	for(let item of dataObject.lastAdded){ // we are walking around in the dataObject sent to us
 		let tempId = checkIds(fieldName, item); // we are checking duplicate ids
 
 		if (tempId != false) { // if we have any duplicate id, we have to change them for fix dıplicate problem! 

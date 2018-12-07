@@ -26,10 +26,6 @@
     "customers": {
       "sources": [
         {
-          "id": 1,
-          "value": "4"
-        },
-        {
           "id": 2,
           "value": "5"
         },
@@ -52,6 +48,14 @@
         {
           "id": 7,
           "value": "7"
+        },
+        {
+          "id": 8,
+          "value": "8"
+        },
+        {
+          "id": 9,
+          "value": "9"
         }
       ],
       "categories": []
