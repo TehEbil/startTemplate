@@ -56,15 +56,7 @@
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
-                console.log('====================================');
-                console.log('first coming data ', data);
-                console.log('====================================');
-
                 var newIdx = vm.data[vm.data.length - 1].id; // we need to learn vm.data.length for detect last added items
-
-                console.log('====================================');
-                console.log('newIdx', newIdx);
-                console.log('====================================');
 
                 vm.data.splice(0, vm.data.length);
 
@@ -80,10 +72,6 @@
                 })
 
                 vm.uploadObjects.deleted = data.deleted; // assign deleted items
-
-                console.log('====================================');
-                console.log('data to be sent', vm.uploadObjects);
-                console.log('====================================');
 
                 $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
                     $http.get(`${$rootScope.ip}stammDaten`).then((res) => {
