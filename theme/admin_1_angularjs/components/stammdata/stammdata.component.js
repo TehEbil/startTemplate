@@ -20,7 +20,12 @@
 
         var vm = this;
         vm.state = true;
- 
+        vm.uploadObjects = {
+            lastAdded: [],
+            edited: [],
+            deleted: []
+        };
+        
         vm.editData = editData;
         vm.onsave = onsave;
         vm.ondelete = ondelete;
@@ -30,8 +35,6 @@
         function init() {
             $http.get(`${$rootScope.ip}stammDaten`).then((res) => {
                 vm.data = res.data
-                console.log(vm.data);
-                console.log(res);
             });
         }
 
@@ -53,7 +56,9 @@
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
-                vm.lastAdded = []; // we need an empty Object for last added items 
+                console.log('====================================');
+                console.log('first coming data ', data);
+                console.log('====================================');
 
                 var count = vm.data.length; // we need to learn vm.data.length for detect last added items
 
@@ -62,11 +67,17 @@
                 for(let stat of data)
                     vm.data.push(stat);
 
-                vm.lastAdded = data.filter((item) => { // find last added items by original list element count
+                vm.uploadObjects.lastAdded = data.filter((item) => { // find last added items by original list element count
                     return item.id > count;
                 })
 
-                $http.post(`${$rootScope.ip}editStammdata`, vm.lastAdded).then((res) => {
+                vm.uploadObjects.edited = data.filter((item) => { // find edited items 
+                    return item.editMode === false;
+                })
+
+                vm.uploadObjects.deleted = data.deleted; // assign deleted items
+
+                $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
                     console.log(res)
                 });
 

@@ -12,7 +12,6 @@
 
         var vm = this;
         $scope.state = true;
-        console.log(vm);
  
         vm.newEntry = newEntry;
         vm.onSelect = onSelect;
@@ -32,12 +31,13 @@
 
             vm.typeKind = getId.title;
             vm.items = angular.copy(getId.data) || [];
-            vm.selected = getId.selected;
-            console.log(vm.selected);
+            vm.items.deleted = [];
+            vm.selected = getId.selected; // first init undefined 
             if(getId.type)
                 vm.type = getId.type;
 
             vm.master = angular.copy(getId.data);
+
         }
 
         function getIndex(id) {
@@ -56,7 +56,9 @@
 
 
         function newEntry() {
-            console.log("hi");
+            console.log('====================================');
+            console.log('New Entry');
+            console.log('====================================');
             var obj = {"id": helperFuncs.maxId(vm.items) + 1, "value": vm.newItem};
             vm.items.push(obj);
 
@@ -69,7 +71,9 @@
         }
 
         function editEntry(id = -1) {
-
+            console.log('====================================');
+            console.log('Edit Entry');
+            console.log('====================================');
             var idx = getIndex(id);
 
             if(vm.tmpSelected !== false){ // another one is being editted, save it & close edit form
@@ -86,6 +90,9 @@
         }
 
         function saveEntry(id = -1) {
+            console.log('====================================');
+            console.log('Save Entry');
+            console.log('====================================');
             var idx = getIndex(id);
 
             vm.items[idx].editMode = false;
@@ -98,12 +105,13 @@
 
         function deleteEntry(id = -1) {
             var idx = getIndex(id);
-
+            
             $scope.sharedService.showConfirmDialog("sure","Löschen").then(function () {
-
+                
+                vm.items.deleted.push(vm.items[idx]); // we found deleted items
                 vm.items.splice(idx, 1);
                 vm.selected = -1;
-
+                // $rootScope.$broadcast('editStammdata.delete', vm.items[idx]);
                 if(typeof vm.ondelete === "function")
                     vm.ondelete();
             })
