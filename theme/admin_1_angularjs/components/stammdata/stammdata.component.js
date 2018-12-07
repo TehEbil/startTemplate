@@ -60,7 +60,11 @@
                 console.log('first coming data ', data);
                 console.log('====================================');
 
-                var count = vm.data.length; // we need to learn vm.data.length for detect last added items
+                var newIdx = vm.data[vm.data.length - 1].id; // we need to learn vm.data.length for detect last added items
+
+                console.log('====================================');
+                console.log('newIdx', newIdx);
+                console.log('====================================');
 
                 vm.data.splice(0, vm.data.length);
 
@@ -68,7 +72,7 @@
                     vm.data.push(stat);
 
                 vm.uploadObjects.lastAdded = data.filter((item) => { // find last added items by original list element count
-                    return item.id > count;
+                    return item.id > newIdx;
                 })
 
                 vm.uploadObjects.edited = data.filter((item) => { // find edited items 
@@ -77,8 +81,14 @@
 
                 vm.uploadObjects.deleted = data.deleted; // assign deleted items
 
+                console.log('====================================');
+                console.log('data to be sent', vm.uploadObjects);
+                console.log('====================================');
+
                 $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
-                    console.log(res)
+                    $http.get(`${$rootScope.ip}stammDaten`).then((res) => {
+                        vm.data = res.data
+                  });
                 });
 
                 console.log("Modal closed, vm.uploads now = ", vm.data)

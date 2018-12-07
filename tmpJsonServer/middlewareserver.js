@@ -179,17 +179,24 @@ function maxId(arr) {
  */
 function writeToDbByFieldName(fieldName, dataObject) {
 	var items = []; // creating object to send
-	
+
+	console.log('====================================');
+	console.log('Sended Object', dataObject);
+	console.log('====================================');
+
 	/** For Deleted Items */
+	//TODO: this loop could be a method
 	for(let item of dataObject.deleted){
 		items = db.get(fieldName).remove({ id: item.id }).write();
 	}
 	/** For Edited Items */
+	// TODO: this loop could be a method
 	for(let item of dataObject.edited){
 		items = db.get(fieldName).find({ id: item.id }).assign({ value: item.value }).write();
 	}
 
 	/** For Added Items */
+	// TODO: this method could be a method
  	for(let item of dataObject.lastAdded){ // we are walking around in the dataObject sent to us
 		let tempId = checkIds(fieldName, item); // we are checking duplicate ids
 
@@ -270,7 +277,6 @@ server.get('/dashboard', (req, res, next) => {
 
 server.post('/editStammdata', (req, res) => {
 	res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body));
-	
 });
 
 server.get('/stammDaten', (req, res) => {
