@@ -63,18 +63,14 @@
                 for(let stat of data)
                     vm.data.push(stat);
 
-                vm.uploadObjects.lastAdded = data.filter((item) => { // find last added items by original list element count
-                    return item.id > newIdx;
-                })
-
-                vm.uploadObjects.edited = data.filter((item) => { // find edited items 
-                    return item.editMode === false;
-                })
+                vm.uploadObjects.lastAdded = data.filter(item => item.id > newIdx) // find last added items by original list element count
+                
+                vm.uploadObjects.edited = data.filter(item => item.editMode === false)// find edited items 
 
                 vm.uploadObjects.deleted = data.deleted; // assign deleted items
 
                 $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
-                    $http.get(`${$rootScope.ip}stammDaten`).then((res) => {
+                    $http.get(`${$rootScope.ip}getStammdata`).then((res) => {
                         vm.data = res.data
                   });
                 });

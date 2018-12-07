@@ -279,6 +279,6 @@ server.post('/editStammdata', (req, res) => {
 	res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body));
 });
 
-server.get('/stammDaten', (req, res) => {
+server.get('/getStammData', (req, res) => {
 	res.json(getDataByFieldName('stammDaten.customers.sources'));
 });
