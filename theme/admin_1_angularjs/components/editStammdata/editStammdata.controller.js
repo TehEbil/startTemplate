@@ -24,6 +24,11 @@
         init();
 
         function init() {
+
+            console.log('====================================');
+            console.log('Model Opened');
+            console.log('====================================');
+
             vm.tmpSelected = false;
             vm.newItem = "";
             vm.show = false;

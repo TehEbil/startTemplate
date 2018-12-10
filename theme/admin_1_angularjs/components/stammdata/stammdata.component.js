@@ -23,7 +23,8 @@
         vm.uploadObjects = {
             lastAdded: [],
             edited: [],
-            deleted: []
+            deleted: [],
+            changeCounter: 0
         };
         
         vm.editData = editData;
@@ -33,8 +34,12 @@
         init();
 
         function init() {
-            $http.get(`${$rootScope.ip}stammDaten`).then((res) => {
-                vm.data = res.data
+            $http.get(`${$rootScope.ip}getStammdata`).then((res) => {
+                console.log('====================================');
+                console.log(res.data.data.customers.sources);
+                console.log('====================================');
+                vm.data = res.data.data.customers.sources
+                vm.uploadObjects.changeCounter = res.data.data.changeCounter;
             });
         }
 
@@ -56,23 +61,34 @@
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
-                var newIdx = vm.data[vm.data.length - 1].id; // we need to learn vm.data.length for detect last added items
+                if (vm.data.length > 0) {
+                    var newIdx = vm.data[vm.data.length - 1].id; // we need to learn vm.data.length for detect last added items
+                }
 
                 vm.data.splice(0, vm.data.length);
 
                 for(let stat of data)
                     vm.data.push(stat);
 
-                vm.uploadObjects.lastAdded = data.filter(item => item.id > newIdx) // find last added items by original list element count
+                if (typeof newIdx !== 'undefined') {
+                    vm.uploadObjects.lastAdded = data.filter(item => item.id > newIdx ) // find last added items by original list element count
+                } else {
+                    vm.uploadObjects.newAdded = data.filter(item => item !== 'deleted');
+                }
                 
                 vm.uploadObjects.edited = data.filter(item => item.editMode === false)// find edited items 
 
                 vm.uploadObjects.deleted = data.deleted; // assign deleted items
 
+                console.log('====================================');
+                console.log('uploaded Items', vm.uploadObjects);
+                console.log('====================================');
+
                 $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
-                    $http.get(`${$rootScope.ip}getStammdata`).then((res) => {
-                        vm.data = res.data
-                  });
+                    console.log('====================================');
+                    console.log('response data', res.data);
+                    console.log('====================================');
+                    // vm.data = res.generalResponse.datacustomers;
                 });
 
                 console.log("Modal closed, vm.uploads now = ", vm.data)

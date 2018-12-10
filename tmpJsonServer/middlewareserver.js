@@ -18,6 +18,17 @@ const fs = require('fs');
 const path = require('path');
 const clone = require('clone');
 
+/** Response Types 
+ * we can add another response types etc. 
+ * errorResponse = {
+ * 	errorMessage: 'please contact your system admin'
+ * }
+ * */ 
+const generalResponse = {
+	success: 'ok',
+	data: {}
+}
+
 /* db */
 const jsonServer = require('json-server');
 const lodashId = require('lodash-id');
@@ -100,14 +111,6 @@ server.listen(serverPort, () => {
 
 console.timeEnd("Time to boot")
 
-
-
-
-
-
-
-
-
 /* helper functions */
 
 function loggerLog(req, type, text, obj = undefined) {
@@ -184,39 +187,6 @@ function writeToDbByFieldName(fieldName, dataObject) {
 	console.log('Sended Object', dataObject);
 	console.log('====================================');
 
-	/** For Deleted Items */
-	//TODO: this loop could be a method
-	for(let item of dataObject.deleted){
-		items = db.get(fieldName).remove({ id: item.id }).write();
-	}
-	/** For Edited Items */
-	// TODO: this loop could be a method
-	for(let item of dataObject.edited){
-		items = db.get(fieldName).find({ id: item.id }).assign({ value: item.value }).write();
-	}
-
-	/** For Added Items */
-	// TODO: this method could be a method
- 	for(let item of dataObject.lastAdded){ // we are walking around in the dataObject sent to us
-		let tempId = checkIds(fieldName, item); // we are checking duplicate ids
-
-		if (tempId != false) { // if we have any duplicate id, we have to change them for fix dıplicate problem! 
-			items = getDataByFieldName(fieldName); // getting all datas via db.json
-			item.id = items.length + 1; 
-			/**
-			 * we have to change duplicate item id to last index id,
-			 * because we have a problem this point! 
-			 * the reason why we experience problems when users do transactions at the same time 
-			 * is that we assign the process according to the last element 
-			 * of the list in the child component. So we have to change id is here!
-			 * 
-			 * Or we have to find another solution...
-			 */
-		}
-
-		items = db.get(fieldName).push(item).write(); // we add to edited data in the db.json file 
-	}
-
 	return items;
 }
 
@@ -230,28 +200,39 @@ function getDataByFieldName(fieldname) {
 	return items;
 }
 
-/**
- * if you use this mothod, 
- * you can check if the id values of the last added elements 
- * in the list are already in the elements that have been added.
- * 
- * @param {string} fieldName 
- * @param {Object} obj
- */
-function checkIds(fieldName, obj) {
-	var items = getDataByFieldName(fieldName); // Get saved datas on db.json
-
-	if (typeof items != 'undefined') { // any register? 
-
-		var filtered = items.filter(function (item){ // find duplicate id 
-			return item.id === obj.id;
-		})
-		
-		return filtered; // return duplicate object
-	}
-
-	return false; // empty list
+function getAllCB(req, res, next) {
 	
+	var item = db.get('stammDaten').value();
+	generalResponse.success = 'ok';
+	generalResponse.data = item;
+	req.generalResponse = generalResponse;
+	next();
+
+}
+
+function compareDataCB(req, res, next) {
+
+	if (typeof req.generalResponse.data.changeCounter !== 'undefined' 
+		&& req.generalResponse.data.changeCounter === req.body.changeCounter) {
+			next();
+	}
+	else {
+		req.generalResponse.success = 'error';
+		req.generalResponse.data = {}
+		res.json(req.generalResponse);
+	 }
+
+}
+
+function editStammdataCB(req, res, next) {
+
+	// TODO: req.generalResponse.changeCOunter ++ 
+
+	req.generalResponse.changeCounter++; 
+	// TODO: save new changeCounter value in db.json 
+
+	
+	res.json(req.generalResponse);
 }
 
 /* routing */
@@ -275,10 +256,13 @@ server.get('/dashboard', (req, res, next) => {
     res.json(data);
 });
 
-server.post('/editStammdata', (req, res) => {
-	res.json(writeToDbByFieldName('stammDaten.customers.sources', req.body));
-});
+server.post('/editStammdata', getAllCB, compareDataCB, editStammdataCB);
 
 server.get('/getStammData', (req, res) => {
-	res.json(getDataByFieldName('stammDaten.customers.sources'));
+
+	var response = {
+		success: 'ok',
+		data: getDataByFieldName('stammDaten')
+	}
+	res.json(response);
 });
