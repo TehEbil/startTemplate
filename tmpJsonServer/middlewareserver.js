@@ -226,12 +226,35 @@ function compareDataCB(req, res, next) {
 
 function editStammdataCB(req, res, next) {
 
-	// TODO: req.generalResponse.changeCOunter ++ 
 
-	req.generalResponse.changeCounter++; 
-	// TODO: save new changeCounter value in db.json 
+	console.log('====================================');
+	console.log(req.body);
+	console.log('====================================');
 
-	
+	var items = [];
+
+	/** Create New Object */
+
+	/** Add Object */
+	for(let item of req.body){
+		let tempId = checkIds(fieldName, item);
+	}
+
+	/** Update Object */
+	for(let item  of req.body) {
+		items = db.get(fieldName).find({ id: item.id }).assign({ value: item.value }).write();
+	}
+
+	/** Delete Object */
+	for(let item of dataObject.deleted){
+		items = db.get(fieldName).remove({ id: item.id }).write();
+	}
+
+	/** changeCounter Increment */
+	req.generalResponse.changeCounter += 1; 
+
+	// TODO: Save to DB the Last Status of Object
+
 	res.json(req.generalResponse);
 }
 
