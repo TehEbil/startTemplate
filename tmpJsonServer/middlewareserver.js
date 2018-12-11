@@ -235,7 +235,7 @@ function editStammdataCB(req, res) {
 
 	/** Create New Object */
 	for(let item of req.body.newAdded){
-		items = db.get('stammDaten.customers.sources')
+		items = db.get('stammDaten.customers.sources').push(item).write();
 	}
 
 	/** Add Object */
@@ -250,21 +250,18 @@ function editStammdataCB(req, res) {
 		items = db.get('stammDaten.customers.sources').push(item).write();
 	}
 
-	// /** Update Object */
+	/** Update Object */
 	for(let item  of req.body.edited) {
 		items = db.get('stammDaten.customers.sources').find({ id: item.id }).assign({ value: item.value }).write();
 	}
 
-	// /** Delete Object */
+	/** Delete Object */
 	for(let item of req.body.deleted){
 		items = db.get('stammDaten.customers.sources').remove({ id: item.id }).write();
 	}
 
-	// /** changeCounter Increment */
-	db.get('stammDaten')
-		.find({changeCounter: req.generalResponse.changeCounter})
-		.assign({changeCounter: req.generalResponse.changeCounter + 1})
-		.write();
+	/** changeCounter Increment */
+	db.set('stammDaten.changeCounter', req.generalResponse.data.changeCounter + 1).write();
 
 	items = db.get('stammDaten').value();
 

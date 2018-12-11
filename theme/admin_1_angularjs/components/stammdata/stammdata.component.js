@@ -68,6 +68,7 @@
                     vm.data.push(stat);
 
                 if (typeof newIdx !== 'undefined') {
+                    vm.uploadObjects.newAdded = [];
                     vm.uploadObjects.lastAdded = data.filter(item => item.id > newIdx ) // find last added items by original list element count
                 } else {
                     vm.uploadObjects.newAdded = data.filter(item => item !== 'deleted');
@@ -80,6 +81,12 @@
                 $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
 
                     vm.data = res.data.customers.sources;
+                    vm.uploadObjects.changeCounter = res.data.changeCounter;
+                    if (res.success === 'ok') {
+                        
+                    } else {
+                        
+                    }
 
                 });
 
