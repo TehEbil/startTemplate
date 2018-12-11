@@ -35,9 +35,6 @@
 
         function init() {
             $http.get(`${$rootScope.ip}getStammdata`).then((res) => {
-                console.log('====================================');
-                console.log(res.data.data.customers.sources);
-                console.log('====================================');
                 vm.data = res.data.data.customers.sources
                 vm.uploadObjects.changeCounter = res.data.data.changeCounter;
             });
@@ -80,15 +77,10 @@
 
                 vm.uploadObjects.deleted = data.deleted; // assign deleted items
 
-                console.log('====================================');
-                console.log('uploaded Items', vm.uploadObjects);
-                console.log('====================================');
-
                 $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
-                    console.log('====================================');
-                    console.log('response data', res.data);
-                    console.log('====================================');
-                    // vm.data = res.generalResponse.datacustomers;
+
+                    vm.data = res.data.customers.sources;
+
                 });
 
                 console.log("Modal closed, vm.uploads now = ", vm.data)

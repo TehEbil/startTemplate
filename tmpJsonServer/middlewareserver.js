@@ -183,10 +183,6 @@ function maxId(arr) {
 function writeToDbByFieldName(fieldName, dataObject) {
 	var items = []; // creating object to send
 
-	console.log('====================================');
-	console.log('Sended Object', dataObject);
-	console.log('====================================');
-
 	return items;
 }
 
@@ -224,38 +220,55 @@ function compareDataCB(req, res, next) {
 
 }
 
-function editStammdataCB(req, res, next) {
+function checkIds(fieldName, obj) {
+	var items = db.get(fieldName).value();
 
+	if (typeof items != 'undefined') 
+		return items.filter(item => item.id === obj.id)
 
-	console.log('====================================');
-	console.log(req.body);
-	console.log('====================================');
+	return false;
+}
+
+function editStammdataCB(req, res) {
 
 	var items = [];
 
 	/** Create New Object */
+	for(let item of req.body.newAdded){
+		items = db.get('stammDaten.customers.sources')
+	}
 
 	/** Add Object */
-	for(let item of req.body){
-		let tempId = checkIds(fieldName, item);
+	for(let item of req.body.lastAdded){
+		let tempId = checkIds('stammDaten.customers.sources', item);
+
+		if (tempId != false) {
+			items = getDataByFieldName('stammDaten.customers.sources');
+			item.id = items.length - 1;
+		}
+
+		items = db.get('stammDaten.customers.sources').push(item).write();
 	}
 
-	/** Update Object */
-	for(let item  of req.body) {
-		items = db.get(fieldName).find({ id: item.id }).assign({ value: item.value }).write();
+	// /** Update Object */
+	for(let item  of req.body.edited) {
+		items = db.get('stammDaten.customers.sources').find({ id: item.id }).assign({ value: item.value }).write();
 	}
 
-	/** Delete Object */
-	for(let item of dataObject.deleted){
-		items = db.get(fieldName).remove({ id: item.id }).write();
+	// /** Delete Object */
+	for(let item of req.body.deleted){
+		items = db.get('stammDaten.customers.sources').remove({ id: item.id }).write();
 	}
 
-	/** changeCounter Increment */
-	req.generalResponse.changeCounter += 1; 
+	// /** changeCounter Increment */
+	db.get('stammDaten')
+		.find({changeCounter: req.generalResponse.changeCounter})
+		.assign({changeCounter: req.generalResponse.changeCounter + 1})
+		.write();
 
-	// TODO: Save to DB the Last Status of Object
+	items = db.get('stammDaten').value();
 
-	res.json(req.generalResponse);
+	res.json(items);
 }
 
 /* routing */

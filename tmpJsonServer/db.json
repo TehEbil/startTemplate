@@ -24,8 +24,7 @@
   ],
   "stammDaten": {
     "customers": {
-      "sources": [
-      ],
+      "sources": [],
       "categories": []
     },
     "orders": {
