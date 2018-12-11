@@ -78,18 +78,13 @@
 
                 vm.uploadObjects.deleted = data.deleted; // assign deleted items
 
-                $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
-
-                    vm.data = res.data.customers.sources
-
-                    
-                    if (res.data.success === 'error') {
-                        alert('datas has been changed!');
-                    } else {
+                $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then(
+                    (res) => {
+                        vm.data = res.data.customers.sources
                         vm.uploadObjects.changeCounter = res.data.changeCounter ;        
-                    }
-
-                });
+                    }, (err) => {
+                        alert('datas has been changed!')
+                    });
 
                 console.log("Modal closed, vm.uploads now = ", vm.data)
             });
