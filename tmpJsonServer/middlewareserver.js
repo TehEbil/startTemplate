@@ -18,17 +18,6 @@ const fs = require('fs');
 const path = require('path');
 const clone = require('clone');
 
-/** Response Types 
- * we can add another response types etc. 
- * errorResponse = {
- * 	errorMessage: 'please contact your system admin'
- * }
- * */ 
-const generalResponse = {
-	success: 'ok',
-	data: {}
-}
-
 /* db */
 const jsonServer = require('json-server');
 const lodashId = require('lodash-id');
@@ -186,30 +175,27 @@ function getDataByFieldName(fieldname) {
 
 function getAllCB(req, res, next) {
 	
-	var item = db.get('stammDaten').value();
-	generalResponse.success = 'ok';
-	generalResponse.data = item;
-	req.generalResponse = generalResponse;
+	req.data = getDataByFieldName('stammDaten');
 	next();
 
 }
 
 function compareDataCB(req, res, next) {
 
-	if (typeof req.generalResponse.data.changeCounter !== 'undefined' 
-		&& req.generalResponse.data.changeCounter === req.body.changeCounter) {
-			next();
+	if ((typeof req.data.changeCounter !== 'undefined') && 
+		(req.generalResponse.data.changeCounter === req.body.changeCounter)
+	) {
+		next();
 	}
 	else {
-		req.generalResponse.success = 'error';
-		req.generalResponse.data = db.get('stammDaten').value();
-		res.json(req.generalResponse);
+		req.data = getDataByFieldName('stammDaten');
+		res.status(409).json(req.data);
 	 }
 
 }
 
 function checkIds(fieldName, obj) {
-	var items = db.get(fieldName).value();
+	var items = getDataByFieldName(fieldName);
 
 	if (typeof items != 'undefined') 
 		return items.filter(item => item.id === obj.id)
@@ -219,7 +205,7 @@ function checkIds(fieldName, obj) {
 
 function editStammdataCB(req, res) {
 
-	var items = db.get('stammDaten.customers.sources').value();
+	var items = getDataByFieldName('stammDaten.customers.sources');
 
 	/** Create New Object */
 	for(let item of req.body.newAdded){
@@ -250,12 +236,10 @@ function editStammdataCB(req, res) {
 	/** changeCounter Increment */
 	db.set('stammDaten.changeCounter', req.generalResponse.data.changeCounter + 1).write();
 	items.write();
-	
-	items = db.get('stammDaten').value();
 
 	req.generalResponse.data = items;
 
-	res.json(req.generalResponse.data);
+	res.status(200).json(req.data);
 }
 
 /* routing */
