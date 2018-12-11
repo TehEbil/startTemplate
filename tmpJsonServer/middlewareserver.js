@@ -175,18 +175,6 @@ function maxId(arr) {
 }
 
 /**
- * if you use this method,
- * you can write send datas in db.json file by entred object field path
- * @param {string} fieldName 
- * @param {Object} dataObject 
- */
-function writeToDbByFieldName(fieldName, dataObject) {
-	var items = []; // creating object to send
-
-	return items;
-}
-
-/**
  * if you use this method, 
  * you can return all all saved datas by the entered object field path
  * @param {string} fieldname 
@@ -231,11 +219,11 @@ function checkIds(fieldName, obj) {
 
 function editStammdataCB(req, res) {
 
-	var items = [];
+	var items = db.get('stammDaten.customers.sources').value();
 
 	/** Create New Object */
 	for(let item of req.body.newAdded){
-		items = db.get('stammDaten.customers.sources').push(item).write();
+		items.push(item);
 	}
 
 	/** Add Object */
@@ -243,29 +231,29 @@ function editStammdataCB(req, res) {
 		let tempId = checkIds('stammDaten.customers.sources', item);
 
 		if (tempId != false) {
-			items = getDataByFieldName('stammDaten.customers.sources');
-			item.id = items.length - 1;
+			item.id = maxId(items) + 1;
 		}
 
-		items = db.get('stammDaten.customers.sources').push(item).write();
+		items.push(item);
 	}
 
 	/** Update Object */
 	for(let item  of req.body.edited) {
-		items = db.get('stammDaten.customers.sources').find({ id: item.id }).assign({ value: item.value }).write();
+		items.find({ id: item.id }).assign({ value: item.value });
 	}
 
 	/** Delete Object */
 	for(let item of req.body.deleted){
-		items = db.get('stammDaten.customers.sources').remove({ id: item.id }).write();
+		items.remove({ id: item.id });
 	}
 
 	/** changeCounter Increment */
 	db.set('stammDaten.changeCounter', req.generalResponse.data.changeCounter + 1).write();
-
+	items.write();
+	
 	items = db.get('stammDaten').value();
 
-	req.generalResponse.data = item;
+	req.generalResponse.data = items;
 
 	res.json(req.generalResponse.data);
 }

@@ -80,13 +80,13 @@
 
                 $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
 
-                    vm.data = res.data.data.customers.sources
+                    vm.data = res.data.customers.sources
 
                     
                     if (res.data.success === 'error') {
                         alert('datas has been changed!');
                     } else {
-                        vm.uploadObjects.changeCounter = res.data.data.changeCounter ;        
+                        vm.uploadObjects.changeCounter = res.data.changeCounter ;        
                     }
 
                 });
