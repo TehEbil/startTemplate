@@ -214,7 +214,7 @@ function compareDataCB(req, res, next) {
 	}
 	else {
 		req.generalResponse.success = 'error';
-		req.generalResponse.data = {}
+		req.generalResponse.data = db.get('stammDaten').value();
 		res.json(req.generalResponse);
 	 }
 
@@ -265,7 +265,9 @@ function editStammdataCB(req, res) {
 
 	items = db.get('stammDaten').value();
 
-	res.json(items);
+	req.generalResponse.data = item;
+
+	res.json(req.generalResponse.data);
 }
 
 /* routing */
