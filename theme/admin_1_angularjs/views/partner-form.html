@@ -10,7 +10,7 @@
     </ul>
 </div>
 
-<div class="container" ng-controller='PartnerFormController'>
+<div class="container">
     <h1 class="well">Sachverständige</h1>
 	<div class="col-lg-12 well">
 	    <div class="row">
@@ -19,105 +19,107 @@
                     <div class="row">
                             <div class="col-sm-4 form-group">
                                 <label for="sel1">Anrede / Titel</label>
-                                <select class="form-control" id="sel1">
-                                    <option>Herr</option>
-                                    <option>Frau</option>
-                                    <option>Firma</option>
-                                    <option>Dr.</option>
-                                    <option>Prof. Dr.</option>
-                                    <option>Eheleute</option>
-                                    <option>Dipl.-Ing.</option>
+                                <select class="form-control" id="sel1" ng-model="vm.partner.title">
+                                    <option value="">---Please select---</option>
+                                    <option value="Herr">Herr</option>
+                                    <option value="Frau">Frau</option>
+                                    <option value="Firma">Firma</option>
+                                    <option value="Dr.">Dr.</option>
+                                    <option value="Prof. Dr.">Prof. Dr.</option>
+                                    <option value="Eheleute">Eheleute</option>
+                                    <option value="Dipl.-Ing.">Dipl.-Ing.</option>
                                 </select>   
                             </div>
                         <div class="col-sm-4 form-group">
                             <label>Nachname</label>
-                            <input type="text" placeholder="Enter First Name Here.." class="form-control" ng-model="vm.user.firstName">
+                            <input type="text" placeholder="Enter First Name Here.." class="form-control" ng-model="vm.partner.firstName">
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>Vorname</label>
-                            <input type="text" placeholder="Enter Last Name Here.." class="form-control">
+                            <input type="text" placeholder="Enter Last Name Here.." class="form-control" ng-model="vm.partner.lastName">
                         </div>
                     </div>					
                     
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>Straße</label>
-                            <input type="text" placeholder="Enter City Name Here.." class="form-control">
+                            <input type="text" placeholder="Enter City Name Here.." class="form-control" ng-model="vm.partner.street">
                         </div>	
                         <div class="col-sm-4 form-group">
                             <label>Hausnummer</label>
-                            <input type="text" placeholder="Enter City Name Here.." class="form-control">
+                            <input type="text" placeholder="Enter City Name Here.." class="form-control" ng-model="vm.partner.number">
                         </div>		
                     </div>
 
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label for="sel1">Land</label>
-                            <select class="form-control" id="sel1">
-                                <option>D</option>
-                                <option>NL</option>
-                                <option>E</option>
-                                <option>F</option>
+                            <select class="form-control" id="sel1" ng-model="vm.partner.field">
+                                <option value="">---Please select---</option>
+                                <option value="D">D</option>
+                                <option value="NL">NL</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
                             </select>  
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>PLZ</label>
-                            <input type="text" placeholder="Enter State Name Here.." class="form-control">
+                            <input type="text" placeholder="Enter State Name Here.." class="form-control" ng-model="vm.partner.postalCode">
                         </div>	
                         <div class="col-sm-4 form-group">
                             <label>Ort</label>
-                            <input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+                            <input type="text" placeholder="Enter Zip Code Here.." class="form-control" ng-model="vm.partner.ort">
                         </div>	
                     </div>					
                     <div class="row">
                             <div class="col-sm-2 form-group">
                                 <label>Festnetz</label>
-                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control" ng-model="vm.partner.phone">
                             </div>
                             <div class="col-sm-2 form-group">
                                 <label>Fax</label>
-                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control" ng-model="vm.partner.fax">
                             </div>
                             <div class="col-sm-2 form-group">
                                 <label>Mobile</label>
-                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control" ng-model="vm.partner.mobile">
                             </div>		
                             <div class="col-sm-2 form-group">
                                 <label>E-mail</label>
-                                <input type="text" placeholder="Enter Email Address Here.." class="form-control">
+                                <input type="text" placeholder="Enter Email Address Here.." class="form-control" ng-model="vm.partner.email">
                             </div>	
                             <div class="col-sm-2 form-group">
                                 <label>Internet</label>
-                                <input type="text" placeholder="Enter Website Name Here.." class="form-control">
+                                <input type="text" placeholder="Enter Website Name Here.." class="form-control" ng-model="vm.partner.website">
                             </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <div class="col-sm-12 form-group">
                                 <label>Sachverständiger für (Briefkopf)</label>
-                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control" ng-model="vm.partner.letterHeads[0]">
                             </div>		
                             <div class="col-sm-12 form-group">
-                                <input type="text" placeholder="Enter Email Address Here.." class="form-control">
+                                <input type="text" placeholder="Enter Email Address Here.." class="form-control" ng-model="vm.partner.letterHeads[1]">
                             </div>	
                             <div class="col-sm-12 form-group">
-                                <input type="text" placeholder="Enter Website Name Here.." class="form-control">
+                                <input type="text" placeholder="Enter Website Name Here.." class="form-control" ng-model="vm.partner.letterHeads[2]">
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
                             <div class="col-sm-10 form-group">
                                 <label>Pfad für Stempel</label>
-                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+                                <input type="text" placeholder="Enter Phone Number Here.." class="form-control" ng-model="vm.partner.stampImage">
                                 <input type="file" name="file"/>
                             </div>		
                             <div class="col-sm-10 form-group">
                                 <label>Pfad für Signet</label>
-                                <input type="text" placeholder="Enter Email Address Here.." class="form-control">
+                                <input type="text" placeholder="Enter Email Address Here.." class="form-control" ng-model="vm.partner.signetImage">
                                 <input type="file" name="file"/>
                             </div>	
                             <div class="col-sm-10 form-group">
                                 <label>Pfad für Unterschrift</label>
-                                <input type="text" placeholder="Enter Website Name Here.." class="form-control">
+                                <input type="text" placeholder="Enter Website Name Here.." class="form-control" ng-model="vm.partner.signatureImage">
                                 <input type="file" name="file"/>
                             </div>
                         </div>
@@ -126,10 +128,8 @@
                         <label>Zertifikate usw. (letzte Seite)</label>
                         <textarea placeholder="Enter Zertifikate.." rows="3" class="form-control"></textarea>
                     </div>	
-                    <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">Register</button>
-                        <a href="#!/login" class="btn btn-link">Cancel</a>
-                    </div>					
+                    <button type="submit" class="btn btn-primary">Register</button>
+                        <a href="#!/login" class="btn btn-link">Cancel</a>					
                 </div>
             </form> 
         </div>

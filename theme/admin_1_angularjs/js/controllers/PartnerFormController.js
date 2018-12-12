@@ -5,18 +5,18 @@
         .module('MetronicApp')
         .controller('PartnerFormController', PartnerFormController);
 
-        PartnerFormController.$inject = ['PersonelFormService', '$location', '$rootScope'];
-    function PartnerFormController(PersonelFormService, $location, $rootScope) {
+        PartnerFormController.$inject = ['PartnerFormService', '$location', '$rootScope'];
+    function PartnerFormController(PartnerFormService, $location, $rootScope) {
         var vm = this;
 
         vm.register = register;
 
         function register() {
             console.log('====================================');
-            console.log('user info', vm.user);
+            console.log('partner info', vm.partner);
             console.log('====================================');
             // vm.dataLoading = true;
-            // PersonelFormService.Create(vm.user)
+            // PersonelFormService.Create(vm.partner)
             //     .then(function (response) {
             //         if (response.success) {
             //             FlashService.Success('Registration successful', true);

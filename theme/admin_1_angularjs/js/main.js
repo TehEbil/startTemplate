@@ -535,7 +535,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
         .state('partner-form', {
             url: "/partner-form",
             templateUrl: "views/partner-form.html",
-            data: { pageTitle: 'Partner Form'}
+            data: { pageTitle: 'Partner Form'},
+            controller: 'PartnerFormController',
+            controllerAs: 'vm'
         })
 }]);
 
