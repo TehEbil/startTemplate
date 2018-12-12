@@ -25,31 +25,38 @@
   "stammDaten": {
     "customers": {
       "sources": {
+        "changedCounter": 19,
         "data": [
           {
             "id": 1,
-            "value": "1",
-            "editMode": false
+            "value": "asd"
           },
           {
             "id": 3,
-            "value": "3"
+            "value": "333"
+          },
+          {
+            "id": 4,
+            "value": "444"
+          },
+          {
+            "id": 7,
+            "value": "5555"
           }
-        ],
-        "changeCounter": 2
+        ]
       },
       "categories": {
-        "changeCounter": 0,
+        "changedCounter": 0,
         "data": []
       }
     },
     "orders": {
       "sources": {
-        "changeCounter": 0,
+        "changedCounter": 0,
         "data": []
       },
       "categories": {
-        "changeCounter": 0,
+        "changedCounter": 0,
         "data": []
       }
     }

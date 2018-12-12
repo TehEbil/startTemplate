@@ -210,8 +210,8 @@ function getAllCB(req, res, next) {
 
 function compareDataCB(req, res, next) {
 
-	if ((typeof req.data.customers.sources.changeCounter !== 'undefined') && 
-		(req.data.customers.sources.changeCounter === req.body.changeCounter)
+	if ((typeof req.data.customers.sources.changedCounter !== 'undefined') && 
+		(req.data.customers.sources.changedCounter === req.body.changedCounter)
 	) {
 		next();
 	}
@@ -232,12 +232,12 @@ function checkIds(fieldName, obj) {
 }
 
 function editStammdataCB(req, res) {
-	req.body.changeCounter++;
+	req.body.changedCounter++;
 	var items = db.get('stammDaten.customers.sources').value();
 
-	items.data.splice(0, items.data.length);
+	// items.data.splice(0, items.data.length);
 	items.data = req.body.data;
-	items.changeCounter = req.body.changeCounter;
+	items.changedCounter = req.body.changedCounter;
 
 	db.write();
 
