@@ -36,7 +36,6 @@
 
             vm.typeKind = getId.title;
             vm.items = angular.copy(getId.data) || [];
-            vm.items.deleted = [];
             vm.selected = getId.selected; // first init undefined 
             if(getId.type)
                 vm.type = getId.type;
@@ -112,8 +111,6 @@
             var idx = getIndex(id);
             
             $scope.sharedService.showConfirmDialog("sure","Löschen").then(function () {
-                
-                vm.items.deleted.push(vm.items[idx]); // we found deleted items
                 vm.items.splice(idx, 1);
                 vm.selected = -1;
                 // $rootScope.$broadcast('editStammdata.delete', vm.items[idx]);
