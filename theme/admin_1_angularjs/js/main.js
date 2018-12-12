@@ -72,6 +72,19 @@ class StammDatenHandler extends DataHandler {
     }
 
 }
+class PartnerFormHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'partnerForm');
+    }
+
+    getAll() {
+        return this.$http.get(this.url);
+    }
+
+    postData(data) {
+        return this.$http.post(this.url, data);
+    }
+}
 
 class KontakteHandler extends DataHandler {
     constructor($http) {

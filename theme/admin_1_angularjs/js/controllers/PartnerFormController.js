@@ -15,6 +15,7 @@
             console.log('====================================');
             console.log('partner info', vm.partner);
             console.log('====================================');
+
             // vm.dataLoading = true;
             // PersonelFormService.Create(vm.partner)
             //     .then(function (response) {

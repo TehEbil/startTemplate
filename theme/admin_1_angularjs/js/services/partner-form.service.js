@@ -11,7 +11,7 @@
 
         service.GetAll = GetAllPartners;
         service.GetById = GetPartnerById;
-        service.GetByUsername = GetByPartnerName;
+        service.GetByPartnername = GetByPartnerName;
         service.Create = CreatePartner;
         service.Update = UpdatePartner;
         service.Delete = DeletePartner;
@@ -19,27 +19,27 @@
         return service;
 
         function GetAllPartners() {
-            return $http.get('/api/getAllPartners').then(handleSuccess, handleError('Error getting all users'));
+            return $http.get('/api/getAllPartners').then(handleSuccess, handleError('Error getting all partners'));
         }
 
         function GetPartnerById(id) {
-            return $http.get('/api/getPartnerById/' + id).then(handleSuccess, handleError('Error getting user by id'));
+            return $http.get('/api/getPartnerById/' + id).then(handleSuccess, handleError('Error getting partner by id'));
         }
 
-        function GetByPartnerName(username) {
-            return $http.get('/api/getByPartnerName/' + username).then(handleSuccess, handleError('Error getting user by username'));
+        function GetByPartnerName(partnername) {
+            return $http.get('/api/getByPartnerName/' + partnername).then(handleSuccess, handleError('Error getting partner by partnername'));
         }
 
-        function CreatePartner(user) {
-            return $http.post('/api/createPartner', user).then(handleSuccess, handleError('Error creating user'));
+        function CreatePartner(partner) {
+            return $http.post('/api/createPartner', partner).then(handleSuccess, handleError('Error creating partner'));
         }
 
-        function UpdatePartner(user) {
-            return $http.put('/api/updatePartner/' + user.id, user).then(handleSuccess, handleError('Error updating user'));
+        function UpdatePartner(partner) {
+            return $http.put('/api/updatePartner/' + partner.id, partner).then(handleSuccess, handleError('Error updating partner'));
         }
 
         function DeletePartner(id) {
-            return $http.delete('/api/deletePartner/' + id).then(handleSuccess, handleError('Error deleting user'));
+            return $http.delete('/api/deletePartner/' + id).then(handleSuccess, handleError('Error deleting partner'));
         }
 
         // private functions
