@@ -20,10 +20,8 @@
 
         var vm = this;
         vm.state = true;
-        vm.uploadObjects = {
-            lastAdded: [],
-            edited: [],
-            deleted: [],
+        vm.baseData = {
+            data: [],
             changeCounter: 0
         };
         
@@ -31,13 +29,17 @@
         vm.onsave = onsave;
         vm.ondelete = ondelete;
 
+        var stammDataHandler = new StammDatenHandler($http);
+
         init();
 
         function init() {
-            $http.get(`${$rootScope.ip}getStammdata`).then((res) => {
-                vm.data = res.data.data.customers.sources
-                vm.uploadObjects.changeCounter = res.data.data.changeCounter;
-            });
+            stammDataHandler.getAll().then(
+                (res) => {
+                    vm.baseData.data = res.data.customers.sources.data;
+                    vm.baseData.changeCounter = res.data.customers.sources.changeCounter;
+                }
+            );
         }
 
         function onsave(item) {
@@ -52,46 +54,27 @@
             var obj = {
                 uploads: vm.uploads,
                 callback: onsave,
-                data: vm.data,
+                data: vm.baseData.data,
                 title: "Stammdata"
             }
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
-                if (vm.data.length > 0) {
-                    var newIdx = vm.data[vm.data.length - 1].id; // we need to learn vm.data.length for detect last added items
-                }
-
-                vm.data.splice(0, vm.data.length);
+                vm.baseData.data.splice(0, vm.baseData.data.length);
 
                 for(let stat of data)
-                    vm.data.push(stat);
+                    vm.baseData.data.push(stat);
 
-                if (typeof newIdx !== 'undefined') {
-                    vm.uploadObjects.newAdded = [];
-                    vm.uploadObjects.lastAdded = data.filter(item => item.id > newIdx ) // find last added items by original list element count
-                } else {
-                    vm.uploadObjects.newAdded = data.filter(item => item !== 'deleted');
-                }
-                
-                vm.uploadObjects.edited = data.filter(item => item.editMode === false)// find edited items 
+                stammDataHandler.postData(vm.baseData).then(
+                    (res) => {
+                        vm.baseData.data = res.data.data;
+                    }, 
+                    (err) => {
+                        alert('datas has been changed!')
+                    } 
+                );
 
-                vm.uploadObjects.deleted = data.deleted; // assign deleted items
-
-                $http.post(`${$rootScope.ip}editStammdata`, vm.uploadObjects).then((res) => {
-
-                    vm.data = res.data.data.customers.sources
-
-                    
-                    if (res.data.success === 'error') {
-                        alert('datas has been changed!');
-                    } else {
-                        vm.uploadObjects.changeCounter = res.data.data.changeCounter ;        
-                    }
-
-                });
-
-                console.log("Modal closed, vm.uploads now = ", vm.data)
+                console.log("Modal closed, vm.uploads now = ", vm.baseData)
             });
         }
     }

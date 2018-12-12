@@ -18,17 +18,6 @@ const fs = require('fs');
 const path = require('path');
 const clone = require('clone');
 
-/** Response Types 
- * we can add another response types etc. 
- * errorResponse = {
- * 	errorMessage: 'please contact your system admin'
- * }
- * */ 
-const generalResponse = {
-	success: 'ok',
-	data: {}
-}
-
 /* db */
 const jsonServer = require('json-server');
 const lodashId = require('lodash-id');
@@ -174,102 +163,6 @@ function maxId(arr) {
 	return (x == "-Infinity") ? 0 : x;
 }
 
-/**
- * if you use this method,
- * you can write send datas in db.json file by entred object field path
- * @param {string} fieldName 
- * @param {Object} dataObject 
- */
-function writeToDbByFieldName(fieldName, dataObject) {
-	var items = []; // creating object to send
-
-	return items;
-}
-
-/**
- * if you use this method, 
- * you can return all all saved datas by the entered object field path
- * @param {string} fieldname 
- */
-function getDataByFieldName(fieldname) {
-	var items = db.get(fieldname).value();
-	return items;
-}
-
-function getAllCB(req, res, next) {
-	
-	var item = db.get('stammDaten').value();
-	generalResponse.success = 'ok';
-	generalResponse.data = item;
-	req.generalResponse = generalResponse;
-	next();
-
-}
-
-function compareDataCB(req, res, next) {
-
-	if (typeof req.generalResponse.data.changeCounter !== 'undefined' 
-		&& req.generalResponse.data.changeCounter === req.body.changeCounter) {
-			next();
-	}
-	else {
-		req.generalResponse.success = 'error';
-		req.generalResponse.data = db.get('stammDaten').value();
-		res.json(req.generalResponse);
-	 }
-
-}
-
-function checkIds(fieldName, obj) {
-	var items = db.get(fieldName).value();
-
-	if (typeof items != 'undefined') 
-		return items.filter(item => item.id === obj.id)
-
-	return false;
-}
-
-function editStammdataCB(req, res) {
-
-	var items = [];
-
-	/** Create New Object */
-	for(let item of req.body.newAdded){
-		items = db.get('stammDaten.customers.sources').push(item).write();
-	}
-
-	/** Add Object */
-	for(let item of req.body.lastAdded){
-		let tempId = checkIds('stammDaten.customers.sources', item);
-
-		if (tempId != false) {
-			items = getDataByFieldName('stammDaten.customers.sources');
-			item.id = items.length - 1;
-		}
-
-		items = db.get('stammDaten.customers.sources').push(item).write();
-	}
-
-	/** Update Object */
-	for(let item  of req.body.edited) {
-		items = db.get('stammDaten.customers.sources').find({ id: item.id }).assign({ value: item.value }).write();
-	}
-
-	/** Delete Object */
-	for(let item of req.body.deleted){
-		items = db.get('stammDaten.customers.sources').remove({ id: item.id }).write();
-	}
-
-	/** changeCounter Increment */
-	db.set('stammDaten.changeCounter', req.generalResponse.data.changeCounter + 1).write();
-
-	items = db.get('stammDaten').value();
-
-	req.generalResponse.data = item;
-
-	res.json(req.generalResponse.data);
-}
-
 /* routing */
 
 server.post('/uploadDoc', multipartyMiddleware, FileUploadController.uploadFile);
@@ -291,13 +184,62 @@ server.get('/dashboard', (req, res, next) => {
     res.json(data);
 });
 
-server.post('/editStammdata', getAllCB, compareDataCB, editStammdataCB);
+server.post('/stammDaten', getAllCB, compareDataCB, editStammdataCB);
 
-server.get('/getStammData', (req, res) => {
-
-	var response = {
-		success: 'ok',
-		data: getDataByFieldName('stammDaten')
-	}
-	res.json(response);
+server.get('/stammDaten', (req, res) => {
+	res.status(200).json(getDataByFieldName('stammDaten'));
 });
+
+/**
+ * if you use this method, 
+ * you can return all all saved datas by the entered object field path
+ * @param {string} fieldname 
+ */
+function getDataByFieldName(fieldname) {
+	var items = db.get(fieldname).value();
+	return items;
+}
+
+function getAllCB(req, res, next) {
+
+	req.data = getDataByFieldName('stammDaten');
+	
+	next();
+
+}
+
+function compareDataCB(req, res, next) {
+
+	if ((typeof req.data.customers.sources.changeCounter !== 'undefined') && 
+		(req.data.customers.sources.changeCounter === req.body.changeCounter)
+	) {
+		next();
+	}
+	else {
+		req.data = getDataByFieldName('stammDaten');
+		res.status(409).json(req.data);
+	 }
+
+}
+
+function checkIds(fieldName, obj) {
+	var items = getDataByFieldName(fieldName);
+
+	if (typeof items != 'undefined') 
+		return items.filter(item => item.id === obj.id)
+
+	return false;
+}
+
+function editStammdataCB(req, res) {
+	req.body.changeCounter++;
+	var items = db.get('stammDaten.customers.sources').value();
+
+	items.data.splice(0, items.data.length);
+	items.data = req.body.data;
+	items.changeCounter = req.body.changeCounter;
+
+	db.write();
+
+	res.status(200).json(items);
+}
