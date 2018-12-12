@@ -183,6 +183,7 @@ server.get('/dashboard', (req, res, next) => {
     res.json(data);
 });
 
+/** STAMMDATEN */
 server.post('/stammDaten', getAllCB, compareDataCB, editStammdataCB);
 
 server.get('/stammDaten', (req, res) => {
@@ -241,4 +242,22 @@ function editStammdataCB(req, res) {
 	db.write();
 
 	res.status(200).json(items);
+}
+
+/** PARTNER FORM */
+server.get('/partnerForm', getAllPartnerFormsCB);
+server.post('/partnerForm', postPartnerDataCB);
+
+function getAllPartnerFormsCB(req, res, nex) {
+	res.status(200).json(getDataByFieldName('partnerForms'));
+}
+
+function postPartnerDataCB(req, res, next) {
+	var items = getDataByFieldName('partnerForms');
+
+	items = req.body;
+
+	db.write();
+
+	res.status(200).json(getDataByFieldName('partnerForms'));
 }
