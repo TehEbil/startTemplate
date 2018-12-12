@@ -235,7 +235,6 @@ function editStammdataCB(req, res) {
 	req.body.changeCounter++;
 	var items = db.get('stammDaten.customers.sources').value();
 
-	items.data.splice(0, items.data.length);
 	items.data = req.body.data;
 	items.changeCounter = req.body.changeCounter;
 

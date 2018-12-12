@@ -34,7 +34,7 @@
         init();
 
         function init() {
-            stammDataHandler.getAll().then(
+            stammDataHandler.getData().then(
                 (res) => {
                     vm.baseData.data = res.data.customers.sources.data;
                     vm.baseData.changeCounter = res.data.customers.sources.changeCounter;
@@ -60,6 +60,10 @@
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
+                console.log('====================================');
+                console.log('');
+                console.log('====================================');
+
                 vm.baseData.data.splice(0, vm.baseData.data.length);
 
                 for(let stat of data)
@@ -68,6 +72,7 @@
                 stammDataHandler.postData(vm.baseData).then(
                     (res) => {
                         vm.baseData.data = res.data.data;
+                        vm.baseData.changeCounter = res.data.changeCounter;
                     }, 
                     (err) => {
                         alert('datas has been changed!')

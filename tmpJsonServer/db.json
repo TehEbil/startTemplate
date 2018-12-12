@@ -34,9 +34,17 @@
           {
             "id": 3,
             "value": "3"
+          },
+          {
+            "id": 6,
+            "value": "6"
+          },
+          {
+            "id": 7,
+            "value": "7"
           }
         ],
-        "changeCounter": 2
+        "changeCounter": 8
       },
       "categories": {
         "changeCounter": 0,
