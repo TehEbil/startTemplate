@@ -25,7 +25,7 @@
   "stammDaten": {
     "customers": {
       "sources": {
-        "changedCounter": 19,
+        "changedCounter": 21,
         "data": [
           {
             "id": 1,
@@ -40,7 +40,11 @@
             "value": "444"
           },
           {
-            "id": 7,
+            "id": 8,
+            "value": "434"
+          },
+          {
+            "id": 9,
             "value": "5555"
           }
         ]
@@ -60,5 +64,31 @@
         "data": []
       }
     }
-  }
+  },
+  "partners": [
+    {
+      "title": "Firma",
+      "firstName": "asdfsaf",
+      "lastName": "sadfsdf",
+      "number": "asdfasdf",
+      "street": "asfsad",
+      "field": "NL",
+      "postcode": "asdfsafd",
+      "place": "sdfsaf",
+      "website": "asdf",
+      "email": "sadfasdf",
+      "mobile": "asdfsa",
+      "fax": "dfasdfs",
+      "phone": "dfasfas",
+      "letterHeads": {
+        "0": "dfasdf",
+        "1": "asdfasdf",
+        "2": "asfdsadfsa"
+      },
+      "stampImage": "fasdfsd",
+      "signetImage": "fsafsdfsa",
+      "signatureImage": "fasfasd",
+      "certificates": "fasdfsadfasdf"
+    }
+  ]
 }

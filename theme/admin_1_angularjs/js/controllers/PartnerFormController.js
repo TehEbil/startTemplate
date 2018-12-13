@@ -5,9 +5,11 @@
         .module('MetronicApp')
         .controller('PartnerFormController', PartnerFormController);
 
-        PartnerFormController.$inject = ['PartnerFormService', '$location', '$rootScope'];
-    function PartnerFormController(PartnerFormService, $location, $rootScope) {
+        PartnerFormController.$inject = ['$location', '$rootScope', '$http'];
+    function PartnerFormController($location, $rootScope, $http) {
         var vm = this;
+
+        var partnerFormHandler = new PartnerFormHandler($http, 'partnerForm');
 
         vm.register = register;
 
@@ -16,18 +18,17 @@
             console.log('partner info', vm.partner);
             console.log('====================================');
 
-            // vm.dataLoading = true;
-            // PersonelFormService.Create(vm.partner)
-            //     .then(function (response) {
-            //         if (response.success) {
-            //             FlashService.Success('Registration successful', true);
-            //             $location.path('/dashboard');
-            //         } else {
-            //             FlashService.Error(response.message);
-            //             vm.dataLoading = false;
-            //         }
-            //     });
+            vm.dataLoading = true;
+
+            partnerFormHandler.postData(vm.partner).then(
+                (res) => {
+                    $rootScope.sharedService.alert('Success', "success");
+                    $location.path('/dashboard');
+                },
+                (err) => {
+                    $rootScope.sharedService.alert('Maybe little some errors!', "danger");
+                }
+            );
         }
     }
-
 })();

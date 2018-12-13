@@ -252,9 +252,9 @@ function getAllPartnerFormsCB(req, res, nex) {
 }
 
 function postPartnerDataCB(req, res, next) {
-	var items = getDataByFieldName('partnerForms');
+	var items = getDataByFieldName('partners');
 
-	items = req.body;
+	items.push(req.body);
 
 	db.write();
 
