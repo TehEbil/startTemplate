@@ -234,8 +234,7 @@ function checkIds(fieldName, obj) {
 function editStammdataCB(req, res) {
 	req.body.changedCounter++;
 	var items = db.get('stammDaten.customers.sources').value();
-
-	// items.data.splice(0, items.data.length);
+  
 	items.data = req.body.data;
 	items.changedCounter = req.body.changedCounter;
 

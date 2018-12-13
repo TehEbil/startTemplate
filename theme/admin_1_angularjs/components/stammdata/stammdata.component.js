@@ -34,7 +34,7 @@
         init();
 
         function init() {
-            stammDataHandler.getAll().then(
+            stammDataHandler.getData().then(
                 (res) => {
                     // vm.baseData.data = res.data.customers.sources.data;
                     // vm.baseData.changedCounter = res.data.customers.sources.changedCounter;
@@ -62,14 +62,6 @@
             }
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
-
-                // vm.baseData.data.splice(0, vm.baseData.data.length);
-
-                // for(let stat of data)
-                //     vm.baseData.data.push(stat);
-
-                // we shouldn't do these steps (above) first, we refresh data after the response
-
 
                 // this is so we don't send a request when we "cancel" modal
                 if(typeof data ===  "undefined")
