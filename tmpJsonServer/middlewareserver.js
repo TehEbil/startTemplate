@@ -258,5 +258,5 @@ function postPartnerDataCB(req, res, next) {
 
 	db.write();
 
-	res.status(200).json(getDataByFieldName('partnerForms'));
+	res.status(200).json(getDataByFieldName('partners'));
 }

@@ -14,15 +14,11 @@
         vm.register = register;
 
         function register() {
-            console.log('====================================');
-            console.log('partner info', vm.partner);
-            console.log('====================================');
 
             vm.dataLoading = true;
 
             partnerFormHandler.postData(vm.partner).then(
                 (res) => {
-                    $rootScope.sharedService.alert('Success', "success");
                     $location.path('/dashboard');
                 },
                 (err) => {
