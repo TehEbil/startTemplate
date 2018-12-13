@@ -93,8 +93,13 @@ clientServer.listen(80, () => {
 	console.log('Client-Server is running');
 })
 
+/** Router Configurations */
+const partnerForm = require('./routers/partner-form.router');
+
 server.listen(serverPort, () => {
   console.log('JSON Server is running');
+
+  server.use('/partnerForm', partnerForm);
 })
 
 console.timeEnd("Time to boot")
@@ -241,22 +246,4 @@ function editStammdataCB(req, res) {
 	db.write();
 
 	res.status(200).json(items);
-}
-
-/** PARTNER FORM */
-server.get('/partnerForm', getAllPartnerFormsCB);
-server.post('/partnerForm', postPartnerDataCB);
-
-function getAllPartnerFormsCB(req, res, nex) {
-	res.status(200).json(getDataByFieldName('partnerForms'));
-}
-
-function postPartnerDataCB(req, res, next) {
-	var items = getDataByFieldName('partners');
-
-	items.push(req.body);
-
-	db.write();
-
-	res.status(200).json(getDataByFieldName('partners'));
 }
