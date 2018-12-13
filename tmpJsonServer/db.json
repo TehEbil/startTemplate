@@ -25,27 +25,22 @@
   "stammDaten": {
     "customers": {
       "sources": {
-        "changedCounter": 21,
+        "changedCounter": 24,
         "data": [
           {
             "id": 1,
-            "value": "asd"
-          },
-          {
-            "id": 3,
-            "value": "333"
-          },
-          {
-            "id": 4,
-            "value": "444"
-          },
-          {
-            "id": 8,
-            "value": "434"
+            "value": "1",
+            "editMode": false
           },
           {
             "id": 9,
-            "value": "5555"
+            "value": "2",
+            "editMode": false
+          },
+          {
+            "id": 11,
+            "value": "3",
+            "editMode": false
           }
         ]
       },
@@ -186,6 +181,30 @@
       "signetImage": "qwrqwrwq",
       "signatureImage": "rqwerwqer",
       "certificates": "wqerwetewry"
+    },
+    {
+      "mobile": "qweqew",
+      "email": "qweqeq",
+      "website": "weqeqw",
+      "letterHeads": {
+        "0": "eqweqeqw",
+        "1": "eqeqw",
+        "2": "eqweqwe"
+      },
+      "stampImage": "qweqweqweq",
+      "signetImage": "eqweqweqw",
+      "signatureImage": "qewqweqe",
+      "certificates": "weqweqwe",
+      "title": "Prof. Dr.",
+      "firstName": "qweq",
+      "lastName": "qweqwe",
+      "street": "qweqwe",
+      "number": "qweqwe",
+      "field": "E",
+      "postcode": "qweqwe",
+      "place": "qweqwe",
+      "phone": "qweqwe",
+      "fax": "werwerwer"
     }
   ]
 }

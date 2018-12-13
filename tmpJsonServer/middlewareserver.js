@@ -95,16 +95,20 @@ clientServer.listen(80, () => {
 
 /** Router Configurations */
 const partnerForm = require('./routers/partner-form.router');
+const stammDaten = require('./routers/stamm-daten.router');
 
 server.listen(serverPort, () => {
   console.log('JSON Server is running');
 
   server.use('/partnerForm', partnerForm);
+  server.use('/stammDaten', stammDaten);
 })
 
 console.timeEnd("Time to boot")
 
 /* helper functions */
+
+const dbHelper = require('./helpers/db.helper');
 
 function loggerLog(req, type, text, obj = undefined) {
 	if(type !== "error")
@@ -146,25 +150,7 @@ server.use(morgan((tokens, req, res) => {
 exports.writeToDB = function(x) {
   db.get('files').insert(x).write();
   /* until mongodb */
-  return getMaxId('files') - 1;
-}
-
-function getMaxId(_dbname, id="id") {
-    var x = maxId(db.get(_dbname).value());
-	return (x) ? x + 1 : 1;
-}
-
-function maxId(arr) {
-	if(Array.isArray(arr) == false) {
-		console.log("Not an array, defaults to 0");
-		return 0;
-	}
-	var x = Math.max.apply(this, arr.map(function (o) {
-        if(typeof o.id !== "undefined")
-            return o.id;
-        return -1;
-    }));
-	return (x == "-Infinity") ? 0 : x;
+  return dbHelper.getMaxId('files') - 1;
 }
 
 /* routing */
@@ -187,63 +173,3 @@ server.get('/dashboard', (req, res, next) => {
     };
     res.json(data);
 });
-
-/** STAMMDATEN */
-server.post('/stammDaten', getAllCB, compareDataCB, editStammdataCB);
-
-server.get('/stammDaten', (req, res) => {
-	res.status(200).json(getDataByFieldName('stammDaten'));
-});
-
-/**
- * if you use this method, 
- * you can return all all saved datas by the entered object field path
- * @param {string} fieldname 
- */
-function getDataByFieldName(fieldname) {
-	var items = db.get(fieldname).value();
-	return items;
-}
-
-function getAllCB(req, res, next) {
-
-	req.data = getDataByFieldName('stammDaten');
-	
-	next();
-
-}
-
-function compareDataCB(req, res, next) {
-
-	if ((typeof req.data.customers.sources.changedCounter !== 'undefined') && 
-		(req.data.customers.sources.changedCounter === req.body.changedCounter)
-	) {
-		next();
-	}
-	else {
-		req.data = getDataByFieldName('stammDaten');
-		res.status(409).json(req.data);
-	 }
-
-}
-
-function checkIds(fieldName, obj) {
-	var items = getDataByFieldName(fieldName);
-
-	if (typeof items != 'undefined') 
-		return items.filter(item => item.id === obj.id)
-
-	return false;
-}
-
-function editStammdataCB(req, res) {
-	req.body.changedCounter++;
-	var items = db.get('stammDaten.customers.sources').value();
-  
-	items.data = req.body.data;
-	items.changedCounter = req.body.changedCounter;
-
-	db.write();
-
-	res.status(200).json(items);
-}
