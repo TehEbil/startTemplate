@@ -93,7 +93,6 @@ clientServer.listen(80, () => {
 	console.log('Client-Server is running');
 })
 
-
 server.listen(serverPort, () => {
   console.log('JSON Server is running');
 })
@@ -184,6 +183,7 @@ server.get('/dashboard', (req, res, next) => {
     res.json(data);
 });
 
+/** STAMMDATEN */
 server.post('/stammDaten', getAllCB, compareDataCB, editStammdataCB);
 
 server.get('/stammDaten', (req, res) => {
@@ -210,8 +210,8 @@ function getAllCB(req, res, next) {
 
 function compareDataCB(req, res, next) {
 
-	if ((typeof req.data.customers.sources.changeCounter !== 'undefined') && 
-		(req.data.customers.sources.changeCounter === req.body.changeCounter)
+	if ((typeof req.data.customers.sources.changedCounter !== 'undefined') && 
+		(req.data.customers.sources.changedCounter === req.body.changedCounter)
 	) {
 		next();
 	}
@@ -232,13 +232,31 @@ function checkIds(fieldName, obj) {
 }
 
 function editStammdataCB(req, res) {
-	req.body.changeCounter++;
+	req.body.changedCounter++;
 	var items = db.get('stammDaten.customers.sources').value();
-
+  
 	items.data = req.body.data;
-	items.changeCounter = req.body.changeCounter;
+	items.changedCounter = req.body.changedCounter;
 
 	db.write();
 
 	res.status(200).json(items);
+}
+
+/** PARTNER FORM */
+server.get('/partnerForm', getAllPartnerFormsCB);
+server.post('/partnerForm', postPartnerDataCB);
+
+function getAllPartnerFormsCB(req, res, nex) {
+	res.status(200).json(getDataByFieldName('partnerForms'));
+}
+
+function postPartnerDataCB(req, res, next) {
+	var items = getDataByFieldName('partnerForms');
+
+	items = req.body;
+
+	db.write();
+
+	res.status(200).json(getDataByFieldName('partnerForms'));
 }

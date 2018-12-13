@@ -22,7 +22,7 @@
         vm.state = true;
         vm.baseData = {
             data: [],
-            changeCounter: 0
+            changedCounter: 0
         };
         
         vm.editData = editData;
@@ -36,8 +36,11 @@
         function init() {
             stammDataHandler.getData().then(
                 (res) => {
-                    vm.baseData.data = res.data.customers.sources.data;
-                    vm.baseData.changeCounter = res.data.customers.sources.changeCounter;
+                    // vm.baseData.data = res.data.customers.sources.data;
+                    // vm.baseData.changedCounter = res.data.customers.sources.changedCounter;
+
+                    // saving 1 step of assignment
+                    vm.baseData = res.data.customers.sources;
                 }
             );
         }
@@ -60,23 +63,25 @@
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
-                console.log('====================================');
-                console.log('');
-                console.log('====================================');
+                // this is so we don't send a request when we "cancel" modal
+                if(typeof data ===  "undefined")
+                    return;
 
-                vm.baseData.data.splice(0, vm.baseData.data.length);
+                var obj = {
+                    data, // same as data: data -> because key and value is the same
+                    changedCounter: vm.baseData.changedCounter
+                }
 
-                for(let stat of data)
-                    vm.baseData.data.push(stat);
-
-                stammDataHandler.postData(vm.baseData).then(
+                stammDataHandler.postData(obj).then(
                     (res) => {
-                        vm.baseData.data = res.data.data;
-                        vm.baseData.changeCounter = res.data.changeCounter;
-                    }, 
+                        // vm.baseData.data = res.data.data;
+
+                        // fixed changedCounter issue and wrapped them together like in init
+                        vm.baseData = res.data;
+                    },
                     (err) => {
-                        alert('datas has been changed!')
-                    } 
+                        $rootScope.sharedService.alert('data has been changed!', "danger")
+                    }
                 );
 
                 console.log("Modal closed, vm.uploads now = ", vm.baseData)

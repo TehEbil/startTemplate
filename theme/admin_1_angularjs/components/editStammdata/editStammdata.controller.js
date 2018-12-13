@@ -40,8 +40,7 @@
             if(getId.type)
                 vm.type = getId.type;
 
-            vm.master = angular.copy(getId.data);
-
+            vm.master = angular.copy(vm.items);
         }
 
         function getIndex(id) {
