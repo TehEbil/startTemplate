@@ -33,14 +33,13 @@ function compareDataCB(req, res, next) {
 		next();
 	}
 	else {
-		req.data = dbHelper.getDataByFieldName(db, 'stammDaten');
 		res.status(409).json(req.data);
 	 }
 }
 
 function editStammdataCB(req, res) {
 	req.body.changedCounter++;
-	var items = db.get('stammDaten.customers.sources').value();
+	var items = req.data;
   
 	items.data = req.body.data;
 	items.changedCounter = req.body.changedCounter;
