@@ -13,16 +13,21 @@ const db = routerx.db;
 db._.mixin(lodashId);
 db._.mixin(mixins);
 
-server.get('/', getAllPartnerFormsCB);
-server.post('/', postPartnerDataCB);
+server.get('/', getAllDatas, getAllPartnerFormsCB);
+server.post('/', getAllDatas, postPartnerDataCB);
 
-function getAllPartnerFormsCB(req, res, nex) {
-	res.status(200).json(dbHelper.getDataByFieldName('partners'));
+function getAllDatas(req, res, next) {
+	res.data = dbHelper.getDataByFieldName('partners');
+	next();
+}
+
+function getAllPartnerFormsCB(req, res, next) {
+	res.status(200).json(res.data);
 }
 
 function postPartnerDataCB(req, res, next) {
 
-	var items = dbHelper.getDataByFieldName('partners');
+	var items = res.data;
 
 	items.push(req.body);
 
