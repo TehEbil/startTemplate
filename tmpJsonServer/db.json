@@ -21,5 +21,194 @@
       "path": "public/uploads/file1.txt",
       "id": 1
     }
+  ],
+  "stammDaten": {
+    "customers": {
+      "sources": {
+        "changedCounter": 26,
+        "data": [
+          {
+            "id": 1,
+            "value": "1",
+            "editMode": false
+          },
+          {
+            "id": 9,
+            "value": "2",
+            "editMode": false
+          },
+          {
+            "id": 11,
+            "value": "4",
+            "editMode": false
+          },
+          {
+            "id": 13,
+            "value": "5"
+          }
+        ]
+      },
+      "categories": {
+        "changedCounter": 0,
+        "data": []
+      }
+    },
+    "orders": {
+      "sources": {
+        "changedCounter": 0,
+        "data": []
+      },
+      "categories": {
+        "changedCounter": 0,
+        "data": []
+      }
+    }
+  },
+  "partners": [
+    {
+      "title": "Firma",
+      "firstName": "asdfsaf",
+      "lastName": "sadfsdf",
+      "number": "asdfasdf",
+      "street": "asfsad",
+      "field": "NL",
+      "postcode": "asdfsafd",
+      "place": "sdfsaf",
+      "website": "asdf",
+      "email": "sadfasdf",
+      "mobile": "asdfsa",
+      "fax": "dfasdfs",
+      "phone": "dfasfas",
+      "letterHeads": {
+        "0": "dfasdf",
+        "1": "asdfasdf",
+        "2": "asfdsadfsa"
+      },
+      "stampImage": "fasdfsd",
+      "signetImage": "fsafsdfsa",
+      "signatureImage": "fasfasd",
+      "certificates": "fasdfsadfasdf"
+    },
+    {
+      "title": "Firma",
+      "firstName": "asdfasdf",
+      "lastName": "asdfasf",
+      "number": "asdfasdf",
+      "street": "asdfasdf",
+      "postcode": "asdfasf",
+      "place": "asdfas",
+      "website": "fasfa",
+      "email": "sdfasdf",
+      "mobile": "asgfd",
+      "fax": "hjgjhklkş",
+      "phone": "ljljdhf",
+      "letterHeads": {
+        "0": "gjkl",
+        "1": "fghsf",
+        "2": "hdfghdfghdh"
+      },
+      "stampImage": "jfghjfg",
+      "signetImage": "hjsfhg",
+      "signatureImage": "hjhfghjfghjfghj",
+      "field": "D",
+      "certificates": "dfghdfgh"
+    },
+    {
+      "title": "Firma",
+      "firstName": "asdfasdf",
+      "lastName": "asdfasf",
+      "number": "asdfasdf",
+      "street": "asdfasdf",
+      "postcode": "asdfasf",
+      "place": "asdfas",
+      "website": "fasfa",
+      "email": "sdfasdf",
+      "mobile": "asgfd",
+      "fax": "hjgjhklkş",
+      "phone": "ljljdhf",
+      "letterHeads": {
+        "0": "gjkl",
+        "1": "fghsf",
+        "2": "hdfghdfghdh"
+      },
+      "stampImage": "jfghjfg",
+      "signetImage": "hjsfhg",
+      "signatureImage": "hjhfghjfghjfghj",
+      "field": "D",
+      "certificates": "dfghdfgh"
+    },
+    {
+      "title": "Firma",
+      "firstName": "dfghdfghdf",
+      "lastName": "ghdfghdfh",
+      "number": "dfgh",
+      "street": "dfghdf",
+      "field": "NL",
+      "postcode": "dfghdfg",
+      "place": "djhfghj",
+      "mobile": "fghjfgh",
+      "fax": "jfghj",
+      "phone": "fghjsd",
+      "letterHeads": {
+        "0": "fgsdfgsd",
+        "1": "fgsdfgsd",
+        "2": "gsdgsdgsd"
+      },
+      "email": "gsdfg",
+      "website": "sdgsdfg",
+      "stampImage": "sdfgsdfg",
+      "signetImage": "dsfgsdfg",
+      "signatureImage": "sdfgsdfg",
+      "certificates": "dgfhdfghdfhg"
+    },
+    {},
+    {
+      "title": "Herr",
+      "firstName": "asdfas",
+      "lastName": "fsafsa",
+      "street": "fsadfsaf",
+      "number": "safsadf",
+      "field": "E",
+      "postcode": "asdfasdf",
+      "place": "asfdasdf",
+      "phone": "asf",
+      "fax": "sdfasdf",
+      "mobile": "asdfsaf",
+      "email": "fgdhfd",
+      "website": "hfghfd",
+      "letterHeads": {
+        "0": "ghdfhfd",
+        "1": "wqerqwer",
+        "2": "qrqwer"
+      },
+      "stampImage": "qwrwer",
+      "signetImage": "qwrqwrwq",
+      "signatureImage": "rqwerwqer",
+      "certificates": "wqerwetewry"
+    },
+    {
+      "mobile": "qweqew",
+      "email": "qweqeq",
+      "website": "weqeqw",
+      "letterHeads": {
+        "0": "eqweqeqw",
+        "1": "eqeqw",
+        "2": "eqweqwe"
+      },
+      "stampImage": "qweqweqweq",
+      "signetImage": "eqweqweqw",
+      "signatureImage": "qewqweqe",
+      "certificates": "weqweqwe",
+      "title": "Prof. Dr.",
+      "firstName": "qweq",
+      "lastName": "qweqwe",
+      "street": "qweqwe",
+      "number": "qweqwe",
+      "field": "E",
+      "postcode": "qweqwe",
+      "place": "qweqwe",
+      "phone": "qweqwe",
+      "fax": "werwerwer"
+    }
   ]
 }

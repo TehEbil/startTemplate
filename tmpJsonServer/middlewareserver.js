@@ -93,22 +93,22 @@ clientServer.listen(80, () => {
 	console.log('Client-Server is running');
 })
 
+/** Router Configurations */
+const partnerForm = require('./routers/partner-form.router');
+const stammDaten = require('./routers/stamm-daten.router');
 
 server.listen(serverPort, () => {
   console.log('JSON Server is running');
+
+  server.use('/partnerForm', partnerForm);
+  server.use('/stammDaten', stammDaten);
 })
 
 console.timeEnd("Time to boot")
 
-
-
-
-
-
-
-
-
 /* helper functions */
+
+const dbHelper = require('./helpers/db.helper');
 
 function loggerLog(req, type, text, obj = undefined) {
 	if(type !== "error")
@@ -150,25 +150,7 @@ server.use(morgan((tokens, req, res) => {
 exports.writeToDB = function(x) {
   db.get('files').insert(x).write();
   /* until mongodb */
-  return getMaxId('files') - 1;
-}
-
-function getMaxId(_dbname, id="id") {
-    var x = maxId(db.get(_dbname).value());
-	return (x) ? x + 1 : 1;
-}
-
-function maxId(arr) {
-	if(Array.isArray(arr) == false) {
-		console.log("Not an array, defaults to 0");
-		return 0;
-	}
-	var x = Math.max.apply(this, arr.map(function (o) {
-        if(typeof o.id !== "undefined")
-            return o.id;
-        return -1;
-    }));
-	return (x == "-Infinity") ? 0 : x;
+  return dbHelper.getMaxId('files') - 1;
 }
 
 /* routing */

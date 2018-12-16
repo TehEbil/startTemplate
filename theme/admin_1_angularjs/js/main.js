@@ -58,6 +58,17 @@ class DataHandler {
 
 }
 
+class StammDatenHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'stammDaten');
+    }
+}
+class PartnerFormHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'partnerForm');
+    }
+}
+
 class KontakteHandler extends DataHandler {
     constructor($http) {
         super($http, 'kontakte');
@@ -516,6 +527,13 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             url: "/impressum",
             templateUrl: "views/impressum.html",
             data: {pageTitle: 'Impressum'}
+        })
+        .state('partner-form', {
+            url: "/partner-form",
+            templateUrl: "views/partner-form.html",
+            data: { pageTitle: 'Partner Form'},
+            controller: 'PartnerFormController',
+            controllerAs: 'vm'
         })
 }]);
 
