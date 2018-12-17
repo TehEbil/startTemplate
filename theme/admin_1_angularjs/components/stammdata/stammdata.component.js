@@ -13,10 +13,10 @@
             templateUrl: '/components/stammdata/stammdata.template.html'
         });
 
-    StammdataController.$inject = ["$rootScope", "$scope", "$http", "$timeout", "$stateParams", "$state", "modalService", "localStorageService"];
+    StammdataController.$inject = ["$rootScope", "$scope", "$http", "$timeout", "$stateParams", "$state", "modalService", "localStorageService", "StammDatenHandler"];
 
     /* @ngInject */
-    function StammdataController($rootScope, $scope, $http, $timeout, $stateParams, $state, modalService, localStorageService) {
+    function StammdataController($rootScope, $scope, $http, $timeout, $stateParams, $state, modalService, localStorageService, StammDatenHandler) {
 
         var vm = this;
         vm.state = true;
@@ -29,12 +29,10 @@
         vm.onsave = onsave;
         vm.ondelete = ondelete;
 
-        var stammDataHandler = new StammDatenHandler($http);
-
         init();
 
         function init() {
-            stammDataHandler.getData().then(
+            StammDatenHandler.getData().then(
                 (res) => {
                     // vm.baseData.data = res.data.customers.sources.data;
                     // vm.baseData.changedCounter = res.data.customers.sources.changedCounter;
@@ -72,7 +70,7 @@
                     changedCounter: vm.baseData.changedCounter
                 }
 
-                stammDataHandler.postData(obj).then(
+                StammDatenHandler.postData(obj).then(
                     (res) => {
                         // vm.baseData.data = res.data.data;
 

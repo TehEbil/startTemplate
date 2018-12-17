@@ -5,11 +5,9 @@
         .module('MetronicApp')
         .controller('PartnerFormController', PartnerFormController);
 
-        PartnerFormController.$inject = ['$location', '$rootScope', '$http'];
-    function PartnerFormController($location, $rootScope, $http) {
+        PartnerFormController.$inject = ['$location', '$rootScope', '$http', '$state', 'PartnerFormHandler'];
+    function PartnerFormController($location, $rootScope, $http, $state, PartnerFormHandler) {
         var vm = this;
-
-        var partnerFormHandler = new PartnerFormHandler($http, 'partnerForm');
 
         vm.register = register;
 
@@ -17,9 +15,9 @@
 
             vm.dataLoading = true;
 
-            partnerFormHandler.postData(vm.partner).then(
+            PartnerFormHandler.postData(vm.partner).then(
                 (res) => {
-                    $location.path('/dashboard');
+                    $state.go('dashboard');
                 },
                 (err) => {
                     $rootScope.sharedService.alert('Maybe little some errors!', "danger");

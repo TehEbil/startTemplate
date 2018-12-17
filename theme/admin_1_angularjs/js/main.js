@@ -74,7 +74,8 @@ class KontakteHandler extends DataHandler {
         super($http, 'kontakte');
     }
 }
-
+StammDatenHandler.$inject = ['$http'];
+PartnerFormHandler.$inject = ['$http'];
 KontakteHandler.$inject = ['$http'];
 
 angular.uppercase=function(text){
@@ -128,6 +129,8 @@ var MetronicApp = angular.module("MetronicApp", [
 }])
 
 .factory('KontakteHandler', KontakteHandler)
+.factory('StammDatenHandler', StammDatenHandler)
+.factory('PartnerFormHandler', PartnerFormHandler)
 
     /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 
@@ -502,6 +505,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             'components/statistics/statistics.component.js',
                             'components/newRequests/newRequests.component.js',
                             'components/stammdata/stammdata.component.js',
+                            'components/project/project.component.js'
                         ]
                     });
                 }]
