@@ -425,7 +425,8 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
 
                     else if(comp)
                         list[0].files.push('/components/' + comp + '/' + comp + '.controller.js');
-                    console.log("", '/components/' + comp + '/' + comp + '.controller.js');
+                    // console.log(controller);
+                    // console.log("", '/components/' + comp + '/' + comp + '.controller.js');
 
                     return $ocLazyLoad.load(list);
                 }],
@@ -505,7 +506,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             'components/statistics/statistics.component.js',
                             'components/newRequests/newRequests.component.js',
                             'components/stammdata/stammdata.component.js',
-                            'components/project/project.component.js'
+                            // 'components/project/project.component.js'
                         ]
                     });
                 }]
