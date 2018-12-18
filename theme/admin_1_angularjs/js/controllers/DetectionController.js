@@ -11,76 +11,83 @@
 	function DetectionController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder) {
 		// console.log("DetectionController Loaded");
 		var vm = this;
-	
-		vm.dtOptions = DTOptionsBuilder.newOptions()
-		.withPaginationType('simple_numbers')
-		.withOption('processing', true)
-		//.withOption('order', true)
-		//.withOption('orderClasses', false)
-		.withOption('bSortClasses', false)
-		.withOption('responsive', true)
-		.withOption('paging', false)
-		.withOption('searching', false)
-      /* */
-      //.withOption('scrollCollapse', true)
-      //.withOption('paging', false)
-      /* */
 
-      .withLanguage(
-      {
-				"decimal":        "",
-				"emptyTable":     "Keine Daten vorhanden.",
-				"info":           "",
-				"infoEmpty":      "",
-				"infoFiltered":   "(Gefiltert von insgesamt _MAX_ Einträgen)",
-				"infoPostFix":    "",
-				"thousands":      ",",
-				"lengthMenu":     "Zeige _MENU_ Einträge",
-				"loadingRecords": "Lade...",
-				"processing":     "Ausführen...",
-				"search":         "",
-				"zeroRecords":    "Keine Daten gefunden.",
-				"paginate": {
-					"first":      "<<",
-					"last":       ">>",
-					"next":       ">",
-					"previous":   "<"
-				},
-	  })
-
-    vm.dtColumnDefs = [
-        DTColumnDefBuilder.newColumnDef(0),
-        DTColumnDefBuilder.newColumnDef(1)
-    ];
-
-
-    $scope.menuOptions = [
-        // NEW IMPLEMENTATION
-        {
-            text: 'Neu',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                newAnschrift();
+        vm.detections = [
+            {
+                number: 1,
+                date: '18.12.2018',
+                status: 'status',
+                title: 'foo',
+                coverPicUrl: 'https://picsum.photos/200/300',
+                detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                detail: {
+                    id: 8743,
+                    date: '18.12.2018',
+                    testFiedl: 'test field',
+                    position: 'position',
+                    title: 'title',
+                    evaluation: 'evaluation',
+                    basics: 'basics',
+                    status: 'status',
+                    description: 'desc',
+                    costs: {
+                        disposalCost: 'disposal',
+                        impairment: 'imp',
+                        recoup: 'stopaj',
+                        isPrint: true
+                    }
+                }
+            },
+            {
+                number: 2,
+                date: '18.12.2018',
+                status: 'status',
+                title: 'foo',
+                coverPicUrl: 'https://picsum.photos/200/300',
+                detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                detail: {
+                    id: 8744,
+                    date: '18.12.2018',
+                    testFiedl: 'test field',
+                    position: 'position',
+                    title: 'title',
+                    evaluation: 'evaluation',
+                    basics: 'basics',
+                    status: 'status',
+                    description: 'desc',
+                    costs: {
+                        disposalCost: 'disposal',
+                        impairment: 'imp',
+                        recoup: 'stopaj',
+                        isPrint: true
+                    }
+                }
+            },
+            {
+                number: 3,
+                date: '18.12.2018',
+                status: 'status',
+                title: 'foo',
+                coverPicUrl: 'https://picsum.photos/200/300',
+                detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+                detail: {
+                    id: 8745,
+                    date: '18.12.2018',
+                    testFiedl: 'test field',
+                    position: 'position',
+                    title: 'title',
+                    evaluation: 'evaluation',
+                    basics: 'basics',
+                    status: 'status',
+                    description: 'desc',
+                    costs: {
+                        disposalCost: 'disposal',
+                        impairment: 'imp',
+                        recoup: 'stopaj',
+                        isPrint: true
+                    }
+                }
             }
-        },
-        {
-            text: 'Bearbeiten',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                editAnschrift();
-            }
-        },
-        {
-            text: 'Löschen',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                deleteData();
-            }
-        },
-        null, // Dividier
-        {
-            text: 'Zurück',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-            	return;
-            }
-        },
-    ];
+        ]
 }
 })();

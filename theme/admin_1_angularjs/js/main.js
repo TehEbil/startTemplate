@@ -506,7 +506,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             'components/statistics/statistics.component.js',
                             'components/newRequests/newRequests.component.js',
                             'components/stammdata/stammdata.component.js',
-                            // 'components/project/project.component.js'
                         ]
                     });
                 }]
