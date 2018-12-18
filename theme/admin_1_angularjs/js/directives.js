@@ -455,7 +455,7 @@ function maxId(arr) {
         .component('bxpResponsiveTabs', {
             bindings: {
                 selectedTab: '=',
-                tabs: '<',
+                tabs: '=',
                 submitForm: '=',
                 closeModal: '='
             },
@@ -474,7 +474,6 @@ function maxId(arr) {
                             </ul>
                         </div>
 
-                        
                         <div ng-if="!vm.mobile">
                             <ng-transclude></ng-transclude>
                         </div>
@@ -789,7 +788,6 @@ MetronicApp.directive('onMouseClick', function($timeout) {
   };
 })
 
-
 .directive('verifyAge', function() {
   return {
     require: "ngModel",
@@ -863,7 +861,6 @@ MetronicApp.directive('ngEnter', function () {
     })
 }
 })*/
-
 
 .directive('escKey', function () {
   return function (scope, element, attrs) {
@@ -960,6 +957,7 @@ return function (input) {
     }
 }
 })
+
 .filter('myDateFilter', ['$filter',
   function($filter) {
     return function(input) {

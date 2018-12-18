@@ -22,7 +22,7 @@
 	    	'Adresse',
 	    	'Ansprechpartner',
 	    	'Anschriften',
-	    	// 'Objekt',
+	    	'Objekt',
 	    	// 'Konditionen',
 	    	// 'Vorgaben',
 	    	'Statistik',
@@ -84,7 +84,6 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
     };
 }]);
 
-
 (function() {
 	'use strict';
 
@@ -101,7 +100,6 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
 
 	}
 })();
-
 
 (function() {
 	'use strict';
@@ -193,7 +191,6 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
 
 	}
 })();
-
 
 (function() {
 	'use strict';

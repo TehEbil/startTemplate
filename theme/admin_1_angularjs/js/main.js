@@ -540,6 +540,13 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             controller: 'PartnerFormController',
             controllerAs: 'vm'
         })
+        .state('protocols', {
+            url: "/protocols",
+            templateUrl: "views/protocols.html",
+            data: { pageTitle: 'Protocols'},
+            controller: 'ProtocolsController',
+            controllerAs: 'vm'
+        })
 }]);
 
 /* Init global settings and run the app */
