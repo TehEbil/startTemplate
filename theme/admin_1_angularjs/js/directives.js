@@ -403,6 +403,116 @@ function maxId(arr) {
     }
 })();
 
+(function() {
+    'use strict';
+
+    angular
+        .module('MetronicApp')
+        .component('bxpResponsiveTab', {
+            bindings: {
+                selectedTab: '=',
+                tab: '@'
+            },
+            controller: responsiveTabController,
+            controllerAs: 'vm',
+            transclude: true,
+            template: function ($element, $attrs) {
+              return `
+                <div ng-if="!vm.mobile" ng-show="vm.selectedTab == vm.tab" class="tab-content" ng-view >
+                    <ng-transclude></ng-transclude>
+                </div>
+
+                {{FormCtrl.testtesttest}}
+
+                <div ng-if="vm.mobile" uib-accordion-group class="clAccordion panel-default bxp-accordion-{{vm.tab}}">
+                  <uib-accordion-heading>
+                    {{vm.tab}}
+                  </uib-accordion-heading>
+                    <ng-transclude></ng-transclude>                
+                </div>
+              `
+            }
+
+        });
+
+    responsiveTabController.$inject = ['$rootScope', '$scope', "$q"];
+
+    /* @ngInject */
+    function responsiveTabController($rootScope, $scope, $q) {
+        var vm = this;
+        vm.mobile = isMobile.any;
+
+        vm.$onInit = () => {
+        }
+    }
+})();
+
+(function() {
+    'use strict';
+
+    angular
+        .module('MetronicApp')
+        .component('bxpResponsiveTabs', {
+            bindings: {
+                selectedTab: '=',
+                tabs: '<',
+                submitForm: '=',
+                closeModal: '='
+            },
+            controller: responsiveTabsController,
+            controllerAs: 'vm',
+            transclude: true,
+            template: function ($element, $attrs) {
+                return `
+                    <div class="bxp-container">
+                        
+                        <div ng-if="!vm.mobile" class="tabbable tabbable-tabdrop bxp-modal-box" >
+                            <ul class="nav nav-tabs">
+                                <li ng-class="{'active': tab === vm.selectedTab}" ng-repeat="tab in vm.tabs track by $index" tab="tab">
+                                    <a ng-click="vm.setSelectedTab(tab)">{{tab}}</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        
+                        <div ng-if="!vm.mobile">
+                            <ng-transclude></ng-transclude>
+                        </div>
+
+                        <uib-accordion ng-if="vm.mobile" close-others="false">
+                            <ng-transclude></ng-transclude>
+                        </uib-accordion>
+
+                        <div class="bxp-button-container group">
+                            <span class="ta-right float-right">
+                                <button type="button" class="btn btn-primary bxp-button-ok" ng-click="vm.submitForm()">Speichern</button>
+                                <button type="button" class="btn default bxp-button-ok" ng-click="vm.closeModal()">Abbrechen</button>
+                            </span>
+                        </div>
+                    </div>
+                `
+            }
+
+        });
+
+    responsiveTabsController.$inject = ['$rootScope', '$scope', "$q"];
+
+    /* @ngInject */
+    function responsiveTabsController($rootScope, $scope, $q) {
+        var vm = this;
+        vm.mobile = isMobile.any;
+        vm.setSelectedTab = setSelectedTab;
+
+        vm.$onInit = () => {
+            vm.selectedTab = vm.tabs[0];
+        }
+
+        function setSelectedTab(tab) {
+            vm.selectedTab = tab;
+        }
+    }
+})();
+
 (function () {
     'use strict';
 

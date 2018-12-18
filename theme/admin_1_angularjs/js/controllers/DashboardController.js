@@ -15,6 +15,7 @@
         vm.modalExample = modalExample;
         vm.onsave = onsave;
         vm.deleteUpload = deleteUpload;
+        vm.addKunde = addKunde;
 
         vm.testMessage = "HELLO, welcome to this WORLD!";
         vm.uploads = [];
@@ -46,6 +47,10 @@
             vm.uploads.splice(vm.uploads.findIndex(o => o.id == id), 1);
             $rootScope.sharedService.alert("File has been deleted", "success");
         } 
+
+        function addKunde() {
+            modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn')
+        }
 
         function modalExample() {
             var obj = {

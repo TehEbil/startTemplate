@@ -58,12 +58,24 @@ class DataHandler {
 
 }
 
+class StammDatenHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'stammDaten');
+    }
+}
+class PartnerFormHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'partnerForm');
+    }
+}
+
 class KontakteHandler extends DataHandler {
     constructor($http) {
         super($http, 'kontakte');
     }
 }
-
+StammDatenHandler.$inject = ['$http'];
+PartnerFormHandler.$inject = ['$http'];
 KontakteHandler.$inject = ['$http'];
 
 angular.uppercase=function(text){
@@ -117,6 +129,8 @@ var MetronicApp = angular.module("MetronicApp", [
 }])
 
 .factory('KontakteHandler', KontakteHandler)
+.factory('StammDatenHandler', StammDatenHandler)
+.factory('PartnerFormHandler', PartnerFormHandler)
 
     /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 
@@ -411,7 +425,8 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
 
                     else if(comp)
                         list[0].files.push('/components/' + comp + '/' + comp + '.controller.js');
-                    console.log("", '/components/' + comp + '/' + comp + '.controller.js');
+                    // console.log(controller);
+                    // console.log("", '/components/' + comp + '/' + comp + '.controller.js');
 
                     return $ocLazyLoad.load(list);
                 }],
@@ -491,6 +506,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             'components/statistics/statistics.component.js',
                             'components/newRequests/newRequests.component.js',
                             'components/stammdata/stammdata.component.js',
+                            // 'components/project/project.component.js'
                         ]
                     });
                 }]
@@ -516,6 +532,13 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             url: "/impressum",
             templateUrl: "views/impressum.html",
             data: {pageTitle: 'Impressum'}
+        })
+        .state('partner-form', {
+            url: "/partner-form",
+            templateUrl: "views/partner-form.html",
+            data: { pageTitle: 'Partner Form'},
+            controller: 'PartnerFormController',
+            controllerAs: 'vm'
         })
 }]);
 
