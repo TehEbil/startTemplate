@@ -19,15 +19,10 @@
     	$scope.individuelleFelder = [];
 
     	$scope.tabs = [
-	    	'Adresse',
-	    	'Ansprechpartner',
-	    	'Anschriften',
-	    	// 'Objekt',
-	    	// 'Konditionen',
-	    	// 'Vorgaben',
-	    	'Statistik',
-	    	'Indiv. Felder',
-	    	'Dokumente'
+	    	'Auftragsdaten',
+	    	'Projektdaten',
+	    	'Feststellungen',
+	    	'Protokolle'
     	];
 
         vm.tabs = $scope.tabs;
