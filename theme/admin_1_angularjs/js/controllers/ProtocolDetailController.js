@@ -5,79 +5,42 @@
 		.module('MetronicApp')
 		.controller('ProtocolDetailController', ProtocolDetailController);
 
-        ProtocolDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        ProtocolDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'getId'];
 
 	/* @ngInject */
-	function ProtocolDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+	function ProtocolDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, getId) {
 		// console.log("ProtocolDetailController Loaded");
 		var vm = this;
 
         vm.dblClick = dblClickProtocol;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        vm.protocol = {
+            id: 0,
+            isLocalInspection: true,
+            localInspectionDate: "",
+            participants: [
+              "",
+              ""
+            ],
+            temperature: "",
+            weather: "",
+            peculiarity: "",
+            reportDate: "",
+            projectType: "",
+            constructionState: "",
+            acceptance: "",
+            acceptanceComment: "",
+            note: "",
+            selectedDetection: "",
+            titlePicUrl: ""
+        };
 
-        vm.protocols = [
-            {
-                id: 1,
-                isLocalInspection: true,
-                localInspectionDate: "",
-                participants: [
-                  "",
-                  ""
-                ],
-                temperature: "",
-                weather: "",
-                peculiarity: "",
-                reportDate: "",
-                projectType: "",
-                constructionState: "",
-                acceptance: "",
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: ""
-            },
-            {
-                id: 2,
-                isLocalInspection: true,
-                localInspectionDate: "",
-                participants: [
-                  "",
-                  ""
-                ],
-                temperature: "",
-                weather: "",
-                peculiarity: "",
-                reportDate: "",
-                projectType: "",
-                constructionState: "",
-                acceptance: "",
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: ""
-            },
-            {
-                id: 3,
-                isLocalInspection: true,
-                localInspectionDate: "",
-                participants: [
-                  "",
-                  ""
-                ],
-                temperature: "",
-                weather: "",
-                peculiarity: "",
-                reportDate: "",
-                projectType: "",
-                constructionState: "",
-                acceptance: "",
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: ""
-            }
-        ];
+        init();
+
+        function init() {
+            vm.protocol = getId.data;
+        }
 
         function dblClickProtocol(protocol) {
 

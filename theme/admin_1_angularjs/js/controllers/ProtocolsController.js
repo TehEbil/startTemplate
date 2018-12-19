@@ -26,8 +26,8 @@
                   "",
                   ""
                 ],
-                temperature: "",
-                weather: "",
+                tempreture: "26",
+                weather: "Summer",
                 peculiarity: "",
                 reportDate: "",
                 projectType: "",
@@ -49,7 +49,7 @@
                   "",
                   ""
                 ],
-                temperature: "",
+                tempreture: "",
                 weather: "",
                 peculiarity: "",
                 reportDate: "",
@@ -72,7 +72,7 @@
                   "",
                   ""
                 ],
-                temperature: "",
+                tempreture: "",
                 weather: "",
                 peculiarity: "",
                 reportDate: "",
@@ -91,10 +91,13 @@
         function dblClickProtocols(protocol) {
 
             /* Open detection detail modal */
-            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn')
-            console.log('====================================');
-            console.log(protocol);
-            console.log('====================================');
+            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', {data: protocol}).then(
+                (data) => {
+                    console.log('====================================');
+                    console.log('coming data:', data);
+                    console.log('====================================');
+                }
+            );
         }
 
         function closeModal() {

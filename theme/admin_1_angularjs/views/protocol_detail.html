@@ -1,9 +1,9 @@
-<form action="#" name="formKunde" role="form" id="formKunde" ng-model="state" func="FormCtrl.closeModal" close-esc-key
+<form action="#" name="protocol" role="form" id="protocol" ng-model="state" func="FormCtrl.closeModal" close-esc-key
  ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
  novalidate autocomplete="off">
-	<bxp-responsive-in-modal form-name="Kunde" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
+	<bxp-responsive-in-modal form-name="Protocol" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
 	 submit-form="submitForm">
-		<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol</div>
+		<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol {{ vm.protocol }} </div>
 		<div class="form-group group">
 			<label class="radio-inline">
 				<input ng-disabled="" type="radio" value="inspectionYes" name="local_schedule"> local inspection was possible (es
@@ -38,14 +38,14 @@
 			<div class="bxp-col-6 float-left form-group group">
 				<div ng-class="">
 					<label class="control-label bxp-label float-left">Temperature (Temperatur)</label>
-					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+					<input class="form-control bxp-input float-left" type="text" value="vm.protocol.tempreture" ng-model="vm.protocol.tempreture">
 				</div>
 			</div>
 
 			<div class="bxp-col-6 float-left form-group group">
 				<div ng-class="">
 					<label class="control-label bxp-label float-left">Weather (Wetter)</label>
-					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+					<input class="form-control bxp-input float-left" type="text" ng-model="vm.protocol.weather">
 
 				</div>
 			</div>
