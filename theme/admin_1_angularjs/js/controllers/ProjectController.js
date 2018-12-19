@@ -22,7 +22,7 @@
                 'Auftragsdaten',
                 'Projektdaten',
                 'Feststellungen',
-                'Protokolle'
+                'Protokolle',
             ];
 
             vm.tabs = $scope.tabs;

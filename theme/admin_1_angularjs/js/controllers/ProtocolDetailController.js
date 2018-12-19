@@ -12,7 +12,7 @@
 		// console.log("ProtocolController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClickDetection;
+        vm.dblClick = dblClickProtocol;
 
         vm.protocols = [
             {
@@ -77,12 +77,12 @@
             }
         ]
 
-        function dblClickDetection(detection) {
+        function dblClickProtocol(protocol) {
 
             /* Open detection detail modal */
             // modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
             console.log('====================================');
-            console.log(detection);
+            console.log(protocol);
             console.log('====================================');
         }
 }

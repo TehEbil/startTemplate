@@ -3,13 +3,13 @@
 
 	angular
 		.module('MetronicApp')
-		.controller('DetectionController', DetectionController);
+		.controller('DetectionsController', DetectionsController);
 
-        DetectionController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        DetectionsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
 
 	/* @ngInject */
-	function DetectionController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
-		// console.log("DetectionController Loaded");
+	function DetectionsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+		// console.log("DetectionsController Loaded");
 		var vm = this;
 
         vm.dblClick = dblClickDetection;
