@@ -20,7 +20,7 @@
                 date: '18.12.2018',
                 status: 'status',
                 title: 'foo',
-                coverPicUrl: 'https://picsum.photos/200/300',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 detail: {
                     id: 8743,
@@ -45,7 +45,7 @@
                 date: '18.12.2018',
                 status: 'status',
                 title: 'foo',
-                coverPicUrl: 'https://picsum.photos/200/300',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 detail: {
                     id: 8744,
@@ -70,7 +70,7 @@
                 date: '18.12.2018',
                 status: 'status',
                 title: 'foo',
-                coverPicUrl: 'https://picsum.photos/200/300',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
                 detail: {
                     id: 8745,

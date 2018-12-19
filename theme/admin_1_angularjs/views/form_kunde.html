@@ -262,13 +262,13 @@
 								<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 								<tbody ng-if="vm.anschriften.length != 0">
 									<tr ng-dblclick="vm.dblClick(detection)" ng-repeat="detection in vm.detections">
-										<td>{{ ::detection.detail.id }}</td>
-										<td>{{ ::detection.title }}</td>
-										<td>{{ ::detection.detection }}</td>
-										<td>{{ ::detection.detail.position }}</td>
-										<td>{{ ::detection.date }}</td>
+										<td>{{ detection.detail.id }}</td>
+										<td>{{ detection.title }}</td>
+										<td>{{ detection.detection }}</td>
+										<td>{{ detection.detail.position }}</td>
+										<td>{{ detection.date }}</td>
 										<td>
-											<img src= "{{ detection.coverPicUrl }}" alt="Smiley face" height="40" width="40">
+											<img ng-src= "{{ detection.coverPicUrl }}" alt="Random Photo" height="40" width="40">
 										</td>
 									</tr>
 								</tbody>
