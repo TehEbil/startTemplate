@@ -19,7 +19,7 @@ class DataHandler {
     getData (id="") {
         var options = undefined;
         if(typeof id == "string" && id.indexOf("hidelog") >= 0) {
-            options = {ignoreLoadingBar: true}
+            options = {ignoreLoadingBar: true};
         }
         return this.$http.get(this.url + '/' + id, options);
     }
@@ -80,12 +80,12 @@ KontakteHandler.$inject = ['$http'];
 
 angular.uppercase=function(text){
  return text.toUpperCase();
- }
+ };
  angular.lowercase=function(text){
     if(text)
         return text.toLowerCase();
     return text;
- }
+ };
 
 /* Metronic App */
 var MetronicApp = angular.module("MetronicApp", [
@@ -130,7 +130,7 @@ var MetronicApp = angular.module("MetronicApp", [
 
 .factory('KontakteHandler', KontakteHandler)
 .factory('StammDatenHandler', StammDatenHandler)
-.factory('PartnerFormHandler', PartnerFormHandler)
+.factory('PartnerFormHandler', PartnerFormHandler);
 
     /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 
@@ -141,7 +141,7 @@ MetronicApp.config(['$ocLazyLoadProvider', '$httpProvider', function($ocLazyLoad
     });
     $httpProvider.interceptors.push('AuthInterceptor');
     $httpProvider.useApplyAsync(true);
-}])
+}]);
 
 MetronicApp.config(['$controllerProvider', function($controllerProvider) {
     // $controllerProvider.allowGlobals();
@@ -238,7 +238,7 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
 
       //return the errors from the server as a promise
       return $q.reject(response);
-    }
+    };
 
     //return interceptorFactory
     return interceptorFactory;
@@ -258,7 +258,7 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', '$state', funct
         value = value.replace(/ö/g, 'oe');
         value = value.replace(/ü/g, 'ue');
         return 'site-' + value;
-    }
+    };
 
     $scope.replaceUmlauts= function() {
         var string =$state.current.data.pageTitle;
@@ -268,7 +268,7 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', '$state', funct
         value = value.replace(/ö/g, 'oe');
         value = value.replace(/ü/g, 'ue');
         return value;
-    }
+    };
 
     $scope.$on('$viewContentLoaded', function() {
         //App.initComponents(); // init core components
@@ -286,7 +286,7 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
       isOpen,
       showConfirmDialog,
       alert
-    }
+    };
 
     function alert(text, warn='success') {
         return showConfirmDialog("alert", "OK", text, warn);
@@ -327,12 +327,12 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
               else if(choice == 'sure') {
                   $scope.title = "Sure";
                   $scope.text = "Are you sure to close? Data will not be saved.";
-                  $scope.param2 = "Yes"
+                  $scope.param2 = "Yes";
               }
               else if(choice == 'delete') {
                   $scope.title = "Sure";
                   $scope.text = "Are you sure to delete file?";
-                  $scope.param2 = "Delete"
+                  $scope.param2 = "Delete";
               }
 
 
@@ -340,12 +340,12 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
                 {
                     defer.resolve(par);
                     $uibModalInstance.close();
-                }
+                };
 
                 $scope.cancel = function ()
                 {
                     $uibModalInstance.close();
-                }
+                };
             }
         }).closed.then( function () {
           xxx.isOpen = false;
@@ -385,8 +385,8 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
         console.log(comp);
         var controllerLabel;
         if(comp) {
-            templateLink = '/components/' + comp + '/' + comp + '.template.html'
-            controllerLabel = comp.charAt(0).toUpperCase() + comp.substr(1) + "Controller"
+            templateLink = '/components/' + comp + '/' + comp + '.template.html';
+            controllerLabel = comp.charAt(0).toUpperCase() + comp.substr(1) + "Controller";
         }
         else
             controllerLabel = controller;
@@ -419,7 +419,7 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
                             '../assets/global/plugins/angularjs/plugins/ui-select/select.min.css',
                             '../assets/global/plugins/angularjs/plugins/ui-select/select.min.js'
                         ]
-                    }]
+                    }];
                     if(controller)
                         list[0].files.push('js/controllers/' + controller + '.js');
 
@@ -450,7 +450,7 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
         });*/
     }
 };
-}])
+}]);
 
 
 MetronicApp.controller('HeaderController', ['$rootScope', '$scope', '$interval', 'modalService', '$http', function($rootScope, $scope, $interval, modalService, $http) {
@@ -545,7 +545,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             data: { pageTitle: 'Protocols'},
             controller: 'ProtocolsController',
             controllerAs: 'vm'
-        })
+        });
 }]);
 
 /* Init global settings and run the app */
@@ -569,7 +569,7 @@ MetronicApp.run(["$rootScope", "$http", "settings", "$state", "sharedService", "
                 $state.go($state.previous, $state.previousParams);
             else
                 $state.go("waiting");
-        }
+        };
 
         $rootScope.download = function(fileResourceUrl, fileName) {
             var url = fileResourceUrl + fileName;
@@ -580,7 +580,7 @@ MetronicApp.run(["$rootScope", "$http", "settings", "$state", "sharedService", "
                 responseType: 'blob'
             }).then(function (response) {
                 var blob = response.data;
-                startBlobDownload(blob, fileName)
+                startBlobDownload(blob, fileName);
             }, () => $rootScope.sharedService.alert("Datei wurde nicht gefunden.", 'danger'));
 
         };

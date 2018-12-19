@@ -90,7 +90,7 @@
                     }
                 }
             }
-        ]
+        ];
 
         function dblClickDetection(detection) {
 

@@ -43,7 +43,7 @@
     	$scope.setSelectedTab = function(tab) {
 			$scope.selectedTab = tab;
 
-    	}
+    	};
 
     	// set default layout mode
     	$rootScope.settings.layout.pageContentWhite = true;
@@ -146,7 +146,7 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
 				"next":       ">",
 				"previous":   "<"
 			},
-		})
+		});
 
     vm.dtColumnDefs = [
       DTColumnDefBuilder.newColumnDef(0),
@@ -235,7 +235,7 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
 					"next":       ">",
 					"previous":   "<"
 				},
-	  })
+	  });
 
     vm.dtColumnDefs = [
         DTColumnDefBuilder.newColumnDef(0),
@@ -336,7 +336,7 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
 					"next":       ">",
 					"previous":   "<"
 				},
-	  })
+	  });
 
     vm.dtColumnDefs = [
         DTColumnDefBuilder.newColumnDef(0),
@@ -415,7 +415,7 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
 			console.log("hi");
 			//$scope.$close();
 			$scope.$parent.state = false;
-			modalService.openMenuModal('views/form_objekt.html', 'FormObjektController', 'animated zoomIn')
+			modalService.openMenuModal('views/form_objekt.html', 'FormObjektController', 'animated zoomIn');
 			if ( vm.clickedElement && vm.clickedElement.hasClass('selected') ) {
 				vm.clickedElement.removeClass('selected');
 				vm.clickedElement = false;
@@ -436,11 +436,11 @@ angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload'
 					vm.clickedElement = false;
 					vm.id = false;
 				}
-				})
+				});
 				$scope.$parent.state = false;
 			}
 			else
-				alert("Kein Eintrag ausgewählt.")
+				alert("Kein Eintrag ausgewählt.");
 		}
 
 		function deleteData() {

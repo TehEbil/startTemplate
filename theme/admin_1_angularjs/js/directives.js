@@ -57,7 +57,7 @@ MetronicApp.directive('ngSpinnerBar', ['$rootScope', '$state',
             }
         };
     }
-])
+]);
 
 // Handle global LINK click
 MetronicApp.directive('a', function() {
@@ -156,14 +156,6 @@ function maxId(arr) {
                 </div>
               </div>
 
-
-
-
-
-
-
-
-
               <div ng-if="vm.validate && !vm.plzorlocality">
                 <div class="form-group modal-adress">
                   <div class="group" ng-class="{ 'has-error' : !vm.address.route && vm.submitted}">
@@ -245,7 +237,7 @@ function maxId(arr) {
                     </div>
                 </div>
               </div>
-              `
+              `;
             }
 
         });
@@ -268,7 +260,7 @@ function maxId(arr) {
         //     console.error("CRITICAL ERRRORR AUFPASSEN VM ADDRESS NICHT GESETZT")
         //     // vm.address = {};
         // }
-      }
+      };
 
 
       vm.getLocation = function(val) {
@@ -289,7 +281,7 @@ function maxId(arr) {
           vm.tmpResult = response.data.results;
           return response.data.results.map(function(item){
             return item.formatted_address;
-          })
+          });
         });
       };
 
@@ -311,7 +303,7 @@ function maxId(arr) {
             postal_code: "",
             country: "",
             locality: ""
-        }
+        };
 
         for(var key in addr)
           if(addr[key]['types'].indexOf("street_number") != -1)
@@ -334,7 +326,7 @@ function maxId(arr) {
           if(vm.address.route) 
             delete addrObj.route;
           
-          vm.address = Object.assign(vm.address, addrObj)
+          vm.address = Object.assign(vm.address, addrObj);
           if(vm.onSelect)
               vm.onSelect();
         });
@@ -342,7 +334,7 @@ function maxId(arr) {
       };
 
         vm.onSelectCity2 = function ($item, $model, $label) {
-        console.log($item, $model, $label)
+        console.log($item, $model, $label);
         console.log(vm.address.route);
 
             var addr;
@@ -358,7 +350,7 @@ function maxId(arr) {
                 postal_code: "",
                 country: "",
                 locality: ""
-            }
+            };
 
             for(key in addr)
                 if(addr[key]['types'].indexOf("street_number") != -1)
@@ -377,7 +369,7 @@ function maxId(arr) {
 
             addrObj.country = vm.countries.find(o => o.name == addrObj.country);
             // console.log(addrObj, vm.formData)
-            vm.address = Object.assign(vm.address, addrObj)
+            vm.address = Object.assign(vm.address, addrObj);
             if(vm.onSelect)
                 vm.onSelect();
             return;
@@ -430,7 +422,7 @@ function maxId(arr) {
                   </uib-accordion-heading>
                     <ng-transclude></ng-transclude>                
                 </div>
-              `
+              `;
             }
 
         });
@@ -443,7 +435,7 @@ function maxId(arr) {
         vm.mobile = isMobile.any;
 
         vm.$onInit = () => {
-        }
+        };
     }
 })();
 
@@ -489,7 +481,7 @@ function maxId(arr) {
                             </span>
                         </div>
                     </div>
-                `
+                `;
             }
 
         });
@@ -504,7 +496,7 @@ function maxId(arr) {
 
         vm.$onInit = () => {
             vm.selectedTab = vm.tabs[0];
-        }
+        };
 
         function setSelectedTab(tab) {
             vm.selectedTab = tab;
@@ -560,7 +552,7 @@ function maxId(arr) {
                           <i class="fa fa-plus"></i>
                       </a>
                     </span>
-                `
+                `;
             }
 
         });
@@ -576,7 +568,7 @@ function maxId(arr) {
             vm.recentEl = false;
             if(vm.uploads)
                 vm.uploadsLen = vm.uploads.length;
-        }
+        };
 
 
         function startBlobDownload(dataBlob, suggestedFileName) {
@@ -605,7 +597,7 @@ function maxId(arr) {
         vm.download = function(fileResourceUrl, fileName) {
              var url = $rootScope.ip + fileResourceUrl + fileName;
              console.log(url);
-             console.log($rootScope.ip + 'uploads/' + fileName)
+             console.log($rootScope.ip + 'uploads/' + fileName);
 
              $http({
                  method: 'GET',
@@ -613,7 +605,7 @@ function maxId(arr) {
                  responseType: 'blob'
              }).then(function (response) {
                  var blob = response.data;
-                 startBlobDownload(blob, fileName)
+                 startBlobDownload(blob, fileName);
              }, () => $rootScope.sharedService.alert("File not found.", 'danger'));
          };
 
@@ -623,7 +615,7 @@ function maxId(arr) {
                 return console.error("Fehler bei editEntry");
 
             if(id == -1)
-                id = vm.id
+                id = vm.id;
 
             if(vm.recentEl)
                 vm.recentEl.editMode = false;
@@ -633,7 +625,7 @@ function maxId(arr) {
             vm.recentEl = vm.uploads[idx];
             vm.uploads[idx].editMode = true;
             vm.id = id;
-        }
+        };
 
         vm.saveEntry = function (id = -1) {
             if(vm.id == false)
@@ -641,7 +633,7 @@ function maxId(arr) {
 
             var idx = vm.uploads.findIndex(o => o.id == vm.id);
             vm.uploads[idx].editMode = false;
-        }
+        };
 
         vm.deleteEntry = function (id = -1) {
 
@@ -653,7 +645,7 @@ function maxId(arr) {
                 if (vm.ondelete)
                     vm.ondelete(vm.uploads[idx].id);
             });
-        }
+        };
 
         vm.newDocument = function () {
             if(vm.makeDisabled)
@@ -676,7 +668,7 @@ function maxId(arr) {
                 if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
                     vm.disablesub = false;
             });
-        }
+        };
 
     }
 })();
@@ -726,14 +718,14 @@ MetronicApp.directive('onMouseClick', function($timeout) {
 
                     event.preventDefault();
                 }
-            })
+            });
 
             scope.$on('$destroy', function () {
               //console.log("destroyed", htmlElement)
               toBind.unbind('click.' + attrs.id);
-            })
+            });
         }]
-    }
+    };
 })
 
 .directive('compareTo', function() {
@@ -764,7 +756,7 @@ MetronicApp.directive('onMouseClick', function($timeout) {
                 cb(scope);
             });
         }
-    }
+    };
 })
 
 .directive('greaterThen', function() {
@@ -825,14 +817,14 @@ MetronicApp.directive('onMouseClick', function($timeout) {
 
                   event.preventDefault();
               }
-          })
+          }),
 
           scope.$on('$destroy', function () {
             toBind.unbind('keydown');
-          })
+          });
         }
-    }
-})
+    };
+});
 
 MetronicApp.directive('ngEnter', function () {
     return function (scope, element, attrs) {
@@ -910,7 +902,7 @@ MetronicApp.directive('ngEnter', function () {
                 }, 0);
             }
         }
-    }
+    };
 }])
 
 .directive('fileModel', ['$parse', function ($parse) {
@@ -941,7 +933,7 @@ MetronicApp.directive('ngEnter', function () {
         } else {
             return input + ' m';
         }
-    }
+    };
 })
 
 .filter('distance3', function ()  {
@@ -955,7 +947,7 @@ return function (input) {
     } else {
         return input + ' m';
     }
-}
+};
 })
 
 .filter('myDateFilter', ['$filter',
@@ -977,7 +969,7 @@ return function (input) {
         return h + " Std.";
       else
         return h + " Std. " + m + " Min.";
-    }
+    };
   }
 ])
 

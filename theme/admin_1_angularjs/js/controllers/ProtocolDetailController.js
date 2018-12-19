@@ -75,7 +75,7 @@
                 selectedDetection: "",
                 titlePicUrl: ""
             }
-        ]
+        ];
 
         function dblClickProtocol(protocol) {
 

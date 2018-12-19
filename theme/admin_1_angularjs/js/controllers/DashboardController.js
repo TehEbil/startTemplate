@@ -26,8 +26,8 @@
         $http.get($rootScope.ip + 'testUploads').then( ({data}) => {
             /* data -> user.uploads */
             data.forEach((elem) => {
-                vm.uploads.push(elem)
-            })
+                vm.uploads.push(elem);
+            });
         });
 
         function alertExample() {
@@ -49,19 +49,19 @@
         } 
 
         function addKunde() {
-            modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn')
+            modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn');
         }
 
         function modalExample() {
             var obj = {
                 uploads: vm.uploads,
                 callback: onsave
-            }
+            };
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             // modalService.openComponentModal('bxpStammdata').then((data) => {
             modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then((data) => {
                 /* vm.uploads has to be saved to the data (e.g. customer) it belongs to */
-                console.log("Modal closed, vm.uploads now = ", vm.uploads)
+                console.log("Modal closed, vm.uploads now = ", vm.uploads);
             });
         }
     }

@@ -57,7 +57,7 @@
                 callback: onsave,
                 data: vm.baseData.data,
                 title: "Stammdata"
-            }
+            };
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
@@ -68,7 +68,7 @@
                 var obj = {
                     data, // same as data: data -> because key and value is the same
                     changedCounter: vm.baseData.changedCounter
-                }
+                };
 
                 StammDatenHandler.postData(obj).then(
                     (res) => {
@@ -78,11 +78,11 @@
                         vm.baseData = res.data;
                     },
                     (err) => {
-                        $rootScope.sharedService.alert('data has been changed!', "danger")
+                        $rootScope.sharedService.alert('data has been changed!', "danger");
                     }
                 );
 
-                console.log("Modal closed, vm.uploads now = ", vm.baseData)
+                console.log("Modal closed, vm.uploads now = ", vm.baseData);
             });
         }
     }
