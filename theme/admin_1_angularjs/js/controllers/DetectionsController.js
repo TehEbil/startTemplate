@@ -13,6 +13,8 @@
 		var vm = this;
 
         vm.dblClick = dblClickDetection;
+        vm.closeModal = closeModal;
+        vm.submitForm = submitForm;
 
         vm.detections = [
             {
@@ -95,10 +97,18 @@
         function dblClickDetection(detection) {
 
             /* Open detection detail modal */
-            // modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn')
             console.log('====================================');
             console.log(detection);
             console.log('====================================');
+        }
+
+        function closeModal() {
+            $scope.$close();
+        }
+
+        function submitForm() {
+            $scope.$close();
         }
 }
 })();

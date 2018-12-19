@@ -504,6 +504,61 @@ function maxId(arr) {
     }
 })();
 
+(function() {
+    'use strict';
+
+    angular
+        .module('MetronicApp')
+        .component('bxpResponsiveInModal', {
+            bindings: {
+                selectedTab: '=',
+                submitForm: '=',
+                closeModal: '='
+            },
+            controller: responsiveDetailController,
+            controllerAs: 'vm',
+            transclude: true,
+            template: function ($element, $attrs) {
+                return `
+                    <div class="bxp-container">
+                        <div ng-if="!vm.mobile">
+                            <ng-transclude></ng-transclude>
+                        </div>
+
+                        <uib-accordion ng-if="vm.mobile" close-others="false">
+                            <ng-transclude></ng-transclude>
+                        </uib-accordion>
+
+                        <div class="bxp-button-container group">
+                            <span class="ta-right float-right">
+                                <button type="button" class="btn btn-primary bxp-button-ok" ng-click="vm.submitForm()">Speichern</button>
+                                <button type="button" class="btn default bxp-button-ok" ng-click="vm.closeModal()">Abbrechen</button>
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+
+        });
+
+    responsiveDetailController.$inject = ['$rootScope', '$scope', "$q"];
+
+    /* @ngInject */
+    function responsiveDetailController($rootScope, $scope, $q) {
+        var vm = this;
+        vm.mobile = isMobile.any;
+        vm.setSelectedTab = setSelectedTab;
+
+        vm.$onInit = () => {
+            
+        };
+
+        function setSelectedTab(tab) {
+            vm.selectedTab = tab;
+        }
+    }
+})();
+
 (function () {
     'use strict';
 

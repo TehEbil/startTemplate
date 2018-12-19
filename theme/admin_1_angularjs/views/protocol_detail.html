@@ -1,68 +1,90 @@
-<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol</div>
-<div class="form-group group">
-	<label class="radio-inline">
-		<input ng-disabled="" type="radio" value="inspectionYes" name="local_schedule"> local inspection was possible (es
-		konnte besichtigt werden)
-	</label>
-	<label class="radio-inline">
-		<input ng-disabled="" type="radio" value="inspectionNo" name="local_schedule"> local inspection was not possible (es
-		konnte nicht besichtigt werden)
-	</label>
-</div>
-<div class="form-group group">
-	<div class="bxp-col-6 float-left form-group group">
-		<div ng-class="">
-			<label class="control-label bxp-label float-left">Date Local Inspection (Datum Begehung)</label>
-			<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+<form action="#" name="formKunde" role="form" id="formKunde" ng-model="state" func="FormCtrl.closeModal" close-esc-key
+ ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
+ novalidate autocomplete="off">
+	<bxp-responsive-in-modal form-name="Kunde" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
+	 submit-form="submitForm">
+		<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol</div>
+		<div class="form-group group">
+			<label class="radio-inline">
+				<input ng-disabled="" type="radio" value="inspectionYes" name="local_schedule"> local inspection was possible (es
+				konnte besichtigt werden)
+			</label>
+			<label class="radio-inline">
+				<input ng-disabled="" type="radio" value="inspectionNo" name="local_schedule"> local inspection was not possible
+				(es
+				konnte nicht besichtigt werden)
+			</label>
 		</div>
-	</div>
+		<div class="form-group group">
+			<div class="bxp-col-6 float-left form-group group">
+				<div ng-class="">
+					<label class="control-label bxp-label float-left">Date Local Inspection (Datum Begehung)</label>
+					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+				</div>
+			</div>
 
-	<div class="bxp-col-6 float-left form-group group">
-		<div ng-class="">
-			<label class="control-label bxp-label float-left">Participants (Teilnehmer)</label>
-			<textarea class="form-control bxp-input float-left" rows="4" cols="50">
+			<div class="bxp-col-6 float-left form-group group">
+				<div ng-class="">
+					<label class="control-label bxp-label float-left">Participants (Teilnehmer)</label>
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50">
 
 	    </textarea>
 
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
-<div class="form-group group">
-	<div class="bxp-col-6 float-left form-group group">
-		<div ng-class="">
-			<label class="control-label bxp-label float-left">Temperature (Temperatur)</label>
-			<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+		<div class="form-group group">
+			<div class="bxp-col-6 float-left form-group group">
+				<div ng-class="">
+					<label class="control-label bxp-label float-left">Temperature (Temperatur)</label>
+					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+				</div>
+			</div>
+
+			<div class="bxp-col-6 float-left form-group group">
+				<div ng-class="">
+					<label class="control-label bxp-label float-left">Weather (Wetter)</label>
+					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+
+				</div>
+			</div>
 		</div>
-	</div>
 
-	<div class="bxp-col-6 float-left form-group group">
-		<div ng-class="">
-			<label class="control-label bxp-label float-left">Weather (Wetter)</label>
-			<input class="form-control bxp-input float-left" type="text" ng-disabled="">
-
-		</div>
-	</div>
-</div>
-
-<div class="form-group group">
-	<label class="control-label bxp-label float-left">Peculiarity (Besonderheiten)</label>
-	<textarea class="form-control bxp-input float-left" rows="4" cols="50">
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Peculiarity (Besonderheiten)</label>
+			<textarea class="form-control bxp-input float-left" rows="4" cols="50">
 
    </textarea>
-</div>
-
-<div class="form-group group">
-	<div class="bxp-col-6 float-left form-group group">
-		<div ng-class="">
-			<label class="control-label bxp-label float-left">Date report (Datum Bericht</label>
-			<input class="form-control bxp-input float-left" type="text" ng-disabled="">
 		</div>
-	</div>
 
-	<div class="bxp-col-6 float-left form-group group">
-		<div ng-class="">
-			<label class="control-label bxp-label float-left">Projec type (Art des Vorhabens)</label>
+		<div class="form-group group">
+			<div class="bxp-col-6 float-left form-group group">
+				<div ng-class="">
+					<label class="control-label bxp-label float-left">Date report (Datum Bericht</label>
+					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+				</div>
+			</div>
+
+			<div class="bxp-col-6 float-left form-group group">
+				<div ng-class="">
+					<label class="control-label bxp-label float-left">Projec type (Art des Vorhabens)</label>
+					<!-- Dropdown from land as placeholder -->
+					<div id="country-select" class="bxp-input country-select float-left">
+						<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+							<ui-select-match>{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+								<span ng-bind-html="item.name  | highlight: $select.search"></span>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Construction state (Bautenstand)</label>
 			<!-- Dropdown from land as placeholder -->
 			<div id="country-select" class="bxp-input country-select float-left">
 				<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
@@ -72,53 +94,40 @@
 					</ui-select-choices>
 				</ui-select>
 			</div>
-
 		</div>
-	</div>
-</div>
 
-<div class="form-group group">
-	<label class="control-label bxp-label float-left">Construction state (Bautenstand)</label>
-	<!-- Dropdown from land as placeholder -->
-	<div id="country-select" class="bxp-input country-select float-left">
-		<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
-			<ui-select-match>{{$select.selected.name}}</ui-select-match>
-			<ui-select-choices repeat="item in vm.countries | filter: $select.search">
-				<span ng-bind-html="item.name  | highlight: $select.search"></span>
-			</ui-select-choices>
-		</ui-select>
-	</div>
-</div>
+		<div class="form-group group">
+			<div class="bxp-col-6 float-left form-group group">
+				<label class="control-label bxp-label float-left">Acceptance (Abnahme)</label>
+				<!-- Dropdown from land as placeholder -->
+				<div id="country-select" class="bxp-input country-select float-left">
+					<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+						<ui-select-match>{{$select.selected.name}}</ui-select-match>
+						<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+							<span ng-bind-html="item.name  | highlight: $select.search"></span>
+						</ui-select-choices>
+					</ui-select>
+				</div>
+			</div>
 
-<div class="form-group group">
-	<div class="bxp-col-6 float-left form-group group">
-		<label class="control-label bxp-label float-left">Acceptance (Abnahme)</label>
-		<!-- Dropdown from land as placeholder -->
-		<div id="country-select" class="bxp-input country-select float-left">
-			<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
-				<ui-select-match>{{$select.selected.name}}</ui-select-match>
-				<ui-select-choices repeat="item in vm.countries | filter: $select.search">
-					<span ng-bind-html="item.name  | highlight: $select.search"></span>
-				</ui-select-choices>
-			</ui-select>
-		</div>
-	</div>
-
-	<div class="bxp-col-6 float-left form-group group">
-		<label class="control-label bxp-label float-left">Acceptance Comment (Abnahmekommentar)</label>
-		<textarea class="form-control bxp-input float-left" rows="4" cols="50">
+			<div class="bxp-col-6 float-left form-group group">
+				<label class="control-label bxp-label float-left">Acceptance Comment (Abnahmekommentar)</label>
+				<textarea class="form-control bxp-input float-left" rows="4" cols="50">
 
 	    </textarea>
 
-	</div>
-</div>
+			</div>
+		</div>
 
-<div class="form-group group">
-	<label class="control-label bxp-label float-left">Notes (Hinweise und Anmerkungen)</label>
-	<textarea class="form-control bxp-input float-left" rows="4" cols="50">
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Notes (Hinweise und Anmerkungen)</label>
+			<textarea class="form-control bxp-input float-left" rows="4" cols="50">
 
    </textarea>
-</div>
+		</div>
 
-<div>Here: choosing of Feststellungen</div>
-<div>Here: upload of one title picture</div>
+		<div>Here: choosing of Feststellungen</div>
+		<div>Here: upload of one title picture</div>
+
+	</bxp-responsive-in-modal>
+</form>

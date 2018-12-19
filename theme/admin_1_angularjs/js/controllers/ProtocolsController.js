@@ -13,6 +13,8 @@
 		var vm = this;
 
         vm.dblClick = dblClickProtocols;
+        vm.closeModal = closeModal;
+        vm.submitForm = submitForm;
 
         vm.protocols = [
             {
@@ -89,10 +91,18 @@
         function dblClickProtocols(protocol) {
 
             /* Open detection detail modal */
-            // modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
+            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn')
             console.log('====================================');
             console.log(protocol);
             console.log('====================================');
+        }
+
+        function closeModal() {
+            $scope.$close();
+        }
+
+        function submitForm() {
+            $scope.$close();
         }
 }
 })();

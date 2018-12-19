@@ -3,16 +3,18 @@
 
 	angular
 		.module('MetronicApp')
-		.controller('ProtocolController', ProtocolController);
+		.controller('ProtocolDetailController', ProtocolDetailController);
 
-        ProtocolController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        ProtocolDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
 
 	/* @ngInject */
-	function ProtocolController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
-		// console.log("ProtocolController Loaded");
+	function ProtocolDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+		// console.log("ProtocolDetailController Loaded");
 		var vm = this;
 
         vm.dblClick = dblClickProtocol;
+        vm.closeModal = closeModal;
+        vm.submitForm = submitForm;
 
         vm.protocols = [
             {
@@ -84,6 +86,14 @@
             console.log('====================================');
             console.log(protocol);
             console.log('====================================');
+        }
+
+        function closeModal() {
+            $scope.$close();
+        }
+
+        function submitForm() {
+            $scope.$close();
         }
 }
 })();

@@ -13,6 +13,8 @@
 		var vm = this;
 
         vm.dblClick = dblClickDetection;
+        vm.closeModal = closeModal;
+        vm.submitForm = submitForm;
 
         vm.detections = [
             {
@@ -99,6 +101,14 @@
             console.log('====================================');
             console.log(detection);
             console.log('====================================');
+        }
+
+        function closeModal() {
+            $scope.$close();
+        }
+
+        function submitForm() {
+            $scope.$close();
         }
 }
 })();
