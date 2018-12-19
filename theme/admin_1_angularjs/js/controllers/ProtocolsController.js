@@ -19,6 +19,7 @@
                 id: 1,
                 isLocalInspection: true,
                 localInspectionDate: "",
+                protocolType: "type1",
                 participants: [
                   "",
                   ""
@@ -28,17 +29,20 @@
                 peculiarity: "",
                 reportDate: "",
                 projectType: "",
-                constructionState: "",
+                constructionState: "Condemned",
                 acceptance: "",
                 acceptanceComment: "",
                 note: "",
                 selectedDetection: "",
-                titlePicUrl: ""
+                titlePicUrl: "",
+                date: "19.12.2018",
+                members: "Mahmut, Can"
             },
             {
                 id: 2,
                 isLocalInspection: true,
                 localInspectionDate: "",
+                protocolType: "Type2",
                 participants: [
                   "",
                   ""
@@ -48,17 +52,20 @@
                 peculiarity: "",
                 reportDate: "",
                 projectType: "",
-                constructionState: "",
+                constructionState: "Not Good",
                 acceptance: "",
                 acceptanceComment: "",
                 note: "",
                 selectedDetection: "",
-                titlePicUrl: ""
+                titlePicUrl: "",
+                date: "19.12.2018",
+                members: "Necati, Mahmut, Muhammed"
             },
             {
                 id: 3,
                 isLocalInspection: true,
                 localInspectionDate: "",
+                protocolType: "Type3",
                 participants: [
                   "",
                   ""
@@ -68,12 +75,14 @@
                 peculiarity: "",
                 reportDate: "",
                 projectType: "",
-                constructionState: "",
+                constructionState: "Ok",
                 acceptance: "",
                 acceptanceComment: "",
                 note: "",
                 selectedDetection: "",
-                titlePicUrl: ""
+                titlePicUrl: "",
+                date: "19.12.2018",
+                members: "Muhammed, Necati, Can"
             }
         ];
 
