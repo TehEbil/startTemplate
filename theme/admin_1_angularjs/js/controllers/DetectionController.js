@@ -5,12 +5,14 @@
 		.module('MetronicApp')
 		.controller('DetectionController', DetectionController);
 
-        DetectionController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder'];
+        DetectionController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
 
 	/* @ngInject */
-	function DetectionController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder) {
+	function DetectionController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
 		// console.log("DetectionController Loaded");
 		var vm = this;
+
+        vm.dblClick = dblClickDetection;
 
         vm.detections = [
             {
@@ -89,5 +91,14 @@
                 }
             }
         ]
+
+        function dblClickDetection(detection) {
+
+            /* Open detection detail modal */
+            // modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
+            console.log('====================================');
+            console.log(detection);
+            console.log('====================================');
+        }
 }
 })();

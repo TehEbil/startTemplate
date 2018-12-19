@@ -261,7 +261,7 @@
 								</thead>
 								<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 								<tbody ng-if="vm.anschriften.length != 0">
-									<tr ng-dblclick="vm.editAnschrift()" ng-repeat="detection in vm.detections">
+									<tr ng-dblclick="vm.dblClick(detection)" ng-repeat="detection in vm.detections">
 										<td>{{ ::detection.detail.id }}</td>
 										<td>{{ ::detection.title }}</td>
 										<td>{{ ::detection.detection }}</td>
