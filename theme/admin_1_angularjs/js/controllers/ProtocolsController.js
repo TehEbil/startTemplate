@@ -20,24 +20,21 @@
             {
                 id: 1,
                 isLocalInspection: true,
-                localInspectionDate: "",
+                localInspectionDate: "2018-12-20T06:06:53+00:00",
                 protocolType: "type1",
-                participants: [
-                  "",
-                  ""
-                ],
+                participants: "Mahmut, Can, Muhammed",
                 tempreture: "26",
                 weather: "Summer",
-                peculiarity: "",
-                reportDate: "",
-                projectType: "",
+                particularties: "1. particularity, 2. particularity",
+                reportDate: "2018-12-20T06:06:53+00:00",
+                projectType: "Type 1",
                 constructionState: "Condemned",
-                acceptance: "",
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: "",
-                date: "19.12.2018",
+                acceptance: "Accepted",
+                acceptanceComment: "As a result of the researching of a defect has not been found.",
+                note: "All we need a just a little lahmacun!",
+                selectedDetection: "Detection 1",
+                titlePicUrl: "https://picsum.photos/100/100/?random",
+                date: "2018-12-20T06:06:53+00:00",
                 members: "Mahmut, Can"
             },
             {
@@ -51,7 +48,7 @@
                 ],
                 tempreture: "",
                 weather: "",
-                peculiarity: "",
+                particularties: "",
                 reportDate: "",
                 projectType: "",
                 constructionState: "Not Good",
@@ -74,7 +71,7 @@
                 ],
                 tempreture: "",
                 weather: "",
-                peculiarity: "",
+                particularties: "",
                 reportDate: "",
                 projectType: "",
                 constructionState: "Ok",
@@ -89,7 +86,7 @@
         ];
 
         function dblClickProtocols(protocol) {
-
+            console.log('f:' + protocol)
             /* Open detection detail modal */
             modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', {data: protocol}).then(
                 (data) => {

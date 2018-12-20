@@ -19,13 +19,10 @@
             id: 0,
             isLocalInspection: true,
             localInspectionDate: "",
-            participants: [
-              "",
-              ""
-            ],
+            participants: "",
             temperature: "",
             weather: "",
-            peculiarity: "",
+            particularties: "",
             reportDate: "",
             projectType: "",
             constructionState: "",
@@ -40,15 +37,21 @@
 
         function init() {
             vm.protocol = getId.data;
+            console.log('====================================');
+            console.log(vm.protocol);
+            console.log('====================================');
         }
 
         function dblClickProtocol(protocol) {
-
+            console.log('f:' + protocol)
             /* Open detection detail modal */
-            // modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
-            console.log('====================================');
-            console.log(protocol);
-            console.log('====================================');
+            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', {data: protocol}).then(
+                (data) => {
+                    console.log('====================================');
+                    console.log('coming data:', data);
+                    console.log('====================================');
+                }
+            );
         }
 
         function closeModal() {
