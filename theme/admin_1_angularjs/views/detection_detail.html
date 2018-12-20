@@ -1,0 +1,147 @@
+<form action="#" name="detection" role="form" id="detection" ng-model="state" func="FormCtrl.closeModal" close-esc-key
+ ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
+ novalidate autocomplete="off"></form>
+<bxp-responsive-in-modal form-name="Detection" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
+ submit-form="submitForm">
+	<div class="bxp-form-note mt-5px mb-10px">Creating new Feststellung</div>
+
+	<div class="form-group group">
+		<div class="bxp-col-6 float-left form-group group">Nr {{ FormCtrl.detection.detail.id }} 1/16</div>
+
+		<div class="bxp-col-6 float-left form-group group">
+			<<>> 
+		</div>
+	</div>
+
+	<div class="form-group group">
+		<div class="bxp-col-6 float-left form-group group">
+			<label class="control-label bxp-label float-left">Date (Datum)</label>
+			<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.date" />
+		</div>
+
+		<div class="bxp-col-6 float-left form-group group">
+			<label class="control-label bxp-label float-left">Time (Uhrzeit)</label>
+			<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.date"/>
+		</div>
+	</div>
+
+	<div class="form-group group">
+		<label class="control-label bxp-label float-left">Checking Field (Prüffeld)</label>
+		<div class="form-group modal-form-group width-100 group">
+			<div class="bxp-input float-left edit-icon-container">
+				<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+					<ui-select-match>{{ $select.selected.name }}</ui-select-match>
+					<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+						<span ng-bind-html="item.name  | highlight: $select.search"></span>
+					</ui-select-choices>
+				</ui-select>
+				<a class="edit-icon"><i class="fa fa-cog"></i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group group">
+		<label class="control-label bxp-label float-left">Located/Place (Lage/Position)</label>
+		<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.position"/>
+	</div>
+
+	<div class="form-group group">
+		<label class="control-label bxp-label float-left">Title (Titel)</label>
+		<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.title"/>
+	</div>
+
+	<div class="form-group group">
+		<div class="bxp-col-6 float-left group">
+			<div class="group">
+				<label class="control-label bxp-label float-left">Evaluation (Bewertung)</label>
+				<div class="form-group modal-form-group width-100 group">
+					<div class="bxp-input float-left edit-icon-container">
+						<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+							<ui-select-match>{{
+								$select.selected.name
+								}}</ui-select-match>
+							<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+								<span ng-bind-html="item.name  | highlight: $select.search"></span>
+							</ui-select-choices>
+						</ui-select>
+						<a class="edit-icon"><i class="fa fa-cog"></i></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="group">
+				<label class="control-label bxp-label float-left">State (Status)</label>
+				<div class="form-group modal-form-group width-100 group">
+					<div class="bxp-input float-left edit-icon-container">
+						<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+							<ui-select-match>{{
+								$select.selected.name
+								}}</ui-select-match>
+							<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+								<span ng-bind-html="item.name  | highlight: $select.search"></span>
+							</ui-select-choices>
+						</ui-select>
+						<a class="edit-icon"><i class="fa fa-cog"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="bxp-col-6 float-left group">
+			<label class="control-label bxp-label float-left">Basic (Grundlagen)</label>
+			<div class="form-group modal-form-group width-100 group">
+				<div class="bxp-input float-left edit-icon-container">
+					<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+						<ui-select-match>{{
+							$select.selected.name
+							}}</ui-select-match>
+						<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+							<span ng-bind-html="item.name  | highlight: $select.search"></span>
+						</ui-select-choices>
+					</ui-select>
+					<a class="edit-icon"><i class="fa fa-cog"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group group">
+		<label class="control-label bxp-label float-left">Description (Beschreibung)</label>
+
+		<div class="form-group modal-form-group width-100 group">
+			<div class="bxp-input float-left edit-icon-container">
+				<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.detection.detail.description">
+            </textarea>
+				<a class="edit-icon"><i class="fa fa-cog">for text snippets!</i></a>
+			</div>
+		</div>
+	</div>
+
+	<div class="bxp-form-note mt-5px mb-10px">Costs (Kosten)</div>
+
+	<div class="form-group group">
+		<div class="bxp-col-6 float-left group">
+			<div class="group">
+				<label class="control-label bxp-label float-left">Removal (Beseitigung)</label>
+				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.disposalCost"/>
+			</div>
+
+			<div class="group">
+				<label class="control-label bxp-label float-left">Impairment (Wertminderung)</label>
+				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.impairment"/>
+			</div>
+		</div>
+
+		<div class="bxp-col-6 float-left group">
+			<div class="group">
+				<label class="control-label bxp-label float-left">Withholding (yersen) (Einbehalt)</label>
+				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.recoup"/>
+			</div>
+
+			<input id="printable" type="checkbox" name="doNotprintItMan" value="doNotprintItMan" ng-model="FormCtrl.detection.detail.costs.isPrint"/>
+			<label for="printable">Do not print the costs (Kosten nicht ausdrucken)</label><br />
+		</div>
+	</div>
+
+	NOTE: open a new tab for the images!
+</bxp-responsive-in-modal>
+</form>

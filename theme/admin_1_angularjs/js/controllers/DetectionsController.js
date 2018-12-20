@@ -3,16 +3,18 @@
 
 	angular
 		.module('MetronicApp')
-		.controller('DetectionController', DetectionController);
+		.controller('DetectionsController', DetectionsController);
 
-        DetectionController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        DetectionsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
 
 	/* @ngInject */
-	function DetectionController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
-		// console.log("DetectionController Loaded");
+	function DetectionsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+		// console.log("DetectionsController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClickDetection;
+        vm.dblClick = dblClick;
+        vm.closeModal = closeModal;
+        vm.submitForm = submitForm;
 
         vm.detections = [
             {
@@ -20,7 +22,7 @@
                 date: '18.12.2018',
                 status: 'status',
                 title: 'foo',
-                coverPicUrl: 'https://picsum.photos/200/300',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 detail: {
                     id: 8743,
@@ -45,7 +47,7 @@
                 date: '18.12.2018',
                 status: 'status',
                 title: 'foo',
-                coverPicUrl: 'https://picsum.photos/200/300',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
                 detail: {
                     id: 8744,
@@ -70,7 +72,7 @@
                 date: '18.12.2018',
                 status: 'status',
                 title: 'foo',
-                coverPicUrl: 'https://picsum.photos/200/300',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
                 detail: {
                     id: 8745,
@@ -90,15 +92,29 @@
                     }
                 }
             }
-        ]
+        ];
 
-        function dblClickDetection(detection) {
+        function dblClick(detection) {
 
             /* Open detection detail modal */
-            // modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
             console.log('====================================');
             console.log(detection);
             console.log('====================================');
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', {data: detection}).then(
+                (data) => {
+                    console.log('====================================');
+                    console.log(data);
+                    console.log('====================================');
+                }
+            );
+        }
+
+        function closeModal() {
+            $scope.$close();
+        }
+
+        function submitForm() {
+            $scope.$close();
         }
 }
 })();

@@ -101,7 +101,7 @@
             vm.items[idx].editMode = false;
             vm.editStatus = false;
 
-            console.log(typeof vm.onsave === "function")
+            console.log(typeof vm.onsave === "function");
             if(typeof vm.onsave === "function")
                 vm.onsave();
         }
@@ -115,7 +115,7 @@
                 // $rootScope.$broadcast('editStammdata.delete', vm.items[idx]);
                 if(typeof vm.ondelete === "function")
                     vm.ondelete();
-            })
+            });
         }
 
         function closeModal() {
@@ -125,9 +125,9 @@
                 $scope.sharedService.showConfirmDialog("sure","Löschen").then(function () {
                     $scope.$close();
                     vm.items = vm.master;
-                })
+                });
             }
-        };
+        }
 
         // function cancelEntry(id) {
         //     var idx = vm.items.findIndex(o => o.id === id)

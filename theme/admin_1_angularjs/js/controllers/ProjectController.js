@@ -22,7 +22,7 @@
                 'Auftragsdaten',
                 'Projektdaten',
                 'Feststellungen',
-                'Protokolle'
+                'Protokolle',
             ];
 
             vm.tabs = $scope.tabs;
@@ -37,7 +37,7 @@
         }
 
         function createNewProject() {
-            modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
+            modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn');
         }
 
     	vm.selectedTab = vm.tabs[0];
