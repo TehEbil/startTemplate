@@ -1,32 +1,36 @@
 (function() {
-    'use strict';
-    
-	angular
-	.module('MetronicApp')
-	.controller('ProjectController', ProjectController);
+	'use strict';
 
-	ProjectController.$inject = ['$rootScope', '$scope', '$state', 'modalService'];
+	angular
+		.module('MetronicApp')
+		.controller('ProjectController', ProjectController);
+
+        ProjectController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
 
 	/* @ngInject */
-	function ProjectController($rootScope, $scope, $state, modalService) {
+	function ProjectController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+		// console.log("ProjectController Loaded");
 		var vm = this;
+
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
-        vm.setSelectedTab = setSelectedTab;
-        vm.createNewProject = createNewProject;
 
-        init();
-
-        function init() {
-            $scope.tabs = [
-                'Auftragsdaten',
-                'Projektdaten',
-                'Feststellungen',
-                'Protokolle',
-            ];
-
-            vm.tabs = $scope.tabs;
-        }
+        vm.project = {
+            projectNumber: "BXP-PRN-001",
+            projectName: "Project Name Field",
+            ownPerformanceBuilder: "",
+            documents: [
+              {
+                path: "",
+                title: ""
+              },
+              {
+                path: "",
+                title: ""
+              }
+            ],
+            intenalNotes: ""
+        };
 
         function closeModal() {
             $scope.$close();
@@ -35,21 +39,5 @@
         function submitForm() {
             $scope.$close();
         }
-
-        function createNewProject() {
-            modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn');
-        }
-
-    	vm.selectedTab = vm.tabs[0];
-        
-        
-        function setSelectedTab(tab) {
-			vm.selectedTab = tab;
-    	}
-    	// set default layout mode
-    	$rootScope.settings.layout.pageContentWhite = true;
-    	$rootScope.settings.layout.pageBodySolid = false;
-    	$rootScope.settings.layout.pageSidebarClosed = false;
-    }
-
+}
 })();

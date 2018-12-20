@@ -273,33 +273,33 @@
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Projektdaten" selected-tab="FormCtrl.selectedTab">
-      <div class="form-group group">
-				<div class="bxp-col-6 float-left form-group group">
-					Projekt-Nr. ...
+			<div ng-controller="ProjectController as vm">
+				<div class="form-group group">
+					<div class="bxp-col-6 float-left form-group group">
+						Projekt-Nr. {{ vm.project.projectNumber }}
+					</div>
+
+					<div class="bxp-col-6 float-left form-group group">
+						<label class="control-label bxp-label float-left">Project Name (Projektname)</label>
+						<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.project.projectName">
+					</div>
 				</div>
 
-				<div class="bxp-col-6 float-left form-group group">
-					<label class="control-label bxp-label float-left">Project Name (Projektname)</label>
-				    <input class="form-control bxp-input float-left" type="text" ng-disabled="">
+				<div class="form-group group">
+					<label class="control-label bxp-label float-left">Own performance builder (Eigenleistungen Bauherr)</label>
+					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+				</div>
+
+				LIST WITH AVAILABLE DOCUMENTS (and Upload Component)
+				<br><br>
+
+				<div class="form-group group">
+					<label class="control-label bxp-label float-left">Internal Notes (Do not appear in the protocol)</label>
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50">
+
+					</textarea>
 				</div>
 			</div>
-
-			<div class="form-group group">
-				<label class="control-label bxp-label float-left">Own performance builder (Eigenleistungen Bauherr)</label>
-				<input class="form-control bxp-input float-left" type="text" ng-disabled="">
-			</div>
-
-			LIST WITH AVAILABLE DOCUMENTS (and Upload Component)
-			<br><br>
-
-			<div class="form-group group">
-				<label class="control-label bxp-label float-left">Internal Notes (Do not appear in the protocol)</label>
-				<textarea class="form-control bxp-input float-left" rows="4" cols="50">
-					
-				</textarea>
-			</div>
-
-		</bxp-responsive-tab>
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Feststellungen" selected-tab="FormCtrl.selectedTab">
@@ -378,7 +378,7 @@
 					</div>
 				</div>
 			</div>
-			NOTE: open a new tab for the images! 
+			NOTE: open a new tab for the images!
 
 			<div class="bxp-button-container compact group">
 				<span class="ta-right float-right">
@@ -390,9 +390,6 @@
 				</span>
 			</div>
 		</bxp-responsive-tab>
-
-
-
 	</bxp-responsive-tabs>
 </form>
 
