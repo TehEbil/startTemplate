@@ -102,7 +102,9 @@
             console.log('====================================');
             modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', {data: detection}).then(
                 (data) => {
-
+                    console.log('====================================');
+                    console.log(data);
+                    console.log('====================================');
                 }
             );
         }

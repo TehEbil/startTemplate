@@ -1,16 +1,16 @@
 
 <!--div class="row table-responsive"-->
-<form action="#" name="formKunde" role="form" id="formKunde"  ng-model="state" func="FormCtrl.closeModal" close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}" novalidate autocomplete="off">
-	<bxp-responsive-tabs form-name="Kunde" tabs="tabs" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal" submit-form="submitForm">
+<form action="#" name="orderForm" role="form" id="orderForm"  ng-model="state" func="FormCtrl.closeModal" close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}" novalidate autocomplete="off">
+	<bxp-responsive-tabs form-name="Order" tabs="tabs" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal" submit-form="submitForm">
 		<bxp-responsive-tab tab="Auftragsdaten" selected-tab="FormCtrl.selectedTab">
-			<div class="bxp-form-container group">
+			<div class="bxp-form-container group" ng-controller="OrderController as vm">
 				<div class="bxp-col-6 float-left">
 				  <div class="bxp-form-note mt-5px mb-10px">Auftraggeber</div>
 				 
 				  <div class="form-group group mb-10px" ng-class="{ 'has-error' : setKundennummerInvalid && formAuftrag.Kundennummer.$pristine}">
 				    <div ng-if="!FormCtrl.isNewKunde">
 			          <label class="control-label float-left interessenten-nr">{{FormCtrl.kunde.customerType === "Interessent" ? "Interessenten-Nr." : "Kunden-Nr."}}</label>
-			          <label min="1" step="1" name="Kundennummer" id='idKundennummer' class="bxp-input bxp-input-gender float-left" >...</label>
+			          <label min="1" step="1" name="Kundennummer" id='idKundennummer' class="bxp-input bxp-input-gender float-left" >{{ vm.order.customer.customerNumber }}</label>
 				          
 				    </div>
 
@@ -21,29 +21,29 @@
 				    <label class="control-label bxp-label float-left">Anschrift:</label>
 				    <div class="bxp-input float-left">
 				      <label class="radio-inline">
-				        <input ng-disabled="FormCtrl.svRequestState" type="radio" value="privat" ng-model="FormCtrl.kunde.privatFirma"> Privat
+				        <input ng-disabled="FormCtrl.svRequestState" type="radio" value="invidual" ng-model="vm.order.customer.isCompany"> Privat
 				      </label>
 				      <label class="radio-inline">
-				        <input ng-disabled="FormCtrl.svRequestState" type="radio" value="firma" ng-model="FormCtrl.kunde.privatFirma" > Firma
+				        <input ng-disabled="FormCtrl.svRequestState" type="radio" value="company" ng-model="vm.order.customer.isCompany" > Firma
 				      </label>
 				    </div>
 				  </div>
 
-				  <div class="check-element animate-show-hide" ng-if="FormCtrl.kunde.privatFirma == 'firma'">
+				  <div class="check-element animate-show-hide" ng-if="vm.order.customer.isCompany == 'company'">
 
 				    <div class="form-group group" ng-class="{ 'has-error' : formAuftrag.Firma.$invalid && FormCtrl.submitted }">
 				      <label class="control-label bxp-label float-left">Firma<span class="required">*</span></label>
-				      <input name="Firma" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="FormCtrl.kunde.nachnameFirma" id="Firma" class="form-control bxp-input float-left" type="text" required>
+				      <input name="Firma" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.companyName" id="Firma" class="form-control bxp-input float-left" type="text" required>
 				    </div>
 
 				    <div class="form-group group">
 				      <label class="control-label bxp-label float-left">Zusatz</label>
-				      <input name="Zusatz" ng-model="FormCtrl.kunde.zusatz" id="Zusatz" class="form-control bxp-input float-left" type="text">
+				      <input name="Zusatz" ng-model="vm.order.customer.additive" id="Zusatz" class="form-control bxp-input float-left" type="text">
 				    </div>
 				  </div>
 
 				  <div ng-controller="UISelectController as ctrl">
-				    <div class="check-element animate-show-hide" ng-if="FormCtrl.kunde.privatFirma == 'privat'">
+				    <div class="check-element animate-show-hide" ng-if="vm.order.customer.isCompany == 'invidual'">
 				      <div class="form-group group">
 				        <label class="bxp-label control-label float-left">Anrede</label>
 				        <div class="bxp-input-gender float-left">
@@ -71,11 +71,11 @@
 				      <div class="form-group group" >
 				        <div ng-class="{ 'has-error' : formAuftrag.lastName.$invalid && FormCtrl.submitted }">
 				          <label class="control-label bxp-label float-left">Nachname</label>
-				          <input name="lastName" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="FormCtrl.kunde.nachnameFirma" id="lastName" class="form-control bxp-input bxp-input-gender float-left" type="text" ng-disabled="FormCtrl.svRequestState">
+				          <input name="lastName" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.firstName" id="lastName" class="form-control bxp-input bxp-input-gender float-left" type="text" ng-disabled="FormCtrl.svRequestState">
 				        </div>
 				        <div ng-class="{ 'has-error' : formAuftrag.firstName.$invalid && FormCtrl.submitted }">
 				          <label class="control-label bxp-label bxp-label-title float-left">Vorname</label>
-				          <input name="firstName" ng-model="FormCtrl.kunde.firstName" class="form-control bxp-input bxp-input-title float-left" type="text" ng-disabled="FormCtrl.svRequestState"/>
+				          <input name="firstName" ng-model="vm.order.customer.lastName" class="form-control bxp-input bxp-input-title float-left" type="text" ng-disabled="FormCtrl.svRequestState"/>
 				        </div>
 				      </div>
 
@@ -85,9 +85,9 @@
 
 				  <div class="form-group group">
 				      <label class="control-label bxp-label float-left">Tel</label>
-				      <input type="text" name="tnumber" ng-blur="FormCtrl.checkDuplicates($event)"  ng-model="FormCtrl.kunde.tnumber" class="form-control bxp-input bxp-input-gender float-left" ng-disabled="FormCtrl.svRequestState" />
+				      <input type="text" name="tnumber" ng-blur="FormCtrl.checkDuplicates($event)"  ng-model="vm.order.customer.phone" class="form-control bxp-input bxp-input-gender float-left" ng-disabled="FormCtrl.svRequestState" />
 				      <label class="control-label bxp-label bxp-label-title float-left">Mobil</label>
-				      <input type="text" name="mnumber" ng-blur="FormCtrl.checkDuplicates($event)"  ng-model="FormCtrl.kunde.mnumber" class="form-control bxp-input bxp-input-title float-left" ng-disabled="FormCtrl.svRequestState" />
+				      <input type="text" name="mnumber" ng-blur="FormCtrl.checkDuplicates($event)"  ng-model="vm.order.customer.mobile" class="form-control bxp-input bxp-input-title float-left" ng-disabled="FormCtrl.svRequestState" />
 				  </div>
 				  <div class="form-group group" ng-class="{ 'has-error' : formAuftrag.email.$error.pattern && FormCtrl.submitted && !FormCtrl.isStornoNoValid}">
 				      
@@ -113,7 +113,7 @@
 				    </label>
 				    <label class="control-label bxp-label float-left" ng-if="!FormCtrl.kunde.email || FormCtrl.svRequestState" for="email">E-Mail</label>
 
-				      <input type="text" ng-blur="FormCtrl.checkDuplicates($event)" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" name="email" ng-model="FormCtrl.kunde.email" class="form-control bxp-input contactpos number float-left" ng-disabled="FormCtrl.svRequestState" />
+				      <input type="text" ng-blur="FormCtrl.checkDuplicates($event)" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" name="email" ng-model="vm.order.customer.email" class="form-control bxp-input contactpos number float-left" ng-disabled="FormCtrl.svRequestState" />
 				      <p ng-show="formAuftrag.email.$error.pattern  && (formAuftrag.email.$touched || FormCtrl.submitted) && !FormCtrl.isStornoNoValid" class="help-block"><i class="fa fa-warning"></i> Bitte geben Sie eine gültige E-Mail Adresse an.</p>
 				  </div>
 
@@ -129,7 +129,7 @@
 				  <div class="bxp-form-note mt-5px mb-10px group">Objekt</div>
 				  	<div class="group">
 			          <label class="control-label float-left interessenten-nr">Objekt-Nr.</label>
-			          <label min="1" step="1" name="Objektnummer" id='' class="bxp-input bxp-input-gender float-left" >...</label>
+			          <label min="1" step="1" name="Objektnummer" id='' class="bxp-input bxp-input-gender float-left" >{{ vm.order.object.objectNumber }}</label>
 				          
 				    </div>
 				    <p><b>Fields below are just dummy, plz use the component/existing solutions!</b></p>
@@ -197,14 +197,14 @@
 					<div class="form-group">
 					  <div class="group">
 					    <label for="input-street" class="control-label bxp-label float-left">Auftrags-Nr</label>
-					    <input type="text" class="form-control bxp-input float-left" placeholder=" " disabled="disabled">
+					    <input type="text" class="form-control bxp-input float-left" placeholder=" " disabled="disabled" ng-model="vm.order.otherInformations.orderNumber">
 					  </div>
 					</div>
 
 					<div class="form-group">
 					  <div class="group">
 					    <label for="input-street" class="control-label bxp-label float-left">Referenz-Nr d. Kunden</label>
-					    <input type="text" class="form-control bxp-input float-left" placeholder="">
+					    <input type="text" class="form-control bxp-input float-left" placeholder="" ng-model="vm.order.otherInformations.referenceNumber">
 					  </div>
 					</div>
 				</div>
@@ -213,7 +213,7 @@
 					<div class="form-group">
 					  <div class="group">
 					    <label for="input-street" class="control-label bxp-label float-left">Datum</label>
-					    <input type="text" class="form-control bxp-input float-left" placeholder="">
+					    <input type="text" class="form-control bxp-input float-left" placeholder="" ng-model="vm.order.otherInformations.orderDate">
 					  </div>
 					</div>
 

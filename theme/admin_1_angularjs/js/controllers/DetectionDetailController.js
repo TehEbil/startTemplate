@@ -47,11 +47,11 @@
         }
 
         function closeModal() {
-            $scope.$close();
+            $scope.$close(vm.detection);
         }
 
         function submitForm() {
-            $scope.$close();
+            $scope.$close(vm.detection);
         }
 }
 })();

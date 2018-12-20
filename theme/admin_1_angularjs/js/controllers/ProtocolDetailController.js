@@ -46,7 +46,10 @@
         }
 
         function submitForm() {
-            $scope.$close();
+            console.log('====================================');
+            console.log('submitForm');
+            console.log('====================================');
+            $scope.$close(vm.protocol);
         }
 }
 })();
