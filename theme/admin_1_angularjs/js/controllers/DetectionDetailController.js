@@ -12,7 +12,6 @@
 		// console.log("DetectionDetailController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClickDetection;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
         vm.detection = {
@@ -44,16 +43,7 @@
         init();
 
         function init() {
-            vm.detection = angular.copy(getId.data);
-        }
-
-        function dblClickDetection(detection) {
-
-            /* Open detection detail modal */
-            // modalService.openMenuModal('views/project.html', 'ProjectController', 'animated zoomIn')
-            console.log('====================================');
-            console.log(detection);
-            console.log('====================================');
+            vm.detection = getId.data;
         }
 
         function closeModal() {

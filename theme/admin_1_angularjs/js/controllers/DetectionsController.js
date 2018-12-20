@@ -12,7 +12,7 @@
 		// console.log("DetectionsController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClickDetection;
+        vm.dblClick = dblClick;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
 
@@ -94,13 +94,17 @@
             }
         ];
 
-        function dblClickDetection(detection) {
+        function dblClick(detection) {
 
             /* Open detection detail modal */
-            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn')
             console.log('====================================');
             console.log(detection);
             console.log('====================================');
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', {data: detection}).then(
+                (data) => {
+
+                }
+            );
         }
 
         function closeModal() {
