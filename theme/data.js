@@ -1,5 +1,36 @@
 var globalData = {
-    "leistungen":[{ "id": "1", "leistung": "Kaufberatung", "group": "Beratung" }, { "id": "2", "leistung": "Verkaufsberatung", "group": "Beratung" }, { "id": "3", "leistung": "Bauabnahme", "group": "Beratung" }, { "id": "4", "leistung": "Wohnraumvermessung", "group": "Beratung" }, { "id": "5", "leistung": "Feuchtemessung", "group": "Beratung" }, { "id": "6", "leistung": "Schimmelpilzanalysen", "group": "Beratung" }, { "id": "7", "leistung": "Energieausweis", "group": "Beratung" }, { "id": "8", "leistung": "Kurzgutachten", "group": "Immobilienbewertung" }, { "id": "9", "leistung": "Verkehrswertgutachten", "group": "Immobilienbewertung" }, { "id": "10", "leistung": "Mietwertgutachten", "group": "Immobilienbewertung" }, { "id": "11", "leistung": "Beleihungswertgutachten", "group": "Immobilienbewertung" }, { "id": "12", "leistung": "Portfolioanalyse", "group": "Immobilienbewertung" }, { "id": "13", "leistung": "Gutachten für Entschädigung", "group": "Immobilienbewertung" }, { "id": "14", "leistung": "Bauschäden", "group": "Begutachtung" }, { "id": "15", "leistung": "Baumängel", "group": "Begutachtung" }, { "id": "16", "leistung": "Schimmelpilzschäden", "group": "Begutachtung" }, { "id": "17", "leistung": "Versicherungsschäden", "group": "Begutachtung" }, { "id": "18", "leistung": "Beweissicherung", "group": "Begutachtung" }, { "id": "19", "leistung": "Prüfung von Schadensgutachten", "group": "Begutachtung" }, { "id": "20", "leistung": "Planungsleistungen", "group": "Planung" }, { "id": "21", "leistung": "Prüfung von Planungsleistungen", "group": "Planung" }, { "id": "22", "leistung": "Bauleitung", "group": "Planung" }, { "id": "23", "leistung": "Baubegleitende Qualitätsüberwachung", "group": "Planung" }, { "id": "24", "leistung": "SiGeKo", "group": "Planung" }, { "id": "25", "leistung": "Übergabeprotokoll", "group": "Beratung" }, { "id": "26", "leistung": "Kanaldichtheitsprüfung", "group": "Begutachtung" }, { "id": "27", "leistung": "Gebäudeschadstoffe", "group": "Begutachtung" }, { "id": "28", "leistung": "Bodengutachten", "group": "Begutachtung" }, { "id": "29", "leistung": "Sanierungsberatung", "group": "Beratung" }, { "id": "30", "leistung": "Schadensberatung", "group": "Beratung" }],
+    "leistungen":[
+        { "id": "1", "leistung": "Kaufberatung", "group": "Beratung" }, 
+        { "id": "2", "leistung": "Verkaufsberatung", "group": "Beratung" }, 
+        { "id": "3", "leistung": "Bauabnahme", "group": "Beratung" }, 
+        { "id": "4", "leistung": "Wohnraumvermessung", "group": "Beratung" }, 
+        { "id": "5", "leistung": "Feuchtemessung", "group": "Beratung" }, 
+        { "id": "6", "leistung": "Schimmelpilzanalysen", "group": "Beratung" }, 
+        { "id": "7", "leistung": "Energieausweis", "group": "Beratung" }, 
+        { "id": "8", "leistung": "Kurzgutachten", "group": "Immobilienbewertung" }, 
+        { "id": "9", "leistung": "Verkehrswertgutachten", "group": "Immobilienbewertung" }, 
+        { "id": "10", "leistung": "Mietwertgutachten", "group": "Immobilienbewertung" }, 
+        { "id": "11", "leistung": "Beleihungswertgutachten", "group": "Immobilienbewertung" }, 
+        { "id": "12", "leistung": "Portfolioanalyse", "group": "Immobilienbewertung" }, 
+        { "id": "13", "leistung": "Gutachten für Entschädigung", "group": "Immobilienbewertung" }, 
+        { "id": "14", "leistung": "Bauschäden", "group": "Begutachtung" }, 
+        { "id": "15", "leistung": "Baumängel", "group": "Begutachtung" }, 
+        { "id": "16", "leistung": "Schimmelpilzschäden", "group": "Begutachtung" }, 
+        { "id": "17", "leistung": "Versicherungsschäden", "group": "Begutachtung" }, 
+        { "id": "18", "leistung": "Beweissicherung", "group": "Begutachtung" }, 
+        { "id": "19", "leistung": "Prüfung von Schadensgutachten", "group": "Begutachtung" }, 
+        { "id": "20", "leistung": "Planungsleistungen", "group": "Planung" }, 
+        { "id": "21", "leistung": "Prüfung von Planungsleistungen", "group": "Planung" }, 
+        { "id": "22", "leistung": "Bauleitung", "group": "Planung" }, 
+        { "id": "23", "leistung": "Baubegleitende Qualitätsüberwachung", "group": "Planung" }, 
+        { "id": "24", "leistung": "SiGeKo", "group": "Planung" }, 
+        { "id": "25", "leistung": "Übergabeprotokoll", "group": "Beratung" }, 
+        { "id": "26", "leistung": "Kanaldichtheitsprüfung", "group": "Begutachtung" }, 
+        { "id": "27", "leistung": "Gebäudeschadstoffe", "group": "Begutachtung" }, 
+        { "id": "28", "leistung": "Bodengutachten", "group": "Begutachtung" }, 
+        { "id": "29", "leistung": "Sanierungsberatung", "group": "Beratung" }, 
+        { "id": "30", "leistung": "Schadensberatung", "group": "Beratung" }
+    ],
     "schwerpunkte":[
         {
             "id":1,
@@ -1088,8 +1119,346 @@ var globalData = {
         "Reihenmittelhaus",
         "Wohn-/ Geschäftshaus",
         "Sonstige"
+    ],
+    "prüffeld": {
+      "ROHBAU": [
+        {
+        "id": "000",
+        "name": "Sicherheitseinrichtungen, Baustelleneinrichtungen"
+        },
+        {
+          "id": "001",
+          "name": "Gerüstarbeiten"
+        },
+        {
+          "id": "002",
+          "name": "Erdarbeiten"
+        },
+        {
+          "id": "005",
+          "name": "Brunnenbauarbeiten und Aufschlussbohrungen"
+        },
+        {
+          "id": "006",
+          "name": "Spezialtiefbauarbeiten"
+        },
+        {
+          "id": "007",
+          "name": "Untertagebauarbeiten"
+        },
+        {
+          "id": "008",
+          "name": "Wasserhaltungsarbeiten"
+        },
+        {
+          "id": "009",
+          "name": "Entwässerungskanalarbeiten"
+        },
+        {
+          "id": "010",
+          "name": "Drän- und Versickerarbeiten"
+        },
+        {
+          "id": "011",
+          "name": "Abscheider- und Kleinkläranlagen"
+        },
+        {
+          "id": "012",
+          "name": "Mauerarbeiten"
+        },
+        {
+          "id": "013",
+          "name": "Betonarbeiten"
+        },
+        {
+          "id": "014",
+          "name": "Natur-, Betonwerksteinarbeiten"
+        },
+        {
+          "id": "016",
+          "name": "Zimmer- und Holzbauarbeiten"
+        },
+        {
+          "id": "017",
+          "name": "Stahlbauarbeiten"
+        },
+        {
+          "id": "018",
+          "name": "Abdichtungsarbeiten"
+        },
+        {
+          "id": "020",
+          "name": "Dachdeckungsarbeiten"
+        },
+        {
+          "id": "021",
+          "name": "Dachabdichtungsarbeiten"
+        },
+        {
+          "id": "022",
+          "name": "Klempnerarbeiten"
+        }
+      ],
+      "AUSBAU": [
+        {
+        "id": "023",
+        "name": "Putz- und Stuckarbeiten, Wärmedämmsysteme"
+        },
+        {
+          "id": "024",
+          "name": "Fliesen- und Plattenarbeiten"
+        },
+        {
+          "id": "025",
+          "name": "Estricharbeiten"
+        },
+        {
+          "id": "026",
+          "name": "Fenster, Außentüren"
+        },
+        {
+          "id": "027",
+          "name": "Tischlerarbeiten"
+        },
+        {
+          "id": "028",
+          "name": "Parkett-, Holzpflasterarbeiten"
+        },
+        {
+          "id": "029",
+          "name": "Beschlagarbeiten"
+        },
+        {
+          "id": "030",
+          "name": "Rollladenarbeiten"
+        },
+        {
+          "id": "031",
+          "name": "Metallbauarbeiten"
+        },
+        {
+          "id": "032",
+          "name": "Verglasungsarbeiten"
+        },
+        {
+          "id": "033",
+          "name": "Baureinigungsarbeiten"
+        },
+        {
+          "id": "034",
+          "name": "Maler- und Lackierarbeiten - Beschichtungen"
+        },
+        {
+          "id": "035",
+          "name": "Korrosionsschutzarbeiten an Stahlbauten"
+        },
+        {
+          "id": "036",
+          "name": "Bodenbelagarbeiten"
+        },
+        {
+          "id": "037",
+          "name": "Tapezierarbeiten"
+        },
+        {
+          "id": "038",
+          "name": "Vorgehängte hinterlüftete Fassaden"
+        },
+        {
+          "id": "039",
+          "name": "Trockenbauarbeiten"
+        }
+      ],
+      "GEBÄUDETECHNIK": [
+        {
+        "id": "040",
+        "name": "Wärmeversorgungsanlagen - Betriebseinrichtungen"
+        },
+        {
+          "id": "041",
+          "name": "Wärmeversorgungsanlagen - Leitungen, Armaturen, Heizflächen"
+        },
+        {
+          "id": "042",
+          "name": "Gas- und Wasseranlagen - Leitungen, Armaturen"
+        },
+        {
+          "id": "043",
+          "name": "Druckrohrleitungen für Gas, Wasser und Abwasser"
+        },
+        {
+          "id": "044",
+          "name": "Abwasseranlagen - Leitungen, Abläufe, Armaturen"
+        },
+        {
+          "id": "045",
+          "name": "Gas-, Wasser- und Entwässerungsanlagen - Ausstattung, Elemente, Fertigbäder"
+        },
+        {
+          "id": "046",
+          "name": " Gas-, Wasser- und Entwässerungsanlagen - Betriebseinrichtungen"
+        },
+        {
+          "id": "047",
+          "name": "Dämm- und Brandschutzarbeiten an technischen Anlagen"
+        },
+        {
+          "id": "049",
+          "name": "Feuerlöschanlagen, Feuerlöschgeräte"
+        },
+        {
+          "id": "050",
+          "name": "Blitzschutz- / Erdungsanlagen, Überspannungsschutz"
+        },
+        {
+          "id": "051",
+          "name": "Kabelleitungstiefbauarbeiten"
+        },
+        {
+          "id": "052",
+          "name": "Mittelspannungsanlagen"
+        },
+        {
+          "id": "053",
+          "name": "Niederspannungsanlagen - Kabel / Leitungen, Verlegesysteme, Installationsgeräte"
+        },
+        {
+          "id": "054",
+          "name": "Niederspannungsanlagen - Verteilersysteme und Einbaugeräte"
+        },
+        {
+          "id": "055",
+          "name": "Ersatzstromversorgungsanlagen"
+        },
+        {
+          "id": "057",
+          "name": "Gebäudesystemtechnik"
+        },
+        {
+          "id": "058",
+          "name": "Leuchten und Lampen"
+        },
+        {
+          "id": "059",
+          "name": "Sicherheitsbeleuchtungsanlagen"
+        },
+        {
+          "id": "060",
+          "name": "Elektroakustische Anlagen, Sprechanlagen, Personenrufanlagen"
+        },
+        {
+          "id": "061",
+          "name": "Kommunikationsnetze"
+        },
+        {
+          "id": "062",
+          "name": "Kommunikationsanlagen"
+        },
+        {
+          "id": "063",
+          "name": "Gefahrenmeldeanlagen"
+        },
+        {
+          "id": "064",
+          "name": "Zutrittskontroll-, Zeiterfassungssysteme"
+        },
+        {
+          "id": "069",
+          "name": "Aufzüge"
+        },
+        {
+          "id": "070",
+          "name": "Gebäudeautomation"
+        },
+        {
+          "id": "075",
+          "name": "Raumlufttechnische Anlagen"
+        }
+      ],
+      "AUßENANLAGEN": [
+        {
+        "id": "003",
+        "name": "Landschaftsbauarbeiten"
+        },
+        {
+          "id": "004",
+          "name": "Landschaftsbauarbeiten - Pflanzen"
+        },
+        {
+          "id": "080",
+          "name": "Straßen, Wege, Plätze"
+        }
+      ],
+      "SONSTIGE": [
+        {
+        "id": "081",
+        "name": "Betonerhaltungsarbeiten"
+        },
+        {
+          "id": "082",
+          "name": "Bekämpfender Holzschutz"
+        },
+        {
+          "id": "083",
+          "name": "Sanierungsarbeiten an schadstoffhaltigen Bauteilen"
+        },
+        {
+          "id": "084",
+          "name": "Abbruch- und Rückbauarbeiten"
+        },
+        {
+          "id": "085",
+          "name": "Rohrvortriebsarbeiten"
+        },
+        {
+          "id": "087",
+          "name": "Abfallentsorgung, Verwertung und Beseitigung"
+        },
+        {
+          "id": "090",
+          "name": "Baulogistik"
+        },
+        {
+          "id": "091",
+          "name": "Stundenlohnarbeiten"
+        },
+        {
+          "id": "096",
+          "name": "Bauarbeiten an Bahnübergängen"
+        },
+        {
+          "id": "097",
+          "name": "Bauarbeiten an Gleisen und Weichen"
+        },
+        {
+          "id": "098",
+          "name": "Witterungsschutzmaßnahmen"
+        },
+        {
+          "id": "099",
+          "name": "Barrierefreies Bauen"
+        },
+        {
+          "id": "100",
+          "name": "Brandschutz"
+        }
+      ]
+    },
+    "abnahme": [
+      {
+        "id": "0",
+        "name": "Abnahme kann nicht erteilt werden"
+      },
+      {
+        "id": "1",
+        "name": "Abnahme kann ohne Vorbehalte erteilt werden"
+      },
+      {
+        "id": "2",
+        "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
+      }
     ]
-}
+};
 
 if(typeof module !== "undefined")
     module.exports.globalData = globalData;
