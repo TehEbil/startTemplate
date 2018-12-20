@@ -147,7 +147,6 @@
 						<p class="mt-10px" style="font-size: 12px;">Sie können die Adressdaten eingeben oder <a href=#0>aus den
 								Stammdaten wählen.</a></p>
 					</div>
-
 					<div class="bxp-col-6 float-left">
 						<div class="bxp-form-note mt-5px mb-10px group">Objekt</div>
 						<div class="group">
@@ -274,7 +273,33 @@
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Projektdaten" selected-tab="FormCtrl.selectedTab">
+      <div class="form-group group">
+				<div class="bxp-col-6 float-left form-group group">
+					Projekt-Nr. ...
+				</div>
 
+				<div class="bxp-col-6 float-left form-group group">
+					<label class="control-label bxp-label float-left">Project Name (Projektname)</label>
+				    <input class="form-control bxp-input float-left" type="text" ng-disabled="">
+				</div>
+			</div>
+
+			<div class="form-group group">
+				<label class="control-label bxp-label float-left">Own performance builder (Eigenleistungen Bauherr)</label>
+				<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+			</div>
+
+			LIST WITH AVAILABLE DOCUMENTS (and Upload Component)
+			<br><br>
+
+			<div class="form-group group">
+				<label class="control-label bxp-label float-left">Internal Notes (Do not appear in the protocol)</label>
+				<textarea class="form-control bxp-input float-left" rows="4" cols="50">
+					
+				</textarea>
+			</div>
+
+		</bxp-responsive-tab>
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Feststellungen" selected-tab="FormCtrl.selectedTab">
@@ -353,6 +378,7 @@
 					</div>
 				</div>
 			</div>
+			NOTE: open a new tab for the images! 
 
 			<div class="bxp-button-container compact group">
 				<span class="ta-right float-right">
@@ -364,6 +390,8 @@
 				</span>
 			</div>
 		</bxp-responsive-tab>
+
+
 
 	</bxp-responsive-tabs>
 </form>
