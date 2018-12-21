@@ -1479,7 +1479,75 @@ var globalData = {
           "id": "05",
           "name": "Modernisierungs - Check"
         }
-      ]
+    ],
+    "artDesVorhabens": [
+        {
+          "id": "01",
+          "name": "Errichtung ( Neubau / Erweiterung )"
+        },
+        {
+          "id": "02",
+          "name": "Änderung ( Umbau / Nutzungsänderung )"
+        },
+        {
+          "id": "03",
+          "name": "Abbruch"
+        }
+      ],
+      "bautenstand": [
+        {
+          "id": "01",
+          "name": "Baugrundstück nach Beginn der Erdarbeiten"
+        },
+        {
+          "id": "02",
+          "name": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
+        },
+        {
+          "id": "03",
+          "name": "Dachflächen, Dachrinnen"
+        },
+        {
+          "id": "04",
+          "name": "Rohinstallation der Heizungsanlagen"
+        },
+        {
+          "id": "05",
+          "name": "Rohinstallation der Sanitäranlagen"
+        },
+        {
+          "id": "06",
+          "name": "Rohinstallation der Elektroanlagen"
+        },
+        {
+          "id": "07",
+          "name": "Fenster mit Verglasung"
+        },
+        {
+          "id": "08",
+          "name": "Innenputz ohne Beiputzarbeiten"
+        },
+        {
+          "id": "09",
+          "name": "Estrich"
+        },
+        {
+          "id": "10",
+          "name": "Fliesenarbeiten im Sanitärbereich"
+        },
+        {
+          "id": "11",
+          "name": "nach Bezugsfertigkeit (innen komplett fertig)"
+        },
+        {
+          "id": "12",
+          "name": "Fassadenarbeiten"
+        },
+        {
+          "id": "13",
+          "name": "Fertigstellung"
+        }
+    ]
 };
 
 if(typeof module !== "undefined")
