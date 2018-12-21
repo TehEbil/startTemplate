@@ -1622,6 +1622,212 @@ var globalData = {
           "title": "",
           "content": ""
         }
+    ],
+    "beurteilungen": [
+        {
+          "id": "01",
+          "name": "Unfertige Leistung",
+          "shortcut": "U"
+        },
+        {
+          "id": "02",
+          "name": "Hinweis allgemeiner Art",
+          "shortcut": "H"
+        },
+        {
+          "id": "03",
+          "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+          "shortcut": "AT"
+        },
+        {
+          "id": "04",
+          "name": "Abweichung vom Vertrag / Baubeschreilbung",
+          "shortcut": "AV"
+        },
+        {
+          "id": "05",
+          "name": "Planungsfehler",
+          "shortcut": "P"
+        },
+        {
+          "id": "06",
+          "name": "Ausführungsfehler",
+          "shortcut": "A"
+        },
+        {
+          "id": "07",
+          "name": "Beschädigung durch außere Einwirkung",
+          "shortcut": "E"
+        },
+        {
+          "id": "08",
+          "name": "Verwendung falscher Baustoffe",
+          "shortcut": "F"
+        }
+    ],
+    "status": [
+        {
+          "id": "01",
+          "name": "noch nicht abgestellt"
+        },
+        {
+          "id": "02",
+          "name": "abgestellt und durch den Sachverständigen kontrolliert"
+        },
+        {
+          "id": "03",
+          "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+        },
+        {
+          "id": "04",
+          "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
+        }
+    ],
+    "grundlagen": [
+        {
+          "id": "01",
+          "name": "Allg. anerkannte Regeln der Technik"
+        },
+        {
+          "id": "02",
+          "name": "Ausführungspläne / Zeichnungen"
+        },
+        {
+          "id": "03",
+          "name": "Baubeschreibung"
+        },
+        {
+          "id": "04",
+          "name": "DIN 1045 (Stahl- und Stahlbetonbau)"
+        },
+        {
+          "id": "05",
+          "name": "DIN 1053 (Mauerwerk)"
+        },
+        {
+          "id": "06",
+          "name": "DIN 18195 (Bauwerksabdichtungen)"
+        },
+        {
+          "id": "07",
+          "name": "DIN 18202 (Toleranzen im Hochbau)"
+        },
+        {
+          "id": "08",
+          "name": "DIN 18350"
+        },
+        {
+          "id": "09",
+          "name": "DIN 18353"
+        },
+        {
+          "id": "10",
+          "name": "DIN 18381"
+        },
+        {
+          "id": "11",
+          "name": "DIN 18550"
+        },
+        {
+          "id": "12",
+          "name": "DIN 18560"
+        },
+        {
+          "id": "13",
+          "name": "DIN 1986"
+        },
+        {
+          "id": "14",
+          "name": "DIN 1988"
+        },
+        {
+          "id": "15",
+          "name": "DIN 4102"
+        },
+        {
+          "id": "16",
+          "name": "DIN 4108"
+        },
+        {
+          "id": "17",
+          "name": "DIN 4109"
+        },
+        {
+          "id": "18",
+          "name": "DIN 4759 (Heizungsanlagen in Gebäuden)"
+        },
+        {
+          "id": "19",
+          "name": "DIN EN 13163:2001-10"
+        },
+        {
+          "id": "20",
+          "name": "DIN EN 13813"
+        },
+        {
+          "id": "21",
+          "name": "DIN EN 806"
+        },
+        {
+          "id": "22",
+          "name": "EnEV-Nachweis"
+        },
+        {
+          "id": "23",
+          "name": "Heizungsanlagenverordnung HeizAnIV"
+        },
+        {
+          "id": "24",
+          "name": "Hersteller-Verarbeitungsrichtlinien"
+        },
+        {
+          "id": "25",
+          "name": "KMB - Richtlinie"
+        },
+        {
+          "id": "26",
+          "name": "Landesbauordnung Bau O NRW"
+        },
+        {
+          "id": "27",
+          "name": "Planungsvorgaben"
+        },
+        {
+          "id": "28",
+          "name": "Regeln für Abdichtungen - Flachdachrichtlinien des Zentralverbandes Deutschen Dachdeckerhandwerks"
+        },
+        {
+          "id": "29",
+          "name": "Regeln für Metallarbeiten im Dachdeckerhandwerk des Zentralverbandes Deutschen Dachdeckerhandwerks"
+        },
+        {
+          "id": "30",
+          "name": "Siehe vorherige Protokollpunkte"
+        },
+        {
+          "id": "31",
+          "name": "Statik"
+        },
+        {
+          "id": "32",
+          "name": "Technische Richtlinie RAL-Gütegemeinschaft Fenster und Haustüren e.V."
+        },
+        {
+          "id": "33",
+          "name": "VDE"
+        },
+        {
+          "id": "34",
+          "name": "VDI"
+        },
+        {
+          "id": "35",
+          "name": "Vertrag"
+        },
+        {
+          "id": "36",
+          "name": "Wärmeschutznachweis"
+        }
     ]
 };
 
