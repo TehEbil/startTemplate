@@ -1120,330 +1120,398 @@ var globalData = {
         "Wohn-/ Geschäftshaus",
         "Sonstige"
     ],
-    "prüffeld": {
-      "ROHBAU": [
+    "prüffeld": [
         {
-        "id": "000",
-        "name": "Sicherheitseinrichtungen, Baustelleneinrichtungen"
+          "id": "000",
+          "name": "Sicherheitseinrichtungen, Baustelleneinrichtungen",
+          "group": "ROHBAU"
         },
         {
           "id": "001",
-          "name": "Gerüstarbeiten"
+          "name": "Gerüstarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "002",
-          "name": "Erdarbeiten"
+          "name": "Erdarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "005",
-          "name": "Brunnenbauarbeiten und Aufschlussbohrungen"
+          "name": "Brunnenbauarbeiten und Aufschlussbohrungen",
+          "group": "ROHBAU"
         },
         {
           "id": "006",
-          "name": "Spezialtiefbauarbeiten"
+          "name": "Spezialtiefbauarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "007",
-          "name": "Untertagebauarbeiten"
+          "name": "Untertagebauarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "008",
-          "name": "Wasserhaltungsarbeiten"
+          "name": "Wasserhaltungsarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "009",
-          "name": "Entwässerungskanalarbeiten"
+          "name": "Entwässerungskanalarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "010",
-          "name": "Drän- und Versickerarbeiten"
+          "name": "Drän- und Versickerarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "011",
-          "name": "Abscheider- und Kleinkläranlagen"
+          "name": "Abscheider- und Kleinkläranlagen",
+          "group": "ROHBAU"
         },
         {
           "id": "012",
-          "name": "Mauerarbeiten"
+          "name": "Mauerarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "013",
-          "name": "Betonarbeiten"
+          "name": "Betonarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "014",
-          "name": "Natur-, Betonwerksteinarbeiten"
+          "name": "Natur-, Betonwerksteinarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "016",
-          "name": "Zimmer- und Holzbauarbeiten"
+          "name": "Zimmer- und Holzbauarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "017",
-          "name": "Stahlbauarbeiten"
+          "name": "Stahlbauarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "018",
-          "name": "Abdichtungsarbeiten"
+          "name": "Abdichtungsarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "020",
-          "name": "Dachdeckungsarbeiten"
+          "name": "Dachdeckungsarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "021",
-          "name": "Dachabdichtungsarbeiten"
+          "name": "Dachabdichtungsarbeiten",
+          "group": "ROHBAU"
         },
         {
           "id": "022",
-          "name": "Klempnerarbeiten"
-        }
-      ],
-      "AUSBAU": [
+          "name": "Klempnerarbeiten",
+          "group": "ROHBAU"
+        },
         {
-        "id": "023",
-        "name": "Putz- und Stuckarbeiten, Wärmedämmsysteme"
+          "id": "023",
+          "name": "Putz- und Stuckarbeiten, Wärmedämmsysteme",
+          "group": "AUSBAU"
         },
         {
           "id": "024",
-          "name": "Fliesen- und Plattenarbeiten"
+          "name": "Fliesen- und Plattenarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "025",
-          "name": "Estricharbeiten"
+          "name": "Estricharbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "026",
-          "name": "Fenster, Außentüren"
+          "name": "Fenster, Außentüren",
+          "group": "AUSBAU"
         },
         {
           "id": "027",
-          "name": "Tischlerarbeiten"
+          "name": "Tischlerarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "028",
-          "name": "Parkett-, Holzpflasterarbeiten"
+          "name": "Parkett-, Holzpflasterarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "029",
-          "name": "Beschlagarbeiten"
+          "name": "Beschlagarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "030",
-          "name": "Rollladenarbeiten"
+          "name": "Rollladenarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "031",
-          "name": "Metallbauarbeiten"
+          "name": "Metallbauarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "032",
-          "name": "Verglasungsarbeiten"
+          "name": "Verglasungsarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "033",
-          "name": "Baureinigungsarbeiten"
+          "name": "Baureinigungsarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "034",
-          "name": "Maler- und Lackierarbeiten - Beschichtungen"
+          "name": "Maler- und Lackierarbeiten - Beschichtungen",
+          "group": "AUSBAU"
         },
         {
           "id": "035",
-          "name": "Korrosionsschutzarbeiten an Stahlbauten"
+          "name": "Korrosionsschutzarbeiten an Stahlbauten",
+          "group": "AUSBAU"
         },
         {
           "id": "036",
-          "name": "Bodenbelagarbeiten"
+          "name": "Bodenbelagarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "037",
-          "name": "Tapezierarbeiten"
+          "name": "Tapezierarbeiten",
+          "group": "AUSBAU"
         },
         {
           "id": "038",
-          "name": "Vorgehängte hinterlüftete Fassaden"
+          "name": "Vorgehängte hinterlüftete Fassaden",
+          "group": "AUSBAU"
         },
         {
           "id": "039",
-          "name": "Trockenbauarbeiten"
-        }
-      ],
-      "GEBÄUDETECHNIK": [
+          "name": "Trockenbauarbeiten",
+          "group": "AUSBAU"
+        },
         {
-        "id": "040",
-        "name": "Wärmeversorgungsanlagen - Betriebseinrichtungen"
+          "id": "040",
+          "name": "Wärmeversorgungsanlagen - Betriebseinrichtungen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "041",
-          "name": "Wärmeversorgungsanlagen - Leitungen, Armaturen, Heizflächen"
+          "name": "Wärmeversorgungsanlagen - Leitungen, Armaturen, Heizflächen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "042",
-          "name": "Gas- und Wasseranlagen - Leitungen, Armaturen"
+          "name": "Gas- und Wasseranlagen - Leitungen, Armaturen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "043",
-          "name": "Druckrohrleitungen für Gas, Wasser und Abwasser"
+          "name": "Druckrohrleitungen für Gas, Wasser und Abwasser",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "044",
-          "name": "Abwasseranlagen - Leitungen, Abläufe, Armaturen"
+          "name": "Abwasseranlagen - Leitungen, Abläufe, Armaturen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "045",
-          "name": "Gas-, Wasser- und Entwässerungsanlagen - Ausstattung, Elemente, Fertigbäder"
+          "name": "Gas-, Wasser- und Entwässerungsanlagen - Ausstattung, Elemente, Fertigbäder",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "046",
-          "name": " Gas-, Wasser- und Entwässerungsanlagen - Betriebseinrichtungen"
+          "name": " Gas-, Wasser- und Entwässerungsanlagen - Betriebseinrichtungen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "047",
-          "name": "Dämm- und Brandschutzarbeiten an technischen Anlagen"
+          "name": "Dämm- und Brandschutzarbeiten an technischen Anlagen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "049",
-          "name": "Feuerlöschanlagen, Feuerlöschgeräte"
+          "name": "Feuerlöschanlagen, Feuerlöschgeräte",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "050",
-          "name": "Blitzschutz- / Erdungsanlagen, Überspannungsschutz"
+          "name": "Blitzschutz- / Erdungsanlagen, Überspannungsschutz",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "051",
-          "name": "Kabelleitungstiefbauarbeiten"
+          "name": "Kabelleitungstiefbauarbeiten",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "052",
-          "name": "Mittelspannungsanlagen"
+          "name": "Mittelspannungsanlagen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "053",
-          "name": "Niederspannungsanlagen - Kabel / Leitungen, Verlegesysteme, Installationsgeräte"
+          "name": "Niederspannungsanlagen - Kabel / Leitungen, Verlegesysteme, Installationsgeräte",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "054",
-          "name": "Niederspannungsanlagen - Verteilersysteme und Einbaugeräte"
+          "name": "Niederspannungsanlagen - Verteilersysteme und Einbaugeräte",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "055",
-          "name": "Ersatzstromversorgungsanlagen"
+          "name": "Ersatzstromversorgungsanlagen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "057",
-          "name": "Gebäudesystemtechnik"
+          "name": "Gebäudesystemtechnik",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "058",
-          "name": "Leuchten und Lampen"
+          "name": "Leuchten und Lampen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "059",
-          "name": "Sicherheitsbeleuchtungsanlagen"
+          "name": "Sicherheitsbeleuchtungsanlagen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "060",
-          "name": "Elektroakustische Anlagen, Sprechanlagen, Personenrufanlagen"
+          "name": "Elektroakustische Anlagen, Sprechanlagen, Personenrufanlagen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "061",
-          "name": "Kommunikationsnetze"
+          "name": "Kommunikationsnetze",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "062",
-          "name": "Kommunikationsanlagen"
+          "name": "Kommunikationsanlagen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "063",
-          "name": "Gefahrenmeldeanlagen"
+          "name": "Gefahrenmeldeanlagen",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "064",
-          "name": "Zutrittskontroll-, Zeiterfassungssysteme"
+          "name": "Zutrittskontroll-, Zeiterfassungssysteme",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "069",
-          "name": "Aufzüge"
+          "name": "Aufzüge",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "070",
-          "name": "Gebäudeautomation"
+          "name": "Gebäudeautomation",
+          "group": "GEBÄUDETECHNIK"
         },
         {
           "id": "075",
-          "name": "Raumlufttechnische Anlagen"
-        }
-      ],
-      "AUßENANLAGEN": [
+          "name": "Raumlufttechnische Anlagen",
+          "group": "GEBÄUDETECHNIK"
+        },
         {
-        "id": "003",
-        "name": "Landschaftsbauarbeiten"
+          "id": "003",
+          "name": "Landschaftsbauarbeiten",
+          "group": "AUßENANLAGEN"
         },
         {
           "id": "004",
-          "name": "Landschaftsbauarbeiten - Pflanzen"
+          "name": "Landschaftsbauarbeiten - Pflanzen",
+          "group": "AUßENANLAGEN"
         },
         {
           "id": "080",
-          "name": "Straßen, Wege, Plätze"
-        }
-      ],
-      "SONSTIGE": [
+          "name": "Straßen, Wege, Plätze",
+          "group": "AUßENANLAGEN"
+        },
         {
-        "id": "081",
-        "name": "Betonerhaltungsarbeiten"
+          "id": "081",
+          "name": "Betonerhaltungsarbeiten",
+          "group": "SONSTIGE"
         },
         {
           "id": "082",
-          "name": "Bekämpfender Holzschutz"
+          "name": "Bekämpfender Holzschutz",
+          "group": "SONSTIGE"
         },
         {
           "id": "083",
-          "name": "Sanierungsarbeiten an schadstoffhaltigen Bauteilen"
+          "name": "Sanierungsarbeiten an schadstoffhaltigen Bauteilen",
+          "group": "SONSTIGE"
         },
         {
           "id": "084",
-          "name": "Abbruch- und Rückbauarbeiten"
+          "name": "Abbruch- und Rückbauarbeiten",
+          "group": "SONSTIGE"
         },
         {
           "id": "085",
-          "name": "Rohrvortriebsarbeiten"
+          "name": "Rohrvortriebsarbeiten",
+          "group": "SONSTIGE"
         },
         {
           "id": "087",
-          "name": "Abfallentsorgung, Verwertung und Beseitigung"
+          "name": "Abfallentsorgung, Verwertung und Beseitigung",
+          "group": "SONSTIGE"
         },
         {
           "id": "090",
-          "name": "Baulogistik"
+          "name": "Baulogistik",
+          "group": "SONSTIGE"
         },
         {
           "id": "091",
-          "name": "Stundenlohnarbeiten"
+          "name": "Stundenlohnarbeiten",
+          "group": "SONSTIGE"
         },
         {
           "id": "096",
-          "name": "Bauarbeiten an Bahnübergängen"
+          "name": "Bauarbeiten an Bahnübergängen",
+          "group": "SONSTIGE"
         },
         {
           "id": "097",
-          "name": "Bauarbeiten an Gleisen und Weichen"
+          "name": "Bauarbeiten an Gleisen und Weichen",
+          "group": "SONSTIGE"
         },
         {
           "id": "098",
-          "name": "Witterungsschutzmaßnahmen"
+          "name": "Witterungsschutzmaßnahmen",
+          "group": "SONSTIGE"
         },
         {
           "id": "099",
-          "name": "Barrierefreies Bauen"
+          "name": "Barrierefreies Bauen",
+          "group": "SONSTIGE"
         },
         {
           "id": "100",
-          "name": "Brandschutz"
+          "name": "Brandschutz",
+          "group": "SONSTIGE"
         }
-      ]
-    },
+    ],
     "abnahme": [
       {
         "id": "0",
@@ -1493,8 +1561,8 @@ var globalData = {
           "id": "03",
           "name": "Abbruch"
         }
-      ],
-      "bautenstand": [
+    ],
+    "bautenstand": [
         {
           "id": "01",
           "name": "Baugrundstück nach Beginn der Erdarbeiten"
