@@ -27,7 +27,11 @@
                 detail: {
                     id: 8743,
                     date: '18.12.2018',
-                    testFiedl: 'test field',
+                    testField: {
+                        id: "008",
+                        name: "Wasserhaltungsarbeiten",
+                        group:"ROHBAU"
+                    },
                     position: 'position',
                     title: 'title',
                     evaluation: 'evaluation',
@@ -52,7 +56,11 @@
                 detail: {
                     id: 8744,
                     date: '18.12.2018',
-                    testFiedl: 'test field',
+                    testField: {
+                        id: "008",
+                        name: "Wasserhaltungsarbeiten",
+                        group:"ROHBAU"
+                    },
                     position: 'position',
                     title: 'title',
                     evaluation: 'evaluation',
@@ -77,7 +85,11 @@
                 detail: {
                     id: 8745,
                     date: '18.12.2018',
-                    testFiedl: 'test field',
+                    testField: {
+                        id: "008",
+                        name: "Wasserhaltungsarbeiten",
+                        group:"ROHBAU"
+                    },
                     position: 'position',
                     title: 'title',
                     evaluation: 'evaluation',

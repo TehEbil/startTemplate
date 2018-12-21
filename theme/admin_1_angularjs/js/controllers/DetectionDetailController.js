@@ -14,6 +14,8 @@
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        vm.testFields = globalData.prüffeld;
+
         vm.detection = {
             number: 1,
             date: '18.12.2018',
@@ -24,7 +26,7 @@
             detail: {
                 id: 8743,
                 date: '18.12.2018',
-                testFiedl: 'test field',
+                testField: 'test field',
                 position: 'position',
                 title: 'title',
                 evaluation: 'evaluation',
@@ -44,6 +46,9 @@
 
         function init() {
             vm.detection = getId.data;
+            console.log('====================================');
+            console.log(vm.detection);
+            console.log('====================================');
         }
 
         function closeModal() {

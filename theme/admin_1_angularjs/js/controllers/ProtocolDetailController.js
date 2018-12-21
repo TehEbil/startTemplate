@@ -14,6 +14,10 @@
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        vm.projectTypes = globalData.artDesVorhabens;
+        vm.constructionStates = globalData.bautenstand;
+        vm.acceptances = globalData.abnahme;
+
         vm.protocol = {
             id: 0,
             isLocalInspection: true,
@@ -23,9 +27,18 @@
             weather: "",
             particularties: "",
             reportDate: "",
-            projectType: "",
-            constructionState: "",
-            acceptance: "",
+            projectType: {
+                id: "02",
+                name: "Änderung ( Umbau / Nutzungsänderung )"
+            },
+            constructionState: {
+                id: "04",
+                name: "Rohinstallation der Heizungsanlagen"
+            },
+            acceptance: {
+                id: "2",
+                name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
+            },
             acceptanceComment: "",
             note: "",
             selectedDetection: "",

@@ -21,15 +21,24 @@
                 id: 1,
                 isLocalInspection: true,
                 localInspectionDate: "2018-12-20T06:06:53+00:00",
-                protocolType: "type1",
+                protocolType: "type 1",
                 participants: "Mahmut, Can, Muhammed",
                 tempreture: "26",
                 weather: "Summer",
                 particularties: "1. particularity, 2. particularity",
                 reportDate: "2018-12-20T06:06:53+00:00",
-                projectType: "Type 1",
-                constructionState: "Condemned",
-                acceptance: "Accepted",
+                projectType: {
+                    id: "02",
+                    name: "Änderung ( Umbau / Nutzungsänderung )"
+                },
+                constructionState: {
+                    id: "04",
+                    name: "Rohinstallation der Heizungsanlagen"
+                },
+                acceptance: {
+                    id: "2",
+                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
+                },
                 acceptanceComment: "As a result of the researching of a defect has not been found.",
                 note: "All we need a just a little lahmacun!",
                 selectedDetection: "Detection 1",
@@ -41,7 +50,7 @@
                 id: 2,
                 isLocalInspection: true,
                 localInspectionDate: "",
-                protocolType: "Type2",
+                protocolType: "type 2",
                 participants: [
                   "",
                   ""
@@ -50,9 +59,18 @@
                 weather: "",
                 particularties: "",
                 reportDate: "",
-                projectType: "",
-                constructionState: "Not Good",
-                acceptance: "",
+                projectType: {
+                    id: "02",
+                    name: "Änderung ( Umbau / Nutzungsänderung )"
+                },
+                constructionState: {
+                    id: "04",
+                    name: "Rohinstallation der Heizungsanlagen"
+                },
+                acceptance: {
+                    id: "2",
+                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
+                },
                 acceptanceComment: "",
                 note: "",
                 selectedDetection: "",
@@ -64,7 +82,7 @@
                 id: 3,
                 isLocalInspection: true,
                 localInspectionDate: "",
-                protocolType: "Type3",
+                protocolType: "type 3",
                 participants: [
                   "",
                   ""
@@ -73,9 +91,18 @@
                 weather: "",
                 particularties: "",
                 reportDate: "",
-                projectType: "",
-                constructionState: "Ok",
-                acceptance: "",
+                projectType: {
+                    id: "02",
+                    name: "Änderung ( Umbau / Nutzungsänderung )"
+                },
+                constructionState: {
+                    id: "04",
+                    name: "Rohinstallation der Heizungsanlagen"
+                },
+                acceptance: {
+                    id: "2",
+                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
+                },
                 acceptanceComment: "",
                 note: "",
                 selectedDetection: "",
