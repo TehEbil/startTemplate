@@ -16,6 +16,7 @@
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
         vm.objectTypes = globalData.objektTypen;
+        vm.orderTypes = globalData.auftragsart;
 
         vm.order = {
             customer: {
@@ -47,7 +48,7 @@
                 orderNumber: "BXP-ORD-0000-256",
                 orderDate: "20.12.2018",
                 referenceNumber: "BXP-REF-005",
-                orderType: "1. type"
+                orderType: globalData.auftragsart[0]
             }
         };
 

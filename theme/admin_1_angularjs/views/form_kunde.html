@@ -252,11 +252,12 @@
 
 						<div class="form-group">
 							<div class="group">
+								{{ vm.order.otherInformations.orderType }}
 								<label for="input-street" class="control-label bxp-label float-left">Auftragsart</label>
 								<div id="country-select" class="bxp-input country-select float-left">
-									<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+									<ui-select ng-disabled="vm.make" ng-model="vm.order.otherInformations.orderType" theme="bootstrap" remove-selected="false">
 										<ui-select-match>{{$select.selected.name}}</ui-select-match>
-										<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+										<ui-select-choices repeat="item in vm.orderTypes | filter: $select.search">
 											<span ng-bind-html="item.name  | highlight: $select.search"></span>
 										</ui-select-choices>
 									</ui-select>
