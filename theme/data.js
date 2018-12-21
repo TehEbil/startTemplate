@@ -1547,6 +1547,13 @@ var globalData = {
           "id": "13",
           "name": "Fertigstellung"
         }
+    ],
+    "textausschnitte": [
+        {
+          "id": "",
+          "title": "",
+          "content": ""
+        }
     ]
 };
 
