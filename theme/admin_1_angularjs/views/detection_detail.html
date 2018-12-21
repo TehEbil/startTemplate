@@ -55,13 +55,14 @@
 		<div class="bxp-col-6 float-left group">
 			<div class="group">
 				<label class="control-label bxp-label float-left">Evaluation (Bewertung)</label>
+				{{ FormCtrl.detection.detail.evaluation }}
 				<div class="form-group modal-form-group width-100 group">
 					<div class="bxp-input float-left edit-icon-container">
-						<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.evaluation" theme="bootstrap" remove-selected="false">
 							<ui-select-match>{{
 								$select.selected.name
 								}}</ui-select-match>
-							<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+							<ui-select-choices repeat="item in FormCtrl.evaluations | filter: $select.search">
 								<span ng-bind-html="item.name  | highlight: $select.search"></span>
 							</ui-select-choices>
 						</ui-select>
@@ -72,13 +73,14 @@
 
 			<div class="group">
 				<label class="control-label bxp-label float-left">State (Status)</label>
+				{{ FormCtrl.detection.detail.status }}
 				<div class="form-group modal-form-group width-100 group">
 					<div class="bxp-input float-left edit-icon-container">
-						<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.status" theme="bootstrap" remove-selected="false">
 							<ui-select-match>{{
 								$select.selected.name
 								}}</ui-select-match>
-							<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+							<ui-select-choices repeat="item in FormCtrl.statuses | filter: $select.search">
 								<span ng-bind-html="item.name  | highlight: $select.search"></span>
 							</ui-select-choices>
 						</ui-select>
@@ -89,13 +91,14 @@
 		</div>
 		<div class="bxp-col-6 float-left group">
 			<label class="control-label bxp-label float-left">Basic (Grundlagen)</label>
+			{{ FormCtrl.detection.detail.basics }}
 			<div class="form-group modal-form-group width-100 group">
 				<div class="bxp-input float-left edit-icon-container">
-					<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
+					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.basics" theme="bootstrap" remove-selected="false">
 						<ui-select-match>{{
 							$select.selected.name
 							}}</ui-select-match>
-						<ui-select-choices repeat="item in vm.countries | filter: $select.search">
+						<ui-select-choices repeat="item in FormCtrl.basics | filter: $select.search">
 							<span ng-bind-html="item.name  | highlight: $select.search"></span>
 						</ui-select-choices>
 					</ui-select>

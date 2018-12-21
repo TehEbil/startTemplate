@@ -34,9 +34,19 @@
                     },
                     position: 'position',
                     title: 'title',
-                    evaluation: 'evaluation',
-                    basics: 'basics',
-                    status: 'status',
+                    evaluation: {
+                        id: "03",
+                        name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+                        shortcut: "AT"
+                    },
+                    basics: {
+                        id: "03",
+                        name: "Baubeschreibung"
+                    },
+                    status: {
+                        id: "03",
+                        name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+                    },
                     description: 'desc',
                     costs: {
                         disposalCost: 'disposal',
@@ -63,9 +73,19 @@
                     },
                     position: 'position',
                     title: 'title',
-                    evaluation: 'evaluation',
-                    basics: 'basics',
-                    status: 'status',
+                    evaluation: {
+                        id: "03",
+                        name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+                        shortcut: "AT"
+                    },
+                    basics: {
+                        id: "03",
+                        name: "Baubeschreibung"
+                    },
+                    status: {
+                        id: "03",
+                        name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+                    },
                     description: 'desc',
                     costs: {
                         disposalCost: 'disposal',
@@ -92,9 +112,19 @@
                     },
                     position: 'position',
                     title: 'title',
-                    evaluation: 'evaluation',
-                    basics: 'basics',
-                    status: 'status',
+                    evaluation: {
+                        id: "03",
+                        name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+                        shortcut: "AT"
+                    },
+                    basics: {
+                        id: "03",
+                        name: "Baubeschreibung"
+                    },
+                    status: {
+                        id: "03",
+                        name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+                    },
                     description: 'desc',
                     costs: {
                         disposalCost: 'disposal',

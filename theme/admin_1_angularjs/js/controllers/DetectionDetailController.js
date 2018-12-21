@@ -14,7 +14,13 @@
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        
+        /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
+        vm.evaluations = globalData.beurteilungen;
+        vm.statuses = globalData.status;
+        vm.basics = globalData.grundlagen;
+
 
         vm.detection = {
             number: 1,
@@ -29,9 +35,19 @@
                 testField: 'test field',
                 position: 'position',
                 title: 'title',
-                evaluation: 'evaluation',
-                basics: 'basics',
-                status: 'status',
+                evaluation: {
+                    id: "03",
+                    name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+                    shortcut: "AT"
+                },
+                basics: {
+                    id: "03",
+                    name: "Baubeschreibung"
+                },
+                status: {
+                    id: "03",
+                    name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+                },
                 description: 'desc',
                 costs: {
                     disposalCost: 'disposal',
