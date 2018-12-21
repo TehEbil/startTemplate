@@ -1,3 +1,4 @@
+
 (function() {
 	'use strict';
 
@@ -14,6 +15,7 @@
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        vm.objectTypes = globalData.objektTypen;
 
         vm.order = {
             customer: {
@@ -35,7 +37,7 @@
             },
             object: {
                 objectNumber: 0,
-                property: "1. property",
+                objectType: "Einfamilienhaus",
                 street: "Acıbadem st.",
                 country: "Turkey",
                 postcode: "34000",
@@ -48,6 +50,14 @@
                 orderType: "1. type"
             }
         };
+
+        init();
+
+        function init() {
+            console.log('====================================');
+            console.log(vm.order.object.objectType);
+            console.log('====================================');
+        }
 
         function closeModal() {
             $scope.$close();

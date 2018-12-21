@@ -1457,7 +1457,29 @@ var globalData = {
         "id": "2",
         "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
       }
-    ]
+    ],
+    "auftragsart": [
+        {
+          "id": "01",
+          "name": "Kauf - Verkaufsberatung"
+        },
+        {
+          "id": "02",
+          "name": "Baubegleitung"
+        },
+        {
+          "id": "03",
+          "name": "Stellungnahme"
+        },
+        {
+          "id": "04",
+          "name": "Beweissicherung"
+        },
+        {
+          "id": "05",
+          "name": "Modernisierungs - Check"
+        }
+      ]
 };
 
 if(typeof module !== "undefined")
