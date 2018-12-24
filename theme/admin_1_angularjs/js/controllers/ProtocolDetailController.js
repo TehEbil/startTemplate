@@ -19,10 +19,9 @@
         vm.acceptances = globalData.abnahme;
 
         $scope.tabs = [
-	    	'Auftragsdaten',
-	    	'Projektdaten',
-	    	'Feststellungen',
-	    	'Protokolle'
+            'NewProtocol',
+            'ChoosingDetections',
+            'Documents'
     	];
 
         vm.tabs = $scope.tabs;
@@ -62,6 +61,12 @@
             console.log(vm.protocol);
             console.log('====================================');
         }
+
+        $scope.selectedTab = $scope.tabs[0];
+    	$scope.setSelectedTab = function(tab) {
+			$scope.selectedTab = tab;
+
+    	};
 
         function closeModal() {
             $scope.$close();
