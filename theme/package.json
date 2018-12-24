@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "angular-hammer": "^2.2.0",
+    "angular-input-masks": "^4.2.1",
     "angular-ui-tinymce": "0.0.19",
     "angular-xeditable": "^0.8.0",
     "angularjs-slider": "^6.4.3",

@@ -117,7 +117,8 @@ var MetronicApp = angular.module("MetronicApp", [
     'angular.filter',
     "ngFlash",
     "angular-loading-bar",
-    "cfp.loadingBar"
+    "cfp.loadingBar",
+    'ui.utils.masks'
 ])
 .config(['$compileProvider', function($compileProvider){
     $compileProvider.commentDirectivesEnabled(false);
@@ -358,8 +359,6 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
     return xxx;
 
 }]);
-
-
 
 
 MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibModal, $rootScope) {
