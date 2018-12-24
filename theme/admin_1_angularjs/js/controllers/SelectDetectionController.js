@@ -3,13 +3,13 @@
 
 	angular
 		.module('MetronicApp')
-		.controller('ProtocolsController', ProtocolsController);
+		.controller('SelectDetectionController', SelectDetectionController);
 
-        ProtocolsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        SelectDetectionController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
 
 	/* @ngInject */
-	function ProtocolsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
-		// console.log("ProtocolsController Loaded");
+	function SelectDetectionController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+		// console.log("SelectDetectionController Loaded");
 		var vm = this;
 
         vm.dblClick = dblClickProtocols;

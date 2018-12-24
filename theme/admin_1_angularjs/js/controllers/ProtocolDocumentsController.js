@@ -3,13 +3,13 @@
 
 	angular
 		.module('MetronicApp')
-		.controller('ProtocolsController', ProtocolsController);
+		.controller('ProtocolDocumentsController', ProtocolDocumentsController);
 
-        ProtocolsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        ProtocolDocumentsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
 
 	/* @ngInject */
-	function ProtocolsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
-		// console.log("ProtocolsController Loaded");
+	function ProtocolDocumentsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+		// console.log("ProtocolDocumentsController Loaded");
 		var vm = this;
 
         vm.dblClick = dblClickProtocols;

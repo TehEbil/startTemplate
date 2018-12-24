@@ -49,7 +49,13 @@
         } 
 
         function addKunde() {
-            modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn');
+            modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn').then(
+                (data) => {
+                    console.log('====================================');
+                    console.log(data);
+                    console.log('====================================');
+                }
+            );
         }
 
         function modalExample() {

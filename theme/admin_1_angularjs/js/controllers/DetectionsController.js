@@ -156,7 +156,7 @@
         }
 
         function submitForm() {
-            $scope.$close();
+            $scope.$close(vm.detections);
         }
 }
 })();

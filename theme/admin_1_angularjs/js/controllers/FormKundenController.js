@@ -15,7 +15,15 @@
 		var vm = this;
 		vm.title = 'FormKundenController';
         vm.closeModal = closeModal;
-        vm.submitForm = submitForm;
+		vm.submitForm = submitForm;
+		
+		vm.orderData = {
+			orderInfo: {},
+			projectData: {},
+			detectionData: {},
+			protokolData: {}
+		};
+
     	$scope.individuelleFelder = [];
 
     	$scope.tabs = [
@@ -35,7 +43,7 @@
         }
 
         function submitForm() {
-            $scope.$close();
+            $scope.$close(vm.tabs);
         }
 
 
