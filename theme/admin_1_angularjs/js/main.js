@@ -277,6 +277,19 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', '$state', funct
     });
 }]);
 
+MetronicApp.factory("passDataService", [function ($scope, $rootScope, $state) {
+    let obj = {};
+
+    return {
+        getObj: () => {
+            return obj;
+        },
+        setObj: (object) => {
+            obj = object;
+        }
+    };
+}]);
+
 MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
 {
     var instance;
