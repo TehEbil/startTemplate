@@ -18,6 +18,15 @@
         vm.constructionStates = globalData.bautenstand;
         vm.acceptances = globalData.abnahme;
 
+        $scope.tabs = [
+	    	'Auftragsdaten',
+	    	'Projektdaten',
+	    	'Feststellungen',
+	    	'Protokolle'
+    	];
+
+        vm.tabs = $scope.tabs;
+
         vm.protocol = {
             id: 0,
             isLocalInspection: true,

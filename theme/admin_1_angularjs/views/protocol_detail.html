@@ -2,7 +2,7 @@
  ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
  novalidate autocomplete="off">
 	<bxp-responsive-in-modal form-name="Protocol" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
-	 submit-form="submitForm">
+	 submit-form="FormCtrl.submitForm">
 		<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol {{ vm.protocol }} </div>
 		<div class="form-group group">
 			<label class="radio-inline">

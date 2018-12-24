@@ -3,7 +3,7 @@
  ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
  novalidate autocomplete="off">
 	<bxp-responsive-tabs form-name="Order" tabs="tabs" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
-	 submit-form="submitForm">
+	 submit-form="FormCtrl.submitForm">
 		<bxp-responsive-tab tab="Auftragsdaten" selected-tab="FormCtrl.selectedTab">
 			<div ng-controller="OrderController as vm">
 				<div class="bxp-form-container group">
