@@ -43,6 +43,7 @@
 								<label class="control-label bxp-label float-left">Firma<span class="required">*</span></label>
 								<input name="Firma" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.companyName" id="Firma"
 								 class="form-control bxp-input float-left" type="text" required>
+								 <p ng-if="!orderForm.Firma.$valid"> required field </p>
 							</div>
 
 							<div class="form-group group">
@@ -86,6 +87,7 @@
 										<label class="control-label bxp-label float-left">Nachname</label>
 										<input name="lastName" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.firstName" id="lastName"
 										 class="form-control bxp-input bxp-input-gender float-left" type="text" ng-disabled="FormCtrl.svRequestState">
+										 <p ng-if="!orderForm.lastName.$valid"> required field </p>
 									</div>
 									<div ng-class="{ 'has-error' : formAuftrag.firstName.$invalid && FormCtrl.submitted }">
 										<label class="control-label bxp-label bxp-label-title float-left">Vorname</label>
@@ -246,7 +248,8 @@
 						<div class="form-group">
 							<div class="group">
 								<label for="input-street" class="control-label bxp-label float-left">Datum</label>
-								<input type="text" class="form-control bxp-input float-left" placeholder="" ng-model="vm.order.otherInformations.orderDate">
+								<input name="orderDate" type="text" class="form-control bxp-input float-left" placeholder="" ng-model="vm.order.otherInformations.orderDate" required>
+								<p ng-if="!orderForm.orderDate.$valid"> required field </p>
 							</div>
 						</div>
 
