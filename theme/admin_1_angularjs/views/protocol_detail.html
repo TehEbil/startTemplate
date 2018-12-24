@@ -38,7 +38,8 @@
 			<div class="bxp-col-6 float-left form-group group">
 				<div ng-class="">
 					<label class="control-label bxp-label float-left">Temperature (Temperatur)</label>
-					<input class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.tempreture">
+					<input name="tempreture" class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.tempreture" required>
+					<p ng-if="!protocol.tempreture.$valid"> required field </p>
 				</div>
 			</div>
 

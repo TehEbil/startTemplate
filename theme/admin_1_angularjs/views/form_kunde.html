@@ -285,7 +285,8 @@
 
 					<div class="bxp-col-6 float-left form-group group">
 						<label class="control-label bxp-label float-left">Project Name (Projektname)</label>
-						<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.project.projectName">
+						<input name="projectName" class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.project.projectName"required>
+						<p ng-if="!orderForm.projectName.$valid"> required field </p>
 					</div>
 				</div>
 
@@ -295,6 +296,47 @@
 				</div>
 
 				LIST WITH AVAILABLE DOCUMENTS (and Upload Component)
+				<div class="table-responsive row">
+					<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
+						<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
+						 style="width: 100%!important">
+
+							<thead>
+								<tr>
+									<th>Nr</th>
+									<th>Title</th>
+									<th>Feststellung</th>
+									<th>Lage</th>
+									<th>Datum</th>
+									<th>Bild</th>
+								</tr>
+							</thead>
+							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
+							<tbody ng-if="vm.anschriften.length != 0">
+								<tr ng-dblclick="vm.dblClick(document)" ng-repeat="document in vm.documents">
+									<td>{{ document.detail.id }}</td>
+									<td>{{ document.title }}</td>
+									<td>{{ document.detection }}</td>
+									<td>{{ document.detail.position }}</td>
+									<td>{{ document.date }}</td>
+									<td>
+										<img ng-src="{{ document.coverPicUrl }}" alt="Random Photo" height="40" width="40">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+	
+				<div class="bxp-button-container compact group">
+					<span class="ta-right float-right">
+						<button class="bxp-rounded-button small delete" ng-disabled="vm.document.length === 0" ng-click="vm.deleteData()"
+						 type="button"><i class="fa fa-trash"></i></button>
+						<button class="bxp-rounded-button small edit" ng-disabled="!vm.document.length === 0" ng-click="vm.editAnschrift()"
+						 type="button"><i class="fa fa-pencil"></i></button>
+						<button class="bxp-rounded-button small add" ng-click="vm.newAnschrift()" type="button"><i class="fa fa-plus"></i></button>
+					</span>
+				</div>
 				<br><br>
 
 				<div class="form-group group">
