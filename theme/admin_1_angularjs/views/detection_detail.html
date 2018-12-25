@@ -10,7 +10,7 @@
 
  	<div class="bxp-container">
  			<div class="form-group group">
- 				<div class="bxp-col-6 float-left form-group group">Nr {{ FormCtrl.detection.detail.id }}</div>
+ 				<div class="bxp-col-6 float-left form-group group">Nr</div>
 
  				<div class="bxp-col-6 float-right form-group group" style="display:flex; justify-content: flex-end;">
  					<div>1/16</div>
@@ -33,7 +33,6 @@
 
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Prüffeld</label>
- 				{{ FormCtrl.detection.detail.testField }}
  				<div class="form-group modal-form-group width-100 group">
  					<div class="bxp-input float-left edit-icon-container">
  						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.testField" theme="bootstrap" remove-selected="false">
@@ -59,7 +58,6 @@
 
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Beurteilung</label>
- 				{{ FormCtrl.detection.detail.evaluation }}
  				<div class="bxp-input float-left edit-icon-container">
  					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.evaluation" theme="bootstrap" remove-selected="false">
  						<ui-select-match>{{
@@ -75,7 +73,6 @@
 
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Status</label>
- 				{{ FormCtrl.detection.detail.status }}
  				<div class="bxp-input float-left edit-icon-container">
  					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.status" theme="bootstrap" remove-selected="false">
 						<ui-select-match>{{
@@ -91,7 +88,6 @@
 
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Grundlagen</label>
- 				{{ FormCtrl.detection.detail.basics }}
  				<div class="bxp-input float-left edit-icon-container">
  					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.basics" theme="bootstrap" remove-selected="false">
  						<ui-select-match>{{
