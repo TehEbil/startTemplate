@@ -16,13 +16,6 @@
 		vm.title = 'FormKundenController';
         vm.closeModal = closeModal;
 		vm.submitForm = submitForm;
-		
-		vm.orderData = {
-			orderInfo: {},
-			projectData: {},
-			detectionData: {},
-			protokolData: {}
-		};
 
     	$scope.individuelleFelder = [];
 
@@ -36,9 +29,11 @@
         vm.tabs = $scope.tabs;
 
 		$scope.uploads = [null, undefined];
+
+		init();
 		
 		function init() {
-			passDataService.setData(
+			passDataService.setObj(
                 {
                     orderDatas: {},
                     projectDatas: {},
@@ -54,7 +49,7 @@
         }
 
         function submitForm() {
-            $scope.$close(vm.tabs);
+            $scope.$close(passDataService.getObj());
         }
 
 
