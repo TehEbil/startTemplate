@@ -8,10 +8,10 @@
 	.module('MetronicApp')
 	.controller('FormKundenController', FormKundenController);
 
-	FormKundenController.$inject = ['$rootScope', '$scope', '$state'];
+	FormKundenController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService'];
 
 	/* @ngInject */
-	function FormKundenController($rootScope, $scope, $state) {
+	function FormKundenController($rootScope, $scope, $state, getId, passDataService) {
 		var vm = this;
 		vm.title = 'FormKundenController';
         vm.closeModal = closeModal;
@@ -35,7 +35,18 @@
 
         vm.tabs = $scope.tabs;
 
-    	$scope.uploads = [null, undefined];
+		$scope.uploads = [null, undefined];
+		
+		function init() {
+			passDataService.setData(
+                {
+                    orderDatas: {},
+                    projectDatas: {},
+					detectionDatas: [],
+					protocolDatas:[]
+                }
+            );
+		}
 
 
         function closeModal() {

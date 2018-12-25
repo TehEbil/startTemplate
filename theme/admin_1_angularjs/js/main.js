@@ -277,8 +277,9 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', '$state', funct
     });
 }]);
 
+/* Passing datas one controller to another controller */
 MetronicApp.factory("passDataService", [function ($scope, $rootScope, $state) {
-    let obj = {};
+    let obj = {test: 'test'};
 
     return {
         getObj: () => {
