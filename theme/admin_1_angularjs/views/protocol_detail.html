@@ -4,89 +4,90 @@
 	 novalidate autocomplete="off">
 		<bxp-responsive-tabs form-name="Order" tabs="tabs" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
 		 submit-form="FormCtrl.submitForm">
- 			<bxp-responsive-tab tab="NewProtocol" selected-tab="FormCtrl.selectedTab">
- 				<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol {{ vm.protocol }} </div>
- 				<div class="form-group group">
- 					<label class="radio-inline">
- 						<input ng-disabled="" type="radio" value="inspectionYes" name="local_schedule">Es konnte besichtigt werden
- 					</label>
- 					<label class="radio-inline">
- 						<input ng-disabled="" type="radio" value="inspectionNo" name="local_schedule">Es konnte nicht besichtigt werden
- 					</label>
- 				</div>
- 				<div class="form-group group">
- 					<div class="bxp-col-6 float-left form-group group">
- 						<div ng-class="">
- 							<label class="control-label bxp-label float-left">Datum Begehung</label>
- 							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.protocol.localInspectionDate">
- 						</div>
- 					</div>
+			<bxp-responsive-tab tab="NewProtocol" selected-tab="FormCtrl.selectedTab">
+				<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol {{ vm.protocol }} </div>
+				<div class="form-group group">
+					<label class="radio-inline">
+						<input ng-disabled="" type="radio" value="inspectionYes" name="local_schedule">Es konnte besichtigt werden
+					</label>
+					<label class="radio-inline">
+						<input ng-disabled="" type="radio" value="inspectionNo" name="local_schedule">Es konnte nicht besichtigt werden
+					</label>
+				</div>
+				<div class="form-group group">
+					<div class="bxp-col-6 float-left form-group group">
+						<div ng-class="">
+							<label class="control-label bxp-label float-left">Datum Begehung</label>
+							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.protocol.localInspectionDate">
+						</div>
+					</div>
 
- 					<div class="bxp-col-6 float-left form-group group">
- 						<div ng-class="">
- 							<label class="control-label bxp-label float-left">Teilnehmer</label>
- 							<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.participants"></textarea>
- 						</div>
- 					</div>
- 				</div>
- 				<div class="form-group group">
- 					<div class="bxp-col-6 float-left form-group group">
- 						<div ng-class="">
- 							<label class="control-label bxp-label float-left">Temperatur</label>
- 							<input name="tempreture" class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.tempreture" ui-number-mask="0" maxlength="2" ui-hide-group-sep>
- 						</div>
- 					</div>
+					<div class="bxp-col-6 float-left form-group group">
+						<div ng-class="">
+							<label class="control-label bxp-label float-left">Teilnehmer</label>
+							<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.participants"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="form-group group">
+					<div class="bxp-col-6 float-left form-group group">
+						<div ng-class="">
+							<label class="control-label bxp-label float-left">Temperatur</label>
+							<input name="tempreture" class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.tempreture"
+							 ui-number-mask="0" maxlength="2" ui-hide-group-sep>
+						</div>
+					</div>
 
- 					<div class="bxp-col-6 float-left form-group group">
- 						<div ng-class="">
- 							<label class="control-label bxp-label float-left">Wetter</label>
- 							<input class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.weather">
- 						</div>
- 					</div>
- 				</div>
- 				<div class="form-group group">
- 					<label class="control-label bxp-label float-left">Besonderheiten</label>
- 					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.particularties"></textarea>
- 				</div>
- 				<div class="form-group group">
- 					<div class="bxp-col-6 float-left form-group group">
- 						<div ng-class="">
- 							<label class="control-label bxp-label float-left">Datum Bericht</label>
- 							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.protocol.reportDate">
- 						</div>
- 					</div>
+					<div class="bxp-col-6 float-left form-group group">
+						<div ng-class="">
+							<label class="control-label bxp-label float-left">Wetter</label>
+							<input class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.weather">
+						</div>
+					</div>
+				</div>
+				<div class="form-group group">
+					<label class="control-label bxp-label float-left">Besonderheiten</label>
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.particularties"></textarea>
+				</div>
+				<div class="form-group group">
+					<div class="bxp-col-6 float-left form-group group">
+						<div ng-class="">
+							<label class="control-label bxp-label float-left">Datum Bericht</label>
+							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.protocol.reportDate">
+						</div>
+					</div>
 
- 					<div class="bxp-col-6 float-left form-group group">
- 						<div ng-class="">
- 							<label class="control-label bxp-label float-left">Vorhaben</label>
- 							{{ FormCtrl.protocol.projectType }}
- 							<!-- Dropdown from land as placeholder -->
- 							<div id="country-select" class="bxp-input country-select float-left">
- 								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.projectType" theme="bootstrap" remove-selected="false">
- 									<ui-select-match>{{$select.selected.name}}</ui-select-match>
- 									<ui-select-choices repeat="item in FormCtrl.projectTypes | filter: $select.search">
- 										<span ng-bind-html="item.name  | highlight: $select.search"></span>
- 									</ui-select-choices>
- 								</ui-select>
- 							</div>
+					<div class="bxp-col-6 float-left form-group group">
+						<div ng-class="">
+							<label class="control-label bxp-label float-left">Vorhaben</label>
+							{{ FormCtrl.protocol.projectType }}
+							<!-- Dropdown from land as placeholder -->
+							<div id="country-select" class="bxp-input country-select float-left">
+								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.projectType" theme="bootstrap" remove-selected="false">
+									<ui-select-match>{{$select.selected.name}}</ui-select-match>
+									<ui-select-choices repeat="item in FormCtrl.projectTypes | filter: $select.search">
+										<span ng-bind-html="item.name  | highlight: $select.search"></span>
+									</ui-select-choices>
+								</ui-select>
+							</div>
 
- 						</div>
- 					</div>
- 				</div>
- 				<div class="form-group group">
- 					<label class="control-label bxp-label float-left">Bautenstand</label>
- 					{{ FormCtrl.protocol.constructionState }}
- 					<!-- Dropdown from land as placeholder -->
- 					<div id="country-select" class="bxp-input country-select float-left">
- 						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.constructionState" theme="bootstrap" remove-selected="false">
- 							<ui-select-match>{{$select.selected.name}}</ui-select-match>
- 							<ui-select-choices repeat="item in FormCtrl.constructionStates | filter: $select.search">
- 								<span ng-bind-html="item.name  | highlight: $select.search"></span>
- 							</ui-select-choices>
- 						</ui-select>
- 					</div>
- 				</div>
- 				<div class="form-group group">
+						</div>
+					</div>
+				</div>
+				<div class="form-group group">
+					<label class="control-label bxp-label float-left">Bautenstand</label>
+					{{ FormCtrl.protocol.constructionState }}
+					<!-- Dropdown from land as placeholder -->
+					<div id="country-select" class="bxp-input country-select float-left">
+						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.constructionState" theme="bootstrap" remove-selected="false">
+							<ui-select-match>{{$select.selected.name}}</ui-select-match>
+							<ui-select-choices repeat="item in FormCtrl.constructionStates | filter: $select.search">
+								<span ng-bind-html="item.name  | highlight: $select.search"></span>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+				</div>
+				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Abnahme</label>
 					{{ FormCtrl.protocol.acceptance }}
 					<!-- Dropdown from land as placeholder -->
@@ -104,18 +105,19 @@
 					<label class="control-label bxp-label float-left">Abnahmekommentar</label>
 					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.acceptanceComment"></textarea>
 				</div>
-				
- 				<div class="form-group group">
- 					<label class="control-label bxp-label float-left">Hinweise und Anmerkungen</label>
- 					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.note"> </textarea>
- 				</div>
 
- 				<div>Here: choosing of Feststellungen</div>
- 				<div>
- 					<img ng-src="{{ FormCtrl.protocol.titlePicUrl }}" alt="titlePicUrl" srcset="">
- 				</div>
- 			</bxp-responsive-tab>
- 			<bxp-responsive-tab tab="ChoosingDetections" selected-tab="FormCtrl.selectedTab">
+				<div class="form-group group">
+					<label class="control-label bxp-label float-left">Hinweise und Anmerkungen</label>
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.note"> </textarea>
+				</div>
+
+				<div>Here: choosing of Feststellungen</div>
+				<div>
+					<img ng-src="{{ FormCtrl.protocol.titlePicUrl }}" alt="titlePicUrl" srcset="">
+				</div>
+			</bxp-responsive-tab>
+
+			<bxp-responsive-tab tab="ChoosingDetections" selected-tab="FormCtrl.selectedTab">
 				<div ng-controller="SelectDetectionController as vm">
 					<div class="table-responsive row">
 						<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
@@ -144,8 +146,8 @@
 						</div>
 					</div>
 				</div>
- 				NOTE: open a new tab for the images!
- 			
+				NOTE: open a new tab for the images!
+
 				<div class="bxp-button-container compact group">
 					<span class="ta-right float-right">
 						<button class="bxp-rounded-button small delete" ng-disabled="vm.detections.length === 0" ng-click="vm.deleteData()"
@@ -155,52 +157,51 @@
 						<button class="bxp-rounded-button small add" ng-click="vm.newAnschrift()" type="button"><i class="fa fa-plus"></i></button>
 					</span>
 				</div>
- 			</bxp-responsive-tab>
- 			<bxp-responsive-tab tab="Documents" selected-tab="FormCtrl.selectedTab">
- 					<div ng-controller="ProtocolDocumentsController as vm">
-						<div class="table-responsive row">
-							<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
-								<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
-								 style="width: 100%!important">
-		
-									<thead>
-										<tr>
-											<th>Nr</th>
-											<th>Datum</th>
-											<th>Protokolltyp</th>
-											<th>Teilnehmer</th>
-											<th>Bautenstand</th>
-										</tr>
-									</thead>
-									<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
-									<tbody ng-if="vm.anschriften.length != 0">
-										<tr ng-dblclick="vm.dblClick(protocol)" ng-repeat="protocol in vm.protocols">
-											<td>{{ protocol.id }}</td>
-											<td>{{ protocol.date }}</td>
-											<td>{{ protocol.protocolType }}</td>
-											<td>{{ protocol.members }}</td>
-											<td>{{ protocol.constructionState.name }}</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+			</bxp-responsive-tab>
+
+			<bxp-responsive-tab tab="Documents" selected-tab="FormCtrl.selectedTab">
+				<div ng-controller="ProtocolDocumentsController as vm">
+					<div class="table-responsive row">
+						<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
+							<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
+							 style="width: 100%!important">
+
+								<thead>
+									<tr>
+										<th>Nr</th>
+										<th>Datum</th>
+										<th>Protokolltyp</th>
+										<th>Teilnehmer</th>
+										<th>Bautenstand</th>
+									</tr>
+								</thead>
+								<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
+								<tbody ng-if="vm.anschriften.length != 0">
+									<tr ng-dblclick="vm.dblClick(protocol)" ng-repeat="protocol in vm.protocols">
+										<td>{{ protocol.id }}</td>
+										<td>{{ protocol.date }}</td>
+										<td>{{ protocol.protocolType }}</td>
+										<td>{{ protocol.members }}</td>
+										<td>{{ protocol.constructionState.name }}</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
- 					</div>
- 					NOTE: open a new tab for the images!
- 			
-					<div class="bxp-button-container compact group">
-						<span class="ta-right float-right">
-							<button class="bxp-rounded-button small delete" ng-disabled="vm.detections.length === 0" ng-click="vm.deleteData()"
-							 type="button"><i class="fa fa-trash"></i></button>
-							<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editAnschrift()"
-							 type="button"><i class="fa fa-pencil"></i></button>
-							<button class="bxp-rounded-button small add" ng-click="vm.newAnschrift()" type="button"><i class="fa fa-plus"></i></button>
-						</span>
 					</div>
- 			</bxp-responsive-tab>	
+				</div>
+				NOTE: open a new tab for the images!
+
+				<div class="bxp-button-container compact group">
+					<span class="ta-right float-right">
+						<button class="bxp-rounded-button small delete" ng-disabled="vm.detections.length === 0" ng-click="vm.deleteData()"
+						 type="button"><i class="fa fa-trash"></i></button>
+						<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editAnschrift()"
+						 type="button"><i class="fa fa-pencil"></i></button>
+						<button class="bxp-rounded-button small add" ng-click="vm.newAnschrift()" type="button"><i class="fa fa-plus"></i></button>
+					</span>
+				</div>
+			</bxp-responsive-tab>
 
 		</bxp-responsive-tabs>
 	</form>
 </div>
-
-

@@ -12,124 +12,154 @@
 		// console.log("SelectDetectionController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClickProtocols;
+        vm.dblClick = dblClick;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
 
-        vm.protocols = [
+        vm.detections = [
             {
-                id: 1,
-                isLocalInspection: true,
-                localInspectionDate: "2018-12-20T06:06:53+00:00",
-                protocolType: "type 1",
-                participants: "Mahmut, Can, Muhammed",
-                tempreture: "26",
-                weather: "Summer",
-                particularties: "1. particularity, 2. particularity",
-                reportDate: "2018-12-20T06:06:53+00:00",
-                projectType: {
-                    id: "02",
-                    name: "Änderung ( Umbau / Nutzungsänderung )"
-                },
-                constructionState: {
-                    id: "04",
-                    name: "Rohinstallation der Heizungsanlagen"
-                },
-                acceptance: {
-                    id: "2",
-                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                },
-                acceptanceComment: "As a result of the researching of a defect has not been found.",
-                note: "All we need a just a little lahmacun!",
-                selectedDetection: "Detection 1",
-                titlePicUrl: "https://picsum.photos/100/100/?random",
-                date: "2018-12-20T06:06:53+00:00",
-                members: "Mahmut, Can"
+                number: 1,
+                date: '18.12.2018',
+                status: 'status',
+                title: 'foo',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
+                detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                isSelected: false,
+                detail: {
+                    id: 8743,
+                    date: '18.12.2018',
+                    testField: {
+                        id: "008",
+                        name: "Wasserhaltungsarbeiten",
+                        group:"ROHBAU"
+                    },
+                    position: 'position',
+                    title: 'title',
+                    evaluation: {
+                        id: "03",
+                        name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+                        shortcut: "AT"
+                    },
+                    basics: {
+                        id: "03",
+                        name: "Baubeschreibung"
+                    },
+                    status: {
+                        id: "03",
+                        name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+                    },
+                    description: 'desc',
+                    costs: {
+                        disposalCost: 'disposal',
+                        impairment: 'imp',
+                        recoup: 'stopaj',
+                        isPrint: true
+                    }
+                }
             },
             {
-                id: 2,
-                isLocalInspection: true,
-                localInspectionDate: "",
-                protocolType: "type 2",
-                participants: [
-                  "",
-                  ""
-                ],
-                tempreture: "",
-                weather: "",
-                particularties: "",
-                reportDate: "",
-                projectType: {
-                    id: "02",
-                    name: "Änderung ( Umbau / Nutzungsänderung )"
-                },
-                constructionState: {
-                    id: "04",
-                    name: "Rohinstallation der Heizungsanlagen"
-                },
-                acceptance: {
-                    id: "2",
-                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                },
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: "",
-                date: "19.12.2018",
-                members: "Necati, Mahmut, Muhammed"
+                number: 2,
+                date: '18.12.2018',
+                status: 'status',
+                title: 'foo',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
+                detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                isSelected: false,
+                detail: {
+                    id: 8744,
+                    date: '18.12.2018',
+                    testField: {
+                        id: "008",
+                        name: "Wasserhaltungsarbeiten",
+                        group:"ROHBAU"
+                    },
+                    position: 'position',
+                    title: 'title',
+                    evaluation: {
+                        id: "03",
+                        name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+                        shortcut: "AT"
+                    },
+                    basics: {
+                        id: "03",
+                        name: "Baubeschreibung"
+                    },
+                    status: {
+                        id: "03",
+                        name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+                    },
+                    description: 'desc',
+                    costs: {
+                        disposalCost: 'disposal',
+                        impairment: 'imp',
+                        recoup: 'stopaj',
+                        isPrint: true
+                    }
+                }
             },
             {
-                id: 3,
-                isLocalInspection: true,
-                localInspectionDate: "",
-                protocolType: "type 3",
-                participants: [
-                  "",
-                  ""
-                ],
-                tempreture: "",
-                weather: "",
-                particularties: "",
-                reportDate: "",
-                projectType: {
-                    id: "02",
-                    name: "Änderung ( Umbau / Nutzungsänderung )"
-                },
-                constructionState: {
-                    id: "04",
-                    name: "Rohinstallation der Heizungsanlagen"
-                },
-                acceptance: {
-                    id: "2",
-                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                },
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: "",
-                date: "19.12.2018",
-                members: "Muhammed, Necati, Can"
+                number: 3,
+                date: '18.12.2018',
+                status: 'status',
+                title: 'foo',
+                coverPicUrl: 'https://www.picsum.photos/200/300',
+                detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
+                isSelected: false,
+                detail: {
+                    id: 8745,
+                    date: '18.12.2018',
+                    testField: {
+                        id: "008",
+                        name: "Wasserhaltungsarbeiten",
+                        group:"ROHBAU"
+                    },
+                    position: 'position',
+                    title: 'title',
+                    evaluation: {
+                        id: "03",
+                        name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+                        shortcut: "AT"
+                    },
+                    basics: {
+                        id: "03",
+                        name: "Baubeschreibung"
+                    },
+                    status: {
+                        id: "03",
+                        name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+                    },
+                    description: 'desc',
+                    costs: {
+                        disposalCost: 'disposal',
+                        impairment: 'imp',
+                        recoup: 'stopaj',
+                        isPrint: true
+                    }
+                }
             }
         ];
 
-        function dblClickProtocols(protocol) {
-            console.log('f:' + protocol)
+        function dblClick(detection) {
+
             /* Open detection detail modal */
-            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', {data: protocol}).then(
+            console.log('====================================');
+            console.log(detection);
+            console.log('====================================');
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', {data: detection}).then(
                 (data) => {
                     console.log('====================================');
-                    console.log('coming data:', data);
+                    console.log(data);
                     console.log('====================================');
                 }
             );
         }
 
         function closeModal() {
-            $scope.$close();
+            $scope.$close(vm.detections);
         }
 
         function submitForm() {
-            $scope.$close(vm.protocols);
+            $scope.$close(vm.detections);
         }
 }
 })();
