@@ -310,7 +310,7 @@
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-dblclick="vm.dblClick(document)" ng-repeat="document in vm.documents">
+								<tr ng-dblclick="vm.dblClick(document)" ng-repeat="document in vm.project.documents">
 									<td>{{ document.detail.id }}</td>
 									<td>{{ document.title }}</td>
 									<!-- <td>{{ document.detection }}</td> -->
