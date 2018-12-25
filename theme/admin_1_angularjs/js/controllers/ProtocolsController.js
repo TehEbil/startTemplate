@@ -5,10 +5,10 @@
 		.module('MetronicApp')
 		.controller('ProtocolsController', ProtocolsController);
 
-        ProtocolsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        ProtocolsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'passDataService'];
 
 	/* @ngInject */
-	function ProtocolsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+	function ProtocolsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, passDataService) {
 		// console.log("ProtocolsController Loaded");
 		var vm = this;
 
@@ -16,7 +16,8 @@
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
 
-        vm.protocols = [
+        vm.baseData = passDataService.getObj();
+        vm.baseData.protocolDatas = [
             {
                 id: 1,
                 isLocalInspection: true,
@@ -111,6 +112,14 @@
                 members: "Muhammed, Necati, Can"
             }
         ];
+
+        passDataService.setObj(vm.baseData);
+
+        init();
+
+        function init() {
+            vm.protocols = passDataService.getObj().protocolDatas;
+        }
 
         function dblClickProtocols(protocol) {
             console.log('f:' + protocol)
