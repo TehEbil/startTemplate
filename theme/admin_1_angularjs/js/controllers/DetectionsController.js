@@ -5,10 +5,10 @@
 		.module('MetronicApp')
 		.controller('DetectionsController', DetectionsController);
 
-        DetectionsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        DetectionsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'passDataService'];
 
 	/* @ngInject */
-	function DetectionsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+	function DetectionsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, passDataService) {
 		// console.log("DetectionsController Loaded");
 		var vm = this;
 
@@ -16,7 +16,9 @@
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
 
-        vm.detections = [
+        vm.baseData = passDataService.getObj();
+
+        vm.baseData.detectionDatas = [
             {
                 number: 1,
                 date: '18.12.2018',
@@ -135,6 +137,14 @@
                 }
             }
         ];
+
+        passDataService.setObj(vm.baseData);
+
+        init();
+
+        function init() {
+            vm.detections = passDataService.getObj().detectionDatas;
+        }
 
         function dblClick(detection) {
 
