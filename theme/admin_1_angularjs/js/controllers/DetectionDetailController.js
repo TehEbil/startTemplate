@@ -14,6 +14,7 @@
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        vm.openTextSnippetModal = openTextSnippetModal;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -65,6 +66,43 @@
             console.log('====================================');
             console.log(vm.detection);
             console.log('====================================');
+        }
+
+        function openTextSnippetModal() {
+            console.log('====================================');
+            console.log('clicked');
+            console.log('====================================');
+            let obj = {
+                title: 'Text Snippets',
+                data: [
+                    {
+                        id: '1',
+                        value: 'text snippet 1'
+                    },
+                    {
+                        id: '2',
+                        value: 'text snippet 2'
+                    },
+                    {
+                        id: '3',
+                        value: 'text snippet 3'
+                    },
+                    {
+                        id: '4',
+                        value: 'text snippet 4'
+                    },
+                    {
+                        id: '5',
+                        value: 'text snippet 5'
+                    }
+                ]
+            };
+
+            modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
+                console.log('====================================');
+                console.log(data);
+                console.log('====================================');
+            });
         }
 
         function closeModal() {
