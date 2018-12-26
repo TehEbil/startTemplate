@@ -99,9 +99,7 @@
             };
 
             modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
-                console.log('====================================');
-                console.log(data);
-                console.log('====================================');
+                vm.detection.detail.description = `${vm.detection.detail.description} ${data.value}`;
             });
         }
 

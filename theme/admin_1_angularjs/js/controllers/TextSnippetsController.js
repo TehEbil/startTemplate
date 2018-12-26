@@ -15,11 +15,14 @@
  
         vm.newEntry = newEntry;
         vm.onSelect = onSelect;
+        vm.selected = {};
+        
         // vm.cancelEntry = cancelEntry;
         vm.editEntry = editEntry;
         vm.deleteEntry = deleteEntry;
         vm.saveEntry = saveEntry;
         vm.closeModal = closeModal;
+        vm.submitForm = submitForm;
 
         init();
 
@@ -136,9 +139,16 @@
         //     vm.items[vm.selected].value = vm.tmpVar;
         // }
 
-        function onSelect() {
+        function submitForm() {
             // vm.master = vm.items;
-            $scope.$close(vm.items);
+            $scope.$close(vm.selected);
+        }
+
+        function onSelect(item) {
+            console.log('====================================');
+            console.log('selected item', item);
+            console.log('====================================');
+            vm.selected = item;
         }
 
         // function onSelect() {

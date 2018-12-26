@@ -11,7 +11,7 @@
                             <div ng-class="{'activex': FormCtrl.id === item.id}" ng-click="FormCtrl.id = item.id" class="bxp-grundatensatz" ng-dblclick="FormCtrl.editEntry(item.id)">
                                 <input type="text" id="editInput" ng-if="item.editMode" ng-enter="FormCtrl.saveEntry(item.id)" ng-blur="FormCtrl.saveEntry(item.id)" ng-keyup="onInputKeyup($event)" ng-model="item.value" placeholder="" auto-focus>
 
-                                <div class="hover-text-field">
+                                <div class="hover-text-field" ng-click="FormCtrl.onSelect(item)">
                                     <span ng-if="!item.editMode">{{item.value}}
                                         <div style="display: none;" class="animate-show">
                                             <i class="fa fa-pencil" ng-click="FormCtrl.editEntry(item.id)"></i>
@@ -40,7 +40,8 @@
 
         <div class="bxp-button-container group">
             <span class="ta-right float-right">
-                <button class="btn btn-primary" ng-click="FormCtrl.onSelect()" type="button">Speichern</button><button id="idAbbrechen" class="btn default" ng-click="FormCtrl.closeModal()" type="button">Abbrechen</button>
+                <button class="btn btn-primary" ng-click="FormCtrl.submitForm()" type="button">Speichern</button>
+                <button id="idAbbrechen" class="btn default" ng-click="FormCtrl.closeModal()" type="button">Abbrechen</button>
             </span>
         </div>
     </div>
