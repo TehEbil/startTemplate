@@ -99,7 +99,11 @@
             };
 
             modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
-                vm.detection.detail.description = `${vm.detection.detail.description} ${data.value}`;
+                
+                if (typeof data !== 'undefined') {
+                    vm.detection.detail.description = `${vm.detection.detail.description} ${data.value}`;    
+                }
+                
             });
         }
 
