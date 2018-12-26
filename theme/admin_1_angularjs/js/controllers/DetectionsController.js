@@ -51,9 +51,9 @@
                     },
                     description: 'desc',
                     costs: {
-                        disposalCost: 'disposal',
-                        impairment: 'imp',
-                        recoup: 'stopaj',
+                        disposalCost: 500,
+                        impairment: 600,
+                        recoup: 700,
                         isPrint: true
                     }
                 }
@@ -90,9 +90,9 @@
                     },
                     description: 'desc',
                     costs: {
-                        disposalCost: 'disposal',
-                        impairment: 'imp',
-                        recoup: 'stopaj',
+                        disposalCost: 500,
+                        impairment: 600,
+                        recoup: 700,
                         isPrint: true
                     }
                 }
@@ -129,9 +129,9 @@
                     },
                     description: 'desc',
                     costs: {
-                        disposalCost: 'disposal',
-                        impairment: 'imp',
-                        recoup: 'stopaj',
+                        disposalCost: 500,
+                        impairment: 600,
+                        recoup: 700,
                         isPrint: true
                     }
                 }

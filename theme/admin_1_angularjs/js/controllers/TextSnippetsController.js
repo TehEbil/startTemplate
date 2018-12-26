@@ -77,9 +77,6 @@
         }
 
         function editEntry(id = -1) {
-            console.log('====================================');
-            console.log('Edit Entry');
-            console.log('====================================');
             var idx = getIndex(id);
 
             if(vm.tmpSelected !== false){ // another one is being editted, save it & close edit form
@@ -96,9 +93,6 @@
         }
 
         function saveEntry(id = -1) {
-            console.log('====================================');
-            console.log('Save Entry');
-            console.log('====================================');
             var idx = getIndex(id);
 
             vm.items[idx].editMode = false;
@@ -145,9 +139,6 @@
         }
 
         function onSelect(item) {
-            console.log('====================================');
-            console.log('selected item', item);
-            console.log('====================================');
             vm.selected = item;
         }
 

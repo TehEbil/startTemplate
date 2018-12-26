@@ -51,9 +51,9 @@
                 },
                 description: 'desc',
                 costs: {
-                    disposalCost: 'disposal',
-                    impairment: 'imp',
-                    recoup: 'stopaj',
+                    disposalCost: 500,
+                    impairment: 600,
+                    recoup: 700,
                     isPrint: true
                 }
             }
@@ -63,15 +63,9 @@
 
         function init() {
             vm.detection = getId.data;
-            console.log('====================================');
-            console.log(vm.detection);
-            console.log('====================================');
         }
 
         function openTextSnippetModal() {
-            console.log('====================================');
-            console.log('clicked');
-            console.log('====================================');
             let obj = {
                 title: 'Text Snippets',
                 data: [

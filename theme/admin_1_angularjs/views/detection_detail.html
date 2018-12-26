@@ -117,19 +117,19 @@
  				<div class="bxp-col-6 float-left group">
  					<div class="group" style="margin-bottom:15px;">
  						<label class="control-label bxp-label float-left" style="width:40%!important;">Beseitigung</label>
- 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.disposalCost"/>
+ 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.disposalCost"/>
  					</div>
 
  					<div class="group">
  						<label class="control-label bxp-label float-left" style="width:40%!important;">Wertminderung</label>
- 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.impairment"/>
+ 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.impairment"/>
  					</div>
  				</div>
 
  				<div class="bxp-col-6 float-left group">
  					<div class="group"style="margin-bottom:15px;">
  						<label class="control-label bxp-label float-left" style="width:40%!important;">Einbehalt</label>
- 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.recoup"/>
+ 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.recoup"/>
  					</div>
 
  					<input id="printable" type="checkbox" name="doNotprintItMan" value="doNotprintItMan" ng-model="FormCtrl.detection.detail.costs.isPrint"/>
