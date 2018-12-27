@@ -147,16 +147,9 @@
         }
 
         function editDetection(detection) {
-
             /* Open detection detail modal */
-            console.log('====================================');
-            console.log(detection);
-            console.log('====================================');
             modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', {data: detection}).then(
                 (data) => {
-                    console.log('====================================');
-                    console.log(data);
-                    console.log('====================================');
                 }
             );
         }

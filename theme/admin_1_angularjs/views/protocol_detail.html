@@ -126,7 +126,7 @@
 								</thead>
 								<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 								<tbody ng-if="vm.anschriften.length != 0">
-									<tr ng-dblclick="vm.dblClick(protocol)" ng-repeat="detection in vm.detections">
+									<tr ng-dblclick="vm.editDetection(protocol)" ng-repeat="detection in vm.detections">
 										<td>{{ detection.id }}</td>
 										<td>{{ detection.date }}</td>
 										<td>{{ detection.protocolType }}</td>
@@ -169,7 +169,7 @@
 								</thead>
 								<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 								<tbody ng-if="vm.anschriften.length != 0">
-									<tr ng-dblclick="vm.dblClick(protocol)" ng-repeat="protocol in vm.protocols">
+									<tr ng-dblclick="vm.editProtocolDocument(protocol)" ng-repeat="protocol in vm.protocols">
 										<td>{{ protocol.id }}</td>
 										<td>{{ protocol.date }}</td>
 										<td>{{ protocol.protocolType }}</td>

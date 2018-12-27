@@ -150,21 +150,6 @@
             vm.project = passDataService.getObj().projectDatas;
         }
 
-        function dblClick(document) {
-
-            /* Open detection detail modal */
-            console.log('====================================');
-            console.log(document);
-            console.log('====================================');
-            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', {data: detection}).then(
-                (data) => {
-                    console.log('====================================');
-                    console.log(data);
-                    console.log('====================================');
-                }
-            );
-        }
-
         function closeModal() {
             $scope.$close();
         }

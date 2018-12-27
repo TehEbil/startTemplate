@@ -12,7 +12,7 @@
 		// console.log("ProtocolDocumentsController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClickProtocols;
+        vm.editProtocolDocument = editProtocolDocument;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
 
@@ -112,14 +112,11 @@
             }
         ];
 
-        function dblClickProtocols(protocol) {
+        function editProtocolDocument(protocol) {
             console.log('f:' + protocol)
             /* Open detection detail modal */
             modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', {data: protocol}).then(
                 (data) => {
-                    console.log('====================================');
-                    console.log('coming data:', data);
-                    console.log('====================================');
                 }
             );
         }

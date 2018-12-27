@@ -12,7 +12,7 @@
 		// console.log("SelectDetectionController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClick;
+        vm.editDetection = editDetection;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
 
@@ -139,7 +139,7 @@
             }
         ];
 
-        function dblClick(detection) {
+        function editDetection(detection) {
 
             /* Open detection detail modal */
             console.log('====================================');

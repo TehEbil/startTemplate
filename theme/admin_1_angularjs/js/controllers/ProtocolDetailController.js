@@ -57,9 +57,6 @@
 
         function init() {
             vm.protocol = getId.data;
-            console.log('====================================');
-            console.log(vm.protocol);
-            console.log('====================================');
         }
 
         $scope.selectedTab = $scope.tabs[0];
@@ -73,9 +70,6 @@
         }
 
         function submitForm() {
-            console.log('====================================');
-            console.log('submitForm');
-            console.log('====================================');
             $scope.$close(vm.protocol);
         }
 }
