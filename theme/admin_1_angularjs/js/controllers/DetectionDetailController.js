@@ -24,6 +24,27 @@
         vm.statuses = globalData.status;
         vm.basics = globalData.grundlagen;
 
+        vm.detailModel = {
+            idx: vm.detailIdx,
+            id: 8743,
+            date: '',
+            hour: 0,
+            minute: 0,
+            testField: {},
+            position: '',
+            title: '',
+            evaluation: {},
+            basics: {},
+            status: {},
+            description: 'desc',
+            costs: {
+                disposalCost: 0,
+                impairment: 0,
+                recoup: 0,
+                isPrint: true
+            }
+        };
+
 
         vm.detection = {};
 
@@ -77,6 +98,9 @@
             detail.idx = vm.detailIdx;
             /* increase index value and push page object in the detail array */
             vm.detection.detail.push(detail); // if same detail haven't
+            vm.detailModel.idx = vm.detailIdx;
+            vm.detailModel.id = detail.id ++;
+            vm.detection.detail = vm.detailModel;
 
             console.log('====================================');
             console.log(vm.detection.detail);
