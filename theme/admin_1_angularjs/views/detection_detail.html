@@ -13,7 +13,7 @@
  				<div class="bxp-col-6 float-left form-group group">Nr</div>
 
  				<div class="bxp-col-6 float-right form-group group" style="display:flex; justify-content: flex-end;">
- 					<div>1/16</div>
+ 					<div>{{ FormCtrl.detailIdx + 1 }}/16</div>
  					<button class="bxp-rounded-button small add" style="margin-left:10px!important;"><i class="fa fa-arrow-left"></i></button>
  					<button class="bxp-rounded-button small add" style="margin-left:10px!important;"><i class="fa fa-arrow-right"></i></button>
  				</div>
@@ -28,8 +28,8 @@
  				<div class="bxp-col-6 float-left form-group group">
 					 <div class="row">
 						<label class="control-label bxp-label float-left">Uhrzeit</label>
-						<input class="form-control bxp-input float-left" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.hour"/>:
-						<input class="form-control bxp-input float-right" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.minute"/>
+						<input class="form-control bxp-input float-left" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].hour"/>:
+						<input class="form-control bxp-input float-right" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].minute"/>
 					 </div>
  				</div>
  			</div>
@@ -38,7 +38,7 @@
  				<label class="control-label bxp-label float-left">Prüffeld</label>
  				<div class="form-group modal-form-group width-100 group">
  					<div class="bxp-input float-left edit-icon-container">
- 						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.testField" theme="bootstrap" remove-selected="false">
+ 						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].testField" theme="bootstrap" remove-selected="false">
  							<ui-select-match>{{ $select.selected.name }}</ui-select-match>
  							<ui-select-choices repeat="item in FormCtrl.testFields | filter: $select.search | groupBy: item.group">
  								<span ng-bind-html="item.name  | highlight: $select.search"></span>
@@ -51,7 +51,7 @@
 
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Lage/Position</label>
- 				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.position"/>
+ 				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].position"/>
  			</div>
 
  			<div class="form-group group">
@@ -62,7 +62,7 @@
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Beurteilung</label>
  				<div class="bxp-input float-left edit-icon-container">
- 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.evaluation" theme="bootstrap" remove-selected="false">
+ 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].evaluation" theme="bootstrap" remove-selected="false">
  						<ui-select-match>{{
  							$select.selected.name
  							}}</ui-select-match>
@@ -77,7 +77,7 @@
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Status</label>
  				<div class="bxp-input float-left edit-icon-container">
- 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.status" theme="bootstrap" remove-selected="false">
+ 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].status" theme="bootstrap" remove-selected="false">
 						<ui-select-match>{{
 							$select.selected.name
 							}}</ui-select-match>
@@ -92,7 +92,7 @@
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Grundlagen</label>
  				<div class="bxp-input float-left edit-icon-container">
- 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail.basics" theme="bootstrap" remove-selected="false">
+ 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].basics" theme="bootstrap" remove-selected="false">
  						<ui-select-match>{{
  							$select.selected.name
  							}}</ui-select-match>
@@ -108,7 +108,7 @@
  				<label class="control-label bxp-label float-left">Beschreibung</label>
 
  				<div class="bxp-input float-left edit-icon-container">
- 						<textarea class="form-control" rows="4" cols="50" ng-model="FormCtrl.detection.detail.description">
+ 						<textarea class="form-control" rows="4" cols="50" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].description">
  		            	</textarea>
  						<a class="edit-icon" ng-click="FormCtrl.openTextSnippetModal()"><i class="fa fa-cog"></i></a>
  				</div>
@@ -120,22 +120,22 @@
  				<div class="bxp-col-6 float-left group">
  					<div class="group" style="margin-bottom:15px;">
  						<label class="control-label bxp-label float-left" style="width:40%!important;">Beseitigung</label>
- 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.disposalCost"/>
+ 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].costs.disposalCost"/>
  					</div>
 
  					<div class="group">
  						<label class="control-label bxp-label float-left" style="width:40%!important;">Wertminderung</label>
- 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.impairment"/>
+ 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].costs.impairment"/>
  					</div>
  				</div>
 
  				<div class="bxp-col-6 float-left group">
  					<div class="group"style="margin-bottom:15px;">
  						<label class="control-label bxp-label float-left" style="width:40%!important;">Einbehalt</label>
- 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail.costs.recoup"/>
+ 						<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2" maxlength="" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].costs.recoup"/>
  					</div>
 
- 					<input id="printable" type="checkbox" name="doNotprintItMan" value="doNotprintItMan" ng-model="FormCtrl.detection.detail.costs.isPrint"/>
+ 					<input id="printable" type="checkbox" name="doNotprintItMan" value="doNotprintItMan" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].costs.isPrint"/>
  					<label for="printable">Kosten nicht ausdrucken</label><br />
  				</div>
  			</div>

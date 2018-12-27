@@ -15,6 +15,7 @@
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
         vm.openTextSnippetModal = openTextSnippetModal;
+        vm.detailIdx = 0;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -29,6 +30,9 @@
 
         function init() {
             vm.detection = getId.data;
+            console.log('====================================');
+            console.log(vm.detection.detail[vm.detailIdx]);
+            console.log('====================================');
         }
 
         function openTextSnippetModal() {
@@ -61,7 +65,7 @@
             modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
                 
                 if (typeof data !== 'undefined') {
-                    vm.detection.detail.description = `${vm.detection.detail.description} ${data.value}`;    
+                    vm.detection.detail[[vm.detailIdx]].description = `${vm.detection.detail[vm.detailIdx].description} ${data.value}`;    
                 }
                 
             });
