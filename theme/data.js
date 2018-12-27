@@ -1122,497 +1122,497 @@ var globalData = {
     ],
     "prüffeld": [
         {
-          "id": "000",
+          "id": 0,
           "name": "Sicherheitseinrichtungen, Baustelleneinrichtungen",
           "group": "ROHBAU"
         },
         {
-          "id": "001",
+          "id": 1,
           "name": "Gerüstarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "002",
+          "id": 2,
           "name": "Erdarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "005",
+          "id": 5,
           "name": "Brunnenbauarbeiten und Aufschlussbohrungen",
           "group": "ROHBAU"
         },
         {
-          "id": "006",
+          "id": 6,
           "name": "Spezialtiefbauarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "007",
+          "id": 7,
           "name": "Untertagebauarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "008",
+          "id": 8,
           "name": "Wasserhaltungsarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "009",
+          "id": 9,
           "name": "Entwässerungskanalarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "010",
+          "id": 10,
           "name": "Drän- und Versickerarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "011",
+          "id": 11,
           "name": "Abscheider- und Kleinkläranlagen",
           "group": "ROHBAU"
         },
         {
-          "id": "012",
+          "id": 12,
           "name": "Mauerarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "013",
+          "id": 13,
           "name": "Betonarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "014",
+          "id": 14,
           "name": "Natur-, Betonwerksteinarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "016",
+          "id": 16,
           "name": "Zimmer- und Holzbauarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "017",
+          "id": 17,
           "name": "Stahlbauarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "018",
+          "id": 18,
           "name": "Abdichtungsarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "020",
+          "id": 20,
           "name": "Dachdeckungsarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "021",
+          "id": 21,
           "name": "Dachabdichtungsarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "022",
+          "id": 22,
           "name": "Klempnerarbeiten",
           "group": "ROHBAU"
         },
         {
-          "id": "023",
+          "id": 23,
           "name": "Putz- und Stuckarbeiten, Wärmedämmsysteme",
           "group": "AUSBAU"
         },
         {
-          "id": "024",
+          "id": 24,
           "name": "Fliesen- und Plattenarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "025",
+          "id": 25,
           "name": "Estricharbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "026",
+          "id": 26,
           "name": "Fenster, Außentüren",
           "group": "AUSBAU"
         },
         {
-          "id": "027",
+          "id": 27,
           "name": "Tischlerarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "028",
+          "id": 28,
           "name": "Parkett-, Holzpflasterarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "029",
+          "id": 29,
           "name": "Beschlagarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "030",
+          "id": 30,
           "name": "Rollladenarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "031",
+          "id": 31,
           "name": "Metallbauarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "032",
+          "id": 32,
           "name": "Verglasungsarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "033",
+          "id": 33,
           "name": "Baureinigungsarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "034",
+          "id": 34,
           "name": "Maler- und Lackierarbeiten - Beschichtungen",
           "group": "AUSBAU"
         },
         {
-          "id": "035",
+          "id": 35,
           "name": "Korrosionsschutzarbeiten an Stahlbauten",
           "group": "AUSBAU"
         },
         {
-          "id": "036",
+          "id": 36,
           "name": "Bodenbelagarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "037",
+          "id": 37,
           "name": "Tapezierarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "038",
+          "id": 38,
           "name": "Vorgehängte hinterlüftete Fassaden",
           "group": "AUSBAU"
         },
         {
-          "id": "039",
+          "id": 39,
           "name": "Trockenbauarbeiten",
           "group": "AUSBAU"
         },
         {
-          "id": "040",
+          "id": 40,
           "name": "Wärmeversorgungsanlagen - Betriebseinrichtungen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "041",
+          "id": 41,
           "name": "Wärmeversorgungsanlagen - Leitungen, Armaturen, Heizflächen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "042",
+          "id": 42,
           "name": "Gas- und Wasseranlagen - Leitungen, Armaturen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "043",
+          "id": 43,
           "name": "Druckrohrleitungen für Gas, Wasser und Abwasser",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "044",
+          "id": 44,
           "name": "Abwasseranlagen - Leitungen, Abläufe, Armaturen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "045",
+          "id": 45,
           "name": "Gas-, Wasser- und Entwässerungsanlagen - Ausstattung, Elemente, Fertigbäder",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "046",
+          "id": 46,
           "name": " Gas-, Wasser- und Entwässerungsanlagen - Betriebseinrichtungen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "047",
+          "id": 47,
           "name": "Dämm- und Brandschutzarbeiten an technischen Anlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "049",
+          "id": 49,
           "name": "Feuerlöschanlagen, Feuerlöschgeräte",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "050",
+          "id": 50,
           "name": "Blitzschutz- / Erdungsanlagen, Überspannungsschutz",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "051",
+          "id": 51,
           "name": "Kabelleitungstiefbauarbeiten",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "052",
+          "id": 52,
           "name": "Mittelspannungsanlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "053",
+          "id": 53,
           "name": "Niederspannungsanlagen - Kabel / Leitungen, Verlegesysteme, Installationsgeräte",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "054",
+          "id": 54,
           "name": "Niederspannungsanlagen - Verteilersysteme und Einbaugeräte",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "055",
+          "id": 55,
           "name": "Ersatzstromversorgungsanlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "057",
+          "id": 57,
           "name": "Gebäudesystemtechnik",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "058",
+          "id": 58,
           "name": "Leuchten und Lampen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "059",
+          "id": 59,
           "name": "Sicherheitsbeleuchtungsanlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "060",
+          "id": 60,
           "name": "Elektroakustische Anlagen, Sprechanlagen, Personenrufanlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "061",
+          "id": 61,
           "name": "Kommunikationsnetze",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "062",
+          "id": 62,
           "name": "Kommunikationsanlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "063",
+          "id": 63,
           "name": "Gefahrenmeldeanlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "064",
+          "id": 64,
           "name": "Zutrittskontroll-, Zeiterfassungssysteme",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "069",
+          "id": 65,
           "name": "Aufzüge",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "070",
+          "id": 70,
           "name": "Gebäudeautomation",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "075",
+          "id": 75,
           "name": "Raumlufttechnische Anlagen",
           "group": "GEBÄUDETECHNIK"
         },
         {
-          "id": "003",
+          "id": 3,
           "name": "Landschaftsbauarbeiten",
           "group": "AUßENANLAGEN"
         },
         {
-          "id": "004",
+          "id": 4,
           "name": "Landschaftsbauarbeiten - Pflanzen",
           "group": "AUßENANLAGEN"
         },
         {
-          "id": "080",
+          "id": 80,
           "name": "Straßen, Wege, Plätze",
           "group": "AUßENANLAGEN"
         },
         {
-          "id": "081",
+          "id": 81,
           "name": "Betonerhaltungsarbeiten",
           "group": "SONSTIGE"
         },
         {
-          "id": "082",
+          "id": 82,
           "name": "Bekämpfender Holzschutz",
           "group": "SONSTIGE"
         },
         {
-          "id": "083",
+          "id": 83,
           "name": "Sanierungsarbeiten an schadstoffhaltigen Bauteilen",
           "group": "SONSTIGE"
         },
         {
-          "id": "084",
+          "id": 84,
           "name": "Abbruch- und Rückbauarbeiten",
           "group": "SONSTIGE"
         },
         {
-          "id": "085",
+          "id": 85,
           "name": "Rohrvortriebsarbeiten",
           "group": "SONSTIGE"
         },
         {
-          "id": "087",
+          "id": 87,
           "name": "Abfallentsorgung, Verwertung und Beseitigung",
           "group": "SONSTIGE"
         },
         {
-          "id": "090",
+          "id": 90,
           "name": "Baulogistik",
           "group": "SONSTIGE"
         },
         {
-          "id": "091",
+          "id": 91,
           "name": "Stundenlohnarbeiten",
           "group": "SONSTIGE"
         },
         {
-          "id": "096",
+          "id": 96,
           "name": "Bauarbeiten an Bahnübergängen",
           "group": "SONSTIGE"
         },
         {
-          "id": "097",
+          "id": 97,
           "name": "Bauarbeiten an Gleisen und Weichen",
           "group": "SONSTIGE"
         },
         {
-          "id": "098",
+          "id": 98,
           "name": "Witterungsschutzmaßnahmen",
           "group": "SONSTIGE"
         },
         {
-          "id": "099",
+          "id": 99,
           "name": "Barrierefreies Bauen",
           "group": "SONSTIGE"
         },
         {
-          "id": "100",
+          "id": 100,
           "name": "Brandschutz",
           "group": "SONSTIGE"
         }
     ],
     "abnahme": [
       {
-        "id": "0",
+        "id": 0,
         "name": "Abnahme kann nicht erteilt werden"
       },
       {
-        "id": "1",
+        "id": 1,
         "name": "Abnahme kann ohne Vorbehalte erteilt werden"
       },
       {
-        "id": "2",
+        "id": 2,
         "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
       }
     ],
     "auftragsart": [
         {
-          "id": "01",
+          "id": 1,
           "name": "Kauf - Verkaufsberatung"
         },
         {
-          "id": "02",
+          "id": 2,
           "name": "Baubegleitung"
         },
         {
-          "id": "03",
+          "id": 3,
           "name": "Stellungnahme"
         },
         {
-          "id": "04",
+          "id": 4,
           "name": "Beweissicherung"
         },
         {
-          "id": "05",
+          "id": 5,
           "name": "Modernisierungs - Check"
         }
     ],
     "artDesVorhabens": [
         {
-          "id": "01",
+          "id": 1,
           "name": "Errichtung ( Neubau / Erweiterung )"
         },
         {
-          "id": "02",
+          "id": 2,
           "name": "Änderung ( Umbau / Nutzungsänderung )"
         },
         {
-          "id": "03",
+          "id": 3,
           "name": "Abbruch"
         }
     ],
     "bautenstand": [
         {
-          "id": "01",
+          "id": 1,
           "name": "Baugrundstück nach Beginn der Erdarbeiten"
         },
         {
-          "id": "02",
+          "id": 2,
           "name": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
         },
         {
-          "id": "03",
+          "id": 3,
           "name": "Dachflächen, Dachrinnen"
         },
         {
-          "id": "04",
+          "id": 4,
           "name": "Rohinstallation der Heizungsanlagen"
         },
         {
-          "id": "05",
+          "id": 5,
           "name": "Rohinstallation der Sanitäranlagen"
         },
         {
-          "id": "06",
+          "id": 6,
           "name": "Rohinstallation der Elektroanlagen"
         },
         {
-          "id": "07",
+          "id": 7,
           "name": "Fenster mit Verglasung"
         },
         {
-          "id": "08",
+          "id": 8,
           "name": "Innenputz ohne Beiputzarbeiten"
         },
         {
-          "id": "09",
+          "id": 9,
           "name": "Estrich"
         },
         {
-          "id": "10",
+          "id": 10,
           "name": "Fliesenarbeiten im Sanitärbereich"
         },
         {
-          "id": "11",
+          "id": 11,
           "name": "nach Bezugsfertigkeit (innen komplett fertig)"
         },
         {
-          "id": "12",
+          "id": 12,
           "name": "Fassadenarbeiten"
         },
         {
-          "id": "13",
+          "id": 13,
           "name": "Fertigstellung"
         }
     ],
@@ -1625,207 +1625,207 @@ var globalData = {
     ],
     "beurteilungen": [
         {
-          "id": "01",
+          "id": 1,
           "name": "Unfertige Leistung",
           "shortcut": "U"
         },
         {
-          "id": "02",
+          "id": 2,
           "name": "Hinweis allgemeiner Art",
           "shortcut": "H"
         },
         {
-          "id": "03",
+          "id": 3,
           "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
           "shortcut": "AT"
         },
         {
-          "id": "04",
+          "id": 4,
           "name": "Abweichung vom Vertrag / Baubeschreilbung",
           "shortcut": "AV"
         },
         {
-          "id": "05",
+          "id": 5,
           "name": "Planungsfehler",
           "shortcut": "P"
         },
         {
-          "id": "06",
+          "id": 6,
           "name": "Ausführungsfehler",
           "shortcut": "A"
         },
         {
-          "id": "07",
+          "id": 7,
           "name": "Beschädigung durch außere Einwirkung",
           "shortcut": "E"
         },
         {
-          "id": "08",
+          "id": 8,
           "name": "Verwendung falscher Baustoffe",
           "shortcut": "F"
         }
     ],
     "status": [
         {
-          "id": "01",
+          "id": 1,
           "name": "noch nicht abgestellt"
         },
         {
-          "id": "02",
+          "id": 2,
           "name": "abgestellt und durch den Sachverständigen kontrolliert"
         },
         {
-          "id": "03",
+          "id": 3,
           "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
         },
         {
-          "id": "04",
+          "id": 4,
           "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
         }
     ],
     "grundlagen": [
         {
-          "id": "01",
+          "id": 1,
           "name": "Allg. anerkannte Regeln der Technik"
         },
         {
-          "id": "02",
+          "id": 2,
           "name": "Ausführungspläne / Zeichnungen"
         },
         {
-          "id": "03",
+          "id": 3,
           "name": "Baubeschreibung"
         },
         {
-          "id": "04",
+          "id": 4,
           "name": "DIN 1045 (Stahl- und Stahlbetonbau)"
         },
         {
-          "id": "05",
+          "id": 5,
           "name": "DIN 1053 (Mauerwerk)"
         },
         {
-          "id": "06",
+          "id": 6,
           "name": "DIN 18195 (Bauwerksabdichtungen)"
         },
         {
-          "id": "07",
+          "id": 7,
           "name": "DIN 18202 (Toleranzen im Hochbau)"
         },
         {
-          "id": "08",
+          "id": 8,
           "name": "DIN 18350"
         },
         {
-          "id": "09",
+          "id": 9,
           "name": "DIN 18353"
         },
         {
-          "id": "10",
+          "id": 10,
           "name": "DIN 18381"
         },
         {
-          "id": "11",
+          "id": 11,
           "name": "DIN 18550"
         },
         {
-          "id": "12",
+          "id": 12,
           "name": "DIN 18560"
         },
         {
-          "id": "13",
+          "id": 13,
           "name": "DIN 1986"
         },
         {
-          "id": "14",
+          "id": 14,
           "name": "DIN 1988"
         },
         {
-          "id": "15",
+          "id": 15,
           "name": "DIN 4102"
         },
         {
-          "id": "16",
+          "id": 16,
           "name": "DIN 4108"
         },
         {
-          "id": "17",
+          "id": 17,
           "name": "DIN 4109"
         },
         {
-          "id": "18",
+          "id": 18,
           "name": "DIN 4759 (Heizungsanlagen in Gebäuden)"
         },
         {
-          "id": "19",
+          "id": 19,
           "name": "DIN EN 13163:2001-10"
         },
         {
-          "id": "20",
+          "id": 20,
           "name": "DIN EN 13813"
         },
         {
-          "id": "21",
+          "id": 21,
           "name": "DIN EN 806"
         },
         {
-          "id": "22",
+          "id": 22,
           "name": "EnEV-Nachweis"
         },
         {
-          "id": "23",
+          "id": 23,
           "name": "Heizungsanlagenverordnung HeizAnIV"
         },
         {
-          "id": "24",
+          "id": 24,
           "name": "Hersteller-Verarbeitungsrichtlinien"
         },
         {
-          "id": "25",
+          "id": 25,
           "name": "KMB - Richtlinie"
         },
         {
-          "id": "26",
+          "id": 26,
           "name": "Landesbauordnung Bau O NRW"
         },
         {
-          "id": "27",
+          "id": 27,
           "name": "Planungsvorgaben"
         },
         {
-          "id": "28",
+          "id": 28,
           "name": "Regeln für Abdichtungen - Flachdachrichtlinien des Zentralverbandes Deutschen Dachdeckerhandwerks"
         },
         {
-          "id": "29",
+          "id": 29,
           "name": "Regeln für Metallarbeiten im Dachdeckerhandwerk des Zentralverbandes Deutschen Dachdeckerhandwerks"
         },
         {
-          "id": "30",
+          "id": 30,
           "name": "Siehe vorherige Protokollpunkte"
         },
         {
-          "id": "31",
+          "id": 31,
           "name": "Statik"
         },
         {
-          "id": "32",
+          "id": 32,
           "name": "Technische Richtlinie RAL-Gütegemeinschaft Fenster und Haustüren e.V."
         },
         {
-          "id": "33",
+          "id": 33,
           "name": "VDE"
         },
         {
-          "id": "34",
+          "id": 34,
           "name": "VDI"
         },
         {
-          "id": "35",
+          "id": 35,
           "name": "Vertrag"
         },
         {
-          "id": "36",
+          "id": 36,
           "name": "Wärmeschutznachweis"
         }
     ]

@@ -126,9 +126,7 @@
             /* Open detection detail modal */
             modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', {data: protocol}).then(
                 (data) => {
-                    console.log('====================================');
-                    console.log('coming data:', data);
-                    console.log('====================================');
+                    
                 }
             );
         }
