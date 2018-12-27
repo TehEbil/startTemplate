@@ -16,6 +16,7 @@
         vm.submitForm = submitForm;
         vm.openTextSnippetModal = openTextSnippetModal;
         vm.detailIdx = 0;
+        vm.nextPage = nextPage;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -69,6 +70,21 @@
                 }
                 
             });
+        }
+
+        function nextPage(detail) {
+            vm.detailIdx ++;
+            detail.idx = vm.detailIdx;
+            /* increase index value and push page object in the detail array */
+            vm.detection.detail.push(detail); // if same detail haven't
+
+            console.log('====================================');
+            console.log(vm.detection.detail);
+            console.log('====================================');
+        }
+
+        function previousPage() {
+            /* decrease index value */
         }
 
         function closeModal() {

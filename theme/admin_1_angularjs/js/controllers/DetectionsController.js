@@ -28,7 +28,7 @@
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 detail: [
                     {
-                        idx: 1,
+                        idx: 0,
                         id: 8743,
                         date: '18.12.2018',
                         hour: 14,
