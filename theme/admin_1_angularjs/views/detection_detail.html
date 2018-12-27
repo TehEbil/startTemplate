@@ -26,8 +26,11 @@
  				</div>
 
  				<div class="bxp-col-6 float-left form-group group">
- 					<label class="control-label bxp-label float-left">Uhrzeit</label>
- 					<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.date"/>
+					 <div class="row">
+						<label class="control-label bxp-label float-left">Uhrzeit</label>
+						<input class="form-control bxp-input float-left" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.hour"/>:
+						<input class="form-control bxp-input float-right" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail.minute"/>
+					 </div>
  				</div>
  			</div>
 

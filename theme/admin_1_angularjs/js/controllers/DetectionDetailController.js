@@ -23,41 +23,7 @@
         vm.basics = globalData.grundlagen;
 
 
-        vm.detection = {
-            number: 1,
-            date: '18.12.2018',
-            status: 'status',
-            title: 'foo',
-            coverPicUrl: 'https://picsum.photos/200/300',
-            detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            detail: {
-                id: 8743,
-                date: '18.12.2018',
-                testField: 'test field',
-                position: 'position',
-                title: 'title',
-                evaluation: {
-                    id: "03",
-                    name: "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-                    shortcut: "AT"
-                },
-                basics: {
-                    id: "03",
-                    name: "Baubeschreibung"
-                },
-                status: {
-                    id: "03",
-                    name: "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
-                },
-                description: 'desc',
-                costs: {
-                    disposalCost: 500,
-                    impairment: 600,
-                    recoup: 700,
-                    isPrint: true
-                }
-            }
-        };
+        vm.detection = {};
 
         init();
 

@@ -29,6 +29,8 @@
                 detail: {
                     id: 8743,
                     date: '18.12.2018',
+                    hour: 14,
+                    minute: 25,
                     testField: {
                         id: "008",
                         name: "Wasserhaltungsarbeiten",
@@ -68,6 +70,8 @@
                 detail: {
                     id: 8744,
                     date: '18.12.2018',
+                    hour: 15,
+                    minute: 45,
                     testField: {
                         id: "008",
                         name: "Wasserhaltungsarbeiten",
@@ -107,6 +111,8 @@
                 detail: {
                     id: 8745,
                     date: '18.12.2018',
+                    hour: 15,
+                    minute: 50,
                     testField: {
                         id: "008",
                         name: "Wasserhaltungsarbeiten",
