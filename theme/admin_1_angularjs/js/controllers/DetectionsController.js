@@ -12,7 +12,7 @@
 		// console.log("DetectionsController Loaded");
 		var vm = this;
 
-        vm.dblClick = dblClick;
+        vm.editDetection = editDetection;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
 
@@ -146,7 +146,7 @@
             vm.detections = passDataService.getObj().detectionDatas;
         }
 
-        function dblClick(detection) {
+        function editDetection(detection) {
 
             /* Open detection detail modal */
             console.log('====================================');
