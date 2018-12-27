@@ -17,6 +17,7 @@
         vm.openTextSnippetModal = openTextSnippetModal;
         vm.detailIdx = 0;
         vm.nextPage = nextPage;
+        vm.previousPage = previousPage;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -100,7 +101,7 @@
             vm.detection.detail.push(detail); // if same detail haven't
             vm.detailModel.idx = vm.detailIdx;
             vm.detailModel.id = detail.id ++;
-            vm.detection.detail = vm.detailModel;
+            vm.detection.detail[vm.detailIdx] = vm.detailModel;
 
             console.log('====================================');
             console.log(vm.detection.detail);
@@ -109,6 +110,10 @@
 
         function previousPage() {
             /* decrease index value */
+            vm.detailIdx --;
+            console.log('====================================');
+            console.log(vm.detailIdx);
+            console.log('====================================');
         }
 
         function closeModal() {

@@ -14,7 +14,7 @@
 
  				<div class="bxp-col-6 float-right form-group group" style="display:flex; justify-content: flex-end;">
  					<div>{{ FormCtrl.detailIdx + 1 }}/16</div>
- 					<button class="bxp-rounded-button small add" style="margin-left:10px!important;"><i class="fa fa-arrow-left"></i></button>
+ 					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.previousPage()"><i class="fa fa-arrow-left"></i></button>
  					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.nextPage(FormCtrl.detection.detail[FormCtrl.detailIdx])"><i class="fa fa-arrow-right"></i></button>
  				</div>
  			</div>
