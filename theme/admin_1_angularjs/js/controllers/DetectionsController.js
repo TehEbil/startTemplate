@@ -157,7 +157,7 @@
                 data: vm.baseData.detectionDatas,
                 count: vm.detections.length,
                 selectedIdx: idx
-            }
+            };
             /* Open detection detail modal */
             modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', obj).then(
                 (data) => {
