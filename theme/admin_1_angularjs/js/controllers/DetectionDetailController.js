@@ -79,7 +79,7 @@
             vm.detection.detail[vm.detailIdx] = vm.prepareDetectionModel(detailObj.id, detailObj.idx);
             
             console.log('====================================');
-            console.log(vm.detection.detail);
+            console.log($scope.Detection.$valid);
             console.log('====================================');
         }
 
