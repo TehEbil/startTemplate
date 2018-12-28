@@ -17,10 +17,6 @@
         vm.openTextSnippetModal = openTextSnippetModal;
         vm.nextPage = nextPage;
         vm.previousPage = previousPage;
-        vm.detailIdx = 0;
-        vm.details = [];
-
-        vm.prepareDetectionModel = prepareDetectionModel;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -28,12 +24,18 @@
         vm.statuses = globalData.status;
         vm.basics = globalData.grundlagen;
 
-        vm.detection = {};
+        vm.detections = [];
+        vm.selectedDetection = {};
+        vm.selectedIdx = 0;
+        vm.count = 0;
 
         init();
 
         function init() {
-            vm.detection = getId.data;
+            vm.selectedIdx = getId.selectedIdx;
+            vm.detections = getId.data;
+            vm.selectedDetection = vm.detections[vm.selectedIdx];
+            vm.count = getId.count;
         }
 
         function openTextSnippetModal() {
@@ -74,44 +76,18 @@
 
         function nextPage(detailObj) {
 
-            vm.detailIdx ++;
-
-            vm.detection.detail[vm.detailIdx] = vm.prepareDetectionModel(detailObj.id, detailObj.idx);
-            
-            console.log('====================================');
-            console.log($scope.Detection.$valid);
-            console.log('====================================');
-        }
-
-        function prepareDetectionModel(id, idx) {
-
-            let detection = {
-                idx: idx + 1,
-                id: id + 1,
-                date: '',
-                hour: 0,
-                minute: 0,
-                testField: {},
-                position: '',
-                title: '',
-                evaluation: {},
-                basics: {},
-                status: {},
-                description: 'desc',
-                costs: {
-                    disposalCost: 0,
-                    impairment: 0,
-                    recoup: 0,
-                    isPrint: true
-                }
-            };
-
-            return detection;
+            if (vm.selectedIdx < vm.count - 1) {
+                vm.selectedIdx ++;
+                vm.selectedDetection = vm.detections[vm.selectedIdx];
+            }
         }
 
         function previousPage() {
             /* decrease index value */
-            if (vm.detailIdx > 0) vm.detailIdx --;
+            if (vm.selectedIdx > 0) {
+                vm.selectedIdx --;
+                vm.selectedDetection = vm.detections[vm.selectedIdx];
+            }
         }
 
         function closeModal() {
