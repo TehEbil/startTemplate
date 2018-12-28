@@ -58,7 +58,7 @@
 								<div class="form-group group">
 									<label class="bxp-label control-label float-left">Anrede</label>
 									<div class="bxp-input-gender float-left">
-										<ui-select ng-model="FormCtrl.kunde.selectedGen" theme="bootstrap" remove-selected="false" ng-disabled="FormCtrl.svRequestState">
+										<ui-select ng-model="vm.order.customer.salutation" theme="bootstrap" remove-selected="false" ng-disabled="FormCtrl.svRequestState">
 											<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
 											<ui-select-choices repeat="item in ctrl.gender | filter: $select.search">
 
@@ -70,16 +70,16 @@
 
 									<label class="control-label bxp-label bxp-label-title float-left">Titel</label>
 									<div class="bxp-input-title float-left">
-										<ui-select ng-if="1==2" ng-model="FormCtrl.kunde.selectedTit" theme="bootstrap" remove-selected="false"
+										<ui-select ng-model="vm.order.customer.title" theme="bootstrap" remove-selected="false"
 										 ng-disabled="FormCtrl.svRequestState">
 											<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
 											<ui-select-choices repeat="item in ctrl.title | filter: $select.search">
 												<span ng-bind-html="item | highlight: $select.search"></span>
 											</ui-select-choices>
 										</ui-select>
-										<input type="text" ng-model="FormCtrl.kunde.selectedTit" ng-model-options="FormCtrl.modelOptions" ng-disabled="FormCtrl.svRequestState"
-										 uib-typeahead="item for item in ctrl.title  | filter:$viewValue | limitTo:8" class="form-control bxp-input float-left"
-										 autocomplete="off" />
+										<!-- <input type="text" ng-model="FormCtrl.kunde.selectedTit" ng-model-options="FormCtrl.modelOptions" ng-disabled="FormCtrl.svRequestState"
+										 uib-typeahead="item in ctrl.title  | filter:$viewValue | limitTo:8" class="form-control bxp-input float-left"
+										 autocomplete="off" /> -->
 									</div>
 								</div>
 								<div class="form-group group">
