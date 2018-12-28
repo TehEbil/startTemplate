@@ -5,19 +5,22 @@
 		.module('MetronicApp')
 		.controller('DetectionDetailController', DetectionDetailController);
 
-        DetectionDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'getId'];
+        DetectionDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'getId', 'passDataService'];
 
 	/* @ngInject */
-	function DetectionDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, getId) {
+	function DetectionDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, getId, passDataService) {
 		// console.log("DetectionDetailController Loaded");
 		var vm = this;
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
         vm.openTextSnippetModal = openTextSnippetModal;
-        vm.detailIdx = 0;
         vm.nextPage = nextPage;
         vm.previousPage = previousPage;
+        vm.detailIdx = 0;
+        vm.details = [];
+
+        vm.prepareDetectionModel = prepareDetectionModel;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -25,37 +28,12 @@
         vm.statuses = globalData.status;
         vm.basics = globalData.grundlagen;
 
-        vm.detailModel = {
-            idx: vm.detailIdx,
-            id: 8743,
-            date: '',
-            hour: 0,
-            minute: 0,
-            testField: {},
-            position: '',
-            title: '',
-            evaluation: {},
-            basics: {},
-            status: {},
-            description: 'desc',
-            costs: {
-                disposalCost: 0,
-                impairment: 0,
-                recoup: 0,
-                isPrint: true
-            }
-        };
-
-
         vm.detection = {};
 
         init();
 
         function init() {
             vm.detection = getId.data;
-            console.log('====================================');
-            console.log(vm.detection.detail[vm.detailIdx]);
-            console.log('====================================');
         }
 
         function openTextSnippetModal() {
@@ -88,32 +66,51 @@
             modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
                 
                 if (typeof data !== 'undefined') {
-                    vm.detection.detail[[vm.detailIdx]].description = `${vm.detection.detail[vm.detailIdx].description} ${data.value}`;    
+                    vm.detection.detail[vm.detailIdx].description = `${vm.detection.detail[vm.detailIdx].description} ${data.value}`;    
                 }
                 
             });
         }
 
-        function nextPage(detail) {
+        function nextPage(detailObj) {
             vm.detailIdx ++;
-            detail.idx = vm.detailIdx;
-            /* increase index value and push page object in the detail array */
-            vm.detection.detail.push(detail); // if same detail haven't
-            vm.detailModel.idx = vm.detailIdx;
-            vm.detailModel.id = detail.id ++;
-            vm.detection.detail[vm.detailIdx] = vm.detailModel;
 
+            vm.detection.detail[vm.detailIdx] = vm.prepareDetectionModel(detailObj.id, detailObj.idx);
+            
             console.log('====================================');
             console.log(vm.detection.detail);
             console.log('====================================');
         }
 
+        function prepareDetectionModel(id, idx) {
+
+            let detection = {
+                idx: idx + 1,
+                id: id + 1,
+                date: '',
+                hour: 0,
+                minute: 0,
+                testField: {},
+                position: '',
+                title: '',
+                evaluation: {},
+                basics: {},
+                status: {},
+                description: 'desc',
+                costs: {
+                    disposalCost: 0,
+                    impairment: 0,
+                    recoup: 0,
+                    isPrint: true
+                }
+            };
+
+            return detection;
+        }
+
         function previousPage() {
             /* decrease index value */
-            vm.detailIdx --;
-            console.log('====================================');
-            console.log(vm.detailIdx);
-            console.log('====================================');
+            if (vm.detailIdx > 0) vm.detailIdx --;
         }
 
         function closeModal() {
@@ -121,6 +118,9 @@
         }
 
         function submitForm() {
+            console.log('====================================');
+            console.log(vm.detection);
+            console.log('====================================');
             $scope.$close(vm.detection);
         }
 }
