@@ -73,6 +73,7 @@
         }
 
         function nextPage(detailObj) {
+
             vm.detailIdx ++;
 
             vm.detection.detail[vm.detailIdx] = vm.prepareDetectionModel(detailObj.id, detailObj.idx);

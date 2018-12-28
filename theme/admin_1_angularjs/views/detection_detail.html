@@ -1,4 +1,4 @@
-<form action="#" name="detectionForm" role="form" id="detection" ng-model="state" func="FormCtrl.closeModal" close-esc-key
+<form action="#" name="Detection" role="form" id="detection" ng-dirty ng-model="state" func="FormCtrl.closeModal" close-esc-key
  ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
  novalidate autocomplete="off"></form>
 <bxp-responsive-in-modal form-name="Detection" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
@@ -14,15 +14,15 @@
 
  				<div class="bxp-col-6 float-right form-group group" style="display:flex; justify-content: flex-end;">
  					<div>{{ FormCtrl.detailIdx + 1 }}/16</div>
- 					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.previousPage()"><i class="fa fa-arrow-left"></i></button>
- 					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.nextPage(FormCtrl.detection.detail[FormCtrl.detailIdx])"><i class="fa fa-arrow-right"></i></button>
+ 					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.previousPage()" required><i class="fa fa-arrow-left"></i></button>
+ 					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.nextPage(FormCtrl.detection.detail[FormCtrl.detailIdx])" required><i class="fa fa-arrow-right"></i></button>
  				</div>
  			</div>
 
  			<div class="form-group group">
  				<div class="bxp-col-6 float-left form-group group">
  					<label class="control-label bxp-label float-left">Datum</label>
- 					<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.date" />
+ 					<input class="form-control bxp-input float-left" type="text" name="date" ng-disabled="" ng-model="FormCtrl.detection.date" />
  				</div>
 
  				<div class="bxp-col-6 float-left form-group group">
@@ -51,7 +51,7 @@
 
  			<div class="form-group group">
  				<label class="control-label bxp-label float-left">Lage/Position</label>
- 				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].position"/>
+ 				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.detection.detail[FormCtrl.detailIdx].position" required/>
  			</div>
 
  			<div class="form-group group">
