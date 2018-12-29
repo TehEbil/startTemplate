@@ -633,6 +633,40 @@ MetronicApp.run(["$rootScope", "$http", "settings", "$state", "sharedService", "
             $state.previous = fromState;
             $state.previousParams = fromParams;
         });
+
+        $.extend( $.fn.dataTable.defaults, {
+            pagingType: "simple_numbers",
+            processing: true,
+            DT_RowId: true,
+            //order: true,
+            //orderClasses: false,
+            bSortClasses: false,
+            responsive: true,
+            paging: false,
+            searching: false,
+            // scrollCollapse: true,
+            // paging: false,
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "Keine Daten vorhanden.",
+                    "info":           "", //Zeige Einträge _START_ bis _END_ von _TOTAL_
+                    "infoEmpty":      "", //Zeige 0 bis 0 von 0 Einträgen
+                    "infoFiltered":   "(Gefiltert von insgesamt _MAX_ Einträgen)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Zeige _MENU_ Einträge",
+                    "loadingRecords": "Lade...",
+                    "processing":     "Ausführen...",
+                    "search":         "",
+                    "zeroRecords":    "Keine Daten gefunden.",
+                    "paginate": {
+                        "first":      "<<",
+                        "last":       ">>",
+                        "next":       ">",
+                        "previous":   "<"
+                    }
+            }
+        });
 }]);
 
 // MetronicApp.run(['$rootScope', 'settings', '$state', '$cookies', '$http', '$location', '$timeout', '$urlRouter', '$interval',
