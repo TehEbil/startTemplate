@@ -21,14 +21,15 @@
         vm.baseData.detectionDatas = [
             {
                 number: 1,
-                date: '18.12.2018',
+                date: '',
                 status: 'status',
                 title: 'foo',
                 coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 detail: {
                     id: 8743,
-                    date: '18.12.2018',
+                    date: '',
+                    datetime: '',
                     hour: 14,
                     minute: 25,
                     testField: {
@@ -62,14 +63,15 @@
             },
             {
                 number: 2,
-                date: '18.12.2018',
+                date: '',
                 status: 'status',
                 title: 'foo',
                 coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 detail: {
                     id: 8744,
-                    date: '18.12.2018',
+                    date: '',
+                    datetime: '',
                     hour: 14,
                     minute: 25,
                     testField: {
@@ -103,14 +105,15 @@
             },
             {
                 number: 3,
-                date: '18.12.2018',
+                date: '',
                 status: 'status',
                 title: 'foo',
                 coverPicUrl: 'https://www.picsum.photos/200/300',
                 detection: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                 detail: {
                     id: 8745,
-                    date: '18.12.2018',
+                    date: '',
+                    datetime: '',
                     hour: 14,
                     minute: 25,
                     testField: {
