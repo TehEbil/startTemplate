@@ -150,12 +150,21 @@ server.use(morgan((tokens, req, res) => {
 exports.writeToDB = function(x) {
   db.get('files').insert(x).write();
   /* until mongodb */
-  return dbHelper.getMaxId('files') - 1;
+  return dbHelper.getMaxId(db, 'files') - 1;
 }
 
 /* routing */
 
 server.post('/uploadDoc', multipartyMiddleware, FileUploadController.uploadFile);
+
+// server.post('/uploadDoc', multipartyMiddleware, (req, res) => {
+
+// 	console.log('====================================');
+// 	console.log('res => ', res);
+// 	console.log('====================================');
+
+// 	return res.json('ok').status(200);
+// });
 
 server.get('/', function(req, res) {
     res.send('Hello! The API is at http://localhost:' + 3006 + '/api');

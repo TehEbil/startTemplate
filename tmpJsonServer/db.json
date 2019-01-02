@@ -20,6 +20,11 @@
       "name": "expFile.txt",
       "path": "public/uploads/file1.txt",
       "id": 1
+    },
+    {
+      "name": "Ekran Resmi 2018-11-22 13.12.32.png",
+      "path": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
+      "id": 2
     }
   ],
   "stammDaten": {

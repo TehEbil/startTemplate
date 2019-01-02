@@ -1,4 +1,3 @@
-
 module.exports = {
     maxId(arr) {
         if(Array.isArray(arr) == false) {
@@ -24,21 +23,8 @@ module.exports = {
     },
     
     getMaxId(db, _dbname, id="id") {
-        var x = maxId(db.get(_dbname).value());
+        var x = this.maxId(db.get(_dbname).value());
         return (x) ? x + 1 : 1;
-    },
-    
-    maxId(arr) {
-        if(Array.isArray(arr) == false) {
-            console.log("Not an array, defaults to 0");
-            return 0;
-        }
-        var x = Math.max.apply(this, arr.map(function (o) {
-            if(typeof o.id !== "undefined")
-                return o.id;
-            return -1;
-        }));
-        return (x == "-Infinity") ? 0 : x;
     },
     
     checkIds(fieldName, obj) {
