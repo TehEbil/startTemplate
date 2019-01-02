@@ -98,7 +98,7 @@
 
 							</div>
 						</div>
-						<bxp-address on-select="FormCtrl.onSelect" ng-model="FormCtrl.kunde.address" make="FormCtrl.svRequestState"></bxp-address>
+						<bxp-address on-select="FormCtrl.onSelect" ng-model="vm.order.customer.address" make="FormCtrl.svRequestState"></bxp-address>
 
 						<div class="form-group group">
 							<label class="control-label bxp-label float-left">Tel</label>
@@ -167,55 +167,7 @@
 								</ui-select-choices>
 							</ui-select>
 						</div>
-						<div class="form-group modal-adress">
-							<div ng-if="!vm.ignoreRoute" class="group">
-
-								<label for="input-street" class="control-label bxp-label float-left">Straße, Nr.</label>
-								<!-- <input ng-disabled="vm.make" name="route" type="text" ng-model="vm.address.route" ng-model-options="vm.modelOptions" uib-typeahead="address for address in vm.getLocation($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control bxp-input float-left" autocomplete="off" typeahead-on-select="vm.onSelectCity($item, $model, $label)" /> -->
-
-								<input ng-disabled="vm.make" name="route" type="text" ng-model="vm.address.route" vs-google-autocomplete="vm.modelOptions"
-								 on-select="vm.onSelectCity" is-searching="vm.isSearching" datavalue="vm.route" class="form-control bxp-input float-left"
-								 autocomplete="off" placeholder=" ">
-
-								<i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
-							</div>
-						</div>
-						<div class="form-group group">
-							<div>
-								<div class="modal-zip-loc" ng-class="{ 'has-warning' : (!vm.address.postal_code && !vm.address.locality)  && vm.stepforward}">
-									<label for="input-zip" class="control-label bxp-label float-left">PLZ</label>
-									<input ng-disabled="vm.make" name="postal_code" type="text" ng-model="vm.address.postal_code"
-									 vs-google-autocomplete="vm.modelOptions" on-select="vm.onSelectCity" is-searching="vm.isSearching" datavalue="vm.route"
-									 class="form-control bxp-input bxp-input-plz float-left" autocomplete="off" placeholder=" " />
-								</div>
-
-								<div class="modal-zip-loc" ng-class="{ 'has-warning' : (!vm.address.postal_code && !vm.address.locality) && vm.stepforward}">
-									<label for="input-location" class="control-label bxp-label-ort float-left">Ort</label>
-									<div id="locationField" class="bxp-input-ort float-left">
-										<!-- <input ng-disabled="vm.make" name="locality" ng-model="vm.address.locality" class="form-control bxp-input" type="text"/> -->
-
-										<input ng-disabled="vm.make || vm.disableCity" name="route" type="text" ng-model="vm.address.locality"
-										 vs-google-autocomplete="vm.modelOptions" on-select="vm.onSelectCity" is-searching="vm.isSearching" datavalue="vm.route"
-										 class="form-control bxp-input" autocomplete="off" placeholder=" ">
-
-									</div>
-									<p class="control-label" ng-show="(!vm.address.postal_code && !vm.address.locality) && vm.stepforward">Entweder
-										PLZ oder Ort muss angegeben werden.</p>
-								</div>
-							</div>
-						</div>
-
-						<div ng-if="!vm.ignoreCountry" class="form-group group modal-country">
-							<label for="country-select" class="bxp-label control-label float-left">Land</label>
-							<div id="country-select" class="bxp-input country-select float-left">
-								<ui-select ng-disabled="vm.make" ng-model="vm.address.country" theme="bootstrap" remove-selected="false">
-									<ui-select-match>{{$select.selected.name}}</ui-select-match>
-									<ui-select-choices repeat="item in vm.countries | filter: $select.search">
-										<span ng-bind-html="item.name  | highlight: $select.search"></span>
-									</ui-select-choices>
-								</ui-select>
-							</div>
-						</div>
+						<bxp-address on-select="FormCtrl.onSelect" ng-model="vm.order.object.address" make="FormCtrl.svRequestState"></bxp-address>
 
 						<p class="mt-10px" style="font-size: 12px;">Sie können die Adressdaten eingeben oder <a href="#">aus den
 								Stammdaten wählen.</a></p>

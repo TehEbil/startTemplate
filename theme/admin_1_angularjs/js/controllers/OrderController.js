@@ -29,10 +29,15 @@
                 lastName: "Akyol",
                 companyName: "Compact Management",
                 additive: "baubasis",
-                street: "Mecidiyekoy st.",
-                country: "Turkey",
-                postcode: "34000",
-                city: "Istanbul",
+                address: {
+                    route: "Mecidiyekoy st.",
+                    country: {
+                        name: 'Türkei',
+                        code: 'TR'
+                    },
+                    postal_code: "34000",
+                    locality: "Istanbul",
+                },
                 phone: "+90 212 212 12 12",
                 mobile: "+90 553 364 04 74",
                 email: "mahmut.akyol@bauexperts.de"
@@ -40,10 +45,15 @@
             object: {
                 objectNumber: 0,
                 objectType: "Einfamilienhaus",
-                street: "Acıbadem st.",
-                country: "Turkey",
-                postcode: "34000",
-                city: "Istanbul"
+                address: {
+                    route: "Mecidiyekoy st.",
+                    country: {
+                        name: 'Türkei',
+                        code: 'TR'
+                    },
+                    postal_code: "34000",
+                    locality: "Istanbul",
+                }
             },
             otherInformations: {
                 orderNumber: "BXP-ORD-0000-256",
