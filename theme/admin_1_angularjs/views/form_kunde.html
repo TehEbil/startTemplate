@@ -262,7 +262,7 @@
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-repeat="document in vm.project.documents">
+								<tr ng-repeat="document in vm.project.documents" ng-click="vm.setSelected(document.id)" ng-class="{selected: document.id === vm.selectedDocument}">
 									<td>{{ document.id }}</td>
 									<td>{{ document.filename }}</td>
 									<!-- <td>{{ document.detection }}</td> -->
@@ -290,7 +290,7 @@
 	
 				<div class="bxp-button-container compact group">
 					<span class="ta-right float-right">
-						<button class="bxp-rounded-button small delete" ng-disabled="vm.document.length === 0" ng-click="vm.deleteData()"
+						<button class="bxp-rounded-button small delete" ng-disabled="vm.document.length === 0" ng-click="vm.deleteDocument(vm.selectedDocument)"
 						 type="button"><i class="fa fa-trash"></i></button>
 						<button class="bxp-rounded-button small edit" ng-disabled="!vm.document.length === 0" ng-click="vm.editAnschrift()"
 						 type="button"><i class="fa fa-pencil"></i></button>

@@ -14,6 +14,13 @@
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        vm.newDocument = newDocument;
+        vm.deleteDocument = deleteDocument;
+        vm.setSelected = setSelected;
+        vm.onsave = onsave;
+        vm.ondelete = ondelete;
+
+        vm.selectedDocument = -1;
 
         vm.baseData = passDataService.getObj();
         vm.baseData.projectDatas = {
@@ -49,7 +56,7 @@
             // );
         }
 
-        vm.newDocument = function () {
+        function newDocument() {
             var obj = {
               uploads: vm.baseData.projectDatas.documents,
               callback: vm.onsave
@@ -64,7 +71,36 @@
                 if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
                     vm.disablesub = false;
             });
-        };
+        }
+
+        function deleteDocument (id = -1) {
+
+            if(id == -1)
+                return console.error("Fehler bei deleteEntry");
+
+            var idx = vm.baseData.projectDatas.documents.findIndex(o => o.id == id);
+            $rootScope.sharedService.showConfirmDialog("delete").then(function () {
+                if (vm.ondelete)
+                    vm.ondelete(vm.baseData.projectDatas.documents[idx].id);
+            });
+        }
+
+        function setSelected(id) {
+            vm.selectedDocument = id;
+        }
+
+        function onsave(file) {
+            /* File Uploaded Callback */
+            console.log("File has been uploaded: ", file);
+
+            // $rootScope.sharedService.alert("File has been saved", "success");
+        } 
+
+        function ondelete(id) {
+            /* File Deletion Callback */
+            vm.baseData.projectDatas.documents.splice(vm.baseData.projectDatas.documents.findIndex(o => o.id == id), 1);
+            $rootScope.sharedService.alert("File has been deleted", "success");
+        }
 
         function closeModal() {
             $scope.$close();
