@@ -39,7 +39,7 @@
         // upload on file select or drop
         function upload(files) {
             vm.dynamic = 0;
-
+            
             Upload.upload({
                 url: $rootScope.ip + 'uploadDoc',
                 data: {file: files, name: vm.docName}
