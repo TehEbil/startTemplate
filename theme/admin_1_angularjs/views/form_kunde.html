@@ -263,10 +263,14 @@
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
 								<tr ng-repeat="document in vm.project.documents">
-									<td>{{ document.detail.id }}</td>
-									<td>{{ document.title }}</td>
+									<td>{{ document.id }}</td>
+									<td>{{ document.filename }}</td>
 									<!-- <td>{{ document.detection }}</td> -->
-									<td><input type="file" name=""></td>
+									<!-- <td><input type="file" name=""></td> -->
+									<td>
+										<bxp-upload-component make-disabled="false" hide-content="false" uploadtype="normal" onsave="vm.onsave" uploads="vm.uploads" ondelete="vm.deleteUpload">
+										</bxp-upload-component>
+									</td>
 									<!-- <td>
 										<div class="bxp-button-container compact group">
 											<span class="ta-right float-right">

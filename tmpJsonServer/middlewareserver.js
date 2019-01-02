@@ -96,10 +96,12 @@ clientServer.listen(80, () => {
 /** Router Configurations */
 const partnerForm = require('./routers/partner-form.router');
 const stammDaten = require('./routers/stamm-daten.router');
+const project = require('./routers/project.router');
 
 server.listen(serverPort, () => {
   console.log('JSON Server is running');
 
+  server.use('/project', project);
   server.use('/partnerForm', partnerForm);
   server.use('/stammDaten', stammDaten);
 })
@@ -156,15 +158,6 @@ exports.writeToDB = function(x) {
 /* routing */
 
 server.post('/uploadDoc', multipartyMiddleware, FileUploadController.uploadFile);
-
-// server.post('/uploadDoc', multipartyMiddleware, (req, res) => {
-
-// 	console.log('====================================');
-// 	console.log('res => ', res);
-// 	console.log('====================================');
-
-// 	return res.json('ok').status(200);
-// });
 
 server.get('/', function(req, res) {
     res.send('Hello! The API is at http://localhost:' + 3006 + '/api');

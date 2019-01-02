@@ -34,5 +34,10 @@ module.exports = {
             return items.filter(item => item.id === obj.id)
     
         return false;
+    },
+
+    getProjectDocuments(db, fieldName) {
+        var docs = db.get(fieldName).value();
+        return docs;
     }
 }

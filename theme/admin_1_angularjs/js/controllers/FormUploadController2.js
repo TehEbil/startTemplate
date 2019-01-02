@@ -18,14 +18,11 @@
         vm.closeModal = closeModal;
         vm.submitUpload = submitUpload;
         vm.dynamic = -1;
+        vm.uploads = [];
 		$scope.state = true;
 
-		if(getId) {
-			vm.uploads = getId.uploads;
-		}
-		else {
-			vm.uploads = [];
-        }
+        if(getId) 
+            vm.uploads = getId.uploads;
 
         function submitUpload() {
             if (vm.files) {
@@ -39,7 +36,7 @@
         // upload on file select or drop
         function upload(files) {
             vm.dynamic = 0;
-            
+
             Upload.upload({
                 url: $rootScope.ip + 'uploadDoc',
                 data: {file: files, name: vm.docName}

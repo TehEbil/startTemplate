@@ -15,6 +15,30 @@
       ]
     }
   ],
+  "project": {
+    "projectNumber": "BXP-PRN-001",
+    "projectName": "Project Name Field",
+    "ownPerformanceBuilder": "",
+    "documents": [
+      {
+        "id": 1,
+        "filename": "file1.txt",
+        "filepath": "public/uploads/file1.txt",
+        "oldfilename": "expFile.txt",
+        "refName": "file1.txt",
+        "date": "2018-11-12T11:39:29.137Z"
+      },
+      {
+        "id": 2,
+        "filename": "Ekran Resmi 2018-11-22 13.12.32.png",
+        "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
+        "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
+        "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
+        "date": "2018-11-12T11:39:29.137Z"
+      }
+    ],
+    "intenalNotes": ""
+  },
   "files": [
     {
       "name": "expFile.txt",
@@ -25,6 +49,21 @@
       "name": "Ekran Resmi 2018-11-22 13.12.32.png",
       "path": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
       "id": 2
+    },
+    {
+      "name": "Eğitim Platformu Fiyat Teklifi.pdf",
+      "path": "public/uploads/3-Eğitim Platformu Fiyat Teklifi.pdf",
+      "id": 3
+    },
+    {
+      "name": "Eğitim Platformu Fiyat Teklifi.pdf",
+      "path": "public/uploads/4-Eğitim Platformu Fiyat Teklifi.pdf",
+      "id": 4
+    },
+    {
+      "name": "Eğitim Platformu Fiyat Teklifi.pdf",
+      "path": "public/uploads/5-Eğitim Platformu Fiyat Teklifi.pdf",
+      "id": 5
     }
   ],
   "stammDaten": {
