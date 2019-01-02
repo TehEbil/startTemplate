@@ -49,6 +49,23 @@
             // );
         }
 
+        vm.newDocument = function () {
+            var obj = {
+              uploads: vm.baseData.projectDatas.documents,
+              callback: vm.onsave
+            };
+            if(vm.uploadtype)
+              obj['uploadtype'] = vm.uploadtype;
+
+            obj.single = true;
+
+            // console.log(obj);
+            modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then(() => {
+                if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
+                    vm.disablesub = false;
+            });
+        };
+
         function closeModal() {
             $scope.$close();
         }
