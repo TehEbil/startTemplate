@@ -25,9 +25,6 @@
         function init() {
             vm.baseData = passDataService.getObj();
             vm.order = vm.baseData.orderDatas;
-            console.log('====================================');
-            console.log('order datas', vm.order);
-            console.log('====================================');
         }
 
         function closeModal() {
