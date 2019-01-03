@@ -5,10 +5,10 @@
     .module('MetronicApp')
     .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ["$rootScope", "$http", "modalService", "ProjectHandler"];
+    DashboardController.$inject = ["$rootScope", "$http", "modalService", "ProjectHandler", "passDataService"];
 
     /* @ngInject */
-    function DashboardController($rootScope, $http, modalService, ProjectHandler) {
+    function DashboardController($rootScope, $http, modalService, ProjectHandler, passDataService) {
         var vm = this;
         vm.title = 'DashboardController';
         vm.alertExample = alertExample;
@@ -49,19 +49,26 @@
         } 
 
         function addKunde() {
-            modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn').then(
-                (data) => {
-                    console.log('====================================');
-                    console.log(data);
-                    console.log('====================================');
+            ProjectHandler.getData().then((res) => {
 
-                    ProjectHandler.postData(data).then((res) => {
+                let project = passDataService.setObj(res.data);
+                modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn', {data: project}).then(
+                    (data) => {
                         console.log('====================================');
-                        console.log(res);
+                        console.log(data);
                         console.log('====================================');
-                    });
-                }
-            );
+    
+                        if (typeof data !== 'undefined') {
+                            ProjectHandler.postData(data).then((res) => {
+                                console.log('====================================');
+                                console.log(res);
+                                console.log('====================================');
+                            });    
+                        }
+                    }
+                );
+			});
+            
         }
 
         function modalExample() {

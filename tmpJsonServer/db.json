@@ -110,8 +110,8 @@
           "hour": 14,
           "minute": 25,
           "testField": {
-            "id": "008",
-            "name": "Wasserhaltungsarbeiten",
+            "id": 7,
+            "name": "Untertagebauarbeiten",
             "group": "ROHBAU"
           },
           "position": "position",

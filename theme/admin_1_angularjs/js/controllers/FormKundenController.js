@@ -34,26 +34,9 @@
 		
 		function init() {
 
-			ProjectHandler.getData().then((res) => {
-				console.log('====================================');
-				console.log(res.data);
-				console.log('====================================');
-			});
-
-			passDataService.setObj(
-                {
-					projectNumber: "BXP-PRN-001",
-					projectName: "Project Name Field",
-					ownPerformanceBuilder: "",
-					documents: [
-						
-					],
-					intenalNotes: "",
-                    orderDatas: {},
-					detectionDatas: [],
-					protocolDatas:[]
-                }
-            );
+			console.log('====================================');
+			console.log(getId.data);
+			console.log('====================================');
 		}
 
 
