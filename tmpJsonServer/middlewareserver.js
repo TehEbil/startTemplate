@@ -150,9 +150,9 @@ server.use(morgan((tokens, req, res) => {
 }));
 
 exports.writeToDB = function(x) {
-  db.get('files').insert(x).write();
+  db.get('project.documents').insert(x).write();
   /* until mongodb */
-  return dbHelper.getMaxId(db, 'files') - 1;
+  return dbHelper.getMaxId(db, 'project.documents') - 1;
 }
 
 /* routing */

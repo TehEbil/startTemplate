@@ -47,11 +47,33 @@ FileUploadController.prototype.uploadFile = function(req, res) {
         }
         console.log("The file: " + file.name + " was saved to " + file.path);
 
-        var id = test.writeToDB({'name': file.name, 'path': file.path})
+        var id = test.writeToDB({
+          'id': id, 
+          'filename': tmpName, 
+          'filepath': file.path, 
+          'oldfilename': file.name, 
+          'refName': tmpName,
+          'date': new Date(),
+          'editMode': false
+        });
+
         if(customName)
-          res.json({success: true, id: id, filename: tmpName, filepath: file.path, oldfilename: file.name, refName: customName});
+          res.json({
+            success: true, 
+            id: id, 
+            filename: tmpName, 
+            filepath: file.path, 
+            oldfilename: file.name, 
+            refName: customName
+          });
         else
-          res.json({success: true, id: id, filename: tmpName, filepath: file.path, oldfilename: file.name, refName: tmpName});
+          res.json({
+            success: true, 
+            id: id, 
+            filename: tmpName, 
+            filepath: file.path, 
+            oldfilename: file.name, 
+            refName: tmpName});
       });
     });
 }
@@ -102,7 +124,15 @@ FileUploadController.prototype.uploadFiles = function(req, res) {
         }
         console.log("The file: " + file.name + " was saved to " + file.path);
 
-        var id = test.writeToDB({'name': file.name, 'path': file.path})
+        var id = test.writeToDB({
+          'id': id, 
+          'filename': tmpName, 
+          'filepath': file.path, 
+          'oldfilename': file.name, 
+          'refName': tmpName,
+          'date': new Date().toDateString(),
+          'editMode': false
+        });
         list.push({success: true, id: id, filename: tmpName, filepath: file.path, oldfilename: file.name});
         if(list.length == arr.length)
           res.json(list);

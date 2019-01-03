@@ -48,7 +48,8 @@
                     'filepath': resp.data.filepath, 
                     'oldfilename': resp.data.oldfilename, 
                     'refName': resp.data.refName,
-                    'date': new Date()
+                    'date': new Date(),
+                    'editMode': false
                 };
 
                 vm.uploads.push(upload);
