@@ -68,7 +68,10 @@
             modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
                 
                 if (typeof data !== 'undefined') {
-                    vm.detection.detail[vm.detailIdx].description = `${vm.detection.detail[vm.detailIdx].description} ${data.value}`;    
+                    console.log('====================================');
+                    console.log(vm.selectedDetection);
+                    console.log('====================================');
+                    vm.selectedDetection.detail.description = `${vm.selectedDetection.detail.description} ${data.value}`;    
                 }
                 
             });

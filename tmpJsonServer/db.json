@@ -98,14 +98,13 @@
     "detectionDatas": [
       {
         "number": 1,
-        "date": "",
         "status": "status",
         "title": "foo",
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8743,
-          "date": "",
+          "date": "2019-01-08T21:00:00.000Z",
           "datetime": "",
           "hour": 14,
           "minute": 25,
@@ -140,19 +139,18 @@
       },
       {
         "number": 2,
-        "date": "",
         "status": "status",
         "title": "foo",
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8744,
-          "date": "",
+          "date": "2019-01-15T21:00:00.000Z",
           "datetime": "",
           "hour": 14,
           "minute": 25,
           "testField": {
-            "id": "008",
+            "id": 8,
             "name": "Wasserhaltungsarbeiten",
             "group": "ROHBAU"
           },
@@ -182,20 +180,19 @@
       },
       {
         "number": 3,
-        "date": "",
         "status": "status",
         "title": "foo",
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8745,
-          "date": "",
+          "date": "2019-01-15T21:00:00.000Z",
           "datetime": "",
           "hour": 14,
           "minute": 25,
           "testField": {
-            "id": "008",
-            "name": "Wasserhaltungsarbeiten",
+            "id": 5,
+            "name": "Brunnenbauarbeiten und Aufschlussbohrungen",
             "group": "ROHBAU"
           },
           "position": "position",

@@ -339,7 +339,7 @@
 							<tbody ng-if="vm.anschriften.length != 0">
 								<tr ng-dblclick="vm.editDetection(detection, $index)" ng-repeat="detection in vm.baseData.detectionDatas">
 									<td>{{ detection.detail.id }}</td>
-									<td>{{ detection.date }}</td>
+									<td>{{ detection.detail.date | date }}</td>
 									<td>Status (comes from the Festellung Form)</td>
 									<td>{{ detection.title }}</td>
 									<!-- <td>{{ detection.detection }}</td> -->
