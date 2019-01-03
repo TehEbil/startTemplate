@@ -8,10 +8,10 @@
 	.module('MetronicApp')
 	.controller('FormKundenController', FormKundenController);
 
-	FormKundenController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService'];
+	FormKundenController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService', 'ProjectHandler'];
 
 	/* @ngInject */
-	function FormKundenController($rootScope, $scope, $state, getId, passDataService) {
+	function FormKundenController($rootScope, $scope, $state, getId, passDataService, ProjectHandler) {
 		var vm = this;
 		vm.title = 'FormKundenController';
         vm.closeModal = closeModal;
@@ -33,8 +33,22 @@
 		init();
 		
 		function init() {
+
+			ProjectHandler.getData().then((res) => {
+				console.log('====================================');
+				console.log(res.data);
+				console.log('====================================');
+			});
+
 			passDataService.setObj(
                 {
+					projectNumber: "BXP-PRN-001",
+					projectName: "Project Name Field",
+					ownPerformanceBuilder: "",
+					documents: [
+						
+					],
+					intenalNotes: "",
                     orderDatas: {},
 					detectionDatas: [],
 					protocolDatas:[]

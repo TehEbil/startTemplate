@@ -48,7 +48,10 @@
         "editMode": false
       }
     ],
-    "intenalNotes": ""
+    "intenalNotes": "",
+    "orderDatas": {},
+					"detectionDatas": [],
+					"protocolDatas":[]
   },
   "files": [
     {

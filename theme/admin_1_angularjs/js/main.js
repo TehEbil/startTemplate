@@ -75,7 +75,7 @@ class KontakteHandler extends DataHandler {
     }
 }
 
-class ProjectFilesHandler extends DataHandler {
+class ProjectHandler extends DataHandler {
     constructor($http) {
         super($http, 'project');
     }
@@ -84,7 +84,7 @@ class ProjectFilesHandler extends DataHandler {
 StammDatenHandler.$inject = ['$http'];
 PartnerFormHandler.$inject = ['$http'];
 KontakteHandler.$inject = ['$http'];
-ProjectFilesHandler.$inject = ['$http'];
+ProjectHandler.$inject = ['$http'];
 
 angular.uppercase=function(text){
  return text.toUpperCase();
@@ -140,7 +140,7 @@ var MetronicApp = angular.module("MetronicApp", [
 .factory('KontakteHandler', KontakteHandler)
 .factory('StammDatenHandler', StammDatenHandler)
 .factory('PartnerFormHandler', PartnerFormHandler)
-.factory('ProjectFilesHandler', ProjectFilesHandler);
+.factory('ProjectHandler', ProjectHandler);
 
     /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 

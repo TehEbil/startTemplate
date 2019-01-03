@@ -15,7 +15,7 @@ db._.mixin(mixins);
 
 /* Project */
 
-server.get('/', getAllCB);
+server.get('/', getProjectCB);
 
 server.get('/documents', getProjectDocumentsCB);
 
@@ -23,8 +23,11 @@ function getProjectDocumentsCB(req, res) {
     res.status(200).json(dbHelper.getProjectDocuments(db, 'project.documents'));
 }
 
-function getAllCB(req, res) {
-    res.status(200).json('ok');
+function getProjectCB(req, res) {
+    // console.log('====================================');
+    // console.log(req.params.id);
+    // console.log('====================================');
+    res.status(200).json(dbHelper.getProjectDocuments(db, 'project'));
 }
 
 module.exports = server;

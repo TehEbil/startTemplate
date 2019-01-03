@@ -5,10 +5,10 @@
 		.module('MetronicApp')
 		.controller('ProjectController', ProjectController);
 
-        ProjectController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'passDataService', 'ProjectFilesHandler'];
+        ProjectController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'passDataService', 'ProjectHandler'];
 
 	/* @ngInject */
-	function ProjectController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, passDataService, ProjectFilesHandler) {
+	function ProjectController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, passDataService, ProjectHandler) {
 		// console.log("ProjectController Loaded");
 		var vm = this;
 
@@ -25,15 +25,6 @@
         vm.selectedDocument = -1;
 
         vm.baseData = passDataService.getObj();
-        vm.baseData.projectDatas = {
-            projectNumber: "BXP-PRN-001",
-            projectName: "Project Name Field",
-            ownPerformanceBuilder: "",
-            documents: [
-                
-            ],
-            intenalNotes: ""
-        };  
 
         passDataService.setObj(vm.baseData);
 
@@ -42,15 +33,15 @@
         function init() {
             vm.tmpSelected = false;
 
-            vm.project = passDataService.getObj().projectDatas;
+            vm.project = passDataService.getObj();
 
-            ProjectFilesHandler.getData('documents').then(
+            ProjectHandler.getData('documents').then(
                 (res) => {
-                    vm.baseData.projectDatas.documents = res.data;
+                    vm.baseData.documents = res.data;
                 }
             );
 
-            // ProjectFilesHandler.(vm.partner).then(
+            // ProjectHandler.(vm.partner).then(
             //     (res) => {
             //         $state.go('dashboard');
             //     },
@@ -62,7 +53,7 @@
 
         function newDocument() {
             var obj = {
-              uploads: vm.baseData.projectDatas.documents,
+              uploads: vm.baseData.documents,
               callback: vm.onsave
             };
             if(vm.uploadtype)
@@ -82,10 +73,10 @@
             if(id == -1)
                 return console.error("Fehler bei deleteEntry");
 
-            var idx = vm.baseData.projectDatas.documents.findIndex(o => o.id == id);
+            var idx = vm.baseData.documents.findIndex(o => o.id == id);
             $rootScope.sharedService.showConfirmDialog("delete").then(function () {
                 if (vm.ondelete)
-                    vm.ondelete(vm.baseData.projectDatas.documents[idx].id);
+                    vm.ondelete(vm.baseData.documents[idx].id);
             });
         }
 
@@ -102,14 +93,14 @@
 
         function ondelete(id) {
             /* File Deletion Callback */
-            vm.baseData.projectDatas.documents.splice(vm.baseData.projectDatas.documents.findIndex(o => o.id == id), 1);
+            vm.baseData.documents.splice(vm.baseData.documents.findIndex(o => o.id == id), 1);
             $rootScope.sharedService.alert("File has been deleted", "success");
         }
 
         function saveEntry(id = -1) {
             var idx = getIndex(id);
 
-            vm.baseData.projectDatas.documents[idx].editMode = false;
+            vm.baseData.documents[idx].editMode = false;
             vm.editStatus = false;
 
             console.log(typeof vm.onsave === "function");
@@ -121,15 +112,15 @@
             var idx = getIndex(id);
 
             if(vm.tmpSelected !== false){ // another one is being editted, save it & close edit form
-                vm.baseData.projectDatas.documents[vm.tmpSelected].editMode = false;
+                vm.baseData.documents[vm.tmpSelected].editMode = false;
                 vm.editStatus = false;
 
                 if(typeof vm.onsave === "function")
-                    vm.onsave(vm.baseData.projectDatas.documents[vm.tmpSelected]);
+                    vm.onsave(vm.baseData.documents[vm.tmpSelected]);
             }
             vm.tmpSelected = idx;
             // vm.tmpVar = angular.copy(vm.items[idx].value);
-            vm.baseData.projectDatas.documents[idx].editMode = true;
+            vm.baseData.documents[idx].editMode = true;
             vm.editStatus = true;
         }
 
@@ -137,10 +128,10 @@
             if(id === -1)
                 return $rootScope.sharedService.alert("ID not set", "danger");
 
-            if(vm.baseData.projectDatas.documents && vm.baseData.projectDatas.documents.length <= 0)
+            if(vm.baseData.documents && vm.baseData.documents.length <= 0)
                 return $rootScope.sharedService.alert("No items", "danger");
              
-            var idx = vm.baseData.projectDatas.documents.findIndex(o => o.id === id);
+            var idx = vm.baseData.documents.findIndex(o => o.id === id);
             if(idx < 0)  
                 return $rootScope.sharedService.alert("ID not found", "danger");
 
