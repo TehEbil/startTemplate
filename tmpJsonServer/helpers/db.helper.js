@@ -36,8 +36,13 @@ module.exports = {
         return false;
     },
 
-    getProjectDocuments(db, fieldName) {
-        var docs = db.get(fieldName).value();
-        return docs;
+    pushData(db, fieldname, obj) {
+        var items = this.getDataByFieldName(db, fieldname);
+
+        items = obj;
+
+        db.write();
+
+        return this.getDataByFieldName(db, fieldname);
     }
 }

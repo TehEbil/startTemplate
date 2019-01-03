@@ -17,17 +17,32 @@ db._.mixin(mixins);
 
 server.get('/', getProjectCB);
 
+server.post('/', saveCB);
+
 server.get('/documents', getProjectDocumentsCB);
 
 function getProjectDocumentsCB(req, res) {
-    res.status(200).json(dbHelper.getProjectDocuments(db, 'project.documents'));
+    res.status(200).json(dbHelper.getDataByFieldName(db, 'project.documents'));
 }
 
 function getProjectCB(req, res) {
     // console.log('====================================');
     // console.log(req.params.id);
     // console.log('====================================');
-    res.status(200).json(dbHelper.getProjectDocuments(db, 'project'));
+    res.status(200).json(dbHelper.getDataByFieldName(db, 'project'));
+}
+
+function saveCB(req, res) {
+
+    var items = dbHelper.getDataByFieldName(db, 'project');
+
+    items.orderDatas = req.body.orderDatas;
+    items.detectionDatas = req.body.detectionDatas;
+    items.protocolDatas = req.body.protocolDatas;
+
+    db.write();
+
+    res.status(200).json(items);
 }
 
 module.exports = server;

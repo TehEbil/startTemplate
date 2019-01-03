@@ -5,10 +5,10 @@
     .module('MetronicApp')
     .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ["$rootScope", "$scope", "$http", "$timeout", "$stateParams", "$state", "modalService", "localStorageService", "passDataService"];
+    DashboardController.$inject = ["$rootScope", "$http", "modalService", "ProjectHandler"];
 
     /* @ngInject */
-    function DashboardController($rootScope, $scope, $http, $timeout, $stateParams, $state, modalService, localStorageService, passDataService) {
+    function DashboardController($rootScope, $http, modalService, ProjectHandler) {
         var vm = this;
         vm.title = 'DashboardController';
         vm.alertExample = alertExample;
@@ -54,6 +54,12 @@
                     console.log('====================================');
                     console.log(data);
                     console.log('====================================');
+
+                    ProjectHandler.postData(data).then((res) => {
+                        console.log('====================================');
+                        console.log(res);
+                        console.log('====================================');
+                    });
                 }
             );
         }
