@@ -17,7 +17,8 @@
         vm.closeModal = closeModal;
 		vm.submitForm = submitForm;
 
-    	$scope.individuelleFelder = [];
+		$scope.individuelleFelder = [];
+		vm.baseData = {};
 
     	$scope.tabs = [
 	    	'Auftragsdaten',
@@ -33,9 +34,8 @@
 		init();
 		
 		function init() {
-
 			console.log('====================================');
-			console.log(getId.data);
+			console.log('firsComming', getId.data);
 			console.log('====================================');
 		}
 

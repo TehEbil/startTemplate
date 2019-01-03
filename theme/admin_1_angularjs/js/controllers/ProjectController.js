@@ -23,23 +23,20 @@
         vm.editEntry = editEntry;
 
         vm.selectedDocument = -1;
+        vm.baseData = {};
 
-        vm.baseData = passDataService.getObj();
-
-        passDataService.setObj(vm.baseData);
-
+        
         init();
 
         function init() {
             vm.tmpSelected = false;
+            vm.baseData = passDataService.getObj();
 
-            vm.project = passDataService.getObj();
-
-            ProjectHandler.getData('documents').then(
-                (res) => {
-                    vm.baseData.documents = res.data;
-                }
-            );
+            // ProjectHandler.getData('documents').then(
+            //     (res) => {
+            //         vm.baseData.documents = res.data;
+            //     }
+            // );
 
             // ProjectHandler.(vm.partner).then(
             //     (res) => {

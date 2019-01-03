@@ -230,19 +230,19 @@
 			<div ng-controller="ProjectController as vm">
 				<div class="form-group group">
 					<div class="bxp-col-6 float-left form-group group">
-						Projekt-Nr. {{ vm.project.projectNumber }}
+						Projekt-Nr. {{ vm.baseData.projectNumber }}
 					</div>
 
 					<div class="bxp-col-6 float-left form-group group">
 						<label class="control-label bxp-label float-left">Projektname</label>
-						<input name="projectName" class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.project.projectName"required>
+						<input name="projectName" class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.baseData.projectName"required>
 						<p ng-if="!orderForm.projectName.$valid"> required field </p>
 					</div>
 				</div>
 
 				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Eigenleistungen Bauherr</label>
-					<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.project.ownPerformanceBuilder">
+					<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.baseData.ownPerformanceBuilder">
 				</div>
 
 				<span style="color:red;">TABLE BELOW LOADS ONLY IF THE OBJECT DATA (TAB AUFTRAGSDATEN) ARE FILLED AND THE OBJECT HAS DOCUMENTS!</span>
@@ -262,7 +262,7 @@
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-repeat="document in vm.project.documents" ng-click="vm.setSelected(document.id)" ng-class="{selected: document.id === vm.selectedDocument}">
+								<tr ng-repeat="document in vm.baseData.documents" ng-click="vm.setSelected(document.id)" ng-class="{selected: document.id === vm.selectedDocument}">
 									<td>{{ document.id }}</td>
 									<td>
 										<div class="bxp-grundatensatz" >
@@ -312,7 +312,7 @@
 
 				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Bemerkungen (erscheinen nicht im Protokoll)</label>
-					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="vm.project.intenalNotes">
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="vm.baseData.intenalNotes">
 
 					</textarea>
 				</div>

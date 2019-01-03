@@ -50,18 +50,22 @@
 
         function addKunde() {
             ProjectHandler.getData().then((res) => {
+                let obj = {
+                    data: ''
+                };
+                passDataService.setObj(res.data);
+                obj.data = passDataService.getObj();
 
-                let project = passDataService.setObj(res.data);
-                modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn', {data: project}).then(
+                modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn', obj).then(
                     (data) => {
                         console.log('====================================');
-                        console.log(data);
+                        console.log('incoming data: ', data);
                         console.log('====================================');
     
                         if (typeof data !== 'undefined') {
                             ProjectHandler.postData(data).then((res) => {
                                 console.log('====================================');
-                                console.log(res);
+                                console.log('response: ', res);
                                 console.log('====================================');
                             });    
                         }
