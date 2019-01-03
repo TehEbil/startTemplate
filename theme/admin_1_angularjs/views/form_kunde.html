@@ -242,7 +242,7 @@
 
 				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Eigenleistungen Bauherr</label>
-					<input class="form-control bxp-input float-left" type="text" ng-disabled="">
+					<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.project.ownPerformanceBuilder">
 				</div>
 
 				<span style="color:red;">TABLE BELOW LOADS ONLY IF THE OBJECT DATA (TAB AUFTRAGSDATEN) ARE FILLED AND THE OBJECT HAS DOCUMENTS!</span>
@@ -312,7 +312,7 @@
 
 				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Bemerkungen (erscheinen nicht im Protokoll)</label>
-					<textarea class="form-control bxp-input float-left" rows="4" cols="50">
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="vm.project.intenalNotes">
 
 					</textarea>
 				</div>

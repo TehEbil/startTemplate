@@ -36,7 +36,6 @@
 			passDataService.setObj(
                 {
                     orderDatas: {},
-                    projectDatas: {},
 					detectionDatas: [],
 					protocolDatas:[]
                 }
