@@ -21,9 +21,6 @@
 
         function init() {
             vm.baseData = passDataService.getObj();
-            console.log('====================================');
-            console.log('baseData', vm.baseData);
-            console.log('====================================');
         }
 
         function editDetection(detection, idx) {
