@@ -26,7 +26,8 @@
         "filepath": "public/uploads/file1.txt",
         "oldfilename": "expFile.txt",
         "refName": "file1.txt",
-        "date": "2018-11-12T11:39:29.137Z"
+        "date": "2018-11-12T11:39:29.137Z",
+        "editMode": false
       },
       {
         "id": 2,
@@ -34,7 +35,8 @@
         "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
         "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
         "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
-        "date": "2018-11-12T11:39:29.137Z"
+        "date": "2018-11-12T11:39:29.137Z",
+        "editMode": false
       }
     ],
     "intenalNotes": ""

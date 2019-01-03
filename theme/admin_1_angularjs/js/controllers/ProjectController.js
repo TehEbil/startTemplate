@@ -19,6 +19,8 @@
         vm.setSelected = setSelected;
         vm.onsave = onsave;
         vm.ondelete = ondelete;
+        vm.saveEntry = saveEntry;
+        vm.editEntry = editEntry;
 
         vm.selectedDocument = -1;
 
@@ -38,6 +40,8 @@
         init();
 
         function init() {
+            vm.tmpSelected = false;
+
             vm.project = passDataService.getObj().projectDatas;
 
             ProjectFilesHandler.getData('documents').then(
@@ -100,6 +104,47 @@
             /* File Deletion Callback */
             vm.baseData.projectDatas.documents.splice(vm.baseData.projectDatas.documents.findIndex(o => o.id == id), 1);
             $rootScope.sharedService.alert("File has been deleted", "success");
+        }
+
+        function saveEntry(id = -1) {
+            var idx = getIndex(id);
+
+            vm.baseData.projectDatas.documents[idx].editMode = false;
+            vm.editStatus = false;
+
+            console.log(typeof vm.onsave === "function");
+            if(typeof vm.onsave === "function")
+                vm.onsave();
+        }
+
+        function editEntry(id = -1) {
+            var idx = getIndex(id);
+
+            if(vm.tmpSelected !== false){ // another one is being editted, save it & close edit form
+                vm.baseData.projectDatas.documents[vm.tmpSelected].editMode = false;
+                vm.editStatus = false;
+
+                if(typeof vm.onsave === "function")
+                    vm.onsave(vm.baseData.projectDatas.documents[vm.tmpSelected]);
+            }
+            vm.tmpSelected = idx;
+            // vm.tmpVar = angular.copy(vm.items[idx].value);
+            vm.baseData.projectDatas.documents[idx].editMode = true;
+            vm.editStatus = true;
+        }
+
+        function getIndex(id) {
+            if(id === -1)
+                return $rootScope.sharedService.alert("ID not set", "danger");
+
+            if(vm.baseData.projectDatas.documents && vm.baseData.projectDatas.documents.length <= 0)
+                return $rootScope.sharedService.alert("No items", "danger");
+             
+            var idx = vm.baseData.projectDatas.documents.findIndex(o => o.id === id);
+            if(idx < 0)  
+                return $rootScope.sharedService.alert("ID not found", "danger");
+
+            return idx;
         }
 
         function closeModal() {
