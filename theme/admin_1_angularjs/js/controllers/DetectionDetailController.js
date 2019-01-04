@@ -17,6 +17,8 @@
         vm.openTextSnippetModal = openTextSnippetModal;
         vm.nextPage = nextPage;
         vm.previousPage = previousPage;
+        vm.stringToDate = stringToDate;
+        vm.dateToString = dateToString;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -84,17 +86,33 @@
         function nextPage(detailObj) {
 
             if (vm.selectedIdx < vm.count - 1) {
+                vm.dateToString();
                 vm.selectedIdx ++;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
+                vm.stringToDate();
+                vm.dateToString();
             }
         }
 
         function previousPage() {
             /* decrease index value */
             if (vm.selectedIdx > 0) {
+                vm.dateToString();
                 vm.selectedIdx --;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
+                vm.stringToDate();
+                vm.dateToString();
             }
+        }
+
+        function dateToString() {
+            vm.selectedDetection.detail.date = new Date(vm.date).toISOString();
+            vm.selectedDetection.detail.datetime = new Date(vm.datetime).toISOString();
+        }
+
+        function stringToDate() {
+            vm.date = new Date(vm.selectedDetection.detail.date);
+            vm.datetime = new Date(vm.selectedDetection.detail.datetime);
         }
 
         function closeModal() {
