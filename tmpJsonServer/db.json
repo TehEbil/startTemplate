@@ -46,15 +46,6 @@
         "refName": "4-cv.docx",
         "date": "2019-01-03T08:18:12.080Z",
         "editMode": false
-      },
-      {
-        "id": 4,
-        "filename": "Ekran Resmi 2018-08-03 13.48.21.png",
-        "filepath": "public/uploads/Ekran Resmi 2018-08-03 13.48.21.png",
-        "oldfilename": "Ekran Resmi 2018-08-03 13.48.21.png",
-        "refName": "Ekran Resmi 2018-08-03 13.48.21.png",
-        "date": "2019-01-04T12:28:26.618Z",
-        "editMode": false
       }
     ],
     "intenalNotes": "test",
@@ -224,6 +215,43 @@
             "disposalCost": 500,
             "impairment": 600,
             "recoup": 700,
+            "isPrint": true
+          }
+        }
+      },
+      {
+        "number": 4,
+        "date": "",
+        "status": "",
+        "title": "",
+        "coverPicUrl": "",
+        "detection": "",
+        "detail": {
+          "id": 8746,
+          "date": "2019-01-04T13:06:04.445Z",
+          "datetime": "2019-01-04T13:06:04.445Z",
+          "testField": {
+            "id": 0,
+            "name": "Sicherheitseinrichtungen, Baustelleneinrichtungen",
+            "group": "ROHBAU"
+          },
+          "position": "",
+          "title": "",
+          "evaluation": {
+            "id": 2,
+            "name": "Hinweis allgemeiner Art",
+            "shortcut": "H"
+          },
+          "basics": {},
+          "status": {
+            "id": 2,
+            "name": "abgestellt und durch den Sachverständigen kontrolliert"
+          },
+          "description": " text snippet 2",
+          "costs": {
+            "disposalCost": 500,
+            "impairment": 750,
+            "recoup": 250,
             "isPrint": true
           }
         }

@@ -16,6 +16,10 @@
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
         vm.addDetection = addDetection;
+        vm.setSelectedIdx = setSelectedIdx;
+        vm.deleteDetection = deleteDetection;
+
+        vm.selectedDetectionIdx = -1;
 
         vm.baseData = {};
         vm.detailObj = {};
@@ -24,15 +28,14 @@
 
         function init() {
             vm.baseData = passDataService.getObj();
-            vm.detailObj = {
-                data: vm.baseData.detectionDatas,
-                count: vm.baseData.detectionDatas.length,
-                selectedIdx: 0
-            };
         }
 
         function editDetection(detection, idx) {
-            vm.detailObj.selectedIdx = idx;
+            vm.detailObj = {
+                data: vm.baseData.detectionDatas,
+                count: vm.baseData.detectionDatas.length,
+                selectedIdx: idx
+            };
             /* Open detection detail modal */
             modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.detailObj).then(
                 (data) => {
@@ -41,6 +44,11 @@
         }
 
         function addDetection() {
+            vm.detailObj = {
+                data: vm.baseData.detectionDatas,
+                count: vm.baseData.detectionDatas.length,
+                selectedIdx: -1
+            };
             console.log('====================================');
             console.log('add new detection');
             console.log('====================================');
@@ -76,13 +84,20 @@
                     }
                 }
             );
-            vm.detailObj.selectedIdx = -1;
             vm.detailObj.count = vm.baseData.detectionDatas.length;
             /* Open detection detail modal */
             modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.detailObj).then(
                 (data) => {
                 }
             );
+        }
+
+        function setSelectedIdx(idx) {
+            vm.selectedDetectionIdx = idx; 
+        }
+
+        function deleteDetection(idx) {
+            vm.baseData.detectionDatas.splice(idx, 1);
         }
 
         function closeModal() {
