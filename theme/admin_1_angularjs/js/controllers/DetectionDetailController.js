@@ -28,6 +28,8 @@
         vm.selectedDetection = {};
         vm.selectedIdx = 0;
         vm.count = 0;
+        vm.date = null;
+        vm.datetime = null;
 
         init();
 
@@ -35,6 +37,8 @@
             vm.selectedIdx = getId.selectedIdx;
             vm.detections = getId.data;
             vm.selectedDetection = vm.detections[vm.selectedIdx];
+            vm.date = new Date(vm.selectedDetection.detail.date);
+            vm.datetime = new Date(vm.selectedDetection.detail.datetime);
             vm.count = getId.count;
         }
 
@@ -94,14 +98,16 @@
         }
 
         function closeModal() {
-            $scope.$close(vm.detection);
+            $scope.$close();
         }
 
         function submitForm() {
             console.log('====================================');
-            console.log(vm.detection);
+            console.log(vm.selectedDetection);
             console.log('====================================');
-            $scope.$close(vm.detection);
+            vm.selectedDetection.detail.date = new Date(vm.date).toISOString();
+            vm.selectedDetection.detail.datetime = new Date(vm.datetime).toISOString();
+            $scope.$close();
         }
 }
 })();
