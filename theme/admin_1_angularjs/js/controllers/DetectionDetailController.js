@@ -37,11 +37,21 @@
 
         function init() {
             vm.selectedIdx = getId.selectedIdx;
-            vm.detections = getId.data;
-            vm.selectedDetection = vm.detections[vm.selectedIdx];
-            vm.date = new Date(vm.selectedDetection.detail.date);
-            vm.datetime = new Date(vm.selectedDetection.detail.datetime);
             vm.count = getId.count;
+            vm.detections = getId.data;
+
+            if (vm.selectedIdx === -1) {
+                vm.selectedDetection = vm.detections[getId.count - 1];
+                vm.dateToString(new Date(), new Date());
+                vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
+                vm.selectedIdx = vm.count - 1;
+            } else {
+                vm.selectedDetection = vm.detections[vm.selectedIdx];
+                vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
+            }
+            
+            
+            
         }
 
         function openTextSnippetModal() {
@@ -86,33 +96,33 @@
         function nextPage(detailObj) {
 
             if (vm.selectedIdx < vm.count - 1) {
-                vm.dateToString();
+                vm.dateToString(vm.date, vm.datetime);
                 vm.selectedIdx ++;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
-                vm.stringToDate();
-                vm.dateToString();
+                vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
+                vm.dateToString(vm.date, vm.datetime);
             }
         }
 
         function previousPage() {
             /* decrease index value */
             if (vm.selectedIdx > 0) {
-                vm.dateToString();
+                vm.dateToString(vm.date, vm.datetime);
                 vm.selectedIdx --;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
-                vm.stringToDate();
-                vm.dateToString();
+                vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
+                vm.dateToString(vm.date, vm.datetime);
             }
         }
 
-        function dateToString() {
-            vm.selectedDetection.detail.date = new Date(vm.date).toISOString();
-            vm.selectedDetection.detail.datetime = new Date(vm.datetime).toISOString();
+        function dateToString(date, datetime) {
+            vm.selectedDetection.detail.date = new Date(date).toISOString();
+            vm.selectedDetection.detail.datetime = new Date(datetime).toISOString();
         }
 
-        function stringToDate() {
-            vm.date = new Date(vm.selectedDetection.detail.date);
-            vm.datetime = new Date(vm.selectedDetection.detail.datetime);
+        function stringToDate(date, datetime) {
+            vm.date = new Date(date);
+            vm.datetime = new Date(datetime);
         }
 
         function closeModal() {
