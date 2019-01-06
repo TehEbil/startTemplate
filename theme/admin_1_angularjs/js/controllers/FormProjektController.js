@@ -1,23 +1,20 @@
 (function() {
 	'use strict';
 
-	var ip = "";
-	var id = "";
-	var gname="";
 	angular
 	.module('MetronicApp')
-	.controller('FormKundenController', FormKundenController);
+	.controller('FormProjektController', FormProjektController);
 
-	FormKundenController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService', 'ProjectHandler'];
+	FormProjektController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService', 'ProjectHandler'];
 
 	/* @ngInject */
-	function FormKundenController($rootScope, $scope, $state, getId, passDataService, ProjectHandler) {
+	function FormProjektController($rootScope, $scope, $state, getId, passDataService, ProjectHandler) {
 		var vm = this;
-		vm.title = 'FormKundenController';
+		vm.title = 'FormProjektController';
         vm.closeModal = closeModal;
 		vm.submitForm = submitForm;
+        $scope.state = true; // so modal closes with ESC
 
-		$scope.individuelleFelder = [];
 		vm.baseData = {};
 
     	$scope.tabs = [
@@ -28,8 +25,6 @@
     	];
 
         vm.tabs = $scope.tabs;
-
-		$scope.uploads = [null, undefined];
 
 		init();
 		

@@ -56,7 +56,7 @@
                 passDataService.setObj(res.data);
                 obj.data = passDataService.getObj();
 
-                modalService.openMenuModal('views/form_kunde.html', 'FormKundenController', 'animated zoomIn', obj).then(
+                modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(
                     (data) => {
                         console.log('====================================');
                         console.log('incoming data: ', data);
