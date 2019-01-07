@@ -337,7 +337,7 @@
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-dblclick="vm.editDetection(detection, $index)" ng-repeat="detection in vm.baseData.detectionDatas" ng-click="vm.setSelectedIdx($index)" ng-class="{selected: $index === vm.selectedDetectionIdx}">
+								<tr ng-dblclick="vm.editDetection(detection, $index)" ng-repeat="detection in vm.baseData.detectionDatas" ng-click="vm.setSelected(detection)" ng-class="{selected: $index === vm.selectedDetectionIdx}">
 									<td>{{ detection.detail.id }}</td>
 									<td>{{ detection.detail.date | date }}</td>
 									<td>Status (comes from the Festellung Form)</td>
@@ -355,7 +355,7 @@
 
 				<div class="bxp-button-container compact group">
 					<span class="ta-right float-right">
-						<button class="bxp-rounded-button small delete" ng-disabled="vm.baseData.detectionDatas.length === 0" ng-click="vm.deleteDetection(vm.selectedDetectionIdx)"
+						<button class="bxp-rounded-button small delete" ng-disabled="vm.baseData.detectionDatas.length === 0" ng-click="vm.deleteDetection()"
 						 type="button"><i class="fa fa-trash"></i></button>
 						<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editAnschrift()"
 						 type="button"><i class="fa fa-pencil"></i></button>

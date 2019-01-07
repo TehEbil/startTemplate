@@ -16,9 +16,10 @@
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
         vm.addDetection = addDetection;
-        vm.setSelectedIdx = setSelectedIdx;
+        vm.setSelected = setSelected;
         vm.deleteDetection = deleteDetection;
 
+        vm.selectedDetection = {};
         vm.selectedDetectionIdx = -1;
 
         vm.baseData = {};
@@ -92,12 +93,13 @@
             );
         }
 
-        function setSelectedIdx(idx) {
-            vm.selectedDetectionIdx = idx; 
+        function setSelected(detection) {
+            vm.selectedDetection = detection;
+            vm.selectedDetectionIdx = vm.baseData.detectionDatas.findIndex( data => data.number === detection.number );
         }
 
-        function deleteDetection(idx) {
-            vm.baseData.detectionDatas.splice(idx, 1);
+        function deleteDetection() {
+            vm.baseData.detectionDatas.splice(vm.selectedDetectionIdx, 1);
         }
 
         function closeModal() {

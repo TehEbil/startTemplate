@@ -218,43 +218,6 @@
             "isPrint": true
           }
         }
-      },
-      {
-        "number": 4,
-        "date": "",
-        "status": "",
-        "title": "",
-        "coverPicUrl": "",
-        "detection": "",
-        "detail": {
-          "id": 8746,
-          "date": "2019-01-04T13:06:04.445Z",
-          "datetime": "2019-01-04T13:06:04.445Z",
-          "testField": {
-            "id": 0,
-            "name": "Sicherheitseinrichtungen, Baustelleneinrichtungen",
-            "group": "ROHBAU"
-          },
-          "position": "",
-          "title": "",
-          "evaluation": {
-            "id": 2,
-            "name": "Hinweis allgemeiner Art",
-            "shortcut": "H"
-          },
-          "basics": {},
-          "status": {
-            "id": 2,
-            "name": "abgestellt und durch den Sachverständigen kontrolliert"
-          },
-          "description": " text snippet 2",
-          "costs": {
-            "disposalCost": 500,
-            "impairment": 750,
-            "recoup": 250,
-            "isPrint": true
-          }
-        }
       }
     ],
     "protocolDatas": [
@@ -312,7 +275,7 @@
           "id": "2",
           "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
         },
-        "acceptanceComment": "",
+        "acceptanceComment": "test",
         "note": "",
         "selectedDetection": "",
         "titlePicUrl": "",
