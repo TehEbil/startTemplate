@@ -18,14 +18,14 @@
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">
 							<label class="control-label bxp-label float-left">Datum Begehung</label>
-							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.protocol.localInspectionDate">
+							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.selectedProtocol.localInspectionDate">
 						</div>
 					</div>
 
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">
 							<label class="control-label bxp-label float-left">Teilnehmer</label>
-							<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.participants"></textarea>
+							<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.selectedProtocol.participants"></textarea>
 						</div>
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">
 							<label class="control-label bxp-label float-left">Temperatur</label>
-							<input name="tempreture" class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.tempreture"
+							<input name="tempreture" class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.selectedProtocol.tempreture"
 							 ui-number-mask="0" maxlength="2" ui-hide-group-sep>
 						</div>
 					</div>
@@ -41,19 +41,19 @@
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">
 							<label class="control-label bxp-label float-left">Wetter</label>
-							<input class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.protocol.weather">
+							<input class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.selectedProtocol.weather">
 						</div>
 					</div>
 				</div>
 				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Besonderheiten</label>
-					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.particularties"></textarea>
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.selectedProtocol.particularties"></textarea>
 				</div>
 				<div class="form-group group">
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">
 							<label class="control-label bxp-label float-left">Datum Bericht</label>
-							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.protocol.reportDate">
+							<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.selectedProtocol.reportDate">
 						</div>
 					</div>
 
@@ -62,7 +62,7 @@
 							<label class="control-label bxp-label float-left">Vorhaben</label>
 							<!-- Dropdown from land as placeholder -->
 							<div id="country-select" class="bxp-input country-select float-left">
-								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.projectType" theme="bootstrap" remove-selected="false">
+								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedProtocol.projectType" theme="bootstrap" remove-selected="false">
 									<ui-select-match>{{$select.selected.name}}</ui-select-match>
 									<ui-select-choices repeat="item in FormCtrl.projectTypes | filter: $select.search">
 										<span ng-bind-html="item.name  | highlight: $select.search"></span>
@@ -77,7 +77,7 @@
 					<label class="control-label bxp-label float-left">Bautenstand</label>
 					<!-- Dropdown from land as placeholder -->
 					<div id="country-select" class="bxp-input country-select float-left">
-						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.constructionState" theme="bootstrap" remove-selected="false">
+						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedProtocol.constructionState" theme="bootstrap" remove-selected="false">
 							<ui-select-match>{{$select.selected.name}}</ui-select-match>
 							<ui-select-choices repeat="item in FormCtrl.constructionStates | filter: $select.search">
 								<span ng-bind-html="item.name  | highlight: $select.search"></span>
@@ -89,7 +89,7 @@
 					<label class="control-label bxp-label float-left">Abnahme</label>
 					<!-- Dropdown from land as placeholder -->
 					<div id="country-select" class="bxp-input country-select float-left">
-						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.acceptance" theme="bootstrap" remove-selected="false">
+						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedProtocol.acceptance" theme="bootstrap" remove-selected="false">
 							<ui-select-match>{{$select.selected.name}}</ui-select-match>
 							<ui-select-choices repeat="item in FormCtrl.acceptances | filter: $select.search">
 								<span ng-bind-html="item.name  | highlight: $select.search"></span>
@@ -100,12 +100,12 @@
 
 				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Abnahmekommentar</label>
-					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.acceptanceComment"></textarea>
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.selectedProtocol.acceptanceComment"></textarea>
 				</div>
 
 				<div class="form-group group">
 					<label class="control-label bxp-label float-left">Hinweise und Anmerkungen</label>
-					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.note"> </textarea>
+					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.selectedProtocol.note"> </textarea>
 				</div>
 			</bxp-responsive-tab>
 

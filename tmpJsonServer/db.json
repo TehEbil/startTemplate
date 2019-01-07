@@ -248,7 +248,9 @@
         "selectedDetection": "Detection 1",
         "titlePicUrl": "https://picsum.photos/100/100/?random",
         "date": "2018-12-20T06:06:53+00:00",
-        "members": "Mahmut, Can"
+        "members": "Mahmut, Can",
+        "selectedDetections": [{"id": "", "title": ""}],
+        "documents": [{"id": "", "title": ""}]
       },
       {
         "id": 2,
@@ -280,7 +282,9 @@
         "selectedDetection": "",
         "titlePicUrl": "",
         "date": "19.12.2018",
-        "members": "Necati, Mahmut, Muhammed"
+        "members": "Necati, Mahmut, Muhammed",
+        "selectedDetections": [{"id": "", "title": ""}],
+        "documents": [{"id": "", "title": ""}]
       },
       {
         "id": 3,
@@ -312,7 +316,9 @@
         "selectedDetection": "",
         "titlePicUrl": "",
         "date": "19.12.2018",
-        "members": "Muhammed, Necati, Can"
+        "members": "Muhammed, Necati, Can",
+        "selectedDetections": [{"id": "", "title": ""}],
+        "documents": [{"id": "", "title": ""}]  
       }
     ]
   },

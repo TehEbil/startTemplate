@@ -384,7 +384,7 @@
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-dblclick="vm.editProtocol(protocol)" ng-repeat="protocol in vm.protocols">
+								<tr ng-dblclick="vm.editProtocol()" ng-repeat="protocol in vm.baseData.protocolDatas" ng-click="vm.setSelected(protocol)" ng-class="{selected: $index === vm.selectedProtocolIdx}">
 									<td>{{ protocol.id }}</td>
 									<td>{{ protocol.date }}</td>
 									<td>{{ protocol.protocolType }}</td>
@@ -395,18 +395,17 @@
 						</table>
 					</div>
 				</div>
+				<div class="bxp-button-container compact group">
+					<span class="ta-right float-right">
+						<button class="bxp-rounded-button small delete" ng-disabled="vm.baseData.protocolDatas.length === 0" ng-click="vm.deleteProtocol()"
+							type="button"><i class="fa fa-trash"></i></button>
+						<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editProtocol()"
+							type="button"><i class="fa fa-pencil"></i></button>
+						<button class="bxp-rounded-button small add" ng-click="vm.addProtocol()" type="button"><i class="fa fa-plus"></i></button>
+					</span>
+				</div>
 			</div>
 			NOTE: open a new tab for the images!
-
-			<div class="bxp-button-container compact group">
-				<span class="ta-right float-right">
-					<button class="bxp-rounded-button small delete" ng-disabled="vm.detections.length === 0" ng-click="vm.deleteData()"
-					 type="button"><i class="fa fa-trash"></i></button>
-					<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editAnschrift()"
-					 type="button"><i class="fa fa-pencil"></i></button>
-					<button class="bxp-rounded-button small add" ng-click="vm.newAnschrift()" type="button"><i class="fa fa-plus"></i></button>
-				</span>
-			</div>
 		</bxp-responsive-tab>
 	</bxp-responsive-tabs>
 </form>

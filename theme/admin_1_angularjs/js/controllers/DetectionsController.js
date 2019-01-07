@@ -37,11 +37,9 @@
                 count: vm.baseData.detectionDatas.length,
                 selectedIdx: -1
             };
-            console.log('====================================');
-            console.log('add new detection');
-            console.log('====================================');
             vm.detailObj.data.push(
                 {
+                    /* we need to add data models */
                     number: vm.baseData.detectionDatas[vm.detailObj.count - 1].number + 1,
                     date: "",
                     status: "",
@@ -100,6 +98,8 @@
 
         function deleteDetection() {
             vm.baseData.detectionDatas.splice(vm.selectedDetectionIdx, 1);
+            vm.selectedDetectionIdx = 0;
+            vm.selectedDetection = vm.baseData.detectionDatas[vm.selectedDetectionIdx];
         }
 
         function closeModal() {
