@@ -337,7 +337,8 @@
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-dblclick="vm.editDetection(detection, $index)" ng-repeat="detection in vm.baseData.detectionDatas" ng-click="vm.setSelected(detection)" ng-class="{selected: $index === vm.selectedDetectionIdx}">
+								<!-- if you wanna use index => you should use like this -> $index -->
+								<tr ng-dblclick="vm.editDetection()" ng-repeat="detection in vm.baseData.detectionDatas" ng-click="vm.setSelected(detection)" ng-class="{selected: $index === vm.selectedDetectionIdx}">
 									<td>{{ detection.detail.id }}</td>
 									<td>{{ detection.detail.date | date }}</td>
 									<td>Status (comes from the Festellung Form)</td>

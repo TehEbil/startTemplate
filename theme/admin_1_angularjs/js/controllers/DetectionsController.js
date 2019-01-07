@@ -31,19 +31,6 @@
             vm.baseData = passDataService.getObj();
         }
 
-        function editDetection(detection, idx) {
-            vm.detailObj = {
-                data: vm.baseData.detectionDatas,
-                count: vm.baseData.detectionDatas.length,
-                selectedIdx: idx
-            };
-            /* Open detection detail modal */
-            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.detailObj).then(
-                (data) => {
-                }
-            );
-        }
-
         function addDetection() {
             vm.detailObj = {
                 data: vm.baseData.detectionDatas,
@@ -96,6 +83,19 @@
         function setSelected(detection) {
             vm.selectedDetection = detection;
             vm.selectedDetectionIdx = vm.baseData.detectionDatas.findIndex( data => data.number === detection.number );
+        }
+
+        function editDetection() {
+            vm.detailObj = {
+                data: vm.baseData.detectionDatas,
+                count: vm.baseData.detectionDatas.length,
+                selectedIdx: vm.selectedDetectionIdx
+            };
+            /* Open detection detail modal */
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.detailObj).then(
+                (data) => {
+                }
+            );
         }
 
         function deleteDetection() {
