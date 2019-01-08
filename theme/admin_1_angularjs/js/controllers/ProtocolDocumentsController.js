@@ -5,112 +5,29 @@
 		.module('MetronicApp')
 		.controller('ProtocolDocumentsController', ProtocolDocumentsController);
 
-        ProtocolDocumentsController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService'];
+        ProtocolDocumentsController.$inject = ['$rootScope', '$scope', 'modalService', 'passDataService'];
 
 	/* @ngInject */
-	function ProtocolDocumentsController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService) {
+	function ProtocolDocumentsController($rootScope, $scope, modalService, passDataService) {
 		// console.log("ProtocolDocumentsController Loaded");
 		var vm = this;
 
         vm.editProtocolDocument = editProtocolDocument;
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
+        vm.setSelected = setSelected;
+        vm.onDelete = onDelete;
 
-        vm.protocols = [
-            {
-                id: 1,
-                isLocalInspection: true,
-                localInspectionDate: "2018-12-20T06:06:53+00:00",
-                protocolType: "type 1",
-                participants: "Mahmut, Can, Muhammed",
-                tempreture: "26",
-                weather: "Summer",
-                particularties: "1. particularity, 2. particularity",
-                reportDate: "2018-12-20T06:06:53+00:00",
-                projectType: {
-                    id: "02",
-                    name: "Änderung ( Umbau / Nutzungsänderung )"
-                },
-                constructionState: {
-                    id: "04",
-                    name: "Rohinstallation der Heizungsanlagen"
-                },
-                acceptance: {
-                    id: "2",
-                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                },
-                acceptanceComment: "As a result of the researching of a defect has not been found.",
-                note: "All we need a just a little lahmacun!",
-                selectedDetection: "Detection 1",
-                titlePicUrl: "https://picsum.photos/100/100/?random",
-                date: "2018-12-20T06:06:53+00:00",
-                members: "Mahmut, Can"
-            },
-            {
-                id: 2,
-                isLocalInspection: true,
-                localInspectionDate: "",
-                protocolType: "type 2",
-                participants: [
-                  "",
-                  ""
-                ],
-                tempreture: "",
-                weather: "",
-                particularties: "",
-                reportDate: "",
-                projectType: {
-                    id: "02",
-                    name: "Änderung ( Umbau / Nutzungsänderung )"
-                },
-                constructionState: {
-                    id: "04",
-                    name: "Rohinstallation der Heizungsanlagen"
-                },
-                acceptance: {
-                    id: "2",
-                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                },
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: "",
-                date: "19.12.2018",
-                members: "Necati, Mahmut, Muhammed"
-            },
-            {
-                id: 3,
-                isLocalInspection: true,
-                localInspectionDate: "",
-                protocolType: "type 3",
-                participants: [
-                  "",
-                  ""
-                ],
-                tempreture: "",
-                weather: "",
-                particularties: "",
-                reportDate: "",
-                projectType: {
-                    id: "02",
-                    name: "Änderung ( Umbau / Nutzungsänderung )"
-                },
-                constructionState: {
-                    id: "04",
-                    name: "Rohinstallation der Heizungsanlagen"
-                },
-                acceptance: {
-                    id: "2",
-                    name: "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                },
-                acceptanceComment: "",
-                note: "",
-                selectedDetection: "",
-                titlePicUrl: "",
-                date: "19.12.2018",
-                members: "Muhammed, Necati, Can"
-            }
-        ];
+        vm.selectedDocument = {};
+        vm.selectedDocumentIdx = -1;
+
+        vm.protocolDocuments = [];
+
+        init();
+
+        function init() {
+            vm.protocolDocuments = passDataService.getObj().protocolDatas;
+        }
 
         function editProtocolDocument(protocol) {
             console.log('f:' + protocol)
@@ -119,6 +36,16 @@
                 (data) => {
                 }
             );
+        }
+
+        function setSelected(document) {
+            vm.selectedDocument = document;
+            vm.selectedDocumentIdx = vm.protocolDocuments.findIndex( data => data.id === document.id);
+        }
+
+        function onDelete() {
+            vm.protocolDocuments.splice(vm.selectedDocumentIdx, 1);
+            $rootScope.sharedService.alert("File has been deleted", "success");
         }
 
         function closeModal() {

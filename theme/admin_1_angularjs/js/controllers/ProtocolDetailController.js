@@ -5,10 +5,10 @@
 		.module('MetronicApp')
 		.controller('ProtocolDetailController', ProtocolDetailController);
 
-        ProtocolDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'getId'];
+        ProtocolDetailController.$inject = ['$scope', 'getId'];
 
 	/* @ngInject */
-	function ProtocolDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, getId) {
+	function ProtocolDetailController($scope, getId) {
 		// console.log("ProtocolDetailController Loaded");
 		var vm = this;
 

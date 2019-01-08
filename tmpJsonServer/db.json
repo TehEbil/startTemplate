@@ -250,7 +250,35 @@
         "date": "2018-12-20T06:06:53+00:00",
         "members": "Mahmut, Can",
         "selectedDetections": [{"id": "", "title": ""}],
-        "documents": [{"id": "", "title": ""}]
+        "documents": [
+          {
+            "id": 1,
+            "filename": "file1.txt",
+            "filepath": "public/uploads/file1.txt",
+            "oldfilename": "expFile.txt",
+            "refName": "file1.txt",
+            "date": "2018-11-12T11:39:29.137Z",
+            "editMode": false
+          },
+          {
+            "id": 2,
+            "filename": "Ekran Resmi 2018-11-22 13.12.32.png",
+            "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
+            "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
+            "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
+            "date": "2018-11-12T11:39:29.137Z",
+            "editMode": false
+          },
+          {
+            "id": 3,
+            "filename": "4-cv.docx",
+            "filepath": "public/uploads/4-cv.docx",
+            "oldfilename": "cv.docx",
+            "refName": "4-cv.docx",
+            "date": "2019-01-03T08:18:12.080Z",
+            "editMode": false
+          }
+        ]
       },
       {
         "id": 2,
