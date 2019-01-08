@@ -5,17 +5,24 @@
 	.module('MetronicApp')
 	.controller('FormProjektController', FormProjektController);
 
-	FormProjektController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService', 'ProjectHandler'];
+	FormProjektController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService', 'ProjectHandler', 'modalService'];
 
 	/* @ngInject */
-	function FormProjektController($rootScope, $scope, $state, getId, passDataService, ProjectHandler) {
+	function FormProjektController($rootScope, $scope, $state, getId, passDataService, ProjectHandler, modalService) {
 		var vm = this;
 		vm.title = 'FormProjektController';
         vm.closeModal = closeModal;
 		vm.submitForm = submitForm;
-        $scope.state = true; // so modal closes with ESC
+		vm.setSelected = setSelected;
 
-		vm.baseData = {};
+		$scope.state = true; // so modal closes with ESC
+
+        vm.untouched = getId.data;
+		vm.baseData = angular.copy(vm.untouched);
+		vm.subData = {
+			data: {},
+			detail: {}
+		};
 
     	$scope.tabs = [
 	    	'Auftragsdaten',
@@ -24,23 +31,282 @@
 	    	'Protokolle'
     	];
 
-        vm.tabs = $scope.tabs;
+		vm.tabs = $scope.tabs;
+		
+		//#region Project Detail Methods & Variables definitions
+		vm.newDocument = newDocument;
+		vm.deleteDocument = deleteDocument;
+		vm.saveEntry = saveEntry;
+		vm.editEntry = editEntry;
+		vm.onsave = onsave;
+		vm.ondelete = ondelete;
+
+		vm.selectedDocument = {};
+		//#endregion
+
+		//#region Detections Methods & Variables definitions
+		vm.addDetection = addDetection;
+		vm.editDetection = editDetection;
+		vm.deleteDetection = deleteDetection;
+
+		vm.selectedDetection = {};
+		vm.selectedDetectionIdx = -1;
+		//#endregion 
+
+		//#region Protocols Methods & Variables definitions
+		vm.addProtocol = addProtocol;
+		vm.editProtocol = editProtocol;
+		vm.deleteProtocol = deleteProtocol;
+
+		vm.selectedProtocol = {};
+		vm.selectedProtocolIdx = -1;
+		//#endregion
 
 		init();
-		
+		vm.order = vm.baseData.orderDatas;
+		vm.protocols = vm.baseData.protocolDatas;
 		function init() {
+			vm.tmpSelected = false;
 			console.log('====================================');
-			console.log('firsComming', getId.data);
+			console.log('firsComming', vm.baseData);
 			console.log('====================================');
 		}
 
+		//#region Project Detail Methods
+
+		function newDocument() {
+            var obj = {
+              uploads: vm.baseData.documents,
+              callback: vm.onsave
+            };
+            if(vm.uploadtype)
+              obj['uploadtype'] = vm.uploadtype;
+
+            obj.single = true;
+
+            // console.log(obj);
+            modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then(() => {
+                if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
+                    vm.disablesub = false;
+            });
+        }
+
+        function deleteDocument (id = -1) {
+
+            if(id == -1)
+                return console.error("Fehler bei deleteEntry");
+
+            var idx = vm.baseData.documents.findIndex(o => o.id == id);
+            $rootScope.sharedService.showConfirmDialog("delete").then(function () {
+                if (vm.ondelete)
+                    vm.ondelete(vm.baseData.documents[idx].id);
+            });
+        }
+
+        function onsave(file) {
+            /* File Uploaded Callback */
+            console.log("File has been uploaded: ", file);
+
+            // $rootScope.sharedService.alert("File has been saved", "success");
+        } 
+
+        function ondelete(id) {
+            /* File Deletion Callback */
+            vm.baseData.documents.splice(vm.baseData.documents.findIndex(o => o.id == id), 1);
+            $rootScope.sharedService.alert("File has been deleted", "success");
+        }
+
+        function saveEntry(id = -1) {
+            var idx = getIndex(id);
+
+            vm.baseData.documents[idx].editMode = false;
+            vm.editStatus = false;
+
+            console.log(typeof vm.onsave === "function");
+            if(typeof vm.onsave === "function")
+                vm.onsave();
+        }
+
+        function editEntry(id = -1) {
+            var idx = getIndex(id);
+
+            if(vm.tmpSelected !== false){ // another one is being editted, save it & close edit form
+                vm.baseData.documents[vm.tmpSelected].editMode = false;
+                vm.editStatus = false;
+
+                if(typeof vm.onsave === "function")
+                    vm.onsave(vm.baseData.documents[vm.tmpSelected]);
+            }
+            vm.tmpSelected = idx;
+            // vm.tmpVar = angular.copy(vm.items[idx].value);
+            vm.baseData.documents[idx].editMode = true;
+            vm.editStatus = true;
+		}
+
+		//#endregion
+
+		//#region Detections Methods 
+		function addDetection() {
+            vm.subData = {
+                data: vm.baseData.detectionDatas,
+                detail: {
+					selectedIdx: -1
+				}
+            };
+            vm.subData.data.push(
+                {
+                    /* we need to add data models */
+                    number: vm.baseData.detectionDatas[vm.subData.data.length - 1].number + 1,
+                    date: "",
+                    status: "",
+                    title: "",
+                    coverPicUrl: "",
+                    detection: "",
+                    detail: {
+                        id: vm.baseData.detectionDatas[vm.subData.data.length - 1].detail.id + 1,
+                        date: "",
+                        datetime: "",
+                        testField: {
+                        },
+                        position: "",
+                        title: "",
+                        evaluation: {
+                        },
+                        basics: {
+                        },
+                        status: {
+                        },
+                        description: "",
+                        costs: {
+                            disposalCost: 0,
+                            impairment: 0,
+                            recoup: 0,
+                            isPrint: true
+                        }
+                    }
+                }
+            );
+            /* Open detection detail modal */
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.subData).then(
+                (data) => {
+                }
+            );
+        }
+
+        function editDetection() {
+            vm.detailObj = {
+                data: vm.baseData.detectionDatas,
+                count: vm.baseData.detectionDatas.length,
+                selectedIdx: vm.selectedDetectionIdx
+            };
+            /* Open detection detail modal */
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.detailObj).then(
+                (data) => {
+                }
+            );
+        }
+
+        function deleteDetection() {
+            vm.baseData.detectionDatas.splice(vm.selectedDetectionIdx, 1);
+            vm.selectedDetectionIdx = 0;
+            vm.selectedDetection = vm.baseData.detectionDatas[vm.selectedDetectionIdx];
+        }
+		//#endregion
+
+		//#region Protocol Methods
+		function addProtocol() {
+            vm.subData = {
+				data: vm.baseData.protocolDatas,
+				detail: {
+					selectedIdx: -1
+				}
+            };
+
+            vm.subData.data.push(
+                {
+                    id: vm.baseData.protocolDatas[vm.subData.data.length - 1].id + 1,
+                    isLocalInspection: true,
+                    localInspectionDate: new Date().toISOString(),
+                    protocolType: "",
+                    participants: "",
+                    tempreture: "",
+                    weather: "",
+                    particularties: "",
+                    reportDate: new Date().toISOString(),
+                    projectType: {},
+                    constructionState: {},
+                    acceptance: {},
+                    acceptanceComment: "",
+                    note: "",
+                    selectedDetection: "",
+                    titlePicUrl: "https://picsum.photos/100/100/?random",
+                    date: new Date().toISOString(),
+                    members: "",
+                    selectedDetections: [],
+                    documents: [],
+                }
+            );
+
+        }
+
+        function editProtocol() {
+            vm.subData = {
+                data: vm.selectedProtocol,
+                detail: {
+					selectedIdx: vm.selectedProtocolIdx,
+				}
+            }
+            /* Open detection detail modal */
+            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', vm.subData).then(
+                (data) => {
+                    
+                }
+            );
+        }
+
+        function deleteProtocol() {
+            vm.baseData.protocolDatas.splice(vm.selectedProtocolIdx, 1);
+            vm.selectedProtocolIdx = 0;
+            vm.selectedProtocol = vm.baseData.protocolDatas[vm.selectedProtocolIdx];
+        }
+		//#endregion
+
+		function getIndex(id) {
+            if(id === -1)
+                return $rootScope.sharedService.alert("ID not set", "danger");
+
+            if(vm.baseData.documents && vm.baseData.documents.length <= 0)
+                return $rootScope.sharedService.alert("No items", "danger");
+             
+            var idx = vm.baseData.documents.findIndex(o => o.id === id);
+            if(idx < 0)  
+                return $rootScope.sharedService.alert("ID not found", "danger");
+
+            return idx;
+		}
+			
+		function setSelected(field, obj, idx) {
+            if (field === 'projectDocuments') {
+				vm.selectedDocument = obj;
+			} else if (field === 'detection') {
+				vm.selectedDetection = obj;
+				vm.selectedDetectionIdx = idx;
+			} else if (field === 'protocol') {
+				vm.selectedProtocol = obj;
+            	vm.selectedProtocolIdx = idx;
+			}
+        }
 
         function closeModal() {
             $scope.$close();
         }
 
         function submitForm() {
-            $scope.$close(passDataService.getObj());
+            console.log('====================================');
+            console.log('Base Data', vm.baseData);
+            console.log('Untouched', vm.untouched);
+            console.log('====================================');
+            $scope.$close();
         }
 
 
@@ -56,425 +322,4 @@
     	$rootScope.settings.layout.pageSidebarClosed = false;
     }
 
-})();
-
-
-
-angular.module('MetronicApp').controller('UploadController', ['$scope', 'Upload', function ($scope, Upload) {
-    // upload later on form submit or something similar
-    /*$scope.submit = function() {
-      if ($scope.form.file.$valid && $scope.file) {
-        $scope.upload($scope.file);
-      }
-  };*/
-
-    // upload on file select or drop
-    $scope.upload = function (file) {
-    	Upload.upload({
-    		url: 'upload/url',
-    		data: {file: file, 'username': $scope.username}
-    	}).then(function (resp) {
-    		console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-    	}, function (resp) {
-    		console.log('Error status: ' + resp.status);
-    	}, function (evt) {
-    		var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-    		console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-    	});
-    };
-}]);
-
-(function() {
-	'use strict';
-
-	angular
-		.module('MetronicApp')
-		.controller('MyCtrl', MyCtrl);
-
-	MyCtrl.$inject = ['$rootScope', '$scope'];
-
-	/* @ngInject */
-	function MyCtrl($rootScope, $scope) {
-    // upload later on form submit or something similar
-		var vm = this;
-
-	}
-})();
-
-(function() {
-	'use strict';
-
-	angular
-		.module('MetronicApp')
-		.controller('AnsprechpartnerController', AnsprechpartnerController);
-
-	AnsprechpartnerController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder'];
-
-	/* @ngInject */
-	function AnsprechpartnerController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder) {
-	  var vm = this;
-	  vm.id = false;
-
-
-    vm.dtOptions = DTOptionsBuilder.newOptions()
-		.withPaginationType('simple_numbers')
-		.withOption('processing', true)
-  	.withOption('DT_RowId', true)
-
-		//.withOption('order', true)
-		//.withOption('orderClasses', false)
-		.withOption('bSortClasses', false)
-		.withOption('responsive', true)
-		.withOption('paging', false)
-		.withOption('searching', false)
-      /* */
-      //.withOption('scrollCollapse', true)
-      //.withOption('paging', false)
-      /* */
-
-    .withLanguage({
-			"decimal":        "",
-			"emptyTable":     "Keine Daten vorhanden.",
-			"info":           "", //Zeige Einträge _START_ bis _END_ von _TOTAL_
-			"infoEmpty":      "", //Zeige 0 bis 0 von 0 Einträgen
-			"infoFiltered":   "(Gefiltert von insgesamt _MAX_ Einträgen)",
-			"infoPostFix":    "",
-			"thousands":      ",",
-			"lengthMenu":     "Zeige _MENU_ Einträge",
-			"loadingRecords": "Lade...",
-			"processing":     "Ausführen...",
-			"search":         "",
-			"zeroRecords":    "Keine Daten gefunden.",
-			"paginate": {
-				"first":      "<<",
-				"last":       ">>",
-				"next":       ">",
-				"previous":   "<"
-			},
-		});
-
-    vm.dtColumnDefs = [
-      DTColumnDefBuilder.newColumnDef(0),
-      DTColumnDefBuilder.newColumnDef(1)
-    ];
-
-
-    $scope.menuOptions = [
-        // NEW IMPLEMENTATION
-        {
-            text: 'Neu',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                newAP();
-            }
-        },
-        {
-            text: 'Bearbeiten',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                editAP();
-            }
-        },
-        {
-            text: 'Löschen',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                deleteData();
-            }
-        },
-        null, // Dividier
-        {
-            text: 'Zurück',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-            	return;
-            }
-        },
-    ];
-
-
-	}
-})();
-
-(function() {
-	'use strict';
-
-	angular
-		.module('MetronicApp')
-		.controller('AnschriftController', AnschriftController);
-
-	AnschriftController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder'];
-
-	/* @ngInject */
-	function AnschriftController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder) {
-		// console.log("AnschriftController Loaded");
-		var vm = this;
-	
-		vm.dtOptions = DTOptionsBuilder.newOptions()
-		.withPaginationType('simple_numbers')
-		.withOption('processing', true)
-		//.withOption('order', true)
-		//.withOption('orderClasses', false)
-		.withOption('bSortClasses', false)
-		.withOption('responsive', true)
-		.withOption('paging', false)
-		.withOption('searching', false)
-      /* */
-      //.withOption('scrollCollapse', true)
-      //.withOption('paging', false)
-      /* */
-
-      .withLanguage(
-      {
-				"decimal":        "",
-				"emptyTable":     "Keine Daten vorhanden.",
-				"info":           "",
-				"infoEmpty":      "",
-				"infoFiltered":   "(Gefiltert von insgesamt _MAX_ Einträgen)",
-				"infoPostFix":    "",
-				"thousands":      ",",
-				"lengthMenu":     "Zeige _MENU_ Einträge",
-				"loadingRecords": "Lade...",
-				"processing":     "Ausführen...",
-				"search":         "",
-				"zeroRecords":    "Keine Daten gefunden.",
-				"paginate": {
-					"first":      "<<",
-					"last":       ">>",
-					"next":       ">",
-					"previous":   "<"
-				},
-	  });
-
-    vm.dtColumnDefs = [
-        DTColumnDefBuilder.newColumnDef(0),
-        DTColumnDefBuilder.newColumnDef(1)
-    ];
-
-
-    $scope.menuOptions = [
-        // NEW IMPLEMENTATION
-        {
-            text: 'Neu',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                newAnschrift();
-            }
-        },
-        {
-            text: 'Bearbeiten',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                editAnschrift();
-            }
-        },
-        {
-            text: 'Löschen',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                deleteData();
-            }
-        },
-        null, // Dividier
-        {
-            text: 'Zurück',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-            	return;
-            }
-        },
-    ];
-}
-})();
-
-(function() {
-	'use strict';
-
-	angular
-		.module('MetronicApp')
-		.controller('ObjektController', ObjektController);
-
-	ObjektController.$inject = ['$rootScope', '$scope', '$state', '$stateParams', '$timeout', 'KundenHandler', 'StammdatenHandler', 'modalService', 'settings', 'MainDataService', 'DTOptionsBuilder', 'DTColumnDefBuilder'];
-
-	/* @ngInject */
-	function ObjektController($rootScope, $scope, $state, $stateParams, $timeout, KundenHandler, StammdatenHandler, modalService, settings, MainDataService, DTOptionsBuilder, DTColumnDefBuilder) {
-		// console.log("ObjektController Loaded");
-		var vm = this;
-		vm.newObjekt = newObjekt;
-		vm.editObjekt = editObjekt;
-		vm.deleteData = deleteData;
-		var tmpFormData = MainDataService.getCopiedData();
-		vm.anschriften = tmpFormData.anschriften;
-		vm.onMouseClick = onMouseClick;
-		vm.clickedElement = false;
-
-		if(vm.selectedLieferscheine)
-			vm.currentLieferschein = vm.anschriften.find( o => o.bezeichnung == vm.selectedLieferscheine);
-
-		if(vm.selectedRechnungen)
-			vm.currentRechnung = vm.anschriften.find( o => o.bezeichnung == vm.selectedRechnungen);
-
-		vm.dtOptions = DTOptionsBuilder.newOptions()
-		.withPaginationType('simple_numbers')
-		.withOption('rowCallback', rowCallback)
-		.withOption('processing', true)
-		//.withOption('order', true)
-		//.withOption('orderClasses', false)
-		.withOption('bSortClasses', false)
-		.withOption('responsive', true)
-		.withOption('paging', false)
-		.withOption('searching', false)
-      /* */
-      //.withOption('scrollCollapse', true)
-      //.withOption('paging', false)
-      /* */
-
-      .withLanguage(
-      {
-				"decimal":        "",
-				"emptyTable":     "Keine Daten vorhanden.",
-				"info":           "",
-				"infoEmpty":      "",
-				"infoFiltered":   "(Gefiltert von insgesamt _MAX_ Einträgen)",
-				"infoPostFix":    "",
-				"thousands":      ",",
-				"lengthMenu":     "Zeige _MENU_ Einträge",
-				"loadingRecords": "Lade...",
-				"processing":     "Ausführen...",
-				"search":         "",
-				"zeroRecords":    "Keine Daten gefunden.",
-				"paginate": {
-					"first":      "<<",
-					"last":       ">>",
-					"next":       ">",
-					"previous":   "<"
-				},
-	  });
-
-    vm.dtColumnDefs = [
-        DTColumnDefBuilder.newColumnDef(0),
-        DTColumnDefBuilder.newColumnDef(1)
-    ];
-
-    function onMouseClick() {
-      angular.element(document).find('.selected').removeClass('selected');
-      vm.id = false;
-    }
-
-    function rowCallback(nRow, aData, index) {
-        // Unbind first in order to avoid any duplicate handler (see https://github.com/l-lin/angular-datatables/issues/87)
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function() {
-
-			var parent = $(this).parent();
-			if ( parent.hasClass('selected') ) {
-				$timeout(function() {
-					parent.removeClass('selected');
-	   				vm.id = false;
-				}, 70);
-			}
-			else {
-				$('tr.selected').removeClass('selected');
-				parent.addClass('selected');
-	    		vm.id = aData[0];
-			}
-            $scope.$apply();
-        });
-
-        $('td', nRow).unbind('contextmenu');
-        $('td', nRow).bind('contextmenu', function() {
-        	var parent = $(this).parent();
-        	if ( !parent.hasClass('selected') ) {
-        		$('tr.selected').removeClass('selected');
-        		parent.addClass('selected');
-        		vm.id = vm.anschriften[index].id;
-        	}
-            $scope.$apply();
-        });
-        return nRow;
-    }
-
-    $scope.menuOptions = [
-        // NEW IMPLEMENTATION
-        {
-            text: 'Neu',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                newObjekt();
-            }
-        },
-        {
-            text: 'Bearbeiten',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                editObjekt();
-            }
-        },
-        {
-            text: 'Löschen',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-                deleteData();
-            }
-        },
-        null, // Dividier
-        {
-            text: 'Zurück',
-            click: function ($itemScope, $event, modelValue, text, $li) {
-            	return;
-            }
-        },
-    ];
-
-
-		function newObjekt() {
-			console.log("hi");
-			//$scope.$close();
-			$scope.$parent.state = false;
-			modalService.openMenuModal('views/form_objekt.html', 'FormObjektController', 'animated zoomIn');
-			if ( vm.clickedElement && vm.clickedElement.hasClass('selected') ) {
-				vm.clickedElement.removeClass('selected');
-				vm.clickedElement = false;
-   				vm.id = false;
-			}
-		}
-
-		function editObjekt() {
-			if(vm.id)
-			{
-				modalService.openMenuModal('views/form_objekt.html', 'FormObjektController', 'animated zoomIn', vm.id).finally(() => {
-					vm.currentLieferschein = vm.anschriften.find( o => o.bezeichnung == vm.selectedLieferscheine);
-					vm.currentRechnung = vm.anschriften.find( o => o.bezeichnung == vm.selectedRechnungen);
-					/*vm.selectedLieferscheine = vm.currentLieferschein;
-					vm.selectedRechnungen = vm.currentRechnung;*/
-					if ( vm.clickedElement && vm.clickedElement.hasClass('selected') ) {
-					vm.clickedElement.removeClass('selected');
-					vm.clickedElement = false;
-					vm.id = false;
-				}
-				});
-				$scope.$parent.state = false;
-			}
-			else
-				alert("Kein Eintrag ausgewählt.");
-		}
-
-		function deleteData() {
-
-
-			$scope.sharedService.showConfirmDialog("sure").then(function () {
-				if("selectedHauptAddr" in MainDataService.getCopiedData())
-					if(MainDataService.getCopiedData().selectedHauptAddr.id == vm.id)
-						delete MainDataService.getCopiedData().selectedHauptAddr;
-
-
-			vm.anschriften.splice(vm.anschriften.findIndex(x => x.id == vm.id), 1);
-			MainDataService.getCopiedData().anschriften = vm.anschriften;
-			vm.id = false;
-			// $scope.$parent.state = false;
-			});
-
-
-		}
-
-		function setSelectedRechnungen() {
-			vm.currentRechnung = vm.anschriften.find( o => o.bezeichnung == vm.selectedRechnungen);
-			MainDataService.getCopiedData().selectedRechnungen = vm.selectedRechnungen;
-		}
-
-		function setSelectedLieferscheine() {
-			vm.currentLieferschein = vm.anschriften.find( o => o.bezeichnung == vm.selectedLieferscheine);
-			MainDataService.getCopiedData().selectedLieferscheine = vm.selectedLieferscheine;
-
-		}
-}
 })();

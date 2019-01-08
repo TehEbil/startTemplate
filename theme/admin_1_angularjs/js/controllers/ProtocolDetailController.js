@@ -5,10 +5,10 @@
 		.module('MetronicApp')
 		.controller('ProtocolDetailController', ProtocolDetailController);
 
-        ProtocolDetailController.$inject = ['$scope', 'getId'];
+        ProtocolDetailController.$inject = ['$rootScope', '$scope', 'getId'];
 
 	/* @ngInject */
-	function ProtocolDetailController($scope, getId) {
+	function ProtocolDetailController($rootScope, $scope, getId) {
 		// console.log("ProtocolDetailController Loaded");
 		var vm = this;
 
@@ -17,11 +17,20 @@
         vm.projectTypes = globalData.artDesVorhabens;
         vm.constructionStates = globalData.bautenstand;
         vm.acceptances = globalData.abnahme;
+        vm.setSelected = setSelected;
+        vm.ondelete = ondelete;
 
-        vm.protocols = [];
-        vm.selectedProtocol = {};
-        vm.selectedIdx = 0;
-        vm.count = 0;
+        vm.protocol = {};
+        vm.selectedIdx = -1;
+
+        vm.selectedDocument = {};
+        vm.selectedDocumentIdx = -1;
+
+        vm.selectedDetection = {};
+        vm.selectedDetectionIdx = -1;
+        
+
+
 
         $scope.tabs = [
             'NewProtocol',
@@ -34,18 +43,11 @@
         init();
 
         function init() {
-            vm.protocols = getId.data;
-            vm.selectedIdx = getId.selectedIdx;
-            vm.count = getId.count;
-
-            if (vm.selectedIdx === -1) {
-                vm.selectedProtocol = vm.protocols[vm.count - 1];
-                vm.selectedIdx = vm.count - 1;
-            } else {
-                vm.selectedProtocol = vm.protocols[vm.selectedIdx];
-            }
+            vm.protocol = getId.data;
+            vm.selectedIdx = getId.detail.selectedIdx;
+            
             console.log('====================================');
-            console.log(vm.selectedProtocol);
+            console.log(vm.protocol);
             console.log('====================================');
         }
 
@@ -53,7 +55,25 @@
     	$scope.setSelectedTab = function(tab) {
 			$scope.selectedTab = tab;
 
-    	};
+        };
+        
+        function setSelected(field, idx, obj) {
+            console.log('====================================');
+            console.log('selected', obj);
+            console.log('====================================');
+            if (field === 'document') {
+                vm.selectedDocument = obj;
+                vm.selectedDocumentIdx = idx;   
+            } else if (field === 'detection') {
+                vm.selectedDetection = obj;
+                vm.selectedDetectionIdx = idx;
+            }
+        }
+
+        function ondelete() {
+            vm.protocol.splice(vm.selectedDocumentIdx, 1);
+            $rootScope.sharedService.alert('File has been deleted', 'success');
+        }
 
         function closeModal() {
             $scope.$close();

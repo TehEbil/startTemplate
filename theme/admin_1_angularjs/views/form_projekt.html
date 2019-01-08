@@ -5,405 +5,386 @@
 	<bxp-responsive-tabs form-name="Order" tabs="tabs" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
 	 submit-form="FormCtrl.submitForm">
 		<bxp-responsive-tab tab="Auftragsdaten" selected-tab="FormCtrl.selectedTab">
-			<div ng-controller="OrderController as vm">
-				<div class="bxp-form-container group">
-					<div class="bxp-col-6 float-left">
-						<div class="bxp-form-note mt-5px mb-10px">Auftraggeber</div>
+			<div class="bxp-form-container group">
+				<div class="bxp-col-6 float-left">
+					<div class="bxp-form-note mt-5px mb-10px">Auftraggeber</div>
 
-						<div class="form-group group mb-10px" ng-class="{ 'has-error' : setKundennummerInvalid && formAuftrag.Kundennummer.$pristine}">
-							<div ng-if="!FormCtrl.isNewKunde">
-								<label class="control-label float-left interessenten-nr">{{FormCtrl.kunde.customerType === "Interessent" ?
-									"Interessenten-Nr." : "Kunden-Nr."}}</label>
-								<label min="1" step="1" name="Kundennummer" id='idKundennummer' class="bxp-input bxp-input-gender float-left">{{
-									vm.order.customer.customerNumber }}</label>
+					<div class="form-group group mb-10px" ng-class="{ 'has-error' : setKundennummerInvalid && formAuftrag.Kundennummer.$pristine}">
+						<div ng-if="!FormCtrl.isNewKunde">
+							<label class="control-label float-left interessenten-nr">{{FormCtrl.kunde.customerType === "Interessent" ?
+								"Interessenten-Nr." : "Kunden-Nr."}}</label>
+							<label min="1" step="1" name="Kundennummer" id='idKundennummer' class="bxp-input bxp-input-gender float-left">{{
+								FormCtrl.order.customer.customerNumber }}</label>
 
-							</div>
-
-							<button ng-if="FormCtrl.isEmployee" class="float-right bxp-edit history-toggle-button" type="button" ng-click="FormCtrl.changeCustomer()">
-								Kunden ändern</button>
 						</div>
 
-						<div class="form-group group">
-							<label class="control-label bxp-label float-left">Anschrift:</label>
-							<div class="bxp-input float-left">
-								<label class="radio-inline">
-									<input ng-disabled="FormCtrl.svRequestState" type="radio" value="invidual" ng-model="vm.order.customer.isCompany">
-									Privat
-								</label>
-								<label class="radio-inline">
-									<input ng-disabled="FormCtrl.svRequestState" type="radio" value="company" ng-model="vm.order.customer.isCompany">
-									Firma
-								</label>
-							</div>
-						</div>
+						<button ng-if="FormCtrl.isEmployee" class="float-right bxp-edit history-toggle-button" type="button" ng-click="FormCtrl.changeCustomer()">
+							Kunden ändern</button>
+					</div>
 
-						<div class="check-element animate-show-hide" ng-if="vm.order.customer.isCompany == 'company'">
-
-							<div class="form-group group" ng-class="{ 'has-error' : formAuftrag.Firma.$invalid && FormCtrl.submitted }">
-								<label class="control-label bxp-label float-left">Firma<span class="required">*</span></label>
-								<input name="Firma" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.companyName" id="Firma"
-								 class="form-control bxp-input float-left" type="text" required>
-								 <p ng-if="!orderForm.Firma.$valid"> required field </p>
-							</div>
-
-							<div class="form-group group">
-								<label class="control-label bxp-label float-left">Zusatz</label>
-								<input name="Zusatz" ng-model="vm.order.customer.additive" id="Zusatz" class="form-control bxp-input float-left"
-								 type="text">
-							</div>
-						</div>
-
-						<div ng-controller="UISelectController as ctrl">
-							<div class="check-element animate-show-hide" ng-if="vm.order.customer.isCompany == 'invidual'">
-								<div class="form-group group">
-									<label class="bxp-label control-label float-left">Anrede</label>
-									<div class="bxp-input-gender float-left">
-										<ui-select ng-model="vm.order.customer.salutation" theme="bootstrap" remove-selected="false" ng-disabled="FormCtrl.svRequestState">
-											<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
-											<ui-select-choices repeat="item in ctrl.gender | filter: $select.search">
-
-												<span ng-bind-html="item | highlight: $select.search"></span>
-
-											</ui-select-choices>
-										</ui-select>
-									</div>
-
-									<label class="control-label bxp-label bxp-label-title float-left">Titel</label>
-									<div class="bxp-input-title float-left">
-										<ui-select ng-model="vm.order.customer.title" theme="bootstrap" remove-selected="false"
-										 ng-disabled="FormCtrl.svRequestState">
-											<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
-											<ui-select-choices repeat="item in ctrl.title | filter: $select.search">
-												<span ng-bind-html="item | highlight: $select.search"></span>
-											</ui-select-choices>
-										</ui-select>
-										<!-- <input type="text" ng-model="FormCtrl.kunde.selectedTit" ng-model-options="FormCtrl.modelOptions" ng-disabled="FormCtrl.svRequestState"
-										 uib-typeahead="item in ctrl.title  | filter:$viewValue | limitTo:8" class="form-control bxp-input float-left"
-										 autocomplete="off" /> -->
-									</div>
-								</div>
-								<div class="form-group group">
-									<div ng-class="{ 'has-error' : formAuftrag.lastName.$invalid && FormCtrl.submitted }">
-										<label class="control-label bxp-label float-left">Nachname</label>
-										<input name="lastName" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.firstName" id="lastName"
-										 class="form-control bxp-input bxp-input-gender float-left" type="text" ng-disabled="FormCtrl.svRequestState">
-										 <p ng-if="!orderForm.lastName.$valid"> required field </p>
-									</div>
-									<div ng-class="{ 'has-error' : formAuftrag.firstName.$invalid && FormCtrl.submitted }">
-										<label class="control-label bxp-label bxp-label-title float-left">Vorname</label>
-										<input name="firstName" ng-model="vm.order.customer.lastName" class="form-control bxp-input bxp-input-title float-left"
-										 type="text" ng-disabled="FormCtrl.svRequestState" />
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<bxp-address on-select="FormCtrl.onSelect" ng-model="vm.order.customer.address" make="FormCtrl.svRequestState"></bxp-address>
-
-						<div class="form-group group">
-							<label class="control-label bxp-label float-left">Tel</label>
-							<input type="text" name="tnumber" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.phone"
-							 class="form-control bxp-input bxp-input-gender float-left" ng-disabled="FormCtrl.svRequestState" />
-							<label class="control-label bxp-label bxp-label-title float-left">Mobil</label>
-							<input type="text" name="mnumber" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="vm.order.customer.mobile"
-							 class="form-control bxp-input bxp-input-title float-left" ng-disabled="FormCtrl.svRequestState" />
-						</div>
-						<div class="form-group group" ng-class="{ 'has-error' : formAuftrag.email.$error.pattern && FormCtrl.submitted && !FormCtrl.isStornoNoValid}">
-
-							<label ng-if="FormCtrl.kunde.email && !FormCtrl.svRequestState" class="control-label bxp-label float-left">
-								<a href="mailto:{{FormCtrl.kunde.email}}" style="position:relative; padding-right:24px;">
-									E-Mail
-									<svg style="max-width: 20px; position:absolute; right:0; top:2px;" version="1.1" id="mobile-mail" xmlns="http://www.w3.org/2000/svg"
-									 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 200" enable-background="new 0 0 200 200"
-									 xml:space="preserve">
-										<g>
-											<polygon fill="#6bacdd" points="120.4,145.7 99,169.1 99,20.5  " />
-											<g>
-												<polygon fill="#a0ceea" points="77.6,145.7 99,169.1 99,20.5     " />
-												<polygon opacity="0.3" fill="#a0ceea" points="77.6,145.7 99,169.1 99,20.5     " />
-											</g>
-											<g>
-												<polygon fill="#337ab7" points="120.4,145.7 192,153.4 99,20.5     " />
-												<polygon opacity="0.15" fill="#337ab7" points="120.4,145.7 192,153.4 99,20.5    " />
-											</g>
-											<polygon fill="#337ab7" points="77.6,145.7 6,153.4 99,20.5  " />
-										</g>
-									</svg>
-								</a>
+					<div class="form-group group">
+						<label class="control-label bxp-label float-left">Anschrift:</label>
+						<div class="bxp-input float-left">
+							<label class="radio-inline">
+								<input ng-disabled="FormCtrl.svRequestState" type="radio" value="invidual" ng-model="FormCtrl.order.customer.isCompany">
+								Privat
 							</label>
-							<label class="control-label bxp-label float-left" ng-if="!FormCtrl.kunde.email || FormCtrl.svRequestState" for="email">E-Mail</label>
-
-							<input type="text" ng-blur="FormCtrl.checkDuplicates($event)" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" name="email"
-							 ng-model="vm.order.customer.email" class="form-control bxp-input contactpos number float-left" ng-disabled="FormCtrl.svRequestState" />
-							<p ng-show="formAuftrag.email.$error.pattern  && (formAuftrag.email.$touched || FormCtrl.submitted) && !FormCtrl.isStornoNoValid"
-							 class="help-block"><i class="fa fa-warning"></i> Bitte geben Sie eine gültige E-Mail Adresse an.</p>
+							<label class="radio-inline">
+								<input ng-disabled="FormCtrl.svRequestState" type="radio" value="company" ng-model="FormCtrl.order.customer.isCompany">
+								Firma
+							</label>
 						</div>
-
-
-						<div class="group">
-							<a ng-if="!FormCtrl.svRequestState" ng-click="FormCtrl.weitereFelder()" class="float-left"> Weitere Felder
-								anzeigen</a>
-							<a ng-if="!FormCtrl.svRequestState && FormCtrl.isEmployee && 1==2" class="float-right" ng-click="FormCtrl.chooseCustomer()">Aus
-								Stammdaten laden</a>
-						</div>
-						<p class="mt-10px" style="font-size: 12px;">Sie können die Adressdaten eingeben oder <a href="#">aus den
-								Stammdaten wählen.</a></p>
 					</div>
-					<div class="bxp-col-6 float-left">
-						<div class="bxp-form-note mt-5px mb-10px group">Objekt</div>
-						<div class="group">
-							<label class="control-label float-left interessenten-nr">Objekt-Nr.</label>
-							<label min="1" step="1" name="Objektnummer" id='' class="bxp-input bxp-input-gender float-left">{{
-								vm.order.object.objectNumber }}</label>
 
+					<div class="check-element animate-show-hide" ng-if="FormCtrl.order.customer.isCompany == 'company'">
+
+						<div class="form-group group" ng-class="{ 'has-error' : formAuftrag.Firma.$invalid && FormCtrl.submitted }">
+							<label class="control-label bxp-label float-left">Firma<span class="required">*</span></label>
+							<input name="Firma" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="FormCtrl.order.customer.companyName" id="Firma"
+							 class="form-control bxp-input float-left" type="text" required>
+							<p ng-if="!orderForm.Firma.$valid"> required field </p>
 						</div>
+
 						<div class="form-group group">
-							<label class="control-label bxp-label float-left">Objektart</label>
-							<ui-select ng-disabled="FormCtrl.svRequestState" class="bxp-input float-left" ng-model="vm.order.object.objectType"
-							 theme="bootstrap" remove-selected="false">
-								<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
-								<ui-select-choices repeat="item in vm.objectTypes | filter: $select.search">
-									<span ng-bind-html="item | highlight: $select.search"></span>
-								</ui-select-choices>
-							</ui-select>
-						</div>
-						<bxp-address on-select="FormCtrl.onSelect" ng-model="vm.order.object.address" make="FormCtrl.svRequestState"></bxp-address>
-
-						<p class="mt-10px" style="font-size: 12px;">Sie können die Adressdaten eingeben oder <a href="#">aus den
-								Stammdaten wählen.</a></p>
-
-
-					</div>
-
-				</div>
-				<div class="bxp-form-note mt-5px mb-10px">Weitere Auftragsdaten</div>
-				<div class="bxp-form-container group">
-					<div class="bxp-col-6 float-left">
-						<div class="form-group">
-							<div class="group">
-								<label for="input-street" class="control-label bxp-label float-left">Auftrags-Nr</label>
-								<input type="text" class="form-control bxp-input float-left" placeholder="{{vm.order.otherInformations.orderNumber}}"
-								 disabled="disabled" ng-model="vm.order.otherInformations.orderNumber">
-							</div>
-						</div>
-
-						<div class="form-group">
-							<div class="group">
-								<label for="input-street" class="control-label bxp-label float-left">Referenz-Nr d. Kunden</label>
-								<input type="text" class="form-control bxp-input float-left" placeholder="" ng-model="vm.order.otherInformations.referenceNumber">
-							</div>
+							<label class="control-label bxp-label float-left">Zusatz</label>
+							<input name="Zusatz" ng-model="FormCtrl.order.customer.additive" id="Zusatz" class="form-control bxp-input float-left"
+							 type="text">
 						</div>
 					</div>
 
-					<div class="bxp-col-6 float-left">
-						<div class="form-group">
-							<div class="group">
-								<label for="input-street" class="control-label bxp-label float-left">Datum</label>
-								<input name="orderDate" type="text" class="form-control bxp-input float-left" placeholder="" ng-model="vm.order.otherInformations.orderDate" required>
-								<p ng-if="!orderForm.orderDate.$valid"> required field </p>
-							</div>
-						</div>
+					<div ng-controller="UISelectController as ctrl">
+						<div class="check-element animate-show-hide" ng-if="FormCtrl.order.customer.isCompany == 'invidual'">
+							<div class="form-group group">
+								<label class="bxp-label control-label float-left">Anrede</label>
+								<div class="bxp-input-gender float-left">
+									<ui-select ng-model="FormCtrl.order.customer.selectedGen" theme="bootstrap" remove-selected="false" ng-disabled="FormCtrl.svRequestState">
+										<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
+										<ui-select-choices repeat="item in ctrl.gender | filter: $select.search">
 
-						<div class="form-group">
-							<div class="group">
-								<label for="input-street" class="control-label bxp-label float-left">Auftragsart</label>
-								<div id="country-select" class="bxp-input country-select float-left">
-									<ui-select ng-disabled="vm.make" ng-model="vm.order.otherInformations.orderType" theme="bootstrap" remove-selected="false">
-										<ui-select-match>{{$select.selected.name}}</ui-select-match>
-										<ui-select-choices repeat="item in vm.orderTypes | filter: $select.search">
-											<span ng-bind-html="item.name  | highlight: $select.search"></span>
+											<span ng-bind-html="item | highlight: $select.search"></span>
+
 										</ui-select-choices>
 									</ui-select>
 								</div>
+
+								<label class="control-label bxp-label bxp-label-title float-left">Titel</label>
+								<div class="bxp-input-title float-left">
+									<ui-select ng-model="FormCtrl.order.customer.selectedTit" theme="bootstrap" remove-selected="false" ng-disabled="FormCtrl.svRequestState">
+										<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
+										<ui-select-choices repeat="item in ctrl.title | filter: $select.search">
+											<span ng-bind-html="item | highlight: $select.search"></span>
+										</ui-select-choices>
+									</ui-select>
+									<!-- <input type="text" ng-model="FormCtrl.kunde.selectedTit" ng-model-options="FormCtrl.modelOptions" ng-disabled="FormCtrl.svRequestState"
+									 uib-typeahead="item in ctrl.title  | filter:$viewValue | limitTo:8" class="form-control bxp-input float-left"
+									 autocomplete="off" /> -->
+								</div>
 							</div>
+							<div class="form-group group">
+								<div ng-class="{ 'has-error' : formAuftrag.lastName.$invalid && FormCtrl.submitted }">
+									<label class="control-label bxp-label float-left">Nachname</label>
+									<input name="lastName" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="FormCtrl.order.customer.firstName"
+									 id="lastName" class="form-control bxp-input bxp-input-gender float-left" type="text" ng-disabled="FormCtrl.svRequestState">
+									<p ng-if="!orderForm.lastName.$valid"> required field </p>
+								</div>
+								<div ng-class="{ 'has-error' : formAuftrag.firstName.$invalid && FormCtrl.submitted }">
+									<label class="control-label bxp-label bxp-label-title float-left">Vorname</label>
+									<input name="firstName" ng-model="FormCtrl.order.customer.lastName" class="form-control bxp-input bxp-input-title float-left"
+									 type="text" ng-disabled="FormCtrl.svRequestState" />
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<bxp-address on-select="FormCtrl.onSelect" ng-model="FormCtrl.order.customer.address" make="FormCtrl.svRequestState"></bxp-address>
+
+					<div class="form-group group">
+						<label class="control-label bxp-label float-left">Tel</label>
+						<input type="text" name="tnumber" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="FormCtrl.order.customer.phone"
+						 class="form-control bxp-input bxp-input-gender float-left" ng-disabled="FormCtrl.svRequestState" />
+						<label class="control-label bxp-label bxp-label-title float-left">Mobil</label>
+						<input type="text" name="mnumber" ng-blur="FormCtrl.checkDuplicates($event)" ng-model="FormCtrl.order.customer.mobile"
+						 class="form-control bxp-input bxp-input-title float-left" ng-disabled="FormCtrl.svRequestState" />
+					</div>
+					<div class="form-group group" ng-class="{ 'has-error' : formAuftrag.email.$error.pattern && FormCtrl.submitted && !FormCtrl.isStornoNoValid}">
+
+						<label ng-if="FormCtrl.kunde.email && !FormCtrl.svRequestState" class="control-label bxp-label float-left">
+							<a href="mailto:{{FormCtrl.kunde.email}}" style="position:relative; padding-right:24px;">
+								E-Mail
+								<svg style="max-width: 20px; position:absolute; right:0; top:2px;" version="1.1" id="mobile-mail" xmlns="http://www.w3.org/2000/svg"
+								 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 200" enable-background="new 0 0 200 200"
+								 xml:space="preserve">
+									<g>
+										<polygon fill="#6bacdd" points="120.4,145.7 99,169.1 99,20.5  " />
+										<g>
+											<polygon fill="#a0ceea" points="77.6,145.7 99,169.1 99,20.5     " />
+											<polygon opacity="0.3" fill="#a0ceea" points="77.6,145.7 99,169.1 99,20.5     " />
+										</g>
+										<g>
+											<polygon fill="#337ab7" points="120.4,145.7 192,153.4 99,20.5     " />
+											<polygon opacity="0.15" fill="#337ab7" points="120.4,145.7 192,153.4 99,20.5    " />
+										</g>
+										<polygon fill="#337ab7" points="77.6,145.7 6,153.4 99,20.5  " />
+									</g>
+								</svg>
+							</a>
+						</label>
+						<label class="control-label bxp-label float-left" ng-if="!FormCtrl.kunde.email || FormCtrl.svRequestState" for="email">E-Mail</label>
+
+						<input type="text" ng-blur="FormCtrl.checkDuplicates($event)" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" name="email"
+						 ng-model="vm.order.customer.email" class="form-control bxp-input contactpos number float-left" ng-disabled="FormCtrl.svRequestState" />
+						<p ng-show="formAuftrag.email.$error.pattern  && (formAuftrag.email.$touched || FormCtrl.submitted) && !FormCtrl.isStornoNoValid"
+						 class="help-block"><i class="fa fa-warning"></i> Bitte geben Sie eine gültige E-Mail Adresse an.</p>
+					</div>
+
+
+					<div class="group">
+						<a ng-if="!FormCtrl.svRequestState" ng-click="FormCtrl.weitereFelder()" class="float-left"> Weitere Felder
+							anzeigen</a>
+						<a ng-if="!FormCtrl.svRequestState && FormCtrl.isEmployee && 1==2" class="float-right" ng-click="FormCtrl.chooseCustomer()">Aus
+							Stammdaten laden</a>
+					</div>
+					<p class="mt-10px" style="font-size: 12px;">Sie können die Adressdaten eingeben oder <a href="#">aus den
+							Stammdaten wählen.</a></p>
+				</div>
+				<div class="bxp-col-6 float-left">
+					<div class="bxp-form-note mt-5px mb-10px group">Objekt</div>
+					<div class="group">
+						<label class="control-label float-left interessenten-nr">Objekt-Nr.</label>
+						<label min="1" step="1" name="Objektnummer" id='' class="bxp-input bxp-input-gender float-left">{{
+							FormCtrl.order.object.objectNumber }}</label>
+
+					</div>
+					<div class="form-group group">
+						<label class="control-label bxp-label float-left">Objektart</label>
+						<ui-select ng-disabled="FormCtrl.svRequestState" class="bxp-input float-left" ng-model="FormCtrl.order.object.objectType"
+						 theme="bootstrap" remove-selected="false">
+							<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
+							<ui-select-choices repeat="item in FormCtrl.objectTypes | filter: $select.search">
+								<span ng-bind-html="item | highlight: $select.search"></span>
+							</ui-select-choices>
+						</ui-select>
+					</div>
+					<bxp-address on-select="FormCtrl.onSelect" ng-model="FormCtrl.order.object.address" make="FormCtrl.svRequestState"></bxp-address>
+
+					<p class="mt-10px" style="font-size: 12px;">Sie können die Adressdaten eingeben oder <a href="#">aus den
+							Stammdaten wählen.</a></p>
+
+
+				</div>
+
+			</div>
+			<div class="bxp-form-note mt-5px mb-10px">Weitere Auftragsdaten</div>
+			<div class="bxp-form-container group">
+				<div class="bxp-col-6 float-left">
+					<div class="form-group">
+						<div class="group">
+							<label for="input-street" class="control-label bxp-label float-left">Auftrags-Nr</label>
+							<input type="text" class="form-control bxp-input float-left" placeholder="{{FormCtrl.order.otherInformations.orderNumber}}"
+							 disabled="disabled" ng-model="FormCtrl.order.otherInformations.orderNumber">
 						</div>
 					</div>
 
+					<div class="form-group">
+						<div class="group">
+							<label for="input-street" class="control-label bxp-label float-left">Referenz-Nr d. Kunden</label>
+							<input type="text" class="form-control bxp-input float-left" placeholder="" ng-model="FormCtrl.order.otherInformations.referenceNumber">
+						</div>
+					</div>
 				</div>
 
-				<p class="mt-10px" style="font-size: 12px;">Sie können einen neuen Auftrag anlegen oder <a href="#">aus vorhandenen
-						Aufträgen wählen.</a></p>
+				<div class="bxp-col-6 float-left">
+					<div class="form-group">
+						<div class="group">
+							<label for="input-street" class="control-label bxp-label float-left">Datum</label>
+							<input name="orderDate" type="text" class="form-control bxp-input float-left" placeholder="" ng-model="FormCtrl.order.otherInformations.orderDate"
+							 required>
+							<p ng-if="!orderForm.orderDate.$valid"> required field </p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="group">
+							<label for="input-street" class="control-label bxp-label float-left">Auftragsart</label>
+							<div id="country-select" class="bxp-input country-select float-left">
+								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.order.otherInformations.orderType" theme="bootstrap"
+								 remove-selected="false">
+									<ui-select-match>{{$select.selected.name}}</ui-select-match>
+									<ui-select-choices repeat="item in FormCtrl.orderTypes | filter: $select.search">
+										<span ng-bind-html="item.name  | highlight: $select.search"></span>
+									</ui-select-choices>
+								</ui-select>
+							</div>
+						</div>
+					</div>
+				</div>
+
 			</div>
+
+			<p class="mt-10px" style="font-size: 12px;">Sie können einen neuen Auftrag anlegen oder <a href="#">aus vorhandenen
+					Aufträgen wählen.</a></p>
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Projektdaten" selected-tab="FormCtrl.selectedTab">
-			<div ng-controller="ProjectController as vm">
-				<div class="form-group group">
-					<div class="bxp-col-6 float-left form-group group">
-						Projekt-Nr. {{ vm.baseData.projectNumber }}
-					</div>
-
-					<div class="bxp-col-6 float-left form-group group">
-						<label class="control-label bxp-label float-left">Projektname</label>
-						<input name="projectName" class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.baseData.projectName"required>
-						<p ng-if="!orderForm.projectName.$valid"> required field </p>
-					</div>
+			<div class="form-group group">
+				<div class="bxp-col-6 float-left form-group group">
+					Projekt-Nr. {{ FormCtrl.baseData.projectNumber }}
 				</div>
 
-				<div class="form-group group">
-					<label class="control-label bxp-label float-left">Eigenleistungen Bauherr</label>
-					<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="vm.baseData.ownPerformanceBuilder">
+				<div class="bxp-col-6 float-left form-group group">
+					<label class="control-label bxp-label float-left">Projektname</label>
+					<input name="projectName" class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.baseData.projectName"
+					 required>
+					<p ng-if="!orderForm.projectName.$valid"> required field </p>
 				</div>
+			</div>
 
-				<span style="color:red;">TABLE BELOW LOADS ONLY IF THE OBJECT DATA (TAB AUFTRAGSDATEN) ARE FILLED AND THE OBJECT HAS DOCUMENTS!</span>
+			<div class="form-group group">
+				<label class="control-label bxp-label float-left">Eigenleistungen Bauherr</label>
+				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.baseData.ownPerformanceBuilder">
+			</div>
 
-				<div class="table-responsive row">
-					<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
-						<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
-						 style="width: 100%!important">
+			<span style="color:red;">TABLE BELOW LOADS ONLY IF THE OBJECT DATA (TAB AUFTRAGSDATEN) ARE FILLED AND THE OBJECT HAS
+				DOCUMENTS!</span>
 
-							<thead>
-								<tr>
-									<th>Bezeichnung</th>
-									<th>Status</th>
-									<!-- <th>Selections</th> -->
-									<!-- <th>Upload</th> -->
-								</tr>
-							</thead>
-							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
-							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-repeat="document in vm.baseData.documents" ng-click="vm.setSelected(document.id)" ng-class="{selected: document.id === vm.selectedDocument}">
-									<td>{{ document.id }}</td>
-									<td>
-										<div class="bxp-grundatensatz" >
-											<input type="text" id="editInput" ng-if="document.editMode" ng-enter="vm.saveEntry(document.id)" ng-blur="vm.saveEntry(document.id)" ng-keyup="onInputKeyup($event)" ng-model="document.filename" placeholder="" auto-focus>
-											<div class="hover-text-field">
-												<span ng-if="!document.editMode">
-														{{ document.filename }}
-												</span>
-											</div>
-										</div>
-											
-										
-									</td>
-									<!-- <td>{{ document.detection }}</td> -->
-									<!-- <td><input type="file" name=""></td> -->
-									<!-- <td>
-										<bxp-upload-component make-disabled="false" hide-content="false" uploadtype="normal" onsave="vm.onsave" uploads="vm.project.documents" ondelete="vm.deleteUpload">
-										</bxp-upload-component>
-									</td> -->
-									<!-- <td>
-										<div class="bxp-button-container compact group">
-											<span class="ta-right float-right">
-												<button class="bxp-rounded-button small delete" ng-disabled="vm.document.length === 0" ng-click="vm.deleteData()"
-													type="button"><i class="fa fa-trash"></i></button>
-												<button class="bxp-rounded-button small edit" ng-disabled="!vm.document.length === 0" ng-click="vm.editAnschrift()"
-													type="button"><i class="fa fa-pencil"></i></button>
-												<button class="bxp-rounded-button small add" ng-click="vm.newAnschrift()" type="button"><i class="fa fa-plus"></i></button>
+			<div class="table-responsive row">
+				<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="FormCtrl.onMouseClick()">
+					<table id="idAnschr" datatable="ng" dt-options="FormCtrl.dtOptions" dt-column-defs="FormCtrl.dtColumnDefs"
+					 context-menu="menuOptions" style="width: 100%!important">
+
+						<thead>
+							<tr>
+								<th>Bezeichnung</th>
+								<th>Status</th>
+								<!-- <th>Selections</th> -->
+								<!-- <th>Upload</th> -->
+							</tr>
+						</thead>
+						<tbody ng-if="FormCtrl.anschriften.length == 0" ng-click="FormCtrl.newAnschrift()"></tbody>
+						<tbody ng-if="FormCtrl.anschriften.length != 0">
+							<tr ng-repeat="document in FormCtrl.baseData.documents" ng-click="FormCtrl.setSelected('projectDocuments', document)"
+							 ng-class="{selected: document.id === FormCtrl.selectedDocument.id}">
+								<td>{{ document.id }}</td>
+								<td>
+									<div class="bxp-grundatensatz">
+										<input type="text" id="editInput" ng-if="document.editMode" ng-enter="FormCtrl.saveEntry(document.id)"
+										 ng-blur="FormCtrl.saveEntry(document.id)" ng-keyup="onInputKeyup($event)" ng-model="document.filename"
+										 placeholder="" auto-focus>
+										<div class="hover-text-field">
+											<span ng-if="!document.editMode">
+												{{ document.filename }}
 											</span>
 										</div>
-									</td> -->
-								</tr>
-							</tbody>
-						</table>
-					</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-	
-				<div class="bxp-button-container compact group">
-					<span class="ta-right float-right">
-						<button class="bxp-rounded-button small delete" ng-disabled="vm.document.length === 0" ng-click="vm.deleteDocument(vm.selectedDocument)"
-						 type="button"><i class="fa fa-trash"></i></button>
-						<button class="bxp-rounded-button small edit" ng-click="vm.editEntry(vm.selectedDocument)" ng-disabled="!vm.document.length === 0" ng-click="vm.editAnschrift()"
-						 type="button"><i class="fa fa-pencil"></i></button>
-						<button class="bxp-rounded-button small add" ng-click="vm.newDocument()" type="button"><i class="fa fa-plus"></i></button>
-					</span>
-				</div>
-				<br><br>
+			</div>
 
-				<div class="form-group group">
-					<label class="control-label bxp-label float-left">Bemerkungen (erscheinen nicht im Protokoll)</label>
-					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="vm.baseData.intenalNotes">
+			<div class="bxp-button-container compact group">
+				<span class="ta-right float-right">
+					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.document.length === 0" ng-click="FormCtrl.deleteDocument(FormCtrl.selectedDocument.id)"
+					 type="button"><i class="fa fa-trash"></i></button>
+					<button class="bxp-rounded-button small edit" ng-click="FormCtrl.editEntry(FormCtrl.selectedDocument.id)"
+					 ng-disabled="!FormCtrl.document.length === 0" type="button"><i class="fa fa-pencil"></i></button>
+					<button class="bxp-rounded-button small add" ng-click="FormCtrl.newDocument()" type="button"><i class="fa fa-plus"></i></button>
+				</span>
+			</div>
+			<br><br>
 
-					</textarea>
-				</div>
+			<div class="form-group group">
+				<label class="control-label bxp-label float-left">Bemerkungen (erscheinen nicht im Protokoll)</label>
+				<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.baseData.intenalNotes">
+
+				</textarea>
 			</div>
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Feststellungen" selected-tab="FormCtrl.selectedTab">
-			<div ng-controller="DetectionsController as vm">
-				<div class="table-responsive row">
-					<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
-						<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
-						 style="width: 100%!important">
+			<div class="table-responsive row">
+				<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
+					<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
+					 style="width: 100%!important">
 
-							<thead>
-								<tr>
-									<th>Nr</th>
-									<th>Datum</th>
-									<th>Status</th>
-									<th>Titel</th>
-									<th>Bild</th>
-								</tr>
-							</thead>
-							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
-							<tbody ng-if="vm.anschriften.length != 0">
-								<!-- if you wanna use index => you should use like this -> $index -->
-								<tr ng-dblclick="vm.editDetection()" ng-repeat="detection in vm.baseData.detectionDatas" ng-click="vm.setSelected(detection)" ng-class="{selected: $index === vm.selectedDetectionIdx}">
-									<td>{{ detection.detail.id }}</td>
-									<td>{{ detection.detail.date | date }}</td>
-									<td>Status (comes from the Festellung Form)</td>
-									<td>{{ detection.title }}</td>
-									<!-- <td>{{ detection.detection }}</td> -->
-									<!-- <td>{{ detection.detail.position }}</td> -->
-									<td>
-										<img ng-src="{{ detection.coverPicUrl }}" alt="Random Photo" height="40" width="40">
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+						<thead>
+							<tr>
+								<th>Nr</th>
+								<th>Datum</th>
+								<th>Status</th>
+								<th>Titel</th>
+								<th>Bild</th>
+							</tr>
+						</thead>
+						<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
+						<tbody ng-if="vm.anschriften.length != 0">
+							<!-- if you wanna use index => you should use like this -> $index -->
+							<tr ng-dblclick="FormCtrl.editDetection()" ng-repeat="detection in FormCtrl.baseData.detectionDatas" ng-click="FormCtrl.setSelected('detection',detection, $index)"
+							 ng-class="{selected: $index === FormCtrl.selectedDetectionIdx}">
+								<td>{{ detection.detail.id }}</td>
+								<td>{{ detection.detail.date | date }}</td>
+								<td>Status (comes from the Festellung Form)</td>
+								<td>{{ detection.title }}</td>
+								<!-- <td>{{ detection.detection }}</td> -->
+								<!-- <td>{{ detection.detail.position }}</td> -->
+								<td>
+									<img ng-src="{{ detection.coverPicUrl }}" alt="Random Photo" height="40" width="40">
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
+			</div>
 
-				<div class="bxp-button-container compact group">
-					<span class="ta-right float-right">
-						<button class="bxp-rounded-button small delete" ng-disabled="vm.baseData.detectionDatas.length === 0" ng-click="vm.deleteDetection()"
-						 type="button"><i class="fa fa-trash"></i></button>
-						<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editAnschrift()"
-						 type="button"><i class="fa fa-pencil"></i></button>
-						<button class="bxp-rounded-button small add" ng-click="vm.addDetection()" type="button"><i class="fa fa-plus"></i></button>
-					</span>
-				</div>
+			<div class="bxp-button-container compact group">
+				<span class="ta-right float-right">
+					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.baseData.detectionDatas.length === 0" ng-click="FormCtrl.deleteDetection()"
+					 type="button"><i class="fa fa-trash"></i></button>
+					<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="FormCtrl.editDetection()"
+					 type="button"><i class="fa fa-pencil"></i></button>
+					<button class="bxp-rounded-button small add" ng-click="FormCtrl.addDetection()" type="button"><i class="fa fa-plus"></i></button>
+				</span>
 			</div>
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Protokolle" selected-tab="FormCtrl.selectedTab">
-			<div ng-controller="ProtocolsController as vm">
-				<div class="table-responsive row">
-					<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
-						<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
-						 style="width: 100%!important">
+			<div class="table-responsive row">
+				<div style="overflow:auto;" id="onClickHandlerAD" on-mouse-click="vm.onMouseClick()">
+					<table id="idAnschr" datatable="ng" dt-options="vm.dtOptions" dt-column-defs="vm.dtColumnDefs" context-menu="menuOptions"
+					 style="width: 100%!important">
 
-							<thead>
-								<tr>
-									<th>Nr</th>
-									<th>Datum</th>
-									<th>Protokolltyp</th>
-									<th>Teilnehmer</th>
-									<th>Bautenstand</th>
-								</tr>
-							</thead>
-							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
-							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-dblclick="vm.editProtocol()" ng-repeat="protocol in vm.baseData.protocolDatas" ng-click="vm.setSelected(protocol)" ng-class="{selected: $index === vm.selectedProtocolIdx}">
-									<td>{{ protocol.id }}</td>
-									<td>{{ protocol.date }}</td>
-									<td>{{ protocol.protocolType }}</td>
-									<td>{{ protocol.members }}</td>
-									<td>{{ protocol.constructionState.name }}</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+						<thead>
+							<tr>
+								<th>Nr</th>
+								<th>Datum</th>
+								<th>Protokolltyp</th>
+								<th>Teilnehmer</th>
+								<th>Bautenstand</th>
+							</tr>
+						</thead>
+						<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
+						<tbody ng-if="vm.anschriften.length != 0">
+							<tr ng-dblclick="FormCtrl.editProtocol()" ng-repeat="protocol in FormCtrl.baseData.protocolDatas" ng-click="FormCtrl.setSelected('protocol', protocol, $index)"
+							 ng-class="{selected: $index === FormCtrl.selectedProtocolIdx}">
+								<td>{{ protocol.id }}</td>
+								<td>{{ protocol.date }}</td>
+								<td>{{ protocol.protocolType }}</td>
+								<td>{{ protocol.participants }}</td>
+								<td>{{ protocol.constructionState.name }}</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-				<div class="bxp-button-container compact group">
-					<span class="ta-right float-right">
-						<button class="bxp-rounded-button small delete" ng-disabled="vm.baseData.protocolDatas.length === 0" ng-click="vm.deleteProtocol()"
-							type="button"><i class="fa fa-trash"></i></button>
-						<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editProtocol()"
-							type="button"><i class="fa fa-pencil"></i></button>
-						<button class="bxp-rounded-button small add" ng-click="vm.addProtocol()" type="button"><i class="fa fa-plus"></i></button>
-					</span>
-				</div>
+			</div>
+			<div class="bxp-button-container compact group">
+				<span class="ta-right float-right">
+					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0" ng-click="FormCtrl.deleteProtocol()"
+					 type="button"><i class="fa fa-trash"></i></button>
+					<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="FormCtrl.editProtocol()"
+					 type="button"><i class="fa fa-pencil"></i></button>
+					<button class="bxp-rounded-button small add" ng-click="FormCtrl.addProtocol()" type="button"><i class="fa fa-plus"></i></button>
+				</span>
 			</div>
 			NOTE: open a new tab for the images!
 		</bxp-responsive-tab>

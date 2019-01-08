@@ -51,10 +51,10 @@
         function addKunde() {
             ProjectHandler.getData().then((res) => {
                 let obj = {
-                    data: ''
+                    data: res.data
                 };
-                passDataService.setObj(res.data);
-                obj.data = passDataService.getObj();
+                // passDataService.setObj(res.data);
+                // obj.data = passDataService.getObj();
 
                 modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(
                     (data) => {
@@ -63,11 +63,11 @@
                         console.log('====================================');
     
                         if (typeof data !== 'undefined') {
-                            ProjectHandler.postData(data).then((res) => {
-                                console.log('====================================');
-                                console.log('response: ', res);
-                                console.log('====================================');
-                            });    
+                            // ProjectHandler.postData(data).then((res) => {
+                            //     console.log('====================================');
+                            //     console.log('response: ', res);
+                            //     console.log('====================================');
+                            // });    
                         }
                     }
                 );

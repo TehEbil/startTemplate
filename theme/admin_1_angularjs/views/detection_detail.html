@@ -13,7 +13,7 @@
  				<div class="bxp-col-6 float-left form-group group">Nr: {{ FormCtrl.selectedDetection.number }}</div>
 
  				<div class="bxp-col-6 float-right form-group group" style="display:flex; justify-content: flex-end;">
- 					<div>{{ FormCtrl.selectedIdx + 1 }}/{{ FormCtrl.count }}</div>
+ 					<div>{{ FormCtrl.selectedIdx + 1 }}/{{ FormCtrl.detections.length }}</div>
  					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.previousPage()" required><i class="fa fa-arrow-left"></i></button>
  					<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.nextPage()" required><i class="fa fa-arrow-right"></i></button>
  				</div>

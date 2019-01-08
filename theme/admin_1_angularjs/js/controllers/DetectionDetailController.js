@@ -29,7 +29,6 @@
         vm.detections = [];
         vm.selectedDetection = {};
         vm.selectedIdx = 0;
-        vm.count = 0;
         vm.date = null;
         vm.datetime = null;
 
@@ -37,14 +36,13 @@
 
         function init() {
             vm.selectedIdx = getId.selectedIdx;
-            vm.count = getId.count;
             vm.detections = getId.data;
 
             if (vm.selectedIdx === -1) {
                 vm.selectedDetection = vm.detections[getId.count - 1];
                 vm.dateToString(new Date(), new Date());
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
-                vm.selectedIdx = vm.count - 1;
+                vm.selectedIdx = vm.detections.length - 1;
             } else {
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
@@ -93,9 +91,8 @@
             });
         }
 
-        function nextPage(detailObj) {
-
-            if (vm.selectedIdx < vm.count - 1) {
+        function nextPage() {
+            if (vm.selectedIdx < vm.detections.length - 1) {
                 vm.dateToString(vm.date, vm.datetime);
                 vm.selectedIdx ++;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
@@ -116,8 +113,8 @@
         }
 
         function dateToString(date, datetime) {
-            vm.selectedDetection.detail.date = new Date(date).toISOString();
-            vm.selectedDetection.detail.datetime = new Date(datetime).toISOString();
+            vm.selectedDetection.detail.date = new Date(date).toString();
+            vm.selectedDetection.detail.datetime = new Date(datetime).toString();
         }
 
         function stringToDate(date, datetime) {
@@ -133,8 +130,8 @@
             console.log('====================================');
             console.log(vm.selectedDetection);
             console.log('====================================');
-            vm.selectedDetection.detail.date = new Date(vm.date).toISOString();
-            vm.selectedDetection.detail.datetime = new Date(vm.datetime).toISOString();
+            dateToString(vm.date, vm.datetime);
+
             $scope.$close();
         }
 }

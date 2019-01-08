@@ -526,14 +526,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 
                             'js/controllers/DashboardController.js',
                             'js/controllers/PartnerFormController.js',
-                            'js/controllers/DetectionsController.js',
-                            'js/controllers/ProtocolsController.js',
-                            'js/controllers/ProtocolDocumentsController.js',
-                            'js/controllers/SelectDetectionController.js',
-                            'js/controllers/ProtocolDetailController.js',
-                            'js/controllers/DetectionDetailController.js',
-                            'js/controllers/OrderController.js',
-                            'js/controllers/ProjectController.js',
 
                             'components/statistics/statistics.component.js',
                             'components/newRequests/newRequests.component.js',
