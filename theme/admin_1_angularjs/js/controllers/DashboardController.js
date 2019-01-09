@@ -63,11 +63,11 @@
                         console.log('====================================');
     
                         if (typeof data !== 'undefined') {
-                            // ProjectHandler.postData(data).then((res) => {
-                            //     console.log('====================================');
-                            //     console.log('response: ', res);
-                            //     console.log('====================================');
-                            // });    
+                            ProjectHandler.postData(data).then((res) => {
+                                console.log('====================================');
+                                console.log('response: ', res);
+                                console.log('====================================');
+                            });    
                         }
                     }
                 );

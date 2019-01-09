@@ -35,7 +35,7 @@
         init();
 
         function init() {
-            vm.selectedIdx = getId.selectedIdx;
+            vm.selectedIdx = getId.detail.selectedIdx;
             vm.detections = getId.data;
 
             if (vm.selectedIdx === -1) {
@@ -131,8 +131,11 @@
             console.log(vm.selectedDetection);
             console.log('====================================');
             dateToString(vm.date, vm.datetime);
-
-            $scope.$close();
+            let obj = {
+                data: vm.detections,
+                type: 'success'
+            }
+            $scope.$close(obj);
         }
 }
 })();

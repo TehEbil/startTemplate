@@ -96,7 +96,7 @@
             if(id == -1)
                 return console.error("Fehler bei deleteEntry");
 
-            var idx = vm.baseData.documents.findIndex(o => o.id == id);
+            var idx = getIndex(id);
             $rootScope.sharedService.showConfirmDialog("delete").then(function () {
                 if (vm.ondelete)
                     vm.ondelete(vm.baseData.documents[idx].id);
@@ -188,20 +188,27 @@
             );
             /* Open detection detail modal */
             modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.subData).then(
-                (data) => {
+                (res) => {
+                    if (res.type === 'success') {
+                        vm.baseData.detectionDatas = res.data;
+                    }
                 }
             );
         }
 
         function editDetection() {
-            vm.detailObj = {
+            vm.subData = {
                 data: vm.baseData.detectionDatas,
-                count: vm.baseData.detectionDatas.length,
-                selectedIdx: vm.selectedDetectionIdx
+                detail: {
+                    selectedIdx: vm.selectedDetectionIdx
+                }
             };
             /* Open detection detail modal */
-            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.detailObj).then(
-                (data) => {
+            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.subData).then(
+                (res) => {
+                    if (res.type === 'success') {
+                        vm.baseData.detectionDatas = res.data;
+                    }
                 }
             );
         }
@@ -258,8 +265,13 @@
             }
             /* Open detection detail modal */
             modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', vm.subData).then(
-                (data) => {
-                    
+                (res) => {
+                    console.log('====================================');
+                    console.log('incoming protocol', res);
+                    console.log('====================================');
+                    if (res.type === 'success') {
+                        vm.baseData.protocolDatas[vm.selectedProtocolIdx] = res.data;
+                    }
                 }
             );
         }
@@ -306,7 +318,8 @@
             console.log('Base Data', vm.baseData);
             console.log('Untouched', vm.untouched);
             console.log('====================================');
-            $scope.$close();
+
+            $scope.$close(vm.baseData);
         }
 
 

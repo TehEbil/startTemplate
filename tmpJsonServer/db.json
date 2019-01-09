@@ -362,6 +362,15 @@
             "refName": "4-cv.docx",
             "date": "2019-01-03T08:18:12.080Z",
             "editMode": false
+          },
+          {
+            "id": 8,
+            "filename": "3-bau-logo.jpg",
+            "filepath": "public/uploads/3-bau-logo.jpg",
+            "oldfilename": "bau-logo.jpg",
+            "refName": "testlogo2",
+            "date": "2019-01-09T07:51:37.515Z",
+            "editMode": false
           }
         ]
       },
@@ -540,23 +549,17 @@
       },
       "categories": {
         "changedCounter": 0,
-        "data": [
-          
-        ]
+        "data": []
       }
     },
     "orders": {
       "sources": {
         "changedCounter": 0,
-        "data": [
-          
-        ]
+        "data": []
       },
       "categories": {
         "changedCounter": 0,
-        "data": [
-          
-        ]
+        "data": []
       }
     }
   },
@@ -657,9 +660,7 @@
       "signatureImage": "sdfgsdfg",
       "certificates": "dgfhdfghdfhg"
     },
-    {
-      
-    },
+    {},
     {
       "title": "Herr",
       "firstName": "asdfas",
