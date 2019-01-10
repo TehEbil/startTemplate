@@ -404,7 +404,7 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
         var setClass = (isMobile.any) ? 'bxp-active-modal modal-fullscreen' : 'bxp-active-modal';
         // if(++cnt == 1)
         //     window.addEventListener("beforeunload", functionBeforeUnload);
-        console.log(comp);
+        // console.log(comp);
         var controllerLabel;
         if(comp) {
             templateLink = '/components/' + comp + '/' + comp + '.template.html';

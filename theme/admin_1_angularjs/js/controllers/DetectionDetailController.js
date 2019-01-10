@@ -134,7 +134,7 @@
             let obj = {
                 data: vm.detections,
                 type: 'success'
-            }
+            };
             $scope.$close(obj);
         }
 }

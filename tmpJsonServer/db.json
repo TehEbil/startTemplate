@@ -18,7 +18,7 @@
   "project": {
     "projectNumber": "BXP-PRN-001",
     "projectName": "Project Name Field",
-    "ownPerformanceBuilder": "",
+    "ownPerformanceBuilder": "Mahmut",
     "documents": [
       {
         "id": 1,
@@ -52,7 +52,7 @@
     "orderDatas": {
       "customer": {
         "customerNumber": "BXP-105",
-        "isCompany": "company",
+        "isCompany": "invidual",
         "selectedGen": "Mr.",
         "selectedTit": "Prof. Dr.",
         "firstName": "Mahmut",
@@ -70,7 +70,7 @@
         },
         "phone": "+90 212 212 12 12",
         "mobile": "+90 553 364 04 74",
-        "email": "mahmut.akyol@bauexperts.de"
+        "email": "mahmut.akyol@outlook.com.tr"
       },
       "object": {
         "objectNumber": 0,
@@ -104,8 +104,8 @@
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8743,
-          "date": "2019-01-24T21:00:00.000Z",
-          "datetime": "2019-01-04T09:15:48.842Z",
+          "date": "Fri Jan 25 2019 00:00:00 GMT+0300 (GMT+03:00)",
+          "datetime": "Fri Jan 04 2019 12:15:48 GMT+0300 (GMT+03:00)",
           "hour": 14,
           "minute": 25,
           "testField": {
@@ -125,8 +125,8 @@
             "name": "Baubeschreibung"
           },
           "status": {
-            "id": "03",
-            "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+            "id": 4,
+            "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
           },
           "description": "desc",
           "costs": {
@@ -145,8 +145,8 @@
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8744,
-          "date": "2019-01-24T21:00:00.000Z",
-          "datetime": "2019-01-04T09:36:48.842Z",
+          "date": "Fri Jan 25 2019 00:00:00 GMT+0300 (GMT+03:00)",
+          "datetime": "Fri Jan 04 2019 12:36:48 GMT+0300 (GMT+03:00)",
           "hour": 14,
           "minute": 25,
           "testField": {
@@ -166,8 +166,8 @@
             "name": "Baubeschreibung"
           },
           "status": {
-            "id": "03",
-            "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
+            "id": 2,
+            "name": "abgestellt und durch den Sachverständigen kontrolliert"
           },
           "description": "desc",
           "costs": {
@@ -186,8 +186,8 @@
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8745,
-          "date": "2019-01-24T21:00:00.000Z",
-          "datetime": "2019-01-04T09:27:48.842Z",
+          "date": "Fri Jan 25 2019 00:00:00 GMT+0300 (GMT+03:00)",
+          "datetime": "Fri Jan 04 2019 12:27:48 GMT+0300 (GMT+03:00)",
           "hour": 14,
           "minute": 25,
           "testField": {
@@ -207,7 +207,7 @@
             "name": "Baubeschreibung"
           },
           "status": {
-            "id": "03",
+            "id": 3,
             "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
           },
           "description": "desc",
@@ -224,7 +224,7 @@
       {
         "id": 1,
         "isLocalInspection": "inspectionYes",
-        "localInspectionDate": "2018-12-20T06:06:53+00:00",
+        "localInspectionDate": "2018-12-28T06:06:53.000Z",
         "protocolType": "type 1",
         "participants": "Mahmut, Can, Muhammed",
         "tempreture": "26",
@@ -247,7 +247,7 @@
         "note": "All we need a just a little lahmacun!",
         "selectedDetection": "Detection 1",
         "titlePicUrl": "https://picsum.photos/100/100/?random",
-        "date": "2018-12-20T06:06:53+00:00",
+        "date": "2019-01-30T21:00:00.000Z",
         "members": "Mahmut, Can",
         "selectedDetections": [
           {
@@ -376,14 +376,11 @@
       },
       {
         "id": 2,
-        "isLocalInspection": true,
+        "isLocalInspection": "inspectionYes",
         "localInspectionDate": "",
         "protocolType": "type 2",
-        "participants": [
-          "",
-          ""
-        ],
-        "tempreture": "",
+        "participants": "Mahmut, Necati",
+        "tempreture": 23,
         "weather": "",
         "particularties": "",
         "reportDate": "",
@@ -392,8 +389,8 @@
           "name": "Änderung ( Umbau / Nutzungsänderung )"
         },
         "constructionState": {
-          "id": "04",
-          "name": "Rohinstallation der Heizungsanlagen"
+          "id": 3,
+          "name": "Dachflächen, Dachrinnen"
         },
         "acceptance": {
           "id": "2",
@@ -403,7 +400,7 @@
         "note": "",
         "selectedDetection": "",
         "titlePicUrl": "",
-        "date": "19.12.2018",
+        "date": "2019-01-25T21:00:00.000Z",
         "members": "Necati, Mahmut, Muhammed",
         "selectedDetections": [
           {
@@ -420,34 +417,31 @@
       },
       {
         "id": 3,
-        "isLocalInspection": true,
+        "isLocalInspection": "inspectionNo",
         "localInspectionDate": "",
         "protocolType": "type 3",
-        "participants": [
-          "",
-          ""
-        ],
-        "tempreture": "",
+        "participants": "Can, Muhammed",
+        "tempreture": 18,
         "weather": "",
         "particularties": "",
         "reportDate": "",
         "projectType": {
-          "id": "02",
-          "name": "Änderung ( Umbau / Nutzungsänderung )"
+          "id": 1,
+          "name": "Errichtung ( Neubau / Erweiterung )"
         },
         "constructionState": {
-          "id": "04",
-          "name": "Rohinstallation der Heizungsanlagen"
+          "id": 2,
+          "name": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
         },
         "acceptance": {
-          "id": "2",
-          "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
+          "id": 1,
+          "name": "Abnahme kann ohne Vorbehalte erteilt werden"
         },
         "acceptanceComment": "",
         "note": "",
         "selectedDetection": "",
         "titlePicUrl": "",
-        "date": "19.12.2018",
+        "date": "2019-01-25T21:00:00.000Z",
         "members": "Muhammed, Necati, Can",
         "selectedDetections": [
           {

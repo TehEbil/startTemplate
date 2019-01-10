@@ -67,9 +67,9 @@
 		vm.protocols = vm.baseData.protocolDatas;
 		function init() {
 			vm.tmpSelected = false;
-			console.log('====================================');
-			console.log('firsComming', vm.baseData);
-			console.log('====================================');
+			// console.log('====================================');
+			// console.log('firsComming', vm.baseData);
+			// console.log('====================================');
 		}
 
 		//#region Project Detail Methods
@@ -189,7 +189,7 @@
             /* Open detection detail modal */
             modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.subData).then(
                 (res) => {
-                    if (res.type === 'success') {
+                    if (typeof res !== 'undefined' && res.type === 'success') {
                         vm.baseData.detectionDatas = res.data;
                     }
                 }
@@ -197,26 +197,30 @@
         }
 
         function editDetection() {
-            vm.subData = {
-                data: vm.baseData.detectionDatas,
-                detail: {
-                    selectedIdx: vm.selectedDetectionIdx
-                }
-            };
-            /* Open detection detail modal */
-            modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.subData).then(
-                (res) => {
-                    if (res.type === 'success') {
-                        vm.baseData.detectionDatas = res.data;
+            if (vm.selectedDetectionIdx !== -1) {
+                vm.subData = {
+                    data: vm.baseData.detectionDatas,
+                    detail: {
+                        selectedIdx: vm.selectedDetectionIdx
                     }
-                }
-            );
+                };
+                /* Open detection detail modal */
+                modalService.openMenuModal('views/detection_detail.html', 'DetectionDetailController', 'animated zoomIn', vm.subData).then(
+                    (res) => {
+                        if (typeof res !== 'undefined' && res.type === 'success') {
+                            vm.baseData.detectionDatas = res.data;
+                        }
+                    }
+                );
+            }
         }
 
         function deleteDetection() {
-            vm.baseData.detectionDatas.splice(vm.selectedDetectionIdx, 1);
-            vm.selectedDetectionIdx = 0;
-            vm.selectedDetection = vm.baseData.detectionDatas[vm.selectedDetectionIdx];
+            $rootScope.sharedService.showConfirmDialog("delete").then(function () {
+                vm.baseData.detectionDatas.splice(vm.selectedDetectionIdx, 1);
+                vm.selectedDetectionIdx = 0;
+                vm.selectedDetection = vm.baseData.detectionDatas[vm.selectedDetectionIdx];
+            });
         }
 		//#endregion
 
@@ -257,29 +261,32 @@
         }
 
         function editProtocol() {
-            vm.subData = {
-                data: vm.selectedProtocol,
-                detail: {
-					selectedIdx: vm.selectedProtocolIdx,
-				}
-            }
-            /* Open detection detail modal */
-            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', vm.subData).then(
-                (res) => {
-                    console.log('====================================');
-                    console.log('incoming protocol', res);
-                    console.log('====================================');
-                    if (res.type === 'success') {
-                        vm.baseData.protocolDatas[vm.selectedProtocolIdx] = res.data;
+            if (vm.selectedProtocolIdx !== -1) {
+                vm.subData = {
+                    data: vm.selectedProtocol,
+                    detail: {
+                        selectedIdx: vm.selectedProtocolIdx,
                     }
                 }
-            );
+                /* Open detection detail modal */
+                modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', vm.subData).then(
+                    (res) => {
+                        if (typeof res !== 'undefined' && res.type === 'success') {
+                            vm.baseData.protocolDatas[vm.selectedProtocolIdx] = res.data;
+                        }
+                    }
+                );
+            }
         }
 
         function deleteProtocol() {
-            vm.baseData.protocolDatas.splice(vm.selectedProtocolIdx, 1);
-            vm.selectedProtocolIdx = 0;
-            vm.selectedProtocol = vm.baseData.protocolDatas[vm.selectedProtocolIdx];
+            if (vm.selectedProtocolIdx !== -1) {
+                $rootScope.sharedService.showConfirmDialog("delete").then(function () {
+                    vm.baseData.protocolDatas.splice(vm.selectedProtocolIdx, 1);
+                    vm.selectedProtocolIdx = 0;
+                    vm.selectedProtocol = vm.baseData.protocolDatas[vm.selectedProtocolIdx];
+                });    
+            }
         }
 		//#endregion
 
@@ -314,10 +321,10 @@
         }
 
         function submitForm() {
-            console.log('====================================');
-            console.log('Base Data', vm.baseData);
-            console.log('Untouched', vm.untouched);
-            console.log('====================================');
+            // console.log('====================================');
+            // console.log('Base Data', vm.baseData);
+            // console.log('Untouched', vm.untouched);
+            // console.log('====================================');
 
             $scope.$close(vm.baseData);
         }

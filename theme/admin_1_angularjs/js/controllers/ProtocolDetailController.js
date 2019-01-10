@@ -52,6 +52,7 @@
             console.log('====================================');
             console.log(vm.protocol);
             console.log('====================================');
+            vm.protocol.date = new Date(vm.protocol.date);
         }
 
         $scope.selectedTab = $scope.tabs[0];
@@ -129,6 +130,7 @@
             console.log('====================================');
             console.log('sended protocol', vm.protocol);
             console.log('====================================');
+            
             let obj = {
                 data: vm.protocol,
                 type: 'success'

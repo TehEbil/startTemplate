@@ -108,8 +108,8 @@
 					</div>
 					<div class="form-group group" ng-class="{ 'has-error' : formAuftrag.email.$error.pattern && FormCtrl.submitted && !FormCtrl.isStornoNoValid}">
 
-						<label ng-if="FormCtrl.kunde.email && !FormCtrl.svRequestState" class="control-label bxp-label float-left">
-							<a href="mailto:{{FormCtrl.kunde.email}}" style="position:relative; padding-right:24px;">
+						<label ng-if="FormCtrl.order.customer.email && !FormCtrl.svRequestState" class="control-label bxp-label float-left">
+							<a href="mailto:{{FormCtrl.order.customer.email}}" style="position:relative; padding-right:24px;">
 								E-Mail
 								<svg style="max-width: 20px; position:absolute; right:0; top:2px;" version="1.1" id="mobile-mail" xmlns="http://www.w3.org/2000/svg"
 								 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 200 200" enable-background="new 0 0 200 200"
@@ -129,10 +129,10 @@
 								</svg>
 							</a>
 						</label>
-						<label class="control-label bxp-label float-left" ng-if="!FormCtrl.kunde.email || FormCtrl.svRequestState" for="email">E-Mail</label>
+						<label class="control-label bxp-label float-left" ng-if="!FormCtrl.order.customer.email || FormCtrl.svRequestState" for="email">E-Mail</label>
 
 						<input type="text" ng-blur="FormCtrl.checkDuplicates($event)" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" name="email"
-						 ng-model="vm.order.customer.email" class="form-control bxp-input contactpos number float-left" ng-disabled="FormCtrl.svRequestState" />
+						 ng-model="FormCtrl.order.customer.email" class="form-control bxp-input contactpos number float-left" ng-disabled="FormCtrl.svRequestState" />
 						<p ng-show="formAuftrag.email.$error.pattern  && (formAuftrag.email.$touched || FormCtrl.submitted) && !FormCtrl.isStornoNoValid"
 						 class="help-block"><i class="fa fa-warning"></i> Bitte geben Sie eine gültige E-Mail Adresse an.</p>
 					</div>
@@ -233,15 +233,15 @@
 
 				<div class="bxp-col-6 float-left form-group group">
 					<label class="control-label bxp-label float-left">Projektname</label>
-					<input name="projectName" class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.baseData.projectName"
+					<input name="projectName" class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.baseData.projectName"
 					 required>
 					<p ng-if="!orderForm.projectName.$valid"> required field </p>
 				</div>
 			</div>
 
 			<div class="form-group group">
-				<label class="control-label bxp-label float-left">Eigenleistungen Bauherr</label>
-				<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.baseData.ownPerformanceBuilder">
+				<label class="control-label bxp-label float-left">Eigenleistungen Bauherr</label> 
+				<input name="ownPerformanceBuilder" class="form-control bxp-input float-left" type="text" ng-model="FormCtrl.baseData.ownPerformanceBuilder">
 			</div>
 
 			<span style="color:red;">TABLE BELOW LOADS ONLY IF THE OBJECT DATA (TAB AUFTRAGSDATEN) ARE FILLED AND THE OBJECT HAS
@@ -262,7 +262,7 @@
 						</thead>
 						<tbody ng-if="FormCtrl.anschriften.length == 0" ng-click="FormCtrl.newAnschrift()"></tbody>
 						<tbody ng-if="FormCtrl.anschriften.length != 0">
-							<tr ng-repeat="document in FormCtrl.baseData.documents" ng-click="FormCtrl.setSelected('projectDocuments', document)"
+							<tr ng-repeat="document in FormCtrl.baseData.documents" ng-click="FormCtrl.setSelected('projectDocuments', document, $index)"
 							 ng-class="{selected: document.id === FormCtrl.selectedDocument.id}">
 								<td>{{ document.id }}</td>
 								<td>
@@ -324,7 +324,7 @@
 							 ng-class="{selected: $index === FormCtrl.selectedDetectionIdx}">
 								<td>{{ detection.detail.id }}</td>
 								<td>{{ detection.detail.date | date }}</td>
-								<td>Status (comes from the Festellung Form)</td>
+								<td>{{ detection.detail.status.name }}</td>
 								<td>{{ detection.title }}</td>
 								<!-- <td>{{ detection.detection }}</td> -->
 								<!-- <td>{{ detection.detail.position }}</td> -->
@@ -368,7 +368,7 @@
 							<tr ng-dblclick="FormCtrl.editProtocol()" ng-repeat="protocol in FormCtrl.baseData.protocolDatas" ng-click="FormCtrl.setSelected('protocol', protocol, $index)"
 							 ng-class="{selected: $index === FormCtrl.selectedProtocolIdx}">
 								<td>{{ protocol.id }}</td>
-								<td>{{ protocol.date }}</td>
+								<td>{{ protocol.date | date}}</td>
 								<td>{{ protocol.protocolType }}</td>
 								<td>{{ protocol.participants }}</td>
 								<td>{{ protocol.constructionState.name }}</td>
@@ -379,14 +379,13 @@
 			</div>
 			<div class="bxp-button-container compact group">
 				<span class="ta-right float-right">
-					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0" ng-click="FormCtrl.deleteProtocol()"
+					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0 && FormCtrl.selectedProtocolIdx === -1" ng-click="FormCtrl.deleteProtocol()"
 					 type="button"><i class="fa fa-trash"></i></button>
-					<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="FormCtrl.editProtocol()"
+					<button class="bxp-rounded-button small edit" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0 && FormCtrl.selectedProtocolIdx === -1" ng-click="FormCtrl.editProtocol()"
 					 type="button"><i class="fa fa-pencil"></i></button>
 					<button class="bxp-rounded-button small add" ng-click="FormCtrl.addProtocol()" type="button"><i class="fa fa-plus"></i></button>
 				</span>
 			</div>
-			NOTE: open a new tab for the images!
 		</bxp-responsive-tab>
 	</bxp-responsive-tabs>
 </form>
