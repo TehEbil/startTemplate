@@ -69,7 +69,10 @@
 			vm.tmpSelected = false;
 			// console.log('====================================');
 			// console.log('firsComming', vm.baseData);
-			// console.log('====================================');
+            // console.log('====================================');
+            console.log('====================================');
+            console.log('detections', vm.baseData.detectionDatas);
+            console.log('====================================');
 		}
 
 		//#region Project Detail Methods

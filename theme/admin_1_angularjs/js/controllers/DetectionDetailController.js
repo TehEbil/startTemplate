@@ -18,7 +18,6 @@
         vm.nextPage = nextPage;
         vm.previousPage = previousPage;
         vm.stringToDate = stringToDate;
-        vm.dateToString = dateToString;
         
         /* Global Data Definitions */
         vm.testFields = globalData.prüffeld;
@@ -37,10 +36,12 @@
         function init() {
             vm.selectedIdx = getId.detail.selectedIdx;
             vm.detections = getId.data;
-
+            console.log('====================================');
+            console.log('selected Idx', vm.selectedIdx);
+            console.log('selected Idx', vm.selectedIdx);
+            console.log('====================================');
             if (vm.selectedIdx === -1) {
-                vm.selectedDetection = vm.detections[getId.count - 1];
-                vm.dateToString(new Date(), new Date());
+                vm.selectedDetection = vm.detections[vm.detections.length - 1];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
                 vm.selectedIdx = vm.detections.length - 1;
             } else {
@@ -93,33 +94,24 @@
 
         function nextPage() {
             if (vm.selectedIdx < vm.detections.length - 1) {
-                vm.dateToString(vm.date, vm.datetime);
                 vm.selectedIdx ++;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
-                vm.dateToString(vm.date, vm.datetime);
             }
         }
 
         function previousPage() {
             /* decrease index value */
             if (vm.selectedIdx > 0) {
-                vm.dateToString(vm.date, vm.datetime);
                 vm.selectedIdx --;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
-                vm.dateToString(vm.date, vm.datetime);
             }
         }
 
-        function dateToString(date, datetime) {
-            vm.selectedDetection.detail.date = new Date(date).toString();
-            vm.selectedDetection.detail.datetime = new Date(datetime).toString();
-        }
-
         function stringToDate(date, datetime) {
-            vm.date = new Date(date);
-            vm.datetime = new Date(datetime);
+            vm.selectedDetection.detail.date = new Date(date);
+            vm.selectedDetection.detail.datetime = new Date(datetime);
         }
 
         function closeModal() {
@@ -130,7 +122,6 @@
             console.log('====================================');
             console.log(vm.selectedDetection);
             console.log('====================================');
-            dateToString(vm.date, vm.datetime);
             let obj = {
                 data: vm.detections,
                 type: 'success'

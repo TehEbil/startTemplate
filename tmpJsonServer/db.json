@@ -104,8 +104,8 @@
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8743,
-          "date": "Fri Jan 25 2019 00:00:00 GMT+0300 (GMT+03:00)",
-          "datetime": "Fri Jan 04 2019 12:15:48 GMT+0300 (GMT+03:00)",
+          "date": "2019-01-30T21:00:00.000Z",
+          "datetime": "2019-01-04T09:15:48.000Z",
           "hour": 14,
           "minute": 25,
           "testField": {
@@ -145,8 +145,8 @@
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8744,
-          "date": "Fri Jan 25 2019 00:00:00 GMT+0300 (GMT+03:00)",
-          "datetime": "Fri Jan 04 2019 12:36:48 GMT+0300 (GMT+03:00)",
+          "date": "2019-01-24T21:00:00.000Z",
+          "datetime": "2019-01-04T09:36:48.000Z",
           "hour": 14,
           "minute": 25,
           "testField": {
@@ -186,8 +186,8 @@
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "detail": {
           "id": 8745,
-          "date": "Fri Jan 25 2019 00:00:00 GMT+0300 (GMT+03:00)",
-          "datetime": "Fri Jan 04 2019 12:27:48 GMT+0300 (GMT+03:00)",
+          "date": "2019-01-27T21:00:00.000Z",
+          "datetime": "2019-01-04T09:27:48.000Z",
           "hour": 14,
           "minute": 25,
           "testField": {
@@ -247,7 +247,7 @@
         "note": "All we need a just a little lahmacun!",
         "selectedDetection": "Detection 1",
         "titlePicUrl": "https://picsum.photos/100/100/?random",
-        "date": "2019-01-30T21:00:00.000Z",
+        "date": "2019-01-23T21:00:00.000Z",
         "members": "Mahmut, Can",
         "selectedDetections": [
           {

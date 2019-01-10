@@ -130,7 +130,6 @@
             console.log('====================================');
             console.log('sended protocol', vm.protocol);
             console.log('====================================');
-            
             let obj = {
                 data: vm.protocol,
                 type: 'success'
