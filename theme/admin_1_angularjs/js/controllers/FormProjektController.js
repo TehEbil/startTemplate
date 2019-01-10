@@ -63,16 +63,19 @@
 		//#endregion
 
 		init();
-		vm.order = vm.baseData.orderDatas;
-		vm.protocols = vm.baseData.protocolDatas;
+		
 		function init() {
-			vm.tmpSelected = false;
+
+            vm.tmpSelected = false;
+            vm.order = vm.baseData.orderDatas;
+		    vm.protocols = vm.baseData.protocolDatas;
 			// console.log('====================================');
 			// console.log('firsComming', vm.baseData);
             // console.log('====================================');
             console.log('====================================');
-            console.log('detections', vm.baseData.detectionDatas);
+            console.log('detections', vm.order);
             console.log('====================================');
+            vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
 		}
 
 		//#region Project Detail Methods

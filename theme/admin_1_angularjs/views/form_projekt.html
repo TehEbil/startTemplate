@@ -197,8 +197,7 @@
 					<div class="form-group">
 						<div class="group">
 							<label for="input-street" class="control-label bxp-label float-left">Datum</label>
-							<input name="orderDate" type="text" class="form-control bxp-input float-left" placeholder="" ng-model="FormCtrl.order.otherInformations.orderDate"
-							 required>
+							<input type="date" name="orderDate" class="form-control event-date float-left" ng-model="FormCtrl.order.otherInformations.orderDate" required>
 							<p ng-if="!orderForm.orderDate.$valid"> required field </p>
 						</div>
 					</div>
