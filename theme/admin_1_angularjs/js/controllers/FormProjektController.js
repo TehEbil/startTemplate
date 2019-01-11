@@ -301,6 +301,7 @@
                     (res) => {
                         if (typeof res !== 'undefined' && res.type === 'success') {
                             vm.baseData.protocolDatas[vm.selectedProtocolIdx] = res.data;
+                            vm.baseData.detectionDatas = res.detections;
                         }
                     }
                 );

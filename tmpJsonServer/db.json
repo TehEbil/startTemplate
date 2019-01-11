@@ -32,7 +32,7 @@
           "date": "2018-11-12T11:39:29.137Z",
           "editMode": false
         },
-        "isDisplay": false
+        "isDisplay": true
       },
       {
         "id": 2,
@@ -46,7 +46,7 @@
           "date": "2018-11-12T11:39:29.137Z",
           "editMode": false
         },
-        "isDisplay": false
+        "isDisplay": true
       },
       {
         "id": 3,
@@ -65,7 +65,7 @@
       {
         "id": 4,
         "name": "Test Dökümanı 4",
-        "isDisplay": false
+        "isDisplay": true
       }
     ],
     "intenalNotes": "test text field",
@@ -123,7 +123,7 @@
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "isAddProtocol": true,
-        "isAddShortInfo": false,
+        "isAddShortInfo": true,
         "detail": {
           "id": 8743,
           "date": "2019-01-30T21:00:00.000Z",
@@ -165,8 +165,8 @@
         "title": "foo",
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        "isAddProtocol": true,
-        "isAddShortInfo": false,
+        "isAddProtocol": false,
+        "isAddShortInfo": true,
         "detail": {
           "id": 8744,
           "date": "2019-01-24T21:00:00.000Z",
@@ -284,7 +284,7 @@
             "date": "2018-11-12T11:39:29.137Z",
             "editMode": false,
             "isAddJustName": true,
-            "isAddAttachment": false
+            "isAddAttachment": true
           },
           {
             "id": 2,
@@ -294,8 +294,8 @@
             "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
             "date": "2018-11-12T11:39:29.137Z",
             "editMode": false,
-            "isAddJustName": true,
-            "isAddAttachment": false
+            "isAddJustName": false,
+            "isAddAttachment": true
           },
           {
             "id": 3,
@@ -306,7 +306,7 @@
             "date": "2019-01-03T08:18:12.080Z",
             "editMode": false,
             "isAddJustName": true,
-            "isAddAttachment": false
+            "isAddAttachment": true
           },
           {
             "id": 8,
@@ -317,7 +317,7 @@
             "date": "2019-01-09T07:51:37.515Z",
             "editMode": false,
             "isAddJustName": true,
-            "isAddAttachment": false
+            "isAddAttachment": true
           }
         ]
       },

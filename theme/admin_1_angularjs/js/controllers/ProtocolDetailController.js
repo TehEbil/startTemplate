@@ -153,13 +153,16 @@
         }
 
         function submitForm() {
+
             console.log('====================================');
-            console.log('sended protocol', vm.protocol);
+            console.log('Base Detections', vm.baseDetections);
+            console.log('Detections', vm.detections);
             console.log('====================================');
             vm.baseDetections = vm.detections;
             let obj = {
                 data: vm.protocol,
-                type: 'success'
+                type: 'success',
+                detections: vm.baseDetections
             };
             $scope.$close(obj);
         }
