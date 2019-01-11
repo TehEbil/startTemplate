@@ -7,7 +7,7 @@
         {
           "id": 1,
           "filename": "file1.txt",
-          "filepath": "public/uploads/file1.txt",
+          "filepath": "public/uploads/bau-logo.jpg",
           "oldfilename": "expFile.txt",
           "refName": "file1.txt",
           "date": "2018-11-12T11:39:29.137Z"
@@ -18,37 +18,57 @@
   "project": {
     "projectNumber": "BXP-PRN-001",
     "projectName": "Project Name Field",
-    "ownPerformanceBuilder": "Mahmut",
+    "ownPerformanceBuilder": "Mahmut Akyol",
     "documents": [
       {
         "id": 1,
-        "filename": "file1.txt",
-        "filepath": "public/uploads/file1.txt",
-        "oldfilename": "expFile.txt",
-        "refName": "file1.txt",
-        "date": "2018-11-12T11:39:29.137Z",
-        "editMode": false
+        "name": "Test Dökümanı 1",
+        "document": {
+          "id": 1,
+          "filename": "file1.txt",
+          "filepath": "public/uploads/file1.txt",
+          "oldfilename": "expFile.txt",
+          "refName": "file1.txt",
+          "date": "2018-11-12T11:39:29.137Z",
+          "editMode": false
+        },
+        "isDisplay": false
       },
       {
         "id": 2,
-        "filename": "Ekran Resmi 2018-11-22 13.12.32.png",
-        "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
-        "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
-        "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
-        "date": "2018-11-12T11:39:29.137Z",
-        "editMode": false
+        "name": "Test Dökümanı 2",
+        "document": {
+          "id": 2,
+          "filename": "Ekran Resmi 2018-11-22 13.12.32.png",
+          "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
+          "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
+          "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
+          "date": "2018-11-12T11:39:29.137Z",
+          "editMode": false
+        },
+        "isDisplay": false
       },
       {
         "id": 3,
-        "filename": "4-cv.docx",
-        "filepath": "public/uploads/4-cv.docx",
-        "oldfilename": "cv.docx",
-        "refName": "4-cv.docx",
-        "date": "2019-01-03T08:18:12.080Z",
-        "editMode": false
+        "name": "Test Dökümanı 3",
+        "document": {
+          "id": 3,
+          "filename": "4-cv.docx",
+          "filepath": "public/uploads/4-cv.docx",
+          "oldfilename": "cv.docx",
+          "refName": "4-cv.docx",
+          "date": "2019-01-03T08:18:12.080Z",
+          "editMode": false
+        },
+        "isDisplay": true
+      },
+      {
+        "id": 4,
+        "name": "Test Dökümanı 4",
+        "isDisplay": false
       }
     ],
-    "intenalNotes": "test",
+    "intenalNotes": "test text field",
     "orderDatas": {
       "customer": {
         "customerNumber": "BXP-105",
@@ -99,9 +119,11 @@
       {
         "number": 1,
         "status": "status",
-        "title": "foo",
+        "title": "test",
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "isAddProtocol": true,
+        "isAddShortInfo": false,
         "detail": {
           "id": 8743,
           "date": "2019-01-30T21:00:00.000Z",
@@ -143,6 +165,8 @@
         "title": "foo",
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "isAddProtocol": true,
+        "isAddShortInfo": false,
         "detail": {
           "id": 8744,
           "date": "2019-01-24T21:00:00.000Z",
@@ -184,6 +208,8 @@
         "title": "foo",
         "coverPicUrl": "https://www.picsum.photos/200/300",
         "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "isAddProtocol": true,
+        "isAddShortInfo": true,
         "detail": {
           "id": 8745,
           "date": "2019-01-27T21:00:00.000Z",
@@ -245,96 +271,9 @@
         },
         "acceptanceComment": "As a result of the researching of a defect has not been found.",
         "note": "All we need a just a little lahmacun!",
-        "selectedDetection": "Detection 1",
         "titlePicUrl": "https://picsum.photos/100/100/?random",
         "date": "2019-01-23T21:00:00.000Z",
         "members": "Mahmut, Can",
-        "selectedDetections": [
-          {
-            "number": 2,
-            "date": "",
-            "status": "status",
-            "title": "foo",
-            "coverPicUrl": "https://www.picsum.photos/200/300",
-            "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "detail": {
-              "id": 8744,
-              "date": "",
-              "datetime": "",
-              "hour": 14,
-              "minute": 25,
-              "testField": {
-                "id": "008",
-                "name": "Wasserhaltungsarbeiten",
-                "group": "ROHBAU"
-              },
-              "position": "position",
-              "title": "title",
-              "evaluation": {
-                "id": "03",
-                "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-                "shortcut": "AT"
-              },
-              "basics": {
-                "id": "03",
-                "name": "Baubeschreibung"
-              },
-              "status": {
-                "id": "03",
-                "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
-              },
-              "description": "desc",
-              "costs": {
-                "disposalCost": 500,
-                "impairment": 600,
-                "recoup": 700,
-                "isPrint": true
-              }
-            }
-          },
-          {
-            "number": 3,
-            "date": "",
-            "status": "status",
-            "title": "foo",
-            "coverPicUrl": "https://www.picsum.photos/200/300",
-            "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-            "detail": {
-              "id": 8745,
-              "date": "",
-              "datetime": "",
-              "hour": 14,
-              "minute": 25,
-              "testField": {
-                "id": "008",
-                "name": "Wasserhaltungsarbeiten",
-                "group": "ROHBAU"
-              },
-              "position": "position",
-              "title": "title",
-              "evaluation": {
-                "id": "03",
-                "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-                "shortcut": "AT"
-              },
-              "basics": {
-                "id": "03",
-                "name": "Baubeschreibung"
-              },
-              "status": {
-                "id": "03",
-                "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
-              },
-              "description": "desc",
-              "costs": {
-                "disposalCost": 500,
-                "impairment": 600,
-                "recoup": 700,
-                "isPrint": true
-              }
-            }
-          }
-        ],
         "documents": [
           {
             "id": 1,
@@ -343,7 +282,9 @@
             "oldfilename": "expFile.txt",
             "refName": "file1.txt",
             "date": "2018-11-12T11:39:29.137Z",
-            "editMode": false
+            "editMode": false,
+            "isAddJustName": true,
+            "isAddAttachment": false
           },
           {
             "id": 2,
@@ -352,7 +293,9 @@
             "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
             "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
             "date": "2018-11-12T11:39:29.137Z",
-            "editMode": false
+            "editMode": false,
+            "isAddJustName": true,
+            "isAddAttachment": false
           },
           {
             "id": 3,
@@ -361,7 +304,9 @@
             "oldfilename": "cv.docx",
             "refName": "4-cv.docx",
             "date": "2019-01-03T08:18:12.080Z",
-            "editMode": false
+            "editMode": false,
+            "isAddJustName": true,
+            "isAddAttachment": false
           },
           {
             "id": 8,
@@ -370,13 +315,15 @@
             "oldfilename": "bau-logo.jpg",
             "refName": "testlogo2",
             "date": "2019-01-09T07:51:37.515Z",
-            "editMode": false
+            "editMode": false,
+            "isAddJustName": true,
+            "isAddAttachment": false
           }
         ]
       },
       {
         "id": 2,
-        "isLocalInspection": "inspectionYes",
+        "isLocalInspection": "inspectionNo",
         "localInspectionDate": "",
         "protocolType": "type 2",
         "participants": "Mahmut, Necati",
@@ -398,16 +345,9 @@
         },
         "acceptanceComment": "test",
         "note": "",
-        "selectedDetection": "",
         "titlePicUrl": "",
         "date": "2019-01-25T21:00:00.000Z",
         "members": "Necati, Mahmut, Muhammed",
-        "selectedDetections": [
-          {
-            "id": "",
-            "title": ""
-          }
-        ],
         "documents": [
           {
             "id": "",
@@ -417,7 +357,7 @@
       },
       {
         "id": 3,
-        "isLocalInspection": "inspectionNo",
+        "isLocalInspection": "inspectionYes",
         "localInspectionDate": "",
         "protocolType": "type 3",
         "participants": "Can, Muhammed",
@@ -439,16 +379,9 @@
         },
         "acceptanceComment": "",
         "note": "",
-        "selectedDetection": "",
         "titlePicUrl": "",
         "date": "2019-01-25T21:00:00.000Z",
         "members": "Muhammed, Necati, Can",
-        "selectedDetections": [
-          {
-            "id": "",
-            "title": ""
-          }
-        ],
         "documents": [
           {
             "id": "",

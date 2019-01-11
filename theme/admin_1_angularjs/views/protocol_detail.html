@@ -121,17 +121,21 @@
 									<th>Protokolltyp</th>
 									<th>Teilnehmer</th>
 									<th>Bautenstand</th>
+									<th><input type="checkbox" ng-click="FormCtrl.checkAll('detections', FormCtrl.selectAllAdd,'isAddProtocol')" ng-model="FormCtrl.selectAllAdd"> Add to Protocol </th>
+									<th><input type="checkbox" ng-click="FormCtrl.checkAll('detections', FormCtrl.selectAllShortInfo, 'isAddShortInfo')" ng-model="FormCtrl.selectAllShortInfo"> Add Short Info </th>
 								</tr>
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
-								<tr ng-dblclick="FormCtrl.editDetection(detection)" ng-repeat="detection in FormCtrl.protocol.selectedDetections" ng-click="FormCtrl.setSelected('detection', $index, detection)"
+								<tr ng-dblclick="FormCtrl.editDetection(detection)" ng-repeat="detection in FormCtrl.detections" ng-click="FormCtrl.setSelected('detection', $index, detection)"
 								ng-class="{selected: detection.number === FormCtrl.selectedDetection.number}">
 									<td>{{ detection.number }}</td>
 									<td>{{ detection.date }}</td>
 									<td>{{ detection.protocolType }}</td>
 									<td>{{ detection.members }}</td>
 									<td>{{ detection.constructionState.name }}</td>
+									<td> <input type="checkbox" ng-model="detection.isAddProtocol"> </td>
+									<td> <input type="checkbox" ng-model="detection.isAddShortInfo"> </td>
 								</tr>
 							</tbody>
 						</table>
@@ -161,6 +165,8 @@
 									<th>Protokolltyp</th>
 									<th>Teilnehmer</th>
 									<th>Bautenstand</th>
+									<th><input type="checkbox" ng-click="FormCtrl.checkAll('documents', FormCtrl.selectAllAddJustName,'isAddJustName')" ng-model="FormCtrl.selectAllAddJustName"> Add Just Name </th>
+									<th><input type="checkbox" ng-click="FormCtrl.checkAll('documents', FormCtrl.selectAllAddAsAttachment, 'isAddAttachment')" ng-model="FormCtrl.selectAllAddAsAttachment"> Add as Attachment </th>
 								</tr>
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
@@ -172,6 +178,8 @@
 									<td>{{ document.filename }}</td>
 									<td>{{ document.filename }}</td>
 									<td>{{ document.filename }}</td>
+									<td> <input type="checkbox" ng-model="document.isAddJustName"> </td>
+									<td> <input type="checkbox" ng-model="document.isAddAttachment"> </td>
 								</tr>
 							</tbody>
 						</table>

@@ -36,6 +36,11 @@ function saveCB(req, res) {
 
     var items = dbHelper.getDataByFieldName(db, 'project');
 
+    items.projectNumber = req.body.projectNumber;
+    items.projectName = req.body.projectName;
+    items.ownPerformanceBuilder = req.body.ownPerformanceBuilder;  
+    items.intenalNotes = req.body.intenalNotes;
+    items.documents = req.body.documents;
     items.orderDatas = req.body.orderDatas;
     items.detectionDatas = req.body.detectionDatas;
     items.protocolDatas = req.body.protocolDatas;

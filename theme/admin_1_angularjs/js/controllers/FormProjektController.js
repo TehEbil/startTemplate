@@ -22,7 +22,9 @@
 		vm.subData = {
 			data: {},
 			detail: {}
-		};
+        };
+        vm.orderTypes = globalData.auftragsart;
+        vm.isDisplayAll = false;
 
     	$scope.tabs = [
 	    	'Auftragsdaten',
@@ -34,12 +36,14 @@
 		vm.tabs = $scope.tabs;
 		
 		//#region Project Detail Methods & Variables definitions
-		vm.newDocument = newDocument;
+        vm.newDocument = newDocument;
+        vm.addDocument = addDocument;
 		vm.deleteDocument = deleteDocument;
 		vm.saveEntry = saveEntry;
 		vm.editEntry = editEntry;
 		vm.onsave = onsave;
-		vm.ondelete = ondelete;
+        vm.ondelete = ondelete;
+        vm.checkAll = checkAll;
 
 		vm.selectedDocument = {};
 		//#endregion
@@ -82,18 +86,35 @@
 
 		function newDocument() {
             var obj = {
-              uploads: vm.baseData.documents,
-              callback: vm.onsave
+              data: vm.baseData.documents,
+              detail: {
+
+              }
             };
+
+            modalService.openMenuModal('views/project_data_documents.html', 'ProjectDataDocumentController', 'animated zoomIn', obj).then((res) => {
+                if (res.type === 'success') {
+                    console.log('====================================');
+                    console.log(res);
+                    console.log('====================================');
+                    vm.baseData.documents = res.data;
+                }
+            });
+        }
+
+        function addDocument() {
+            var obj = {
+                uploads: vm.selectedDocument.document,
+                callback: vm.onsave
+              };
             if(vm.uploadtype)
-              obj['uploadtype'] = vm.uploadtype;
+            obj['uploadtype'] = vm.uploadtype;
 
             obj.single = true;
 
             // console.log(obj);
             modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then(() => {
-                if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
-                    vm.disablesub = false;
+
             });
         }
 
@@ -272,6 +293,7 @@
                     data: vm.selectedProtocol,
                     detail: {
                         selectedIdx: vm.selectedProtocolIdx,
+                        detections: vm.baseData.detectionDatas
                     }
                 }
                 /* Open detection detail modal */
@@ -323,7 +345,20 @@
         }
 
         function closeModal() {
-            $scope.$close();
+            $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                $scope.$close();
+            });
+        }
+
+        function checkAll(state, field) {
+            console.log('====================================');
+            console.log(state);
+            console.log('====================================');
+            if ( !state ) {
+                vm.baseData.documents.map( d => d.isDisplay = true);
+            } else {
+                vm.baseData.documents.map( d => d.isDisplay = false);
+            }
         }
 
         function submitForm() {

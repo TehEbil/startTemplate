@@ -1,0 +1,38 @@
+<form name="projectDataDocumentUpload" novalidate autocomplete="off">
+
+    <div name="projectDataDocumentUploadx" id="projectDataDocumentUpload" close-esc-key="FormCtrl.closeModal" func="FormCtrl.closeModal" ng-model="state" class="bxp-form group" novalidate autocomplete="false">
+    
+      <div class="bxp-header-modal">
+        <h3>Document Name</h3>
+      </div>
+    
+      <div class="bxp-inner-modal bxp-container">
+        <!-- Upload on form submit or button click-->
+        <div ng-if="FormCtrl.dynamic == 101" class="ta-center upload-success">
+            <br>
+            <br>
+            <br>
+            <i class="icon-check success-color large-icon"></i>
+            <br>
+            <h4> Super, File has been uploaded! <br><!-- {{FormCtrl.docName}} --></h4>
+            <br />
+            <!--button class="btn btn-primary bxp-button-ok" ng-click="FormCtrl.dynamic = -1; FormCtrl.docName = ''">Weiteres Dokument hochladen</button-->
+        </div>
+        <div ng-if="FormCtrl.dynamic != 101">
+          <div class="bxp-upload-container group">
+              <div class="">
+                <strong>Document name:</strong>
+              </div>
+              <input name="Dokumentenname" ng-model="FormCtrl.docName" class="form-control bxp-dokumentenname" type="text" placeholder="">
+        </div>
+      </div>
+    </div>
+    </form>
+
+    <div class="bxp-button-container group">
+      <span class="display-block ta-center">
+        <button class="btn btn-primary bxp-button-ok" ng-click="FormCtrl.submitUpload()">Ok</button>
+        <button class="btn default" ng-click="FormCtrl.closeModal()" type="button">Cancel</button>
+      </span>
+    </div>
+    

@@ -255,8 +255,9 @@
 							<tr>
 								<th>Bezeichnung</th>
 								<th>Status</th>
-								<!-- <th>Selections</th> -->
-								<!-- <th>Upload</th> -->
+								<th>Upload</th>
+								<th><input type="checkbox" ng-click="FormCtrl.checkAll(FormCtrl.isDisplayAll,'isDisplay')" ng-model="FormCtrl.isDisplayAll"> Display </th>
+								<!-- <th><input type="checkbox" ng-click="FormCtrl.checkAll(FormCtrl.selectAllAttachment, 'isAttachment')" ng-model="FormCtrl.selectAllAddAsAttachment"> Attachment </th> -->
 							</tr>
 						</thead>
 						<tbody ng-if="FormCtrl.anschriften.length == 0" ng-click="FormCtrl.newAnschrift()"></tbody>
@@ -271,11 +272,16 @@
 										 placeholder="" auto-focus>
 										<div class="hover-text-field">
 											<span ng-if="!document.editMode">
-												{{ document.filename }}
+												{{ document.name }}
 											</span>
 										</div>
 									</div>
 								</td>
+								<td>
+									<button ng-disabled="document.document" class="bxp-rounded-button small add" ng-click="FormCtrl.addDocument()" type="button"><i class="fa fa-plus"></i></button>
+								</td>
+								<td> <input type="checkbox" ng-model="document.isDisplay"> </td>
+								<!-- <td> <input type="checkbox" ng-model="document.isAddAttachment"> </td> -->
 							</tr>
 						</tbody>
 					</table>

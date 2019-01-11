@@ -41,11 +41,11 @@
             console.log('selected Idx', vm.selectedIdx);
             console.log('====================================');
             if (vm.selectedIdx === -1) {
-                vm.selectedDetection = vm.detections[vm.detections.length - 1];
+                vm.selectedDetection = angular.copy(vm.detections[vm.detections.length - 1]);
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
                 vm.selectedIdx = vm.detections.length - 1;
             } else {
-                vm.selectedDetection = vm.detections[vm.selectedIdx];
+                vm.selectedDetection = angular.copy(vm.detections[vm.selectedIdx]);
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
             }
             
@@ -115,13 +115,13 @@
         }
 
         function closeModal() {
-            $scope.$close();
+            $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                $scope.$close();
+            });
         }
 
         function submitForm() {
-            console.log('====================================');
-            console.log(vm.selectedDetection);
-            console.log('====================================');
+            vm.detections[vm.selectedIdx] = vm.selectedDetection;
             let obj = {
                 data: vm.detections,
                 type: 'success'

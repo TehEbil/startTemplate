@@ -21,6 +21,12 @@
         vm.ondelete = ondelete;
         vm.deleteDocument = deleteDocument;
         vm.newDocument = newDocument;
+        vm.checkAll = checkAll;
+
+        vm.selectAllAdd = false;
+        vm.selectAllShortInfo = false;
+        vm.selectAllAddJustName = false;
+        vm.selectAllAddAsAttachment = false;
 
         vm.protocol = {};
         vm.selectedIdx = -1;
@@ -31,9 +37,6 @@
         vm.selectedDetection = {};
         vm.selectedDetectionIdx = -1;
         
-
-
-
         $scope.tabs = [
             'NewProtocol',
             'ChoosingDetections',
@@ -46,11 +49,14 @@
 
         function init() {
             vm.untouched = getId.data;
+            vm.baseDetections = getId.detail.detections;
             vm.protocol = angular.copy(vm.untouched);
             vm.selectedIdx = getId.detail.selectedIdx;
+            vm.detections = angular.copy(vm.baseDetections); 
             
             console.log('====================================');
             console.log(vm.protocol);
+            console.log(vm.detections);
             console.log('====================================');
             vm.protocol.date = new Date(vm.protocol.date);
         }
@@ -97,7 +103,7 @@
             obj.single = true;
 
             // console.log(obj);
-            modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then(() => {
+            modalService.openMenuModal('views/form_upload.html', 'ProtocolDocumentUploadController', 'animated zoomIn', obj).then(() => {
                 if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
                     vm.disablesub = false;
             });
@@ -115,7 +121,25 @@
                 return $rootScope.sharedService.alert("ID not found", "danger");
 
             return idx;
-		}
+        }
+        
+        function checkAll(elements, state, field) {
+            if (elements === 'detections') {
+                if ( !state ) {
+                    vm.detections.map( d => d[field] = true );
+                } else {
+                    vm.detections.map( d => d[field] = false );
+                }
+            } else if(elements === 'documents') {
+                if ( !state ) {
+                    vm.protocol.documents.map( d => d[field] = true );
+                } else {
+                    vm.protocol.documents.map( d => d[field] = false );
+                }
+            }
+        }
+            
+        
 
         function ondelete() {
             vm.protocol.splice(vm.selectedDocumentIdx, 1);
@@ -123,17 +147,20 @@
         }
 
         function closeModal() {
-            $scope.$close();
+            $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                $scope.$close();
+            });
         }
 
         function submitForm() {
             console.log('====================================');
             console.log('sended protocol', vm.protocol);
             console.log('====================================');
+            vm.baseDetections = vm.detections;
             let obj = {
                 data: vm.protocol,
                 type: 'success'
-            }
+            };
             $scope.$close(obj);
         }
 }
