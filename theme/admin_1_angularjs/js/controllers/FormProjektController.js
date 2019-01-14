@@ -73,12 +73,6 @@
             vm.tmpSelected = false;
             vm.order = vm.baseData.orderDatas;
 		    vm.protocols = vm.baseData.protocolDatas;
-			// console.log('====================================');
-			// console.log('firsComming', vm.baseData);
-            // console.log('====================================');
-            console.log('====================================');
-            console.log('detections', vm.order);
-            console.log('====================================');
             vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
 		}
 
@@ -94,9 +88,6 @@
 
             modalService.openMenuModal('views/project_data_documents.html', 'ProjectDataDocumentController', 'animated zoomIn', obj).then((res) => {
                 if (res.type === 'success') {
-                    console.log('====================================');
-                    console.log(res);
-                    console.log('====================================');
                     vm.baseData.documents = res.data;
                 }
             });
@@ -352,9 +343,6 @@
         }
 
         function checkAll(state, field) {
-            console.log('====================================');
-            console.log(state);
-            console.log('====================================');
             if ( !state ) {
                 vm.baseData.documents.map( d => d.isDisplay = true);
             } else {
@@ -363,11 +351,6 @@
         }
 
         function submitForm() {
-            // console.log('====================================');
-            // console.log('Base Data', vm.baseData);
-            // console.log('Untouched', vm.untouched);
-            // console.log('====================================');
-
             $scope.$close(vm.baseData);
         }
 

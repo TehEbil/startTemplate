@@ -58,10 +58,6 @@
 
                 modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(
                     (data) => {
-                        console.log('====================================');
-                        console.log('incoming data: ', data);
-                        console.log('====================================');
-    
                         if (typeof data !== 'undefined') {
                             ProjectHandler.postData(data).then((res) => {
                                 console.log('====================================');

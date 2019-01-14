@@ -36,10 +36,6 @@
         function init() {
             vm.selectedIdx = getId.detail.selectedIdx;
             vm.detections = getId.data;
-            console.log('====================================');
-            console.log('selected Idx', vm.selectedIdx);
-            console.log('selected Idx', vm.selectedIdx);
-            console.log('====================================');
             if (vm.selectedIdx === -1) {
                 vm.selectedDetection = angular.copy(vm.detections[vm.detections.length - 1]);
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
@@ -83,9 +79,6 @@
             modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
                 
                 if (typeof data !== 'undefined') {
-                    console.log('====================================');
-                    console.log(vm.selectedDetection);
-                    console.log('====================================');
                     vm.selectedDetection.detail.description = `${vm.selectedDetection.detail.description} ${data.value}`;    
                 }
                 

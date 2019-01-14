@@ -709,6 +709,11 @@ function maxId(arr) {
             //$scope.$close();
             // console.log(vm.uploadtype);
             // console.log(vm);
+
+            console.log('====================================');
+            console.log('liste', vm.uploads);
+            console.log('====================================');
+
             var obj = {
               uploads: vm.uploads,
               callback: vm.onsave
@@ -719,7 +724,10 @@ function maxId(arr) {
             obj.single = true;
 
             // console.log(obj);
-            modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then(() => {
+            modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then((res) => {
+                console.log('====================================');
+                console.log('yükleme sonrası ', res);
+                console.log('====================================');
                 if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
                     vm.disablesub = false;
             });
