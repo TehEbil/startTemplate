@@ -134,6 +134,7 @@
 
         .pdf-photo-box {
             max-width: 48%;
+            margin-bottom: 20px;
         }
 
         .pdf-photo-box img {
@@ -141,13 +142,44 @@
             max-height: 400px;
         }
 
+        .pdf-cert-images {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            width: 654px;
+        }
+
+        .pdf-cert-images-box {
+            max-width: 280px;
+        }
+
+        .pdf-cert-images-box img {
+            width: 100%;
+            max-height: 400px;
+        }
+
+        .pdf-signature {
+            width: 200px;
+            margin-left: 30px;
+        }
+
+        .pdf-logo {
+            width: 200px;
+            float: right;
+            margin-right: 36px;
+        }
+
 </style>
 <div class="container">
     <h1>Create New Project <button ng-click="vm.createNewProject()">(+)</button></h1>
     <div class="pdf-container">
         <div style="width: 710px; margin: 0 auto;" class="row">
+            <div class="col-md-12">
+                <img class="pdf-logo" src="../../assets/img/pdf-logo.jpg">
+            </div>
             <div class="col-md-6">
-                <p style="font-size: 8px; font-weight: bold;">BAUEXPERTS Sachverständigenorganisation | Ostwall 223| 47798 Krefeld</p>
+                <p style="font-size: 8px; font-weight: bold; text-decoration: underline; padding-bottom: 5px;">BAUEXPERTS Sachverständigenorganisation | Ostwall 223| 47798 Krefeld</p>
                 <p style="font-size: 11px; font-weight: bold;">Firma</p>
                 <p style="font-size: 11px; font-weight: bold;">ImmoSubstanz GmbH & Co. KG</p>
                 <p style="font-size: 11px; font-weight: bold;">Rathausufer 23</p>
@@ -155,8 +187,8 @@
             </div>
             <div class="col-md-6" style="text-align: right; font-size: 9px;">
                 <p>Ostwall 223</p>
-                <p>www.bauexperts-krefeld.de</p>
                 <p>47798 Krefeld</p>
+                <p>www.bauexperts-krefeld.de</p>
                 <p>Telefon 02151 - 3260018</p>
                 <p>Telefax 02151 - 3262264</p>
                 <p>Herr Frank Tekook</p>
@@ -170,7 +202,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-12 pdf-page-heading" style="margin: 33px 0">Baubegleitende Qualitätskontrolle</div>
+            <div class="col-md-12 pdf-page-heading" style="margin: 4px 0 33px 0;">Baubegleitende Qualitätskontrolle</div>
             <div style="margin-bottom: 25px;" class="col-md-12">
                 <table style="font-size: 11px;" class="table">
                     <tbody>
@@ -561,6 +593,19 @@
                     <p>Besichtigt wurde in erster Linie die Musterwohnung im 3. OG links, da diese im Bautenstand am weitesten fertig gestellt ist. Außerdem wurde das Gemeinschaftseigentum besichtigt.</p>
                     <h3 class="pdf-h3">5. Unterschrift</h3>
                     <p>Krefeld, den 14.08.2018</p>
+                    <img class="pdf-signature" style="width: 200px; height: auto" src="../../assets/img/pdf-signature.jpg">
+                    <p>Herr Frank Tekook</p>
+                    <div class="pdf-cert-images">
+                        <div class="pdf-cert-images-box">
+                            <img src="../../assets/img/pdf-stamp.jpg">
+                        </div>
+                        <div class="pdf-cert-images-box">
+                            <img src="../../assets/img/pdf-tuv.jpg">
+                        </div>
+                    </div>
+                    <p style="color: #000; font-style: italic; margin-top: 20px; margin-bottom: 3px;">Partner der Sachverständigenorganisation Bauexperts</p>
+                    <p style="color: #000; font-weight: bold; width: 654px;">Staatlich geprüfter Techniker - Fachrichtung Hochbau <br>
+                        TÜV-Rheinland zertifizierter Sachverständiger für Schäden an Gebäuden & Wertermittlung Z€rt-Verband geprüfter Sachverständiger für Schäden an Gebäuden & Wertermittlung SiGeKo - FQL geprüfter Sicherheits- und Gesundheitsschutzkoordinator nach RAB 30</p>
                 </div>
                 <div class="col-md-12 pdf-page-bottom-bar">
                     <div>Protokoll-Nr.: 1-2018-BBQ-14</div>
