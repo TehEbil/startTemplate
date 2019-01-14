@@ -736,6 +736,183 @@ function maxId(arr) {
     }
 })();
 
+(function () {
+    'use strict';
+
+    angular
+        .module('MetronicApp')
+        .component('bxpImageUpload', {
+            bindings: {
+                uploads: '=',
+                onsave: '=',
+                ondelete: '=',
+                note: '=',
+                hide: '=',
+                uploadtype: '@',
+                hideContent: '=',
+                makeDisabled: '=',
+                disablesub: '='
+            },
+            controller: ImageUploadComponentController,
+            controllerAs: 'vm',
+            template: function ($element, $attrs) {
+                return `
+                    <div ng-if="!vm.hideContent" ng-show="vm.uploads.length > 0" class="bxp-form-container group">
+                        <ul class="table table-uploads table-striped table-bordered">
+                            <li ng-repeat="item in vm.uploads track by $index">
+                                <div ng-class="{'activex': vm.selected === $index}" ng-click="vm.id = item.id" class="bxp-grundatensatz" ng-dblclick="vm.editEntry()">
+                                    <div class="hover-text-field" style="width:170px; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 12px 12px;">
+                                    <div ng-if="item.uploadtype" ng-class="{ 'bxp-rechnung-ic' : item.uploadtype == 'rechnung', 'bxp-normal-ic' : item.uploadtype == 'normal', 'bxp-event-ic' : item.uploadtype == 'event'}"></div>
+                                    <input ng-if="vm.note" type="text" ng-model="item.note" placeholder="">
+                                    <input type="text" id="editInput" ng-if="item.editMode" ng-enter="vm.saveEntry()" ng-blur="vm.saveEntry()" ng-keyup="onInputKeyup($event)" ng-model="item.refName" placeholder="" auto-focus>
+                                        <img style="max-width: 146px;" ng-src="https://picsum.photos/150/150">
+                                        <span style="margin: 5px 0 !important; font-size:10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="inline-block" ng-if="!item.editMode">{{item.refName}}
+                                        <div ng-if="!vm.hide" style="display: none;" class="animate-show float-right">
+                                            <i class="fa fa-trash bauexperts-blue" ng-click="vm.deleteEntry(item.id)"></i>
+                                            <i class="fa fa-pencil bauexperts-blue" ng-click="vm.editEntry(item.id)"></i>
+                                        </div>
+                                        </span>
+                                        <i style="margin-left: 0 !important;" class="fa fa-cloud-download" ng-click="vm.download('uploads/', item.filename)"></i>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <span>
+                      <a ng-disabled="vm.makeDisabled" ng-if="!vm.hide" ng-click="vm.newDocument()" class="bxp-rounded-button add small">
+                          <i class="fa fa-plus"></i>
+                      </a>
+                    </span>
+                `;
+            }
+
+        });
+
+        ImageUploadComponentController.$inject = ['$rootScope', 'modalService', '$http'];
+
+    /* @ngInject */
+    function ImageUploadComponentController($rootScope, modalService, $http) {
+        var vm = this;
+
+        vm.$onInit = function () {
+            vm.id = false;
+            vm.recentEl = false;
+            if(vm.uploads)
+                vm.uploadsLen = vm.uploads.length;
+        };
+
+
+        function startBlobDownload(dataBlob, suggestedFileName) {
+            if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                // for IE
+                console.log("hier");
+                window.navigator.msSaveOrOpenBlob(dataBlob, suggestedFileName);
+            } else {
+                // for Non-IE (chrome, firefox etc.)
+                console.log("hier2");
+                var urlObject = URL.createObjectURL(dataBlob);
+
+                var downloadLink = angular.element('<a>Download</a>');
+                downloadLink.css('display', 'none');
+                downloadLink.attr('href', urlObject);
+                downloadLink.attr('download', suggestedFileName);
+                angular.element(document.body).append(downloadLink);
+                downloadLink[0].click();
+
+                // cleanup
+                downloadLink.remove();
+                URL.revokeObjectURL(urlObject);
+            }
+        }
+
+        vm.download = function(fileResourceUrl, fileName) {
+             var url = $rootScope.ip + fileResourceUrl + fileName;
+             console.log(url);
+             console.log($rootScope.ip + 'uploads/' + fileName);
+
+             $http({
+                 method: 'GET',
+                 url: url,
+                 responseType: 'blob'
+             }).then(function (response) {
+                 var blob = response.data;
+                 startBlobDownload(blob, fileName);
+             }, () => $rootScope.sharedService.alert("File not found.", 'danger'));
+         };
+
+        vm.editEntry = function (id = -1) {
+            // console.log(id);
+            if(id == -1 && vm.id == false)
+                return console.error("Fehler bei editEntry");
+
+            if(id == -1)
+                id = vm.id;
+
+            if(vm.recentEl)
+                vm.recentEl.editMode = false;
+
+            var idx = vm.uploads.findIndex(o => o.id == id);
+
+            vm.recentEl = vm.uploads[idx];
+            vm.uploads[idx].editMode = true;
+            vm.id = id;
+        };
+
+        vm.saveEntry = function (id = -1) {
+            if(vm.id == false)
+                return console.error("Fehler bei saveEntry");
+
+            var idx = vm.uploads.findIndex(o => o.id == vm.id);
+            vm.uploads[idx].editMode = false;
+        };
+
+        vm.deleteEntry = function (id = -1) {
+
+            if(id == -1)
+                return console.error("Fehler bei deleteEntry");
+
+            var idx = vm.uploads.findIndex(o => o.id == id);
+            $rootScope.sharedService.showConfirmDialog("delete").then(function () {
+                if (vm.ondelete)
+                    vm.ondelete(vm.uploads[idx].id);
+            });
+        };
+
+        vm.newDocument = function () {
+            if(vm.makeDisabled)
+                return;
+            // console.log("HI");
+            //$scope.$close();
+            // console.log(vm.uploadtype);
+            // console.log(vm);
+
+            console.log('====================================');
+            console.log('liste', vm.uploads);
+            console.log('====================================');
+
+            var obj = {
+              uploads: vm.uploads,
+              callback: vm.onsave
+            };
+            if(vm.uploadtype)
+              obj['uploadtype'] = vm.uploadtype;
+
+            obj.single = true;
+
+            // console.log(obj);
+            modalService.openMenuModal('views/form_upload.html', 'FormUploadController2', 'animated zoomIn', obj).then((res) => {
+                console.log('====================================');
+                console.log('yükleme sonrası ', res);
+                console.log('====================================');
+                if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
+                    vm.disablesub = false;
+            });
+        };
+
+    }
+})();
+
 MetronicApp.directive('onMouseClick', function($timeout) {
     return {
         replace: true,
