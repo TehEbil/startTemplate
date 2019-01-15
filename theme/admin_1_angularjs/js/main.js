@@ -525,7 +525,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             '../assets/global/plugins/jquery.sparkline.min.js',
 
                             'js/controllers/DashboardController.js',
-                            'js/controllers/PartnerFormController.js',
 
                             'components/statistics/statistics.component.js',
                             'components/newRequests/newRequests.component.js',
@@ -564,11 +563,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             controllerAs: 'vm'
         })
         .state('protocols', {
-            url: "/protocols",
-            templateUrl: "views/protocols.html",
-            data: { pageTitle: 'Protocols'},
-            controller: 'ProtocolsController',
-            controllerAs: 'vm'
+            url: "/protocol_pdf",
+            templateUrl: "views/protocol_pdf.html",
+            data: { pageTitle: 'ProtocolPdf'}
         });
 }]);
 
