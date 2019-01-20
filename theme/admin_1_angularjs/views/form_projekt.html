@@ -206,13 +206,23 @@
 						<div class="group">
 							<label for="input-street" class="control-label bxp-label float-left">Auftragsart</label>
 							<div id="country-select" class="bxp-input country-select float-left">
-								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.order.otherInformations.orderType" theme="bootstrap"
+								<!--ui-select ng-disabled="vm.make" ng-model="FormCtrl.order.otherInformations.orderType" theme="bootstrap"
 								 remove-selected="false">
 									<ui-select-match>{{$select.selected.name}}</ui-select-match>
 									<ui-select-choices repeat="item in FormCtrl.orderTypes | filter: $select.search">
 										<span ng-bind-html="item.name  | highlight: $select.search"></span>
 									</ui-select-choices>
-								</ui-select>
+								</ui-select-->
+
+                                <ui-select class="bxp-input float-left" ng-model="FormCtrl.order.otherInformations.orderType" theme="bootstrap" title="Choose Art" on-select="" on-remove="" remove-selected="false">
+                                  <ui-select-match allow-clear placeholder=''>{{$select.selected.name}}</ui-select-match>
+                                  <ui-select-choices repeat="leistung.id as leistung in FormCtrl.orderTypes | filter: $select.search">
+                                    <div ng-bind-html="leistung.name | highlight: $select.search"></div>
+                                  </ui-select-choices>
+                                </ui-select>
+
+                                {{FormCtrl.order.otherInformations.orderType}}
+
 							</div>
 						</div>
 					</div>

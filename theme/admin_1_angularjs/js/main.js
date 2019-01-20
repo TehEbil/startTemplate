@@ -562,10 +562,27 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             controller: 'PartnerFormController',
             controllerAs: 'vm'
         })
-        .state('protocols', {
+        .state('pdfprotocol', {
             url: "/protocol_pdf",
             templateUrl: "views/protocol_pdf.html",
             data: { pageTitle: 'ProtocolPdf'}
+        })
+        .state('projects', {
+            url: "/projects",
+            templateUrl: "views/listProjects.html",
+            data: { pageTitle: 'Protokolle'},
+            controller: "ProjectsController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/ProjectsController.js',
+                        ]
+                    });
+                }]
+            }
         });
 }]);
 
