@@ -278,7 +278,7 @@
         "tempreture": "26",
         "weather": "Summer",
         "particularties": "1. particularity, 2. particularity",
-        "reportDate": "2018-12-20T06:06:53+00:00",
+        "reportDate": "2019-01-23T21:00:00.000Z",
         "projectType": {
           "id": "02",
           "name": "Änderung ( Umbau / Nutzungsänderung )"
@@ -352,7 +352,7 @@
         "tempreture": 23,
         "weather": "",
         "particularties": "",
-        "reportDate": "",
+        "reportDate": "2019-01-26T21:00:00.000Z",
         "projectType": {
           "id": "02",
           "name": "Änderung ( Umbau / Nutzungsänderung )"
@@ -386,7 +386,7 @@
         "tempreture": 18,
         "weather": "",
         "particularties": "",
-        "reportDate": "",
+        "reportDate": "2019-01-29T21:00:00.000Z",
         "projectType": {
           "id": 1,
           "name": "Errichtung ( Neubau / Erweiterung )"

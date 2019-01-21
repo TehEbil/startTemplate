@@ -209,6 +209,8 @@
                 (res) => {
                     if (typeof res !== 'undefined' && res.type === 'success') {
                         vm.baseData.detectionDatas = res.data;
+                    } else if (typeof res != 'undefined' && res.data && res.type === 'decline') {
+                        vm.baseData.detectionDatas.splice(-1, 1);
                     }
                 }
             );

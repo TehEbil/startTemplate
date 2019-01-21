@@ -59,6 +59,7 @@
             console.log(vm.detections);
             console.log('====================================');
             vm.protocol.date = new Date(vm.protocol.date);
+            vm.protocol.reportDate = new Date(vm.protocol.reportDate);
         }
 
         $scope.selectedTab = $scope.tabs[0];

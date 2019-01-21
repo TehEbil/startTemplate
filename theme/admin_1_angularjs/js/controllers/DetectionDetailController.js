@@ -30,6 +30,7 @@
         vm.selectedIdx = 0;
         vm.date = null;
         vm.datetime = null;
+        vm.newItem = false;
 
         init();
 
@@ -37,6 +38,7 @@
             vm.selectedIdx = getId.detail.selectedIdx;
             vm.detections = getId.data;
             if (vm.selectedIdx === -1) {
+                vm.newItem = true;
                 vm.selectedDetection = angular.copy(vm.detections[vm.detections.length - 1]);
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
                 vm.selectedIdx = vm.detections.length - 1;
@@ -103,13 +105,18 @@
         }
 
         function stringToDate(date, datetime) {
-            vm.selectedDetection.detail.date = new Date(date);
-            vm.selectedDetection.detail.datetime = new Date(datetime);
+
+            (date !== '') ? vm.selectedDetection.detail.date = new Date(date) : vm.selectedDetection.detail.date = new Date();
+            (datetime !== '') ? vm.selectedDetection.detail.datetime = new Date(datetime) : vm.selectedDetection.detail.datetime = new Date();
+            
         }
 
         function closeModal() {
             $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
-                $scope.$close();
+                $scope.$close({
+                    data: vm.newItem,
+                    type: 'decline'
+                });
             });
         }
 
