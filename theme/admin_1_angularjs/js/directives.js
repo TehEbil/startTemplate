@@ -176,7 +176,7 @@ function maxId(arr) {
                       <button ng-if="vm.enableNew" ng-disabled="!vm.data && vm.data.length != 0" class="bxp-rounded-button add" ng-click="vm.new()" type="button"><i class="fa fa-plus"></i></button>
                       <button class="bxp-rounded-button animate-hidden nothing-to-see edit" ng-disabled="!vm.id" ng-class="{ 'nothing-to-see': !vm.id }" ng-click="vm.edit()" type="button"><i class="fa fa-pencil"></i></button>
                       <!--button class="bxp-rounded-button animate-hidden nothing-to-see details" ng-disabled="!vm.id" ng-class="{ 'nothing-to-see': !vm.id }" ng-click="vm.openWeitereDetails()" type="button"><i class="fa fa-angle-double-left"></i></button-->
-                      <button ng-if="vm.isEmployee" class="bxp-rounded-button animate-hidden nothing-to-see delete fixed" ng-disabled="!vm.id" ng-class="{ 'nothing-to-see': !vm.id }" ng-click="vm.delete()" type="button"><i class="fa fa-trash"></i></button>
+                      <button class="bxp-rounded-button animate-hidden nothing-to-see delete fixed" ng-disabled="!vm.id" ng-class="{ 'nothing-to-see': !vm.id }" ng-click="vm.delete()" type="button"><i class="fa fa-trash"></i></button>
                     </span>
                   </div>
                 </div>
