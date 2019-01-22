@@ -27,7 +27,9 @@
         vm.selectAllShortInfo = false;
         vm.selectAllAddJustName = false;
         vm.selectAllAddAsAttachment = false;
+        vm.newItem = false;
 
+        vm.protocols = [];
         vm.protocol = {};
         vm.selectedIdx = -1;
 
@@ -47,11 +49,44 @@
 
         init();
 
+        
+
         function init() {
+
+
+
             vm.untouched = getId.data;
             vm.baseDetections = getId.detail.detections;
-            vm.protocol = angular.copy(vm.untouched);
             vm.selectedIdx = getId.detail.selectedIdx;
+
+            if (vm.selectedIdx === -1) { // new item
+                vm.protocols = angular.copy(vm.untouched);    
+                vm.protocol = {
+                    id: vm.protocols[vm.protocols.length - 1].id + 1,
+                    isLocalInspection: true,
+                    localInspectionDate: new Date().toISOString(),
+                    protocolType: "",
+                    participants: "",
+                    tempreture: "",
+                    weather: "",
+                    particularties: "",
+                    reportDate: new Date().toISOString(),
+                    projectType: {},
+                    constructionState: {},
+                    acceptance: {},
+                    acceptanceComment: "",
+                    note: "",
+                    selectedDetection: "",
+                    titlePicUrl: "https://picsum.photos/100/100/?random",
+                    date: new Date().toISOString(),
+                    members: "",
+                    selectedDetections: [],
+                    documents: [],
+                };
+            } else {
+                vm.protocol = angular.copy(vm.untouched);
+            }
+
             vm.detections = angular.copy(vm.baseDetections); 
             
             console.log('====================================');
@@ -148,24 +183,35 @@
         }
 
         function closeModal() {
-            $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+            if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.protocol))) {
                 $scope.$close();
-            });
+            } else {
+                $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                    $scope.$close({
+                        data: vm.newItem,
+                        type: 'decline'
+                    });
+                });
+            }
         }
 
         function submitForm() {
-
-            console.log('====================================');
-            console.log('Base Detections', vm.baseDetections);
-            console.log('Detections', vm.detections);
-            console.log('====================================');
-            vm.baseDetections = vm.detections;
-            let obj = {
-                data: vm.protocol,
-                type: 'success',
-                detections: vm.baseDetections
-            };
-            $scope.$close(obj);
+            if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.protocol))) {
+                $scope.$close();
+            } else { 
+                console.log('====================================');
+                console.log('Base Detections', vm.baseDetections);
+                console.log('Detections', vm.detections);
+                console.log('====================================');
+                vm.baseDetections = vm.detections;
+                
+                let obj = {
+                    data: vm.protocol,
+                    type: 'success',
+                    detections: vm.baseDetections
+                };
+                $scope.$close(obj);    
+            }
         }
 }
 })();

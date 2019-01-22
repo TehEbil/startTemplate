@@ -112,21 +112,30 @@
         }
 
         function closeModal() {
-            $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
-                $scope.$close({
-                    data: vm.newItem,
-                    type: 'decline'
+            if (angular.equals(angular.toJson(vm.selectedDetection), angular.toJson(vm.detections[vm.selectedIdx]))) {
+                $scope.$close();
+            } else {
+                $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                    $scope.$close({
+                        data: vm.newItem,
+                        type: 'decline'
+                    });
                 });
-            });
+            }
+            
         }
 
         function submitForm() {
-            vm.detections[vm.selectedIdx] = vm.selectedDetection;
-            let obj = {
-                data: vm.detections,
-                type: 'success'
-            };
-            $scope.$close(obj);
+            if (angular.equals(angular.toJson(vm.selectedDetection), angular.toJson(vm.detections[vm.selectedIdx]))) {
+                $scope.$close();
+            } else {
+                vm.detections[vm.selectedIdx] = vm.selectedDetection;
+                let obj = {
+                    data: vm.detections,
+                    type: 'success'
+                };
+                $scope.$close(obj);
+            }
         }
 }
 })();

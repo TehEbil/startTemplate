@@ -255,632 +255,635 @@ function maxId(arr) {
 
     /* @ngInject */
     function tableViewController($rootScope, $scope, $timeout, localStorageService, uiGridConstants) {
-      var vm = this;
-      vm.doubleClick = doubleClick;
-      vm.resetState = resetState;
-      vm.isEmployee = true; //$rootScope.authService.isAuthorized('employee');
+        var vm = this;
+        vm.doubleClick = doubleClick;
+        vm.resetState = resetState;
+        vm.isEmployee = true; //$rootScope.authService.isAuthorized('employee');
+        vm.selectedElement = {};
 
-      var markup = "";
-      if(vm.isEmployee)
-        markup = `<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
-             ui-grid-one-bind-id-grid="rowRenderIndex + '-' + row.entity.id + '-' + col.uid + '-cell'"
-             class="ui-grid-cell"
-             ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader, 'bxp-psd-bank': row.entity.kunde.quellex.value==='PSD Bank', 'background-red': row.entity.col == 'red', 'background-yellow': row.entity.col == 'yellow', 'background-green': row.entity.col == 'green', 'background-blue-sel': row.entity.col == 'blue'}"
-             role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
-             ng-right-click="grid.appScope.click()" ng-dblclick="grid.appScope.doubleClick(row)" ng-click="grid.appScope.selectRow($event)"
-             ui-grid-cell>
-        </div>`;
-      else
-        markup = `<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
-             ui-grid-one-bind-id-grid="rowRenderIndex + '-' + row.entity.id + '-' + col.uid + '-cell'"
-             class="ui-grid-cell"
-             ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader,'bxp-psd-bank': row.entity.kunde.quellex.value==='PSD Bank'}"
-             role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
-             ng-right-click="grid.appScope.click()" ng-dblclick="grid.appScope.doubleClick(row)" ng-click="grid.appScope.selectRow($event)"
-             ui-grid-cell>
-        </div>`;
+        var markup = "";
+        if(vm.isEmployee)
+            markup = `<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
+                ui-grid-one-bind-id-grid="rowRenderIndex + '-' + row.entity.id + '-' + col.uid + '-cell'"
+                class="ui-grid-cell"
+                ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader, 'bxp-psd-bank': row.entity.kunde.quellex.value==='PSD Bank', 'background-red': row.entity.col == 'red', 'background-yellow': row.entity.col == 'yellow', 'background-green': row.entity.col == 'green', 'background-blue-sel': row.entity.col == 'blue'}"
+                role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
+                ng-right-click="grid.appScope.click()" ng-dblclick="grid.appScope.doubleClick(row)" ng-click="grid.appScope.selectRow($event)"
+                ui-grid-cell>
+            </div>`;
+        else
+            markup = `<div ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.uid"
+                ui-grid-one-bind-id-grid="rowRenderIndex + '-' + row.entity.id + '-' + col.uid + '-cell'"
+                class="ui-grid-cell"
+                ng-class="{ 'ui-grid-row-header-cell': col.isRowHeader,'bxp-psd-bank': row.entity.kunde.quellex.value==='PSD Bank'}"
+                role="{{col.isRowHeader ? 'rowheader' : 'gridcell'}}"
+                ng-right-click="grid.appScope.click()" ng-dblclick="grid.appScope.doubleClick(row)" ng-click="grid.appScope.selectRow($event)"
+                ui-grid-cell>
+            </div>`;
 
-      vm.gridOptions = {
-          enableRowSelection: true,
-          enableRowHeaderSelection: false,
-          enableFiltering: true,
-          enableGridMenu: true,
-          enableColumnMenus: false,
-          scrollDebounce: 70,
-          multiSelect: false,
-          modifierKeysToMultiSelect: false,
-          enableHorizontalScrollbar: 2,
-          enableVerticalScrollbar: 2,
-          showGridFooter: true,
-          enableSelectAll: false,
-          exporterMenuAllData: false,
-          exporterMenuCsv: false,
-          exporterMenuExcel: false,
-          exporterMenuPdf: false,
+        vm.gridOptions = {
+                enableRowSelection: true,
+                enableRowHeaderSelection: false,
+                enableFiltering: true,
+                enableGridMenu: true,
+                enableColumnMenus: false,
+                scrollDebounce: 70,
+                multiSelect: false,
+                modifierKeysToMultiSelect: false,
+                enableHorizontalScrollbar: 2,
+                enableVerticalScrollbar: 2,
+                showGridFooter: true,
+                enableSelectAll: false,
+                exporterMenuAllData: false,
+                exporterMenuCsv: false,
+                exporterMenuExcel: false,
+                exporterMenuPdf: false,
 
-          rowTemplate: markup,
-          onRegisterApi: function(gridApi) {
-             vm.gridApi = gridApi;
+                rowTemplate: markup,
+                onRegisterApi: function(gridApi) {
+                    vm.gridApi = gridApi;
 
-               vm.gridApi.colMovable.on.columnPositionChanged($scope, () => {
-                   saveState();
-               })
-               vm.gridApi.colResizable.on.columnSizeChanged($scope, () => {
-                   saveState();
-               })
-               //vm.gridApi.grouping.on.aggregationChanged($scope, saveState);
-               //vm.gridApi.grouping.on.groupingChanged($scope, saveState);
-               vm.gridApi.core.on.columnVisibilityChanged($scope, () => {
-                   // console.log("columnVisibilityChanged")
-                   saveState();
-               })
-               vm.gridApi.core.on.filterChanged($scope, () => {
-                   // console.log("filterChanged")
-                   // saveState();
-               })
-               // vm.gridApi.core.on.filterChanged($scope, checkIfFiltered);
-               vm.gridApi.core.on.sortChanged($scope, () => {
-                   saveState();
-               })
+                    vm.gridApi.colMovable.on.columnPositionChanged($scope, () => {
+                        saveState();
+                    })
+                    vm.gridApi.colResizable.on.columnSizeChanged($scope, () => {
+                        saveState();
+                    })
+                    //vm.gridApi.grouping.on.aggregationChanged($scope, saveState);
+                    //vm.gridApi.grouping.on.groupingChanged($scope, saveState);
+                    vm.gridApi.core.on.columnVisibilityChanged($scope, () => {
+                        // console.log("columnVisibilityChanged")
+                        saveState();
+                    })
+                    vm.gridApi.core.on.filterChanged($scope, () => {
+                        // console.log("filterChanged")
+                        // saveState();
+                    })
+                    // vm.gridApi.core.on.filterChanged($scope, checkIfFiltered);
+                    vm.gridApi.core.on.sortChanged($scope, () => {
+                        saveState();
+                    })
 
-               // Restore previously saved state.
-               restoreState();
+                    // Restore previously saved state.
+                    restoreState();
 
 
 
-              //vm.gridApi.core.on.rowsVisibleChanged( $scope, vm.onFiltered );
-              //console.log(vm.gridApi.core.on);
-              // vm.gridApi.core.on.filterChanged($scope, function() {
-              //      console.log('filter changed');
-              //      $timeout(() => console.log("FILTERED"), 800);
-              //  });
-              vm.gridApi.core.on.sortChanged( $scope, function( grid, sort ) {
-                 //vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
-              })
-              vm.gridApi.core.on.filterChanged( $scope, function( grid, sort ) {
-               //    console.log(grid, sort)
-                 //vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
-              })
-              vm.gridApi.selection.on.rowSelectionChanged($scope, function(row) {
-               // var msg = row.entity;
-               // console.log("Row Selected!",  msg);
-             });
-          }
-      };
-
-      function resetState() {
-        localStorageService.set('gridState' + vm.pagetitle, {});
-        location.reload();
-      }
-
-      function saveState() {
-        var state = vm.gridApi.saveState.save();
-
-        for(let col of state.columns) {
-          col.filters  = [{}];
-        }
-        localStorageService.set('gridState' + vm.pagetitle, state);
-      }
-
-      function restoreState() {
-        $timeout(function () {
-          var state = localStorageService.get('gridState' + vm.pagetitle);
-          if (state) 
-            vm.gridApi.saveState.restore($scope, state);
-
-          vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN); //Performance Improvement?
-        });
-      }
-
-      vm.getState = function(state, color) {
-        if(!vm.getstate)
-            return;
-        return vm.getstate(state,color);
-      }
-
-      $scope.$on('receivedData', function (event, data) {
-        if(vm.pagetitle !== "dispo")
-            return;
-        $timeout( () => {
-          vm.gridOptions.data = data;
-          
-        });
-        //vm.gridOptions.data = data; // 'Data to send'
-
-        // console.error(vm.gridOptions.data)
-        // console.error(vm.gridOptions.data)
-        // console.error(vm.gridOptions.data)
-      });
-
-      // function * foo(x) {
-      //     while (true) {
-      //         x = x * 2;
-      //         yield x;
-      //     }
-      // }
-      //
-      // var test = foo(5);
-      // test.next();
-      //
-      //
-      // function testFunc2() {
-      //     return new Promise(resolve => {
-      //         if(vm.data !=)
-      //       setTimeout(() => {
-      //         resolve(x);
-      //       }, 2000);
-      //     });
-      // }
-      // async function testFunc() {
-      //     var data = await testFunc2;
-      //     console.log(data);
-      // }
-
-      vm.leistungen = globalData.leistungen;
-      // vm.leistungen = [{ "id": "1", "leistung": "Kaufberatung", "group": "Beratung" }, { "id": "2", "leistung": "Verkaufsberatung", "group": "Beratung" }, { "id": "3", "leistung": "Baubegleitung / Bauabnahme", "group": "Beratung" }, { "id": "4", "leistung": "Wohnraumvermessung", "group": "Beratung" }, { "id": "5", "leistung": "Feuchtemessung", "group": "Beratung" }, { "id": "6", "leistung": "Schimmelpilzanalysen", "group": "Beratung" }, { "id": "7", "leistung": "Energieausweis", "group": "Beratung" }, { "id": "8", "leistung": "Kurzgutachten", "group": "Immobilienbewertung" }, { "id": "9", "leistung": "Verkehrswertgutachten", "group": "Immobilienbewertung" }, { "id": "10", "leistung": "Mietwertgutachten", "group": "Immobilienbewertung" }, { "id": "11", "leistung": "Beleihungswertgutachten", "group": "Immobilienbewertung" }, { "id": "12", "leistung": "Portfolioanalyse", "group": "Immobilienbewertung" }, { "id": "13", "leistung": "Gutachten für Entschädigung", "group": "Immobilienbewertung" }, { "id": "14", "leistung": "Bauschäden", "group": "Begutachtung" }, { "id": "15", "leistung": "Baumängel", "group": "Begutachtung" }, { "id": "16", "leistung": "Schimmelpilzschäden", "group": "Begutachtung" }, { "id": "17", "leistung": "Versicherungsschäden", "group": "Begutachtung" }, { "id": "18", "leistung": "Beweissicherung", "group": "Begutachtung" }, { "id": "19", "leistung": "Prüfung von Schadensgutachten", "group": "Begutachtung" }, { "id": "20", "leistung": "Planungsleistungen", "group": "Planung" }, { "id": "21", "leistung": "Prüfung von Planungsleistungen", "group": "Planung" }, { "id": "22", "leistung": "Bauleitung", "group": "Planung" }, { "id": "23", "leistung": "Baubegleitende Qualitätsüberwachung", "group": "Planung" }, { "id": "24", "leistung": "SiGeKo", "group": "Planung" }, { "id": "25", "leistung": "Übergabeprotokoll", "group": "Beratung" }, { "id": "26", "leistung": "Kanaldichtheitsprüfung", "group": "Begutachtung" }];
-      vm.getAuftragsart = function(kob) {
-        var string = "";
-        for(var key_s in kob) {
-          var tmpLeistung = vm.leistungen.find(o => o.id == kob[key_s]);
-          if(tmpLeistung && 'leistung' in tmpLeistung)
-            string += tmpLeistung.leistung + ", ";
-          else
-            string += kob[key_s] + ", ";
-        }
-        // console.log(string[string.length-1])
-        string =  string.substring(0,  string.length - 2);
-        return string;
-      }
-
-      vm.click = function() {
-        // console.log(vm.id)
-        // if(vm.id !== false)
-        // {
-        //   console.log(vm.id);
-        //   return;
-        // }
-
-          var elements2 = document.getElementsByClassName('ui-grid-row-selected');
-
-          var elements = document.querySelectorAll(':hover');
-          // console.log("16:" , elements[16], "17:" , elements[17], "18:" , elements[18], "19:" , elements[19])
-          // console.log(elements);
-          // if(elements[17].className.indexOf('ui-grid-row-selected') == -1)
-          //     elements[17].click();
-
-          // if(elements[18].className.indexOf('ui-grid-row-selected') == -1)
-          //     elements[18].click();
-
-          // console.log(elements2[0]);
-          // console.log(elements[17]);
-          // console.log(elements[18]);
-          // console.log(elements[21]);
-          // console.log(elements[19].className);
-          // console.log("right one:", elements[19]);
-          // console.log(elements[19].parentElement.parentElement.parentElement);
-
-          var idx = -1;
-
-          for(idx in elements)
-              if(elements[idx] && elements[idx].className.indexOf('ui-grid-cell-contents') >= 0)
-                  break;
-
-          if(elements[idx] && elements[idx].className && elements[idx].className.indexOf('ui-grid-row-selected') == -1)
-          {
-              if(elements2[0] == elements[idx].parentElement.parentElement.parentElement)
-                return;
-              // vm.curSel = elements[idx];
-              elements[idx].click();
-          }
-          else {
-            if(elements2[0] == elements[idx-1].children[0].parentElement.parentElement.parentElement)
-                return;
-              // vm.curSel = elements[idx-1].children[0];
-              elements[idx-1].children[0].click()
-            }
-
-          //$scope.selectRow();
-
-          //elements[14].click();
-
-      }
-
-      vm.onMouseClick = function() {
-        if(vm.gridApi)
-          vm.gridApi.selection.clearSelectedRows();
-        // console.log("ID cleared");
-        vm.id = false;
-      }
-
-    var i = 0;
-      function doStuff() {
-
-        if(vm.data===undefined) {//we want it to match
-            if(++i == 100) {
-                // $timeout( () => {
-                //     // console.log("Nach 5 Sek.", vm.data);
-                //     vm.gridOptions.data = vm.data;
-                // });
-                return; // console.error("nach 5 Sekunden keine Daten bekommen.");
-            }
-
-              // console.log(i);
-            setTimeout(doStuff, 100);//wait 100 millisecnds then recheck
-            // console.log(++i)
-
-            return;
-        }
-        // console.log("data2", vm.data)
-        $timeout( () => {
-          vm.gridOptions.data = vm.data;
-          
-        });
-        //return vm.data;
-        //real action
-    }
-
-      vm.$onInit = () => {
-          vm.gridOptions.columnDefs = vm.columndefs;
-          this.gridOptions.appScopeProvider = vm;
-          $scope.formatters = {};
-
-          if(vm.enableexport) {
-            var obj = {
-              // exporterMenuPdf: false,
-              exporterCsvFilename: 'SV-Daten.csv',
-              exporterMenuLabel: "Exportieren",
-              exporterMenuAllData: false,
-
-              exporterMenuCsv: true,
-              exporterMenuExcel: true,
-              exporterMenuPdf: true,
-
-              exporterFieldCallback: function ( grid, row, col, value ) {
-                //loops through every row
-                // console.log(grid, row, col, value)
-                console.log(col.name)
-                switch(col.name) {
-                    case "auftragsart":
-                        value = getAuftragsart(value);
-                        break;
-                    default:
-                        break;
+                    //vm.gridApi.core.on.rowsVisibleChanged( $scope, vm.onFiltered );
+                    //console.log(vm.gridApi.core.on);
+                    // vm.gridApi.core.on.filterChanged($scope, function() {
+                    //      console.log('filter changed');
+                    //      $timeout(() => console.log("FILTERED"), 800);
+                    //  });
+                    vm.gridApi.core.on.sortChanged( $scope, function( grid, sort ) {
+                        //vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
+                    })
+                    vm.gridApi.core.on.filterChanged( $scope, function( grid, sort ) {
+                    //    console.log(grid, sort)
+                        //vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
+                    })
+                    vm.gridApi.selection.on.rowSelectionChanged($scope, function(row) {
+                    // var msg = row.entity;
+                    // console.log("Row Selected!",  msg);
+                    });
                 }
-                // if ( col.name === 'status' ) {
-                // }
-                return value;
-              },
-
-              exporterPdfDefaultStyle: { fontSize: 7 },
-              exporterPdfTableStyle: { margin: [5, 5, 5, 20] },
-              exporterPdfTableHeaderStyle: { fontSize: 9, bold: true, italics: true, color: 'black' },
-              exporterPdfFooter: function (currentPage, pageCount) {
-                  return { text: "Seite " + currentPage.toString() + ' von ' + pageCount.toString(), style: 'footerStyle' };
-              },
-              // exporterPdfCustomFormatter: function (docDefinition) {
-              //     docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
-              //     docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
-              //     return docDefinition;
-              // },
-              exporterPdfOrientation: 'portrait',
-              exporterPdfPageSize: 'LETTER',
-              exporterPdfMaxGridWidth: 400,
-              exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
-              exporterExcelFilename: 'myFile.xlsx',
-                  exporterExcelSheetName: 'Sheet1',
-                  exporterExcelCustomFormatters: function ( grid, workbook, docDefinition ) {
-               
-                    var stylesheet = workbook.getStyleSheet();
-                    var stdStyle = stylesheet.createFontStyle({
-                      size: 9, fontName: 'Calibri'
-                    });
-                    var boldStyle = stylesheet.createFontStyle({
-                      size: 9, fontName: 'Calibri', bold: true
-                    });
-                    var aFormatDefn = {
-                      "font": boldStyle.id,
-                      "alignment": { "wrapText": true }
-                    };
-                    var formatter = stylesheet.createFormat(aFormatDefn);
-                    // save the formatter
-                    $scope.formatters['bold'] = formatter;
-                    var dateFormatter = stylesheet.createSimpleFormatter('date');
-                    $scope.formatters['date'] = dateFormatter;
-               
-                    aFormatDefn = {
-                      "font": stdStyle.id,
-                      "fill": { "type": "pattern", "patternType": "solid", "fgColor": "FFFFC7CE" },
-                      "alignment": { "wrapText": true }
-                    };
-                    var singleDefn = {
-                      font: stdStyle.id,
-                      format: '#,##0.0'
-                    };
-                    formatter = stylesheet.createFormat(aFormatDefn);
-                    // save the formatter
-                    $scope.formatters['red'] = formatter;
-               
-                    Object.assign(docDefinition.styles , $scope.formatters);
-               
-                    return docDefinition;
-                  },
-                  exporterExcelHeader: function (grid, workbook, sheet, docDefinition) {
-                      // this can be defined outside this method
-                      var stylesheet = workbook.getStyleSheet();
-                      var aFormatDefn = {
-                        "font": { "size": 11, "fontName": "Calibri", "bold": true },
-                        "alignment": { "wrapText": true }
-                      };
-                      var formatterId = stylesheet.createFormat(aFormatDefn);
-               
-                      // excel cells start with A1 which is upper left corner
-                      sheet.mergeCells('B1', 'C1');
-                      var cols = [];
-                      // push empty data
-                      cols.push({ value: '' });
-                      // push data in B1 cell with metadata formatter
-                      // cols.push({ value: 'My header that is long enough to wrap', metadata: {style: formatterId.id} });
-                      sheet.data.push(cols);
-                  },
-                  exporterFieldFormatCallback: function(grid, row, gridCol, cellValue) {
-                   // set metadata on export data to set format id. See exportExcelHeader config above for example of creating
-                   // a formatter and obtaining the id
-                   var formatterId = null;
-                   // if (gridCol.field === 'name' && cellValue && cellValue.startsWith('W')) {
-                   //   formatterId = $scope.formatters['red'].id;
-                   // }
-               
-                   // if (gridCol.field === 'updatedDate') {
-                   //   formatterId = $scope.formatters['date'].id;
-                   // }
-               
-                   if (formatterId) {
-                     return {metadata: {style: formatterId}};
-                   } else {
-                     return null;
-                   }
-                  },
-                  exporterColumnScaleFactor: 4.5,
-                  exporterFieldApplyFilters: true
-            }
-            vm.gridOptions = Object.assign(vm.gridOptions, obj)
-          }
-
-        if(!vm.menuOptions) {
-          vm.menuOptions = [
-              // NEW IMPLEMENTATION
-              {
-                  text: 'Neu',
-                  click: function ($itemScope, $event, modelValue, text, $li) {
-                      vm.new()
-                  }
-              },
-              {
-                  text: 'Bearbeiten',
-                  click: function ($itemScope, $event, modelValue, text, $li) {
-                      vm.edit()
-                  }
-              },
-              {
-                  text: 'Löschen',
-                  click: function ($itemScope, $event, modelValue, text, $li) {
-                      vm.delete()
-                  }
-              },
-              {
-                text: 'Farben',
-                children: [
-                  {
-                    text: 'Rot',
-                    click: function ($itemScope, $event, modelValue, text, $li) {
-                        setColor('red')
-                    }
-                  },
-                  {
-                    text: 'Gelb',
-                    click: function ($itemScope, $event, modelValue, text, $li) {
-                        setColor('yellow')
-                    }
-                  },
-                  {
-                    text: 'Grün',
-                    click: function ($itemScope, $event, modelValue, text, $li) {
-                        setColor('green')
-                    }
-                  },
-                  {
-                    text: 'Blau',
-                    click: function ($itemScope, $event, modelValue, text, $li) {
-                        setColor('blue')
-                    }
-                  },
-                  null, // Dividier
-                  {
-                      text: 'Zurücksetzen',
-                      click: function ($itemScope, $event, modelValue, text, $li) {
-                        setColor('normal')
-                      }
-                  },
-                ]
-              },
-
-              null, // Dividier
-              {
-                  text: 'Zurück',
-                  click: function ($itemScope, $event, modelValue, text, $li) {
-                      return;
-                  }
-              },
-          ];
-
-          // var deletePos = 2;
-          // if(!vm.enableNew) {
-          //   // console.error("SPLICING", vm.enableNew);
-          //   vm.menuOptions.splice(0, 1);
-          //   deletePos = 1;
-          // }
-          // if(!$rootScope.isEmployee)
-          //   vm.menuOptions.splice(deletePos, 1);
         };
 
-        // console.log("Innited?!");
-        waitForCond(() => vm.data !== undefined, 10000, 25).then((a) => {
-          $timeout( () => {
-            vm.gridOptions.data = vm.data; 
-          });
-        });
-        // doStuff(); // 'Data to send'
-
-        // console.error("DOSTUFF");
-        // console.log(vm.gridOptions.data)
-        // setTimeout( () => vm.tetc = true, 2800)
-        // }, 2000);
-
-
-
-        // if(vm.title == "SV")
-        //   vm.handler = MainDataServiceSV;
-
-      //   vm.handler.init('verified').then((data) => {
-
-      //   vm.svs = data.sv;
-      //   sortData(data.sv);
-      //   // setCssThings(vm.svs);
-      //   // console.log(vm.svs);
-      //   if (vm.svs.length <= 0)
-      //       $rootScope.$broadcast('finishedTable');
-
-
-      //     vm.entfernung = true;
-      //   },
-      //   (data) => {
-      //     alert("Fehler, Server down?!");
-      //     $rootScope.$broadcast('finishedTable');
-      //   });
-      }
-
-      // function setColor(col) {
-      //   MainDataService.setColor(vm.id, col);
-      // }
-
-      function newData() {
-        // console.log("newData")
-        vm.new();
-      }
-
-      function doubleClick(row) {
-        $timeout( () => {
-          row.isSelected = true;
-          vm.id = row.entity.id;
-        }, 111)
-          // console.log(typeof vm.enableselect);
-        if(typeof vm.enableselect === 'boolean')
-            $scope.$parent.FormCtrl.closeModal(vm.id); //.$close();
-        else if(vm.enableselect){
-          console.log("shouldDispo", vm.id)
-          // vm.enableselect(vm.id);
+        function resetState() {
+            localStorageService.set('gridState' + vm.pagetitle, {});
+            location.reload();
         }
-        else {
-          // vm.click();
-          vm.edit();
+
+        function saveState() {
+            var state = vm.gridApi.saveState.save();
+
+            for(let col of state.columns) {
+            col.filters  = [{}];
+            }
+            localStorageService.set('gridState' + vm.pagetitle, state);
         }
-      }
 
-      function sortData(data) {
-        // console.log(data)
-        data = vm.svs;
-        for(var key_s in data) {
-          var tmpData = '';
-          if(data[key_s].dist)
-              data[key_s].dist = data[key_s].dist.value / 1000;
-          if(data[key_s].account)
-              if(data[key_s].account.role)
-                  data[key_s].account = data[key_s].account.role.key;
+        function restoreState() {
+            $timeout(function () {
+            var state = localStorageService.get('gridState' + vm.pagetitle);
+            if (state) 
+                vm.gridApi.saveState.restore($scope, state);
 
-          for(var key2_s in data[key_s].kompetenzen)
-            if(data[key_s].kompetenzen.length -1 == key2_s)
-              tmpData += data[key_s].kompetenzen[key2_s].selectedQual;
+            vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN); //Performance Improvement?
+            });
+        }
+
+        vm.getState = function(state, color) {
+            if(!vm.getstate)
+                return;
+            return vm.getstate(state,color);
+        };
+
+        $scope.$on('receivedData', function (event, data) {
+            if(vm.pagetitle !== "dispo")
+                return;
+            $timeout( () => {
+            vm.gridOptions.data = data;
+            
+            });
+            //vm.gridOptions.data = data; // 'Data to send'
+
+            // console.error(vm.gridOptions.data)
+            // console.error(vm.gridOptions.data)
+            // console.error(vm.gridOptions.data)
+         });
+
+        // function * foo(x) {
+        //     while (true) {
+        //         x = x * 2;
+        //         yield x;
+        //     }
+        // }
+        //
+        // var test = foo(5);
+        // test.next();
+        //
+        //
+        // function testFunc2() {
+        //     return new Promise(resolve => {
+        //         if(vm.data !=)
+        //       setTimeout(() => {
+        //         resolve(x);
+        //       }, 2000);
+        //     });
+        // }
+        // async function testFunc() {
+        //     var data = await testFunc2;
+        //     console.log(data);
+        // }
+
+        vm.leistungen = globalData.leistungen;
+        // vm.leistungen = [{ "id": "1", "leistung": "Kaufberatung", "group": "Beratung" }, { "id": "2", "leistung": "Verkaufsberatung", "group": "Beratung" }, { "id": "3", "leistung": "Baubegleitung / Bauabnahme", "group": "Beratung" }, { "id": "4", "leistung": "Wohnraumvermessung", "group": "Beratung" }, { "id": "5", "leistung": "Feuchtemessung", "group": "Beratung" }, { "id": "6", "leistung": "Schimmelpilzanalysen", "group": "Beratung" }, { "id": "7", "leistung": "Energieausweis", "group": "Beratung" }, { "id": "8", "leistung": "Kurzgutachten", "group": "Immobilienbewertung" }, { "id": "9", "leistung": "Verkehrswertgutachten", "group": "Immobilienbewertung" }, { "id": "10", "leistung": "Mietwertgutachten", "group": "Immobilienbewertung" }, { "id": "11", "leistung": "Beleihungswertgutachten", "group": "Immobilienbewertung" }, { "id": "12", "leistung": "Portfolioanalyse", "group": "Immobilienbewertung" }, { "id": "13", "leistung": "Gutachten für Entschädigung", "group": "Immobilienbewertung" }, { "id": "14", "leistung": "Bauschäden", "group": "Begutachtung" }, { "id": "15", "leistung": "Baumängel", "group": "Begutachtung" }, { "id": "16", "leistung": "Schimmelpilzschäden", "group": "Begutachtung" }, { "id": "17", "leistung": "Versicherungsschäden", "group": "Begutachtung" }, { "id": "18", "leistung": "Beweissicherung", "group": "Begutachtung" }, { "id": "19", "leistung": "Prüfung von Schadensgutachten", "group": "Begutachtung" }, { "id": "20", "leistung": "Planungsleistungen", "group": "Planung" }, { "id": "21", "leistung": "Prüfung von Planungsleistungen", "group": "Planung" }, { "id": "22", "leistung": "Bauleitung", "group": "Planung" }, { "id": "23", "leistung": "Baubegleitende Qualitätsüberwachung", "group": "Planung" }, { "id": "24", "leistung": "SiGeKo", "group": "Planung" }, { "id": "25", "leistung": "Übergabeprotokoll", "group": "Beratung" }, { "id": "26", "leistung": "Kanaldichtheitsprüfung", "group": "Begutachtung" }];
+        vm.getAuftragsart = function(kob) {
+            var string = "";
+            for(var key_s in kob) {
+            var tmpLeistung = vm.leistungen.find(o => o.id == kob[key_s]);
+            if(tmpLeistung && 'leistung' in tmpLeistung)
+                string += tmpLeistung.leistung + ", ";
             else
-              tmpData += data[key_s].kompetenzen[key2_s].selectedQual + ", ";
-          data[key_s].kompetenzenList = tmpData;
+                string += kob[key_s] + ", ";
+            }
+            // console.log(string[string.length-1])
+            string =  string.substring(0,  string.length - 2);
+            return string;
+        };
 
-          tmpData = '';
+        vm.click = function() {
+            // console.log(vm.id)
+            // if(vm.id !== false)
+            // {
+            //   console.log(vm.id);
+            //   return;
+            // }
 
-          for(var key2_s in data[key_s].selectedLeistungen){
-            if(data[key_s].selectedLeistungen.length -1 == key2_s)
-              tmpData += data[key_s].selectedLeistungen[key2_s].leistung;
-            else
-              tmpData += data[key_s].selectedLeistungen[key2_s].leistung + ", ";
-          }
-          data[key_s].leistungenList = tmpData;
+            var elements2 = document.getElementsByClassName('ui-grid-row-selected');
+
+            var elements = document.querySelectorAll(':hover');
+            // console.log("16:" , elements[16], "17:" , elements[17], "18:" , elements[18], "19:" , elements[19])
+            // console.log(elements);
+            // if(elements[17].className.indexOf('ui-grid-row-selected') == -1)
+            //     elements[17].click();
+
+            // if(elements[18].className.indexOf('ui-grid-row-selected') == -1)
+            //     elements[18].click();
+
+            // console.log(elements2[0]);
+            // console.log(elements[17]);
+            // console.log(elements[18]);
+            // console.log(elements[21]);
+            // console.log(elements[19].className);
+            // console.log("right one:", elements[19]);
+            // console.log(elements[19].parentElement.parentElement.parentElement);
+
+            var idx = -1;
+
+            for(idx in elements)
+                if(elements[idx] && elements[idx].className.indexOf('ui-grid-cell-contents') >= 0)
+                    break;
+
+            if(elements[idx] && elements[idx].className && elements[idx].className.indexOf('ui-grid-row-selected') == -1)
+            {
+                if(elements2[0] == elements[idx].parentElement.parentElement.parentElement)
+                    return;
+                // vm.curSel = elements[idx];
+                elements[idx].click();
+            }
+            else {
+                if(elements2[0] == elements[idx-1].children[0].parentElement.parentElement.parentElement)
+                    return;
+                // vm.curSel = elements[idx-1].children[0];
+                elements[idx-1].children[0].click()
+                }
+
+            //$scope.selectRow();
+
+            //elements[14].click();
+
+        };
+
+        vm.onMouseClick = function() {
+            if(vm.gridApi)
+            vm.gridApi.selection.clearSelectedRows();
+            console.log("ID cleared");
+            vm.id = false;
+        };
+
+        var i = 0;
+        function doStuff() {
+
+            if(vm.data===undefined) {//we want it to match
+                if(++i == 100) {
+                    // $timeout( () => {
+                    //     // console.log("Nach 5 Sek.", vm.data);
+                    //     vm.gridOptions.data = vm.data;
+                    // });
+                    return; // console.error("nach 5 Sekunden keine Daten bekommen.");
+                }
+
+                // console.log(i);
+                setTimeout(doStuff, 100);//wait 100 millisecnds then recheck
+                // console.log(++i)
+
+                return;
+            }
+            // console.log("data2", vm.data)
+            $timeout( () => {
+            vm.gridOptions.data = vm.data;
+            
+            });
+            //return vm.data;
+            //real action
         }
 
-        setCssThings(data)
-        vm.gridOptions.data = data;
+        vm.$onInit = () => {
+            vm.gridOptions.columnDefs = vm.columndefs;
+            this.gridOptions.appScopeProvider = vm;
+            $scope.formatters = {};
 
-      }
+            if(vm.enableexport) {
+                var obj = {
+                // exporterMenuPdf: false,
+                exporterCsvFilename: 'SV-Daten.csv',
+                exporterMenuLabel: "Exportieren",
+                exporterMenuAllData: false,
 
-      vm.selectRow = function(event, rightClick) {
-          vm.editIsOpen = false;
-          var tId = -1;
-          if ((angular.element(event.target)[0].className.indexOf("ui-grid-icon-minus-squared") >= 0) || (angular.element(event.target)[0].className.indexOf("ui-grid-icon-plus-squared") >= 0))
-          {
-              vm.id = false;
-              // vm.gridApi.selection.clearSelectedRows();
-              return;
-          }
-          var selected = vm.gridApi.selection.getSelectedRows()[0];
-          var x = selected;
-          // console.log(x)
-          if(x) {
-            if (vm.id !== false && !rightClick && x.id == vm.id) { // Zweiter Klick
+                exporterMenuCsv: true,
+                exporterMenuExcel: true,
+                exporterMenuPdf: true,
+
+                exporterFieldCallback: function ( grid, row, col, value ) {
+                    //loops through every row
+                    // console.log(grid, row, col, value)
+                    console.log(col.name)
+                    switch(col.name) {
+                        case "auftragsart":
+                            value = getAuftragsart(value);
+                            break;
+                        default:
+                            break;
+                    }
+                    // if ( col.name === 'status' ) {
+                    // }
+                    return value;
+                },
+
+                exporterPdfDefaultStyle: { fontSize: 7 },
+                exporterPdfTableStyle: { margin: [5, 5, 5, 20] },
+                exporterPdfTableHeaderStyle: { fontSize: 9, bold: true, italics: true, color: 'black' },
+                exporterPdfFooter: function (currentPage, pageCount) {
+                    return { text: "Seite " + currentPage.toString() + ' von ' + pageCount.toString(), style: 'footerStyle' };
+                },
+                // exporterPdfCustomFormatter: function (docDefinition) {
+                //     docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
+                //     docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
+                //     return docDefinition;
+                // },
+                exporterPdfOrientation: 'portrait',
+                exporterPdfPageSize: 'LETTER',
+                exporterPdfMaxGridWidth: 400,
+                exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
+                exporterExcelFilename: 'myFile.xlsx',
+                    exporterExcelSheetName: 'Sheet1',
+                    exporterExcelCustomFormatters: function ( grid, workbook, docDefinition ) {
+                
+                        var stylesheet = workbook.getStyleSheet();
+                        var stdStyle = stylesheet.createFontStyle({
+                        size: 9, fontName: 'Calibri'
+                        });
+                        var boldStyle = stylesheet.createFontStyle({
+                        size: 9, fontName: 'Calibri', bold: true
+                        });
+                        var aFormatDefn = {
+                        "font": boldStyle.id,
+                        "alignment": { "wrapText": true }
+                        };
+                        var formatter = stylesheet.createFormat(aFormatDefn);
+                        // save the formatter
+                        $scope.formatters['bold'] = formatter;
+                        var dateFormatter = stylesheet.createSimpleFormatter('date');
+                        $scope.formatters['date'] = dateFormatter;
+                
+                        aFormatDefn = {
+                        "font": stdStyle.id,
+                        "fill": { "type": "pattern", "patternType": "solid", "fgColor": "FFFFC7CE" },
+                        "alignment": { "wrapText": true }
+                        };
+                        var singleDefn = {
+                        font: stdStyle.id,
+                        format: '#,##0.0'
+                        };
+                        formatter = stylesheet.createFormat(aFormatDefn);
+                        // save the formatter
+                        $scope.formatters['red'] = formatter;
+                
+                        Object.assign(docDefinition.styles , $scope.formatters);
+                
+                        return docDefinition;
+                    },
+                    exporterExcelHeader: function (grid, workbook, sheet, docDefinition) {
+                        // this can be defined outside this method
+                        var stylesheet = workbook.getStyleSheet();
+                        var aFormatDefn = {
+                            "font": { "size": 11, "fontName": "Calibri", "bold": true },
+                            "alignment": { "wrapText": true }
+                        };
+                        var formatterId = stylesheet.createFormat(aFormatDefn);
+                
+                        // excel cells start with A1 which is upper left corner
+                        sheet.mergeCells('B1', 'C1');
+                        var cols = [];
+                        // push empty data
+                        cols.push({ value: '' });
+                        // push data in B1 cell with metadata formatter
+                        // cols.push({ value: 'My header that is long enough to wrap', metadata: {style: formatterId.id} });
+                        sheet.data.push(cols);
+                    },
+                    exporterFieldFormatCallback: function(grid, row, gridCol, cellValue) {
+                    // set metadata on export data to set format id. See exportExcelHeader config above for example of creating
+                    // a formatter and obtaining the id
+                    var formatterId = null;
+                    // if (gridCol.field === 'name' && cellValue && cellValue.startsWith('W')) {
+                    //   formatterId = $scope.formatters['red'].id;
+                    // }
+                
+                    // if (gridCol.field === 'updatedDate') {
+                    //   formatterId = $scope.formatters['date'].id;
+                    // }
+                
+                    if (formatterId) {
+                        return {metadata: {style: formatterId}};
+                    } else {
+                        return null;
+                    }
+                    },
+                    exporterColumnScaleFactor: 4.5,
+                    exporterFieldApplyFilters: true
+                }
+                vm.gridOptions = Object.assign(vm.gridOptions, obj)
+            }
+
+            if(!vm.menuOptions) {
+            vm.menuOptions = [
+                // NEW IMPLEMENTATION
+                {
+                    text: 'Neu',
+                    click: function ($itemScope, $event, modelValue, text, $li) {
+                        vm.new()
+                    }
+                },
+                {
+                    text: 'Bearbeiten',
+                    click: function ($itemScope, $event, modelValue, text, $li) {
+                        vm.edit()
+                    }
+                },
+                {
+                    text: 'Löschen',
+                    click: function ($itemScope, $event, modelValue, text, $li) {
+                        vm.delete()
+                    }
+                },
+                {
+                    text: 'Farben',
+                    children: [
+                    {
+                        text: 'Rot',
+                        click: function ($itemScope, $event, modelValue, text, $li) {
+                            setColor('red')
+                        }
+                    },
+                    {
+                        text: 'Gelb',
+                        click: function ($itemScope, $event, modelValue, text, $li) {
+                            setColor('yellow')
+                        }
+                    },
+                    {
+                        text: 'Grün',
+                        click: function ($itemScope, $event, modelValue, text, $li) {
+                            setColor('green')
+                        }
+                    },
+                    {
+                        text: 'Blau',
+                        click: function ($itemScope, $event, modelValue, text, $li) {
+                            setColor('blue')
+                        }
+                    },
+                    null, // Dividier
+                    {
+                        text: 'Zurücksetzen',
+                        click: function ($itemScope, $event, modelValue, text, $li) {
+                            setColor('normal')
+                        }
+                    },
+                    ]
+                },
+
+                null, // Dividier
+                {
+                    text: 'Zurück',
+                    click: function ($itemScope, $event, modelValue, text, $li) {
+                        return;
+                    }
+                },
+            ];
+
+            // var deletePos = 2;
+            // if(!vm.enableNew) {
+            //   // console.error("SPLICING", vm.enableNew);
+            //   vm.menuOptions.splice(0, 1);
+            //   deletePos = 1;
+            // }
+            // if(!$rootScope.isEmployee)
+            //   vm.menuOptions.splice(deletePos, 1);
+            };
+
+            // console.log("Innited?!");
+            waitForCond(() => vm.data !== undefined, 10000, 25).then((a) => {
+            $timeout( () => {
+                vm.gridOptions.data = vm.data; 
+            });
+            });
+            // doStuff(); // 'Data to send'
+
+            // console.error("DOSTUFF");
+            // console.log(vm.gridOptions.data)
+            // setTimeout( () => vm.tetc = true, 2800)
+            // }, 2000);
+
+
+
+            // if(vm.title == "SV")
+            //   vm.handler = MainDataServiceSV;
+
+        //   vm.handler.init('verified').then((data) => {
+
+        //   vm.svs = data.sv;
+        //   sortData(data.sv);
+        //   // setCssThings(vm.svs);
+        //   // console.log(vm.svs);
+        //   if (vm.svs.length <= 0)
+        //       $rootScope.$broadcast('finishedTable');
+
+
+        //     vm.entfernung = true;
+        //   },
+        //   (data) => {
+        //     alert("Fehler, Server down?!");
+        //     $rootScope.$broadcast('finishedTable');
+        //   });
+        }
+
+        // function setColor(col) {
+        //   MainDataService.setColor(vm.id, col);
+        // }
+
+        function newData() {
+            // console.log("newData")
+            vm.new();
+        }
+
+        function doubleClick(row) {
+            $timeout( () => {
+            row.isSelected = true;
+            vm.id = row.entity.id;
+            }, 111)
+            // console.log(typeof vm.enableselect);
+            if(typeof vm.enableselect === 'boolean')
+                $scope.$parent.FormCtrl.closeModal(vm.id); //.$close();
+            else if(vm.enableselect){
+            console.log("shouldDispo", vm.id)
+            // vm.enableselect(vm.id);
+            }
+            else {
+            // vm.click();
+            vm.edit();
+            }
+        }
+
+        function sortData(data) {
+            // console.log(data)
+            data = vm.svs;
+            for(var key_s in data) {
+            var tmpData = '';
+            if(data[key_s].dist)
+                data[key_s].dist = data[key_s].dist.value / 1000;
+            if(data[key_s].account)
+                if(data[key_s].account.role)
+                    data[key_s].account = data[key_s].account.role.key;
+
+            for(var key2_s in data[key_s].kompetenzen)
+                if(data[key_s].kompetenzen.length -1 == key2_s)
+                tmpData += data[key_s].kompetenzen[key2_s].selectedQual;
+                else
+                tmpData += data[key_s].kompetenzen[key2_s].selectedQual + ", ";
+            data[key_s].kompetenzenList = tmpData;
+
+            tmpData = '';
+
+            for(var key2_s in data[key_s].selectedLeistungen){
+                if(data[key_s].selectedLeistungen.length -1 == key2_s)
+                tmpData += data[key_s].selectedLeistungen[key2_s].leistung;
+                else
+                tmpData += data[key_s].selectedLeistungen[key2_s].leistung + ", ";
+            }
+            data[key_s].leistungenList = tmpData;
+            }
+
+            setCssThings(data)
+            vm.gridOptions.data = data;
+
+        }
+
+        vm.selectRow = function(event, rightClick) {
+            vm.editIsOpen = false;
+            var tId = -1;
+            if ((angular.element(event.target)[0].className.indexOf("ui-grid-icon-minus-squared") >= 0) || (angular.element(event.target)[0].className.indexOf("ui-grid-icon-plus-squared") >= 0))
+            {
+                vm.id = false;
+                // vm.gridApi.selection.clearSelectedRows();
+                return;
+            }
+
+            var selectedElement = vm.gridApi.selection.getSelectedRows()[0];
+            $rootScope.$broadcast('selectedElement', {
+                selected: selectedElement
+            })
+
+            if(selectedElement) {
+                if (vm.id !== false && !rightClick && selectedElement.id == vm.id) { // Zweiter Klick
+                    $timeout(function () {
+                        if(!vm.editIsOpen)
+                        {
+                            // vm.id = false;
+                            // console.log(vm.id)
+                            // vm.gridApi.selection.clearSelectedRows();
+                        }
+                    }, 100);
+                }
+                else
+                    vm.id = selectedElement.id;
+            }
+            else
+                $timeout(function () {
+                    // if(!vm.editIsOpen)
+                    // {
+                        vm.id = false;
+                        // console.log(vm.id)
+                        vm.gridApi.selection.clearSelectedRows();
+                    // }
+                }, 100);
+
+            //if(vm.id==false)
+            //console.error(vm.id, selected);
+        };
+
+        vm.selectRow2 = function(event, rightClick) {
+            var tId = -1;
+            var selectedElement = vm.gridApi.selection.getSelectedRows()[0];
+            if(selectedElement)
+            if (vm.id !== false && !rightClick && selectedElement.id == vm.id) { // Zweiter Klick
                 $timeout(function () {
                     if(!vm.editIsOpen)
                     {
-                        // vm.id = false;
                         // console.log(vm.id)
-                        // vm.gridApi.selection.clearSelectedRows();
                     }
                 }, 100);
             }
+            else if(selectedElement)
+                vm.id = selectedElement.id;
             else
-                vm.id = x.id;
-          }
-          else
-              $timeout(function () {
-                // if(!vm.editIsOpen)
-                // {
-                    vm.id = false;
-                    // console.log(vm.id)
-                    vm.gridApi.selection.clearSelectedRows();
-                // }
-              }, 100);
+                vm.id = false;
+        };
 
-          //if(vm.id==false)
-          //console.error(vm.id, selected);
-      };
-
-      vm.selectRow2 = function(event, rightClick) {
-        var tId = -1;
-        var selected = vm.gridApi.selection.getSelectedRows()[0];
-        var x = selected;
-        if(x)
-          if (vm.id !== false && !rightClick && x.id == vm.id) { // Zweiter Klick
-              $timeout(function () {
-                  if(!vm.editIsOpen)
-                  {
-                      // console.log(vm.id)
-                  }
-              }, 100);
-          }
-          else if(x)
-              vm.id = x.id;
-          else
-              vm.id = false;
-    };
-
-      function setCssThings(custSV) {
-      }
+        function setCssThings(custSV) {
+        }
 
     }
 })();

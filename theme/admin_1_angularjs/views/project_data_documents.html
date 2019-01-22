@@ -25,6 +25,12 @@
               </div>
               <input name="Dokumentenname" ng-model="FormCtrl.docName" class="form-control bxp-dokumentenname" type="text" placeholder="">
         </div>
+        <div>
+          <h4>Images</h4>
+          <p>This demonstrates use of upload-component. Note: it has testData on Server, upload and delete just changes local data. We actually use vm.uploads inside our forms, so, when we submit our forms, it also sends our vm.uploads. Like that, we have advantage that on closing the form without submitting, all 'deleted files' are reverted in case the customer wants to revert his changes </p>
+          <bxp-image-upload make-disabled="false" hide-content="false" uploadtype="normal" onsave="vm.onsave" uploads="FormCtrl.documents" ondelete="vm.deleteUpload">
+          </bxp-image-upload>
+        </div>
       </div>
     </div>
     </form>

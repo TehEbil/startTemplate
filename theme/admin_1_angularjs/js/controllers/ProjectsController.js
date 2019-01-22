@@ -15,9 +15,11 @@
         vm.data = undefined
         vm.id = false;
         vm.allData = {};
+        vm.untouched = [];
+        vm.selected = {};
 
-        vm.newData = newData;
-        // vm.editData = editData;
+        vm.newProject = newProject;
+        vm.editProject = editProject;
         // vm.deleteData = deleteData;
         // vm.setColor = setColor;
 
@@ -150,40 +152,46 @@
 
         function init() {
             ProjectHandler.getData().then((res) => {
-                vm.data = [res.data]; // getData() should get all Projects instead of only one;
+                vm.data = res.data; // getData() should get all Projects instead of only one;
                 vm.data[0].id = 1 // fakeId, it has no id;
 
                 console.log("data", vm.data);
             });
         }
 
-        function newData() {
+        function newProject() {
 
             /* you will not need project data for new */
-            ProjectHandler.getData().then((res) => {
-                let obj = {
-                    data: res.data
-                };
-
-                modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(
-                    (data) => {
-                        if (typeof data !== 'undefined') {
-                            ProjectHandler.postData(data).then((res) => {
-                                console.log('====================================');
-                                console.log('response: ', res);
-                                console.log('====================================');
-                            });    
-                        }
-                    }
-                );
-            });
+            
         }
+
+        function editProject() {
+            let obj = {
+                data: vm.selected
+            };
+
+            modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(
+                (data) => {
+                    if (typeof data !== 'undefined') {
+                        ProjectHandler.postData(data).then((res) => {
+                            console.log('====================================');
+                            console.log('response: ', res);
+                            console.log('====================================');
+                        });    
+                    }
+                }
+            );
+        }   
         
         $scope.$on("$destroy", function() {
             // console.log("clearing interval")
             // $interval.cancel(interval)
             $rootScope.authService.func = null;
 
+        });
+
+        $rootScope.$on('selectedElement', function (event, data) {
+            vm.selected = data.selected;
         });
         
     }

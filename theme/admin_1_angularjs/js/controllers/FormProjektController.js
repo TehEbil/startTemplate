@@ -72,7 +72,11 @@
 
             vm.tmpSelected = false;
             vm.order = vm.baseData.orderDatas;
-		    vm.protocols = vm.baseData.protocolDatas;
+            vm.protocols = vm.baseData.protocolDatas;
+            console.log('====================================');
+            console.log('Order', vm.order);
+            console.log('BaseDatas', vm.baseData);
+            console.log('====================================');
             vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
 		}
 
@@ -249,32 +253,17 @@
             vm.subData = {
 				data: vm.baseData.protocolDatas,
 				detail: {
-					selectedIdx: -1
+                    selectedIdx: -1,
+                    detections: vm.baseData.detectionDatas
 				}
             };
 
-            vm.subData.data.push(
-                {
-                    id: vm.baseData.protocolDatas[vm.subData.data.length - 1].id + 1,
-                    isLocalInspection: true,
-                    localInspectionDate: new Date().toISOString(),
-                    protocolType: "",
-                    participants: "",
-                    tempreture: "",
-                    weather: "",
-                    particularties: "",
-                    reportDate: new Date().toISOString(),
-                    projectType: {},
-                    constructionState: {},
-                    acceptance: {},
-                    acceptanceComment: "",
-                    note: "",
-                    selectedDetection: "",
-                    titlePicUrl: "https://picsum.photos/100/100/?random",
-                    date: new Date().toISOString(),
-                    members: "",
-                    selectedDetections: [],
-                    documents: [],
+            modalService.openMenuModal('views/protocol_detail.html', 'ProtocolDetailController', 'animated zoomIn', vm.subData).then(
+                (res) => {
+                    if (typeof res !== 'undefined' && res.type === 'success') {
+                        vm.baseData.protocolDatas.push(res.data);
+                        vm.baseData.detectionDatas = res.detections;
+                    }
                 }
             );
 
@@ -339,9 +328,13 @@
         }
 
         function closeModal() {
-            $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+            if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.baseData))) {
                 $scope.$close();
-            });
+            } else {
+                $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                    $scope.$close();
+                });
+            }
         }
 
         function checkAll(state, field) {
@@ -353,7 +346,11 @@
         }
 
         function submitForm() {
-            $scope.$close(vm.baseData);
+            if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.baseData))) {
+                $scope.$close();
+            } else {
+                $scope.$close(vm.baseData);
+            }
         }
 
 

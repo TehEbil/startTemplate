@@ -15,21 +15,41 @@ db._.mixin(mixins);
 
 /* Project */
 
-server.get('/', getProjectCB);
+server.get('/', getAllCB);
 
 server.post('/', saveCB);
 
+server.get('/byId/:id', getProjectByIdCB);
+
+server.get('/byPn/:pn', getProjectByProjectNumberCB);
+
 server.get('/documents', getProjectDocumentsCB);
+
+function getAllCB(req, res) {
+    res.status(200).json(dbHelper.getDataByFieldName(db, 'projects'));
+}
 
 function getProjectDocumentsCB(req, res) {
     res.status(200).json(dbHelper.getDataByFieldName(db, 'project.documents'));
 }
 
-function getProjectCB(req, res) {
-    // console.log('====================================');
-    // console.log(req.params.id);
-    // console.log('====================================');
-    res.status(200).json(dbHelper.getDataByFieldName(db, 'project'));
+function getProjectByIdCB(req, res) {
+    
+    var id = req.params.id;
+    console.log('====================================');
+    console.log(id);
+    console.log('====================================');
+    res.status(200).json(dbHelper.findById(db, 'projects', id));
+}
+
+function getProjectByProjectNumberCB(req, res) {
+    var projectNumber = req.params.pn;
+    if (typeof projectNumber === 'string') {
+        res.status(200).json(dbHelper.findByPn(db, 'projects', projectNumber));    
+    } else {
+        res.status(404);
+    }
+    
 }
 
 function saveCB(req, res) {

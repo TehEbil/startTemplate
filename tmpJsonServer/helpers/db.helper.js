@@ -21,7 +21,23 @@ module.exports = {
         var items = db.get(fieldname).value();
         return items;
     },
-    
+
+    findById(db, fieldname, id) {
+        console.log('====================================');
+        console.log(id);
+        console.log('====================================');
+        var item = db.get(fieldname).find({id: parseInt(id)}).value();
+        return item;
+    },
+
+    findByPn(db, fieldname, projectNumber) {
+        console.log('====================================');
+        console.log('PN', projectNumber);
+        console.log('====================================');
+        var item = db.get(fieldname).find({projectNumber: projectNumber}).value();
+        return item;
+    },
+
     getMaxId(db, _dbname, id="id") {
         var x = this.maxId(db.get(_dbname).value());
         return (x) ? x + 1 : 1;
@@ -45,4 +61,4 @@ module.exports = {
 
         return this.getDataByFieldName(db, fieldname);
     }
-}
+};
