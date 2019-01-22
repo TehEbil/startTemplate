@@ -1529,23 +1529,23 @@ var globalData = {
     "auftragsart": [
         {
           "id": 1,
-          "name": "Kauf - Verkaufsberatung"
+          "value": "Kauf - Verkaufsberatung"
         },
         {
           "id": 2,
-          "name": "Baubegleitung"
+          "value": "Baubegleitung"
         },
         {
           "id": 3,
-          "name": "Stellungnahme"
+          "value": "Stellungnahme"
         },
         {
           "id": 4,
-          "name": "Beweissicherung"
+          "value": "Beweissicherung"
         },
         {
           "id": 5,
-          "name": "Modernisierungs - Check"
+          "value": "Modernisierungs - Check"
         }
     ],
     "artDesVorhabens": [

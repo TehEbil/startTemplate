@@ -126,13 +126,6 @@
             }
         }
 
-        // function cancelEntry(id) {
-        //     var idx = vm.items.findIndex(o => o.id === id)
-        //     vm.items[vm.selected].editMode = false;
-        //     vm.editStatus = false;
-        //     vm.items[vm.selected].value = vm.tmpVar;
-        // }
-
         function submitForm() {
             // vm.master = vm.items;
             $scope.$close(vm.selected);
@@ -141,37 +134,5 @@
         function onSelect(item) {
             vm.selected = item;
         }
-
-        // function onSelect() {
-        //     var obj = MainDataService.getCopiedData();
-
-        //     if(vm.selected !== undefined && obj)
-        //         obj[vm.typeKind + 'x'] = vm.items[vm.selected];
-        //     else
-        //         console.log("NICHTS ausgewählt")
-
-        //     saveDataxy();
-        //     if(vm.selected >= 0)
-        //         $scope.$close(vm.items[vm.selected]);
-        //     else
-        //         $scope.$close();
-        // }
-
-        // function loadData() {
-        //     StammdatenHandler.getData().then(({data}) => {
-        //         var data1 = data[vm.typeKind][vm.type];
-        //         vm.items = data1;
-        //     });
-        // };
-
-        // function saveDataxy() {
-        //     StammdatenHandler.updateData(vm.typeKind + '/' + [vm.type] + '/', vm.items).then(({data}) => {
-        //         var tmp2 = MainDataService.getAllStammdata(false);
-        //         tmp2[vm.typeKind][vm.type] = data.data;
-
-        //         vm.items = data.data;
-        //         vm.newItem = "";
-        //     }, () => {console.log("HALLOOOOOOOO");})
-        // }
     }
 })();

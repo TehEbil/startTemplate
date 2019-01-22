@@ -26,7 +26,7 @@ module.exports = {
         console.log('====================================');
         console.log(id);
         console.log('====================================');
-        var item = db.get(fieldname).find({id: parseInt(id)}).value();
+        var item = db.get(fieldname).find({id: parseInt(id)});
         return item;
     },
 
@@ -34,7 +34,7 @@ module.exports = {
         console.log('====================================');
         console.log('PN', projectNumber);
         console.log('====================================');
-        var item = db.get(fieldname).find({projectNumber: projectNumber}).value();
+        var item = db.get(fieldname).find({projectNumber: projectNumber});
         return item;
     },
 

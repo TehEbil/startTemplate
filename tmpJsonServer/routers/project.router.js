@@ -54,20 +54,20 @@ function getProjectByProjectNumberCB(req, res) {
 
 function saveCB(req, res) {
 
-    var items = dbHelper.getDataByFieldName(db, 'project');
+    console.log('====================================');
+    console.log('body',req.body);
+    console.log('====================================');
 
-    items.projectNumber = req.body.projectNumber;
-    items.projectName = req.body.projectName;
-    items.ownPerformanceBuilder = req.body.ownPerformanceBuilder;  
-    items.intenalNotes = req.body.intenalNotes;
-    items.documents = req.body.documents;
-    items.orderDatas = req.body.orderDatas;
-    items.detectionDatas = req.body.detectionDatas;
-    items.protocolDatas = req.body.protocolDatas;
+    if (dbHelper.findById(db, 'projects', req.body.id)) {
+        var item = dbHelper.findById(db, 'projects', req.body.id).assign(req.body).write();    
+    } else {
+        console.log('====================================');
+        console.log('new Item');
+        console.log('====================================');
+    }
+    
 
-    db.write();
-
-    res.status(200).json(items);
+    res.status(200).json(item);
 }
 
 module.exports = server;

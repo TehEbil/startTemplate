@@ -162,6 +162,20 @@
         function newProject() {
 
             /* you will not need project data for new */
+            let obj = {
+                title: 'Text Snippets',
+                data: globalData.auftragsart
+            };
+
+            modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
+                
+                if (typeof data !== 'undefined') {
+                    console.log('====================================');
+                    console.log('data', data.value);
+                    console.log('====================================');   
+                }
+                
+            });
             
         }
 
