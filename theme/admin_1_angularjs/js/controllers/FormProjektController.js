@@ -5,27 +5,18 @@
 	.module('MetronicApp')
 	.controller('FormProjektController', FormProjektController);
 
-	FormProjektController.$inject = ['$rootScope', '$scope', '$state', 'getId', 'passDataService', 'ProjectHandler', 'modalService'];
+	FormProjektController.$inject = ['$rootScope', '$scope', 'getId', 'modalService'];
 
 	/* @ngInject */
-	function FormProjektController($rootScope, $scope, $state, getId, passDataService, ProjectHandler, modalService) {
+	function FormProjektController($rootScope, $scope, getId, modalService) {
 		var vm = this;
 		vm.title = 'FormProjektController';
         vm.closeModal = closeModal;
 		vm.submitForm = submitForm;
 		vm.setSelected = setSelected;
 
-		$scope.state = true; // so modal closes with ESC
-
-        vm.untouched = getId.data;
-		vm.baseData = angular.copy(vm.untouched);
-		vm.subData = {
-			data: {},
-			detail: {}
-        };
-        vm.orderTypes = globalData.auftragsart;
-        vm.isDisplayAll = false;
-
+        $scope.state = true; // so modal closes with ESC
+        
     	$scope.tabs = [
 	    	'Auftragsdaten',
 	    	'Projektdaten',
@@ -70,14 +61,26 @@
 		
 		function init() {
 
+            if (getId.isEdit) {
+                vm.untouched = getId.data;
+                vm.baseData = angular.copy(vm.untouched);
+                vm.subData = {
+                    data: {},
+                    detail: {}
+                };
+                vm.isDisplayAll = false;    
+                vm.order = vm.baseData.orderDatas;
+                vm.protocols = vm.baseData.protocolDatas;   
+                console.log('====================================');
+                console.log('Order', vm.order);
+                console.log('BaseDatas', vm.baseData);
+                console.log('====================================');
+                vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
+            } else {
+
+            }
+            vm.orderTypes = globalData.auftragsart;
             vm.tmpSelected = false;
-            vm.order = vm.baseData.orderDatas;
-            vm.protocols = vm.baseData.protocolDatas;
-            console.log('====================================');
-            console.log('Order', vm.order);
-            console.log('BaseDatas', vm.baseData);
-            console.log('====================================');
-            vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
 		}
 
 		//#region Project Detail Methods

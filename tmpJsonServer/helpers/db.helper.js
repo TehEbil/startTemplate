@@ -23,17 +23,11 @@ module.exports = {
     },
 
     findById(db, fieldname, id) {
-        console.log('====================================');
-        console.log(id);
-        console.log('====================================');
         var item = db.get(fieldname).find({id: parseInt(id)});
         return item;
     },
 
     findByPn(db, fieldname, projectNumber) {
-        console.log('====================================');
-        console.log('PN', projectNumber);
-        console.log('====================================');
         var item = db.get(fieldname).find({projectNumber: projectNumber});
         return item;
     },

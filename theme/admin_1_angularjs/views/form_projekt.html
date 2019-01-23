@@ -215,9 +215,9 @@
 								</ui-select-->
 
                                 <ui-select class="bxp-input float-left" ng-model="FormCtrl.order.otherInformations.orderType" theme="bootstrap" title="Choose Art" on-select="" on-remove="" remove-selected="false">
-                                  <ui-select-match allow-clear placeholder=''>{{$select.selected.name}}</ui-select-match>
+                                  <ui-select-match allow-clear placeholder=''>{{$select.selected.value}}</ui-select-match>
                                   <ui-select-choices repeat="leistung.id as leistung in FormCtrl.orderTypes | filter: $select.search">
-                                    <div ng-bind-html="leistung.name | highlight: $select.search"></div>
+                                    <div ng-bind-html="leistung.value | highlight: $select.search"></div>
                                   </ui-select-choices>
                                 </ui-select>
 

@@ -173,6 +173,22 @@
                     console.log('====================================');
                     console.log('data', data.value);
                     console.log('====================================');   
+                    let newObj = {
+                        data: data, // selected Auftragsart
+                        isEdit: false
+                    };
+
+                    modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
+                        (data) => {
+                            if (typeof data !== 'undefined') {
+                                ProjectHandler.postData(data).then((res) => {
+                                    console.log('====================================');
+                                    console.log('response: ', res);
+                                    console.log('====================================');
+                                });    
+                            }
+                        }
+                    );
                 }
                 
             });
@@ -181,7 +197,8 @@
 
         function editProject() {
             let obj = {
-                data: vm.selected
+                data: vm.selected,
+                isEdit: true
             };
 
             modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(

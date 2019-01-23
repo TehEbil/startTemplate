@@ -36,9 +36,6 @@ function getProjectDocumentsCB(req, res) {
 function getProjectByIdCB(req, res) {
     
     var id = req.params.id;
-    console.log('====================================');
-    console.log(id);
-    console.log('====================================');
     res.status(200).json(dbHelper.findById(db, 'projects', id));
 }
 
@@ -53,10 +50,6 @@ function getProjectByProjectNumberCB(req, res) {
 }
 
 function saveCB(req, res) {
-
-    console.log('====================================');
-    console.log('body',req.body);
-    console.log('====================================');
 
     if (dbHelper.findById(db, 'projects', req.body.id)) {
         var item = dbHelper.findById(db, 'projects', req.body.id).assign(req.body).write();    

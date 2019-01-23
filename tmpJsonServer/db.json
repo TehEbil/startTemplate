@@ -531,10 +531,7 @@
           "orderNumber": "BXP-ORD-0000-256",
           "orderDate": "2019-01-15T21:00:00.000Z",
           "referenceNumber": "BXP-REF-005",
-          "orderType": {
-            "id": 1,
-            "name": "Kauf - Verkaufsberatung"
-          }
+          "orderType": 3
         }
       },
       "detectionDatas": [
@@ -552,11 +549,7 @@
             "datetime": "2019-01-04T09:15:48.000Z",
             "hour": 14,
             "minute": 25,
-            "testField": {
-              "id": 7,
-              "name": "Untertagebauarbeiten",
-              "group": "ROHBAU"
-            },
+            "testField": 1,
             "position": "position",
             "title": "title",
             "evaluation": {
@@ -564,10 +557,7 @@
               "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
               "shortcut": "AT"
             },
-            "basics": {
-              "id": "03",
-              "name": "Baubeschreibung"
-            },
+            "basics": 6,
             "status": {
               "id": 4,
               "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
@@ -701,10 +691,7 @@
           "weather": "Summer",
           "particularties": "1. particularity, 2. particularity",
           "reportDate": "2019-01-23T21:00:00.000Z",
-          "projectType": {
-            "id": "02",
-            "name": "Änderung ( Umbau / Nutzungsänderung )"
-          },
+          "projectType": 3,
           "constructionState": {
             "id": "04",
             "name": "Rohinstallation der Heizungsanlagen"
@@ -952,10 +939,7 @@
           "orderNumber": "BXP-ORD-0000-256",
           "orderDate": "2019-01-15T21:00:00.000Z",
           "referenceNumber": "BXP-REF-005",
-          "orderType": {
-            "id": 1,
-            "name": "Kauf - Verkaufsberatung"
-          }
+          "orderType": 4
         }
       },
       "detectionDatas": [
@@ -973,11 +957,7 @@
             "datetime": "2019-01-04T09:15:48.000Z",
             "hour": 14,
             "minute": 25,
-            "testField": {
-              "id": 7,
-              "name": "Untertagebauarbeiten",
-              "group": "ROHBAU"
-            },
+            "testField": 6,
             "position": "position",
             "title": "title",
             "evaluation": {
