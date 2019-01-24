@@ -217,7 +217,7 @@
         $scope.$on("$destroy", function() {
             // console.log("clearing interval")
             // $interval.cancel(interval)
-            $rootScope.authService.func = null;
+            // $rootScope.authService.func = null;
 
         });
 

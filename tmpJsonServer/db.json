@@ -1358,6 +1358,176 @@
       }
     }
   },
+  "baseDatas": {
+    "auftragsart": [
+      {
+        "id": 1,
+        "value": "Kauf - Verkaufsberatung"
+      },
+      {
+        "id": 2,
+        "value": "Baubegleitung"
+      },
+      {
+        "id": 3,
+        "value": "Stellungnahme"
+      },
+      {
+        "id": 4,
+        "value": "Beweissicherung"
+      },
+      {
+        "id": 5,
+        "value": "Modernisierungs - Check"
+      }
+    ],
+    "grundlagen": [
+      {
+        "id": 1,
+        "name": "Allg. anerkannte Regeln der Technik"
+      },
+      {
+        "id": 2,
+        "name": "Ausführungspläne / Zeichnungen"
+      },
+      {
+        "id": 3,
+        "name": "Baubeschreibung"
+      },
+      {
+        "id": 4,
+        "name": "DIN 1045 (Stahl- und Stahlbetonbau)"
+      },
+      {
+        "id": 5,
+        "name": "DIN 1053 (Mauerwerk)"
+      },
+      {
+        "id": 6,
+        "name": "DIN 18195 (Bauwerksabdichtungen)"
+      },
+      {
+        "id": 7,
+        "name": "DIN 18202 (Toleranzen im Hochbau)"
+      },
+      {
+        "id": 8,
+        "name": "DIN 18350"
+      },
+      {
+        "id": 9,
+        "name": "DIN 18353"
+      },
+      {
+        "id": 10,
+        "name": "DIN 18381"
+      },
+      {
+        "id": 11,
+        "name": "DIN 18550"
+      },
+      {
+        "id": 12,
+        "name": "DIN 18560"
+      },
+      {
+        "id": 13,
+        "name": "DIN 1986"
+      },
+      {
+        "id": 14,
+        "name": "DIN 1988"
+      },
+      {
+        "id": 15,
+        "name": "DIN 4102"
+      },
+      {
+        "id": 16,
+        "name": "DIN 4108"
+      },
+      {
+        "id": 17,
+        "name": "DIN 4109"
+      },
+      {
+        "id": 18,
+        "name": "DIN 4759 (Heizungsanlagen in Gebäuden)"
+      },
+      {
+        "id": 19,
+        "name": "DIN EN 13163:2001-10"
+      },
+      {
+        "id": 20,
+        "name": "DIN EN 13813"
+      },
+      {
+        "id": 21,
+        "name": "DIN EN 806"
+      },
+      {
+        "id": 22,
+        "name": "EnEV-Nachweis"
+      },
+      {
+        "id": 23,
+        "name": "Heizungsanlagenverordnung HeizAnIV"
+      },
+      {
+        "id": 24,
+        "name": "Hersteller-Verarbeitungsrichtlinien"
+      },
+      {
+        "id": 25,
+        "name": "KMB - Richtlinie"
+      },
+      {
+        "id": 26,
+        "name": "Landesbauordnung Bau O NRW"
+      },
+      {
+        "id": 27,
+        "name": "Planungsvorgaben"
+      },
+      {
+        "id": 28,
+        "name": "Regeln für Abdichtungen - Flachdachrichtlinien des Zentralverbandes Deutschen Dachdeckerhandwerks"
+      },
+      {
+        "id": 29,
+        "name": "Regeln für Metallarbeiten im Dachdeckerhandwerk des Zentralverbandes Deutschen Dachdeckerhandwerks"
+      },
+      {
+        "id": 30,
+        "name": "Siehe vorherige Protokollpunkte"
+      },
+      {
+        "id": 31,
+        "name": "Statik"
+      },
+      {
+        "id": 32,
+        "name": "Technische Richtlinie RAL-Gütegemeinschaft Fenster und Haustüren e.V."
+      },
+      {
+        "id": 33,
+        "name": "VDE"
+      },
+      {
+        "id": 34,
+        "name": "VDI"
+      },
+      {
+        "id": 35,
+        "name": "Vertrag"
+      },
+      {
+        "id": 36,
+        "name": "Wärmeschutznachweis"
+      }
+    ]
+  },
   "partners": [
     {
       "title": "Firma",

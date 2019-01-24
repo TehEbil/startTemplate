@@ -41,6 +41,9 @@
                 vm.type = getId.type;
 
             vm.master = angular.copy(vm.items);
+            console.log('====================================');
+            console.log('master', vm.master);
+            console.log('====================================');
         }
 
         function getIndex(id) {

@@ -1,0 +1,27 @@
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="waiting">Queue</a>
+        </li>
+    </ul>
+</div>
+
+<uib-tabset active="activeJustified" justified="true">
+    <uib-tab index="0" heading="Auftragsart">
+        <div>
+            <h4>editStammdata</h4>
+            <bxp-stammdata save="vm.onsave" data="vm.baseData"></bxp-stammdata>
+            {{ vm.baseData }}
+        </div>
+    </uib-tab>
+    <uib-tab index="1" heading="Documents">
+        <div>
+            <h4>editStammdata</h4>
+            <bxp-stammdata save="vm.onsave" data="vm.baseData"></bxp-stammdata>
+        </div>
+    </uib-tab>
+</uib-tabset>

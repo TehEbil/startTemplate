@@ -81,6 +81,13 @@ class ProjectHandler extends DataHandler {
     }
 }
 
+class BaseDataHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'baseDatas');
+    }
+}
+
+BaseDataHandler.$inject = ['$http'];
 StammDatenHandler.$inject = ['$http'];
 PartnerFormHandler.$inject = ['$http'];
 KontakteHandler.$inject = ['$http'];
@@ -140,6 +147,7 @@ var MetronicApp = angular.module("MetronicApp", [
 .factory('KontakteHandler', KontakteHandler)
 .factory('StammDatenHandler', StammDatenHandler)
 .factory('PartnerFormHandler', PartnerFormHandler)
+.factory('BaseDataHandler', BaseDataHandler)
 .factory('ProjectHandler', ProjectHandler);
 
     /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -579,6 +587,24 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
                             'js/controllers/ProjectsController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('stammdaten', {
+            url: "/stammdaten",
+            templateUrl: 'views/base_datas.html',
+            data: { pageTitle: 'Stammdaten' },
+            controller: 'BaseDatasController as vm',
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            'js/controllers/BaseDatasController.js',
+                            'components/stammdata/stammdata.component.js',
                         ]
                     });
                 }]

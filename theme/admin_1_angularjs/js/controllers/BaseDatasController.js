@@ -2,40 +2,41 @@
     'use strict';
 
     angular
-        .module('MetronicApp')
-        .component('bxpStammdata', {
-            bindings: {
-                data: '=',
-                save: '='
-            },
-            controller: StammdataController,
-            controllerAs: 'vm',
-            templateUrl: '/components/stammdata/stammdata.template.html'
-        });
+	.module('MetronicApp')
+	.controller('BaseDatasController', BaseDatasController);
 
-    StammdataController.$inject = ["$rootScope", "$scope", "$http", "$timeout", "$stateParams", "$state", "modalService", "localStorageService", "StammDatenHandler"];
+	BaseDatasController.$inject = ['$rootScope', '$scope', 'modalService', 'StammDatenHandler', 'BaseDataHandler'];
 
-    /* @ngInject */
-    function StammdataController($rootScope, $scope, $http, $timeout, $stateParams, $state, modalService, localStorageService, StammDatenHandler) {
+	/* @ngInject */
+	function BaseDatasController($rootScope, $scope, modalService, StammDatenHandler, BaseDataHandler) {
 
         var vm = this;
         vm.state = true;
         vm.baseData = {
-            data: '',
+            data: [],
             changedCounter: 0
         };
+        
         vm.editData = editData;
         vm.onsave = onsave;
         vm.ondelete = ondelete;
+        
+        $scope.tabs = [
+            { title:'Auftrasart', content:'Dynamic content 1' },
+            { title:'Documents', content:'Dynamic content 2' }
+        ];
+
+        vm.tabs = $scope.tabs;
 
         init();
 
         function init() {
-            console.log('====================================');
-            console.log('Loaded');
-            console.log('Incoming Data', vm);
-            console.log('====================================');
-            
+            BaseDataHandler.getData().then( (res) => {
+                console.log('====================================');
+                console.log(res.data.auftragsart);
+                console.log('====================================');
+                vm.baseData = res.data.auftragsart;
+            });
             // StammDatenHandler.getData().then(
             //     (res) => {
             //         // vm.baseData.data = res.data.customers.sources.data;
@@ -45,8 +46,6 @@
             //         vm.baseData = res.data.customers.sources;
             //     }
             // );
-
-            
         }
 
         function onsave(item) {
@@ -61,7 +60,7 @@
             var obj = {
                 uploads: vm.uploads,
                 callback: onsave,
-                data: vm.baseData.data,
+                data: vm.baseData,
                 title: "Stammdata"
             };
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily

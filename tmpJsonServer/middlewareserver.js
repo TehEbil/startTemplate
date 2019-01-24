@@ -97,6 +97,7 @@ clientServer.listen(80, () => {
 const partnerForm = require('./routers/partner-form.router');
 const stammDaten = require('./routers/stamm-daten.router');
 const project = require('./routers/project.router');
+const baseDatas = require('./routers/base-datas.router');
 
 server.listen(serverPort, () => {
   console.log('JSON Server is running');
@@ -104,6 +105,7 @@ server.listen(serverPort, () => {
   server.use('/project', project);
   server.use('/partnerForm', partnerForm);
   server.use('/stammDaten', stammDaten);
+  server.use('/baseDatas', baseDatas);
 })
 
 console.timeEnd("Time to boot")
