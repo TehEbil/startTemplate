@@ -771,19 +771,19 @@ function maxId(arr) {
 
         function doubleClick(row) {
             $timeout( () => {
-            row.isSelected = true;
-            vm.id = row.entity.id;
-            }, 111)
-            // console.log(typeof vm.enableselect);
-            if(typeof vm.enableselect === 'boolean')
-                $scope.$parent.FormCtrl.closeModal(vm.id); //.$close();
-            else if(vm.enableselect){
-            console.log("shouldDispo", vm.id)
-            // vm.enableselect(vm.id);
-            }
-            else {
-            // vm.click();
-            vm.edit();
+                row.isSelected = true;
+                vm.id = row.entity.id;
+                }, 111)
+                // console.log(typeof vm.enableselect);
+                if(typeof vm.enableselect === 'boolean')
+                    $scope.$parent.FormCtrl.closeModal(vm.id); //.$close();
+                else if(vm.enableselect){
+                console.log("shouldDispo", vm.id)
+                // vm.enableselect(vm.id);
+                }
+                else {
+                // vm.click();
+                vm.edit();
             }
         }
 

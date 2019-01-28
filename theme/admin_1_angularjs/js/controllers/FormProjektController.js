@@ -5,10 +5,10 @@
 	.module('MetronicApp')
 	.controller('FormProjektController', FormProjektController);
 
-	FormProjektController.$inject = ['$rootScope', '$scope', 'getId', 'modalService'];
+	FormProjektController.$inject = ['$rootScope', '$scope', 'ProjectHandler', 'getId', 'modalService'];
 
 	/* @ngInject */
-	function FormProjektController($rootScope, $scope, getId, modalService) {
+	function FormProjektController($rootScope, $scope, ProjectHandler, getId, modalService) {
 		var vm = this;
 		vm.title = 'FormProjektController';
         vm.closeModal = closeModal;
@@ -60,49 +60,90 @@
 		init();
 		
 		function init() {
-
-            if (getId.isEdit) {
-                vm.untouched = getId.data;
-                vm.baseData = angular.copy(vm.untouched);
-                vm.subData = {
-                    data: {},
-                    detail: {
-                        isEdit: getId.isEdit
+            if (getId.id >= 0) {
+                ProjectHandler.getData("byId/" + getId.id).then(({data}) => {
+                    // let data = res.data;
+                    if(data.changedCounter !== getId.changedCounter) {
+                        $rootScope.sharedService.alert("Data has been refreshed.", "warning");
+                        getId.updateElement(getId.id, data); // so parent also has refreshed data
                     }
-                };
-                vm.isDisplayAll = false;    
-                vm.order = vm.baseData.orderDatas;
-                vm.protocols = vm.baseData.protocolDatas;   
-                console.log('====================================');
-                console.log('Order', vm.order);
-                console.log('BaseDatas', vm.baseData);
-                console.log('====================================');
-                vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
+
+                    initForm(data);
+
+                }, (err) => {
+                    if(err.status === 404)
+                        getId.updateElement(getId.id, null);
+                    $rootScope.sharedService.alert("An error has occured, please contact an administrator.", "danger");
+                });
             } else {
-
-                // Clone data 
-                vm.untouched = getId.data;
-                vm.baseData = angular.copy(vm.untouched);
-                vm.subData = {
-                    data: {},
-                    detail: {
-                        isEdit: getId.isEdit 
-                    }
-                };
-                vm.isDisplayAll = false;    
-                vm.order = vm.baseData.orderDatas;
-                vm.protocols = vm.baseData.protocolDatas;   
-                console.log('====================================');
-                console.log('Order', vm.order);
-                console.log('BaseDatas', vm.baseData);
-                console.log('====================================');
-                vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
+                initForm(emptyProject());
             }
-            vm.orderTypes = globalData.auftragsart;
-            vm.tmpSelected = false;
 		}
 
-		//#region Project Detail Methods
+        function initForm(data) {
+            vm.untouched = data;
+            vm.baseData = angular.copy(vm.untouched);
+            vm.subData = {
+                data: {},
+                detail: {}
+            };
+            vm.isDisplayAll = false;    
+            vm.order = vm.baseData.orderDatas;
+            vm.protocols = vm.baseData.protocolDatas;
+            vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
+            vm.orderTypes = globalData.auftragsart;
+            vm.tmpSelected = false;
+        }
+
+
+        function emptyProject() {
+            return {
+                "projectNumber": "",
+                "projectName": "",
+                "ownPerformanceBuilder": "",
+                "documents": [],
+                "intenalNotes": "",
+                "orderDatas": {
+                  "customer": {
+                    "customerNumber": "",
+                    "privatFirma": "privat",
+                    "selectedGen": "",
+                    "selectedTit": "",
+                    "firstName": "",
+                    "lastName": "",
+                    "companyName": "",
+                    "additive": "",
+                    "address": {
+                      "route": "",
+                      "country": {},
+                      "postal_code": "",
+                      "locality": ""
+                    },
+                    "phone": "",
+                    "mobile": "",
+                    "email": ""
+                  },
+                  "object": {
+                    "objectNumber": 0,
+                    "objectType": "",
+                    "address": {
+                      "route": "",
+                      "country": {},
+                      "postal_code": "",
+                      "locality": ""
+                    }
+                  },
+                  "otherInformations": {
+                    "orderNumber": "",
+                    "orderDate": new Date(),
+                    "referenceNumber": "",
+                    "orderType": getId.orderTypeId
+                  }
+                },
+                "detectionDatas": [],
+                "protocolDatas": []
+            }
+        }
 
 		function newDocument() {
             var obj = {
