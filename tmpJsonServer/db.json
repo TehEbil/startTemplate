@@ -66,22 +66,13 @@
         "id": 4,
         "name": "Test Dökümanı 4",
         "isDisplay": true
-      },
-      {
-        "id": 5,
-        "filename": "1-feststellungen.pdf",
-        "filepath": "public/uploads/1-feststellungen.pdf",
-        "oldfilename": "feststellungen.pdf",
-        "refName": "1-feststellungen.pdf",
-        "date": "2019-01-28T12:23:54.187Z",
-        "editMode": false
       }
     ],
     "intenalNotes": "test text field",
     "orderDatas": {
       "customer": {
         "customerNumber": "BXP-105",
-        "isCompany": "invidual",
+        "privatFirma": "firma",
         "selectedGen": "Mr.",
         "selectedTit": "Prof. Dr.",
         "firstName": "Mahmut",
@@ -503,7 +494,7 @@
       "orderDatas": {
         "customer": {
           "customerNumber": "BXP-105",
-          "isCompany": "invidual",
+          "privatFirma": "privat",
           "selectedGen": "Mr.",
           "selectedTit": "Prof. Dr.",
           "firstName": "Mahmut",
@@ -862,7 +853,7 @@
         {
           "id": 1,
           "name": "test",
-          "isDisplay": false,
+          "isDisplay": true,
           "document": {
             "filename": "4-file.pdf",
             "filepath": "public/uploads/4-file.pdf",
@@ -871,13 +862,18 @@
             "date": "2019-01-28T11:53:06.998Z",
             "editMode": false
           }
+        },
+        {
+          "id": 2,
+          "name": "test2",
+          "isDisplay": false
         }
       ],
       "intenalNotes": "test text field",
       "orderDatas": {
         "customer": {
           "customerNumber": "BXP-105",
-          "isCompany": "invidual",
+          "privatFirma": "privat",
           "selectedGen": "Mr.",
           "selectedTit": "Prof. Dr.",
           "firstName": "Mahmut",

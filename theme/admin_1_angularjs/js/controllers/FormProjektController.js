@@ -67,7 +67,9 @@
                         $rootScope.sharedService.alert("Data has been refreshed.", "warning");
                         getId.updateElement(getId.id, data); // so parent also has refreshed data
                     }
-
+                        console.log('====================================');
+                        console.log(data);
+                        console.log('====================================');
                     initForm(data);
 
                 }, (err) => {
