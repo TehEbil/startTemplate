@@ -66,6 +66,15 @@
         "id": 4,
         "name": "Test Dökümanı 4",
         "isDisplay": true
+      },
+      {
+        "id": 5,
+        "filename": "1-feststellungen.pdf",
+        "filepath": "public/uploads/1-feststellungen.pdf",
+        "oldfilename": "feststellungen.pdf",
+        "refName": "1-feststellungen.pdf",
+        "date": "2019-01-28T12:23:54.187Z",
+        "editMode": false
       }
     ],
     "intenalNotes": "test text field",
@@ -852,50 +861,16 @@
       "documents": [
         {
           "id": 1,
-          "name": "Test Dökümanı 1",
+          "name": "test",
+          "isDisplay": false,
           "document": {
-            "id": 1,
-            "filename": "file1.txt",
-            "filepath": "public/uploads/file1.txt",
-            "oldfilename": "expFile.txt",
-            "refName": "file1.txt",
-            "date": "2018-11-12T11:39:29.137Z",
+            "filename": "4-file.pdf",
+            "filepath": "public/uploads/4-file.pdf",
+            "oldfilename": "file.pdf",
+            "refName": "test",
+            "date": "2019-01-28T11:53:06.998Z",
             "editMode": false
-          },
-          "isDisplay": true
-        },
-        {
-          "id": 2,
-          "name": "Test Dökümanı 2",
-          "document": {
-            "id": 2,
-            "filename": "Ekran Resmi 2018-11-22 13.12.32.png",
-            "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
-            "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
-            "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
-            "date": "2018-11-12T11:39:29.137Z",
-            "editMode": false
-          },
-          "isDisplay": true
-        },
-        {
-          "id": 3,
-          "name": "Test Dökümanı 3",
-          "document": {
-            "id": 3,
-            "filename": "4-cv.docx",
-            "filepath": "public/uploads/4-cv.docx",
-            "oldfilename": "cv.docx",
-            "refName": "4-cv.docx",
-            "date": "2019-01-03T08:18:12.080Z",
-            "editMode": false
-          },
-          "isDisplay": true
-        },
-        {
-          "id": 4,
-          "name": "Test Dökümanı 4",
-          "isDisplay": true
+          }
         }
       ],
       "intenalNotes": "test text field",
@@ -998,6 +973,15 @@
               "oldfilename": "Ekran Resmi 2018-11-22 11.49.13.png",
               "refName": "Ekran Resmi 2018-11-22 11.49.13.png",
               "date": "2019-01-14T07:54:49.676Z",
+              "editMode": false
+            },
+            {
+              "id": 5,
+              "filename": "feststellungen.pdf",
+              "filepath": "public/uploads/feststellungen.pdf",
+              "oldfilename": "feststellungen.pdf",
+              "refName": "testtt",
+              "date": "2019-01-28T11:41:41.230Z",
               "editMode": false
             }
           ]

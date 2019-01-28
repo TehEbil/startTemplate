@@ -66,7 +66,9 @@
                 vm.baseData = angular.copy(vm.untouched);
                 vm.subData = {
                     data: {},
-                    detail: {}
+                    detail: {
+                        isEdit: getId.isEdit
+                    }
                 };
                 vm.isDisplayAll = false;    
                 vm.order = vm.baseData.orderDatas;
@@ -83,7 +85,9 @@
                 vm.baseData = angular.copy(vm.untouched);
                 vm.subData = {
                     data: {},
-                    detail: {}
+                    detail: {
+                        isEdit: getId.isEdit 
+                    }
                 };
                 vm.isDisplayAll = false;    
                 vm.order = vm.baseData.orderDatas;
