@@ -78,6 +78,21 @@
                 vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
             } else {
 
+                // Clone data 
+                vm.untouched = getId.data;
+                vm.baseData = angular.copy(vm.untouched);
+                vm.subData = {
+                    data: {},
+                    detail: {}
+                };
+                vm.isDisplayAll = false;    
+                vm.order = vm.baseData.orderDatas;
+                vm.protocols = vm.baseData.protocolDatas;   
+                console.log('====================================');
+                console.log('Order', vm.order);
+                console.log('BaseDatas', vm.baseData);
+                console.log('====================================');
+                vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
             }
             vm.orderTypes = globalData.auftragsart;
             vm.tmpSelected = false;

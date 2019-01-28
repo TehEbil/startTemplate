@@ -176,411 +176,50 @@
                     let newObj = {
                         data: {
                             "id": 1,
-                            "projectNumber": "BXP-PRN-003",
-                            "projectName": "Project Name Field",
-                            "ownPerformanceBuilder": "Mahmut Akyol",
-                            "documents": [
-                              {
-                                "id": 1,
-                                "name": "Test Dökümanı 1",
-                                "document": {
-                                  "id": 1,
-                                  "filename": "file1.txt",
-                                  "filepath": "public/uploads/file1.txt",
-                                  "oldfilename": "expFile.txt",
-                                  "refName": "file1.txt",
-                                  "date": "2018-11-12T11:39:29.137Z",
-                                  "editMode": false
-                                },
-                                "isDisplay": true
-                              },
-                              {
-                                "id": 2,
-                                "name": "Test Dökümanı 2",
-                                "document": {
-                                  "id": 2,
-                                  "filename": "Ekran Resmi 2018-11-22 13.12.32.png",
-                                  "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
-                                  "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
-                                  "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
-                                  "date": "2018-11-12T11:39:29.137Z",
-                                  "editMode": false
-                                },
-                                "isDisplay": true
-                              },
-                              {
-                                "id": 3,
-                                "name": "Test Dökümanı 3",
-                                "document": {
-                                  "id": 3,
-                                  "filename": "4-cv.docx",
-                                  "filepath": "public/uploads/4-cv.docx",
-                                  "oldfilename": "cv.docx",
-                                  "refName": "4-cv.docx",
-                                  "date": "2019-01-03T08:18:12.080Z",
-                                  "editMode": false
-                                },
-                                "isDisplay": true
-                              },
-                              {
-                                "id": 4,
-                                "name": "Test Dökümanı 4",
-                                "isDisplay": true
-                              }
-                            ],
-                            "intenalNotes": "test text field",
+                            "projectNumber": "",
+                            "projectName": "",
+                            "ownPerformanceBuilder": "",
+                            "documents": [],
+                            "intenalNotes": "",
                             "orderDatas": {
                               "customer": {
-                                "customerNumber": "BXP-105",
-                                "isCompany": "invidual",
-                                "selectedGen": "Mr.",
-                                "selectedTit": "Prof. Dr.",
-                                "firstName": "Mahmut",
-                                "lastName": "Akyol",
-                                "companyName": "Compact Management A.Ş.",
-                                "additive": "baubasis",
+                                "customerNumber": "",
+                                "isCompany": "",
+                                "selectedGen": "",
+                                "selectedTit": "",
+                                "firstName": "",
+                                "lastName": "",
+                                "companyName": "",
+                                "additive": "",
                                 "address": {
-                                  "route": "Mecidiyekoy st.",
-                                  "country": {
-                                    "name": "Türkei",
-                                    "code": "TR"
-                                  },
-                                  "postal_code": "34000",
-                                  "locality": "Istanbul"
+                                  "route": "",
+                                  "country": {},
+                                  "postal_code": "",
+                                  "locality": ""
                                 },
-                                "phone": "+90 212 212 12 12",
-                                "mobile": "+90 553 364 04 74",
-                                "email": "mahmut.akyol@outlook.com.tr"
+                                "phone": "",
+                                "mobile": "",
+                                "email": ""
                               },
                               "object": {
                                 "objectNumber": 0,
-                                "objectType": "Einfamilienhaus",
+                                "objectType": "",
                                 "address": {
-                                  "route": "Mecidiyekoy st.",
-                                  "country": {
-                                    "name": "Türkei",
-                                    "code": "TR"
-                                  },
-                                  "postal_code": "34000",
-                                  "locality": "Istanbul"
+                                  "route": "",
+                                  "country": {},
+                                  "postal_code": "",
+                                  "locality": ""
                                 }
                               },
                               "otherInformations": {
-                                "orderNumber": "BXP-ORD-0000-256",
-                                "orderDate": "2019-01-15T21:00:00.000Z",
-                                "referenceNumber": "BXP-REF-005",
-                                "orderType": data
+                                "orderNumber": "",
+                                "orderDate": "",
+                                "referenceNumber": "",
+                                "orderType": data.id
                               }
                             },
-                            "detectionDatas": [
-                              {
-                                "number": 1,
-                                "status": "status",
-                                "title": "test",
-                                "coverPicUrl": "https://www.picsum.photos/200/300",
-                                "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                                "isAddProtocol": true,
-                                "isAddShortInfo": true,
-                                "detail": {
-                                  "id": 8743,
-                                  "date": "2019-01-30T21:00:00.000Z",
-                                  "datetime": "2019-01-04T09:15:48.000Z",
-                                  "hour": 14,
-                                  "minute": 25,
-                                  "testField": 1,
-                                  "position": "position",
-                                  "title": "title",
-                                  "evaluation": {
-                                    "id": "03",
-                                    "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-                                    "shortcut": "AT"
-                                  },
-                                  "basics": 6,
-                                  "status": {
-                                    "id": 4,
-                                    "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
-                                  },
-                                  "description": "desc",
-                                  "costs": {
-                                    "disposalCost": 500,
-                                    "impairment": 600,
-                                    "recoup": 700,
-                                    "isPrint": true
-                                  }
-                                },
-                                "documents": [
-                                  {
-                                    "id": 6,
-                                    "filename": "2-Ekran Resmi 2018-08-03 13.48.21.png",
-                                    "filepath": "public/uploads/2-Ekran Resmi 2018-08-03 13.48.21.png",
-                                    "oldfilename": "Ekran Resmi 2018-08-03 13.48.21.png",
-                                    "refName": "2-Ekran Resmi 2018-08-03 13.48.21.png",
-                                    "date": "2019-01-14T07:51:56.272Z",
-                                    "editMode": false
-                                  },
-                                  {
-                                    "id": 7,
-                                    "filename": "Ekran Resmi 2018-11-22 11.49.13.png",
-                                    "filepath": "public/uploads/Ekran Resmi 2018-11-22 11.49.13.png",
-                                    "oldfilename": "Ekran Resmi 2018-11-22 11.49.13.png",
-                                    "refName": "Ekran Resmi 2018-11-22 11.49.13.png",
-                                    "date": "2019-01-14T07:54:49.676Z",
-                                    "editMode": false
-                                  }
-                                ]
-                              },
-                              {
-                                "number": 2,
-                                "status": "status",
-                                "title": "foo",
-                                "coverPicUrl": "https://www.picsum.photos/200/300",
-                                "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                                "isAddProtocol": false,
-                                "isAddShortInfo": true,
-                                "detail": {
-                                  "id": 8744,
-                                  "date": "2019-01-24T21:00:00.000Z",
-                                  "datetime": "2019-01-04T09:36:48.000Z",
-                                  "hour": 14,
-                                  "minute": 25,
-                                  "testField": {
-                                    "id": 8,
-                                    "name": "Wasserhaltungsarbeiten",
-                                    "group": "ROHBAU"
-                                  },
-                                  "position": "position",
-                                  "title": "title",
-                                  "evaluation": {
-                                    "id": "03",
-                                    "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-                                    "shortcut": "AT"
-                                  },
-                                  "basics": {
-                                    "id": "03",
-                                    "name": "Baubeschreibung"
-                                  },
-                                  "status": {
-                                    "id": 2,
-                                    "name": "abgestellt und durch den Sachverständigen kontrolliert"
-                                  },
-                                  "description": "desc",
-                                  "costs": {
-                                    "disposalCost": 500,
-                                    "impairment": 600,
-                                    "recoup": 700,
-                                    "isPrint": true
-                                  }
-                                },
-                                "documents": []
-                              },
-                              {
-                                "number": 3,
-                                "status": "status",
-                                "title": "foo",
-                                "coverPicUrl": "https://www.picsum.photos/200/300",
-                                "detection": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-                                "isAddProtocol": true,
-                                "isAddShortInfo": true,
-                                "detail": {
-                                  "id": 8745,
-                                  "date": "2019-01-27T21:00:00.000Z",
-                                  "datetime": "2019-01-04T09:27:48.000Z",
-                                  "hour": 14,
-                                  "minute": 25,
-                                  "testField": {
-                                    "id": 5,
-                                    "name": "Brunnenbauarbeiten und Aufschlussbohrungen",
-                                    "group": "ROHBAU"
-                                  },
-                                  "position": "position",
-                                  "title": "title",
-                                  "evaluation": {
-                                    "id": "03",
-                                    "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-                                    "shortcut": "AT"
-                                  },
-                                  "basics": {
-                                    "id": "03",
-                                    "name": "Baubeschreibung"
-                                  },
-                                  "status": {
-                                    "id": 3,
-                                    "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
-                                  },
-                                  "description": "desc",
-                                  "costs": {
-                                    "disposalCost": 500,
-                                    "impairment": 600,
-                                    "recoup": 700,
-                                    "isPrint": true
-                                  }
-                                },
-                                "documents": []
-                              }
-                            ],
-                            "protocolDatas": [
-                              {
-                                "id": 1,
-                                "isLocalInspection": "inspectionYes",
-                                "localInspectionDate": "2018-12-28T06:06:53.000Z",
-                                "protocolType": "type 1",
-                                "participants": "Mahmut, Can, Muhammed",
-                                "tempreture": "26",
-                                "weather": "Summer",
-                                "particularties": "1. particularity, 2. particularity",
-                                "reportDate": "2019-01-23T21:00:00.000Z",
-                                "projectType": 3,
-                                "constructionState": {
-                                  "id": "04",
-                                  "name": "Rohinstallation der Heizungsanlagen"
-                                },
-                                "acceptance": {
-                                  "id": "2",
-                                  "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                                },
-                                "acceptanceComment": "As a result of the researching of a defect has not been found.",
-                                "note": "All we need a just a little lahmacun!",
-                                "titlePicUrl": "https://picsum.photos/100/100/?random",
-                                "date": "2019-01-23T21:00:00.000Z",
-                                "members": "Mahmut, Can",
-                                "documents": [
-                                  {
-                                    "id": 1,
-                                    "filename": "file1.txt",
-                                    "filepath": "public/uploads/file1.txt",
-                                    "oldfilename": "expFile.txt",
-                                    "refName": "file1.txt",
-                                    "date": "2018-11-12T11:39:29.137Z",
-                                    "editMode": false,
-                                    "isAddJustName": true,
-                                    "isAddAttachment": true
-                                  },
-                                  {
-                                    "id": 2,
-                                    "filename": "Ekran Resmi 2018-11-22 13.12.32.png",
-                                    "filepath": "public/uploads/1-Ekran Resmi 2018-11-22 13.12.32.png",
-                                    "oldfilename": "Ekran Resmi 2018-11-22 13.12.32.png",
-                                    "refName": "Ekran Resmi 2018-11-22 13.12.32.png",
-                                    "date": "2018-11-12T11:39:29.137Z",
-                                    "editMode": false,
-                                    "isAddJustName": false,
-                                    "isAddAttachment": true
-                                  },
-                                  {
-                                    "id": 3,
-                                    "filename": "4-cv.docx",
-                                    "filepath": "public/uploads/4-cv.docx",
-                                    "oldfilename": "cv.docx",
-                                    "refName": "4-cv.docx",
-                                    "date": "2019-01-03T08:18:12.080Z",
-                                    "editMode": false,
-                                    "isAddJustName": true,
-                                    "isAddAttachment": true
-                                  },
-                                  {
-                                    "id": 8,
-                                    "filename": "3-bau-logo.jpg",
-                                    "filepath": "public/uploads/3-bau-logo.jpg",
-                                    "oldfilename": "bau-logo.jpg",
-                                    "refName": "testlogo2",
-                                    "date": "2019-01-09T07:51:37.515Z",
-                                    "editMode": false,
-                                    "isAddJustName": true,
-                                    "isAddAttachment": true
-                                  }
-                                ]
-                              },
-                              {
-                                "id": 2,
-                                "isLocalInspection": "inspectionNo",
-                                "localInspectionDate": "",
-                                "protocolType": "type 2",
-                                "participants": "Mahmut, Necati",
-                                "tempreture": 23,
-                                "weather": "",
-                                "particularties": "",
-                                "reportDate": "2019-01-26T21:00:00.000Z",
-                                "projectType": {
-                                  "id": "02",
-                                  "name": "Änderung ( Umbau / Nutzungsänderung )"
-                                },
-                                "constructionState": {
-                                  "id": 3,
-                                  "name": "Dachflächen, Dachrinnen"
-                                },
-                                "acceptance": {
-                                  "id": "2",
-                                  "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-                                },
-                                "acceptanceComment": "test",
-                                "note": "",
-                                "titlePicUrl": "",
-                                "date": "2019-01-25T21:00:00.000Z",
-                                "members": "Necati, Mahmut, Muhammed",
-                                "documents": [
-                                  {
-                                    "id": "",
-                                    "title": ""
-                                  }
-                                ]
-                              },
-                              {
-                                "id": 3,
-                                "isLocalInspection": "inspectionYes",
-                                "localInspectionDate": "",
-                                "protocolType": "type 3",
-                                "participants": "Can, Muhammed",
-                                "tempreture": 18,
-                                "weather": "",
-                                "particularties": "",
-                                "reportDate": "2019-01-29T21:00:00.000Z",
-                                "projectType": {
-                                  "id": 1,
-                                  "name": "Errichtung ( Neubau / Erweiterung )"
-                                },
-                                "constructionState": {
-                                  "id": 2,
-                                  "name": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
-                                },
-                                "acceptance": {
-                                  "id": 1,
-                                  "name": "Abnahme kann ohne Vorbehalte erteilt werden"
-                                },
-                                "acceptanceComment": "",
-                                "note": "",
-                                "titlePicUrl": "",
-                                "date": "2019-01-25T21:00:00.000Z",
-                                "members": "Muhammed, Necati, Can",
-                                "documents": [
-                                  {
-                                    "id": "",
-                                    "title": ""
-                                  }
-                                ]
-                              },
-                              {
-                                "id": 4,
-                                "isLocalInspection": true,
-                                "localInspectionDate": "2019-01-22T06:54:05.605Z",
-                                "protocolType": "",
-                                "participants": "",
-                                "tempreture": 23,
-                                "weather": "",
-                                "particularties": "",
-                                "reportDate": "2019-01-22T06:54:05.605Z",
-                                "projectType": {},
-                                "constructionState": {},
-                                "acceptance": {},
-                                "acceptanceComment": "",
-                                "note": "",
-                                "selectedDetection": "",
-                                "titlePicUrl": "https://picsum.photos/100/100/?random",
-                                "date": "2019-01-22T06:54:05.605Z",
-                                "members": "",
-                                "selectedDetections": [],
-                                "documents": []
-                              }
-                            ]
+                            "detectionDatas": [],
+                            "protocolDatas": []
                           }, // selected Auftragsart
                         isEdit: false
                     };
@@ -588,11 +227,11 @@
                     modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
                         (data) => {
                             if (typeof data !== 'undefined') {
-                                ProjectHandler.postData(data).then((res) => {
-                                    console.log('====================================');
-                                    console.log('response: ', res);
-                                    console.log('====================================');
-                                });    
+                                // ProjectHandler.postData(data).then((res) => {
+                                //     console.log('====================================');
+                                //     console.log('response: ', res);
+                                //     console.log('====================================');
+                                // });    
                             }
                         }
                     );
