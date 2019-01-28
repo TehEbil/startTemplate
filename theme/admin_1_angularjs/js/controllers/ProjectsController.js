@@ -153,7 +153,7 @@
         function init() {
             ProjectHandler.getData().then((res) => {
                 vm.data = res.data; // getData() should get all Projects instead of only one;
-                vm.data[0].id = 1 // fakeId, it has no id;
+                // vm.data[0].id = 1 // fakeId, it has no id;
 
                 console.log("data", vm.data);
             });
@@ -167,64 +167,15 @@
                 data: globalData.auftragsart
             };
 
+
             modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
                 
                 if (typeof data !== 'undefined') {
                     console.log('====================================');
                     console.log('data', data.value);
-                    console.log('====================================');   
-                    let newObj = {
-                        data: {
-                            "id": 1,
-                            "projectNumber": "",
-                            "projectName": "",
-                            "ownPerformanceBuilder": "",
-                            "documents": [],
-                            "intenalNotes": "",
-                            "orderDatas": {
-                              "customer": {
-                                "customerNumber": "",
-                                "isCompany": "",
-                                "selectedGen": "",
-                                "selectedTit": "",
-                                "firstName": "",
-                                "lastName": "",
-                                "companyName": "",
-                                "additive": "",
-                                "address": {
-                                  "route": "",
-                                  "country": {},
-                                  "postal_code": "",
-                                  "locality": ""
-                                },
-                                "phone": "",
-                                "mobile": "",
-                                "email": ""
-                              },
-                              "object": {
-                                "objectNumber": 0,
-                                "objectType": "",
-                                "address": {
-                                  "route": "",
-                                  "country": {},
-                                  "postal_code": "",
-                                  "locality": ""
-                                }
-                              },
-                              "otherInformations": {
-                                "orderNumber": "",
-                                "orderDate": "",
-                                "referenceNumber": "",
-                                "orderType": data.id
-                              }
-                            },
-                            "detectionDatas": [],
-                            "protocolDatas": []
-                          }, // selected Auftragsart
-                        isEdit: false
-                    };
+                    console.log('====================================');
 
-                    modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
+                    modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', {orderTypeId: data.id}).then(
                         (data) => {
                             if (typeof data !== 'undefined') {
                                 // ProjectHandler.postData(data).then((res) => {
@@ -242,9 +193,11 @@
         }
 
         function editProject() {
+            var changedCounter = vm.data.find(o => o.id === vm.id).changedCounter;
             let obj = {
-                data: vm.selected,
-                isEdit: true
+                id: vm.id,
+                changedCounter,
+                updateElement
             };
 
             modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(
@@ -258,7 +211,15 @@
                     }
                 }
             );
-        }   
+        }
+
+        function updateElement(id, data) {
+            var idx = vm.data.findIndex(o => o.id === id);
+            if(data === null)
+                vm.data.splice(idx, 1);
+            else if(idx >= 0)
+                vm.data[idx] = data;
+        }
         
         $scope.$on("$destroy", function() {
             // console.log("clearing interval")
@@ -267,9 +228,10 @@
 
         });
 
-        $rootScope.$on('selectedElement', function (event, data) {
-            vm.selected = data.selected;
-        });
+        // $rootScope.$on('selectedElement', function (event, data) {
+        //     console.log(data)
+        //     vm.selected = data.selected;
+        // });
         
     }
 })();

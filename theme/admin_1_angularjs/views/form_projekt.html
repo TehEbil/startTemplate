@@ -26,17 +26,17 @@
 						<label class="control-label bxp-label float-left">Anschrift:</label>
 						<div class="bxp-input float-left">
 							<label class="radio-inline">
-								<input ng-disabled="FormCtrl.svRequestState" type="radio" value="invidual" ng-model="FormCtrl.order.customer.isCompany">
+								<input ng-disabled="FormCtrl.svRequestState" type="radio" value="privat" ng-model="FormCtrl.order.customer.privatFirma">
 								Privat
 							</label>
 							<label class="radio-inline">
-								<input ng-disabled="FormCtrl.svRequestState" type="radio" value="company" ng-model="FormCtrl.order.customer.isCompany">
+								<input ng-disabled="FormCtrl.svRequestState" type="radio" value="firma" ng-model="FormCtrl.order.customer.privatFirma">
 								Firma
 							</label>
 						</div>
 					</div>
 
-					<div class="check-element animate-show-hide" ng-if="FormCtrl.order.customer.isCompany == 'company'">
+					<div class="check-element animate-show-hide" ng-if="FormCtrl.order.customer.privatFirma == 'firma'">
 
 						<div class="form-group group" ng-class="{ 'has-error' : formAuftrag.Firma.$invalid && FormCtrl.submitted }">
 							<label class="control-label bxp-label float-left">Firma<span class="required">*</span></label>
@@ -53,7 +53,7 @@
 					</div>
 
 					<div ng-controller="UISelectController as ctrl">
-						<div class="check-element animate-show-hide" ng-if="FormCtrl.order.customer.isCompany == 'invidual'">
+						<div class="check-element animate-show-hide" ng-if="FormCtrl.order.customer.privatFirma == 'privat'">
 							<div class="form-group group">
 								<label class="bxp-label control-label float-left">Anrede</label>
 								<div class="bxp-input-gender float-left">
