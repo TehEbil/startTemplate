@@ -6,7 +6,8 @@
         .component('bxpStammdata', {
             bindings: {
                 data: '=',
-                save: '='
+                save: '=',
+                route: '='
             },
             controller: StammdataController,
             controllerAs: 'vm',
@@ -28,26 +29,14 @@
         vm.onsave = onsave;
         vm.ondelete = ondelete;
 
-        init();
 
         function init() {
-            console.log('====================================');
-            console.log('Loaded');
-            console.log('Incoming Data', vm);
-            console.log('====================================');
-            
-            // StammDatenHandler.getData().then(
-            //     (res) => {
-            //         // vm.baseData.data = res.data.customers.sources.data;
-            //         // vm.baseData.changedCounter = res.data.customers.sources.changedCounter;
-
-            //         // saving 1 step of assignment
-            //         vm.baseData = res.data.customers.sources;
-            //     }
-            // );
-
-            
+            vm.baseData.data = vm.data;
         }
+
+        vm.$onInit = () => {
+            init();
+        };
 
         function onsave(item) {
             console.log("saved");

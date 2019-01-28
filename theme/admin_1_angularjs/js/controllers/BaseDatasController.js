@@ -23,7 +23,7 @@
         
         $scope.tabs = [
             { title:'Auftrasart', content:'Dynamic content 1' },
-            { title:'Documents', content:'Dynamic content 2' }
+            { title:'Grundlagen', content:'Dynamic content 2' }
         ];
 
         vm.tabs = $scope.tabs;
@@ -35,7 +35,7 @@
                 console.log('====================================');
                 console.log(res.data.auftragsart);
                 console.log('====================================');
-                vm.baseData = res.data.auftragsart;
+                vm.baseData = res.data;
             });
             // StammDatenHandler.getData().then(
             //     (res) => {
