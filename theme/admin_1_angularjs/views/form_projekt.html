@@ -220,9 +220,6 @@
                                     <div ng-bind-html="leistung.value | highlight: $select.search"></div>
                                   </ui-select-choices>
                                 </ui-select>
-
-                                {{FormCtrl.order.otherInformations.orderType}}
-
 							</div>
 						</div>
 					</div>
@@ -339,7 +336,20 @@
 							 ng-class="{selected: $index === FormCtrl.selectedDetectionIdx}">
 								<td>{{ detection.detail.id }}</td>
 								<td>{{ detection.detail.date | date }}</td>
-								<td>{{ detection.detail.status.name }}</td>
+								<td>
+									<div class="bxp-input float-left edit-icon-container">
+										<ui-select ng-disabled="vm.make" ng-model="detection.detail.status" theme="bootstrap"
+										 remove-selected="false">
+											<ui-select-match allow-clear>{{
+												$select.selected.name
+												}}</ui-select-match>
+											<ui-select-choices repeat="item.id as item in FormCtrl.statuses | filter: $select.search">
+												<span ng-bind-html="item.name  | highlight: $select.search"></span>
+											</ui-select-choices>
+										</ui-select>
+										<a class="edit-icon"><i class="fa fa-cog"></i></a>
+									</div>
+								</td>
 								<td>{{ detection.title }}</td>
 								<!-- <td>{{ detection.detection }}</td> -->
 								<!-- <td>{{ detection.detail.position }}</td> -->

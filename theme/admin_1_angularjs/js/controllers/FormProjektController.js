@@ -24,7 +24,8 @@
 	    	'Protokolle'
     	];
 
-		vm.tabs = $scope.tabs;
+        vm.tabs = $scope.tabs;
+        vm.statuses = globalData.status;
 		
 		//#region Project Detail Methods & Variables definitions
         vm.newDocument = newDocument;

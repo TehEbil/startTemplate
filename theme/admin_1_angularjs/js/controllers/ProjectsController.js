@@ -163,12 +163,12 @@
 
             /* you will not need project data for new */
             let obj = {
-                title: 'Text Snippets',
+                title: 'Auftragsart',
                 data: globalData.auftragsart
             };
 
 
-            modalService.openMenuModal('views/text_snippets.html', 'TextSnippetsController', 'animated zoomIn', obj).then( (data) => {
+            modalService.openMenuModal('views/order_type.html', 'OrderTypeController', 'animated zoomIn', obj).then( (data) => {
                 
                 if (typeof data !== 'undefined') {
                     console.log('====================================');
