@@ -54,5 +54,13 @@ module.exports = {
         db.write();
 
         return this.getDataByFieldName(db, fieldname);
+    },
+
+    delete(db, fieldname, id) {
+        var items = db.get(fieldname).removeById(id);
+
+        db.write();
+
+        return items;
     }
 };

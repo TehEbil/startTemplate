@@ -1257,7 +1257,7 @@
           },
           "phone": "",
           "mobile": "",
-          "email": "mahmut.akyol@outlook.com.tr"
+          "email": "mahmut.akyol@outlook.com"
         },
         "object": {
           "objectNumber": 0,
@@ -1271,56 +1271,9 @@
         },
         "otherInformations": {
           "orderNumber": "",
-          "orderDate": "2019-01-30T12:51:30.186Z",
+          "orderDate": "2019-01-30T14:43:33.536Z",
           "referenceNumber": "",
-          "orderType": 5
-        }
-      },
-      "detectionDatas": [],
-      "protocolDatas": []
-    },
-    {
-      "id": 4,
-      "projectNumber": "",
-      "projectName": "",
-      "ownPerformanceBuilder": "",
-      "documents": [],
-      "intenalNotes": "",
-      "orderDatas": {
-        "customer": {
-          "customerNumber": "",
-          "privatFirma": "privat",
-          "selectedGen": "",
-          "selectedTit": "",
-          "firstName": "",
-          "lastName": "",
-          "companyName": "",
-          "additive": "",
-          "address": {
-            "route": "",
-            "country": {},
-            "postal_code": "",
-            "locality": ""
-          },
-          "phone": "",
-          "mobile": "",
-          "email": ""
-        },
-        "object": {
-          "objectNumber": 0,
-          "objectType": "",
-          "address": {
-            "route": "",
-            "country": {},
-            "postal_code": "",
-            "locality": ""
-          }
-        },
-        "otherInformations": {
-          "orderNumber": "",
-          "orderDate": "2019-01-30T13:00:39.516Z",
-          "referenceNumber": "mahmut.akyol@bauexperts.de",
-          "orderType": 5
+          "orderType": 4
         }
       },
       "detectionDatas": [],

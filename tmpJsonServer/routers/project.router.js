@@ -21,6 +21,8 @@ server.post('/', createCB);
 
 server.put('/:id', editCB);
 
+server.delete('/:id', deleteCB);
+
 server.get('/byId/:id', getProjectByIdCB);
 
 server.get('/byPn/:pn', getProjectByProjectNumberCB);
@@ -67,8 +69,21 @@ function editCB(req, res) {
     if (item) {
         res.status(200).json(item.assign(req.body).write());
     } else {
-        res.status(404).json({error: "item not found"});
+        res.status(404).json({error: "item not found!"});
     }
+}
+
+function deleteCB(req, res) {
+    var id = req.params.id;
+
+    var items = dbHelper.getDataByFieldName(db, 'projects');
+    if (items) {
+        items = dbHelper.delete(db, 'projects', id);
+        res.status(200).json(items);
+    } else {
+        res.status(404).json({error: 'item not found!'});
+    }
+
 }
 
 module.exports = server;

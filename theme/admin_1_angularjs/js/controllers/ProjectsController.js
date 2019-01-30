@@ -20,6 +20,7 @@
 
         vm.newProject = newProject;
         vm.editProject = editProject;
+        vm.deleteProject = deleteProject;
         // vm.deleteData = deleteData;
         // vm.setColor = setColor;
 
@@ -210,6 +211,16 @@
                     }
                 }
             );
+        }
+
+        function deleteProject() {
+            $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                ProjectHandler.deleteData(vm.id).then((res) => {
+                    console.log('====================================');
+                    console.log(res.data);
+                    console.log('====================================');
+                });
+            });
         }
 
         function updateElement(id, data) {
