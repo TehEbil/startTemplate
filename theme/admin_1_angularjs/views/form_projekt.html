@@ -159,11 +159,12 @@
 						<label class="control-label bxp-label float-left">Objektart</label>
 						<ui-select ng-disabled="FormCtrl.svRequestState" class="bxp-input float-left" ng-model="FormCtrl.order.object.objectType"
 						 theme="bootstrap" remove-selected="false">
-							<ui-select-match allow-clear>{{$select.selected}}</ui-select-match>
-							<ui-select-choices repeat="item in FormCtrl.objectTypes | filter: $select.search">
-								<span ng-bind-html="item | highlight: $select.search"></span>
+							<ui-select-match allow-clear>{{$select.selected.value}}</ui-select-match>
+							<ui-select-choices repeat="item.id as item in FormCtrl.objectTypes | filter: $select.search">
+								<span ng-bind-html="item.value | highlight: $select.search"></span>
 							</ui-select-choices>
 						</ui-select>
+						
 					</div>
 					<bxp-address on-select="FormCtrl.onSelect" ng-model="FormCtrl.order.object.address" make="FormCtrl.svRequestState"></bxp-address>
 

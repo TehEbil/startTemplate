@@ -68,9 +68,6 @@
                         $rootScope.sharedService.alert("Data has been refreshed.", "warning");
                         getId.updateElement(getId.id, data); // so parent also has refreshed data
                     }
-                        console.log('====================================');
-                        console.log(data);
-                        console.log('====================================');
                     initForm(data);
 
                 }, (err) => {
@@ -79,7 +76,7 @@
                     $rootScope.sharedService.alert("An error has occured, please contact an administrator.", "danger");
                 });
             } else {
-                initForm(emptyProject());
+                initForm(emptyProject(getId.detail.listItems));
             }
 		}
 
@@ -95,12 +92,14 @@
             vm.protocols = vm.baseData.protocolDatas;
             vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
             vm.orderTypes = globalData.auftragsart;
+            vm.objectTypes = globalData.objektTypen;
             vm.tmpSelected = false;
         }
 
 
-        function emptyProject() {
+        function emptyProject(objectList) {
             return {
+                "id": helperFuncs.maxId(objectList) + 1,
                 "projectNumber": "",
                 "projectName": "",
                 "ownPerformanceBuilder": "",

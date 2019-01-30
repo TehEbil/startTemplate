@@ -17,7 +17,9 @@ db._.mixin(mixins);
 
 server.get('/', getAllCB);
 
-server.post('/', saveCB);
+server.post('/', createCB);
+
+server.put('/:id', editCB);
 
 server.get('/byId/:id', getProjectByIdCB);
 
@@ -49,18 +51,24 @@ function getProjectByProjectNumberCB(req, res) {
     
 }
 
-function saveCB(req, res) {
+function createCB(req, res) {
+    var items = dbHelper.getDataByFieldName(db, 'projects');
 
-    if (dbHelper.findById(db, 'projects', req.body.id)) {
-        var item = dbHelper.findById(db, 'projects', req.body.id).assign(req.body).write();    
+    items.push(req.body);
+
+    db.write();
+
+    res.status(200).json(items);
+}
+
+function editCB(req, res) {
+    var id = req.params.id;
+    var item = dbHelper.findById(db, 'projects', id);
+    if (item) {
+        res.status(200).json(item.assign(req.body).write());
     } else {
-        console.log('====================================');
-        console.log('new Item');
-        console.log('====================================');
+        res.status(404).json({error: "item not found"});
     }
-    
-
-    res.status(200).json(item);
 }
 
 module.exports = server;

@@ -164,32 +164,31 @@
             /* you will not need project data for new */
             let obj = {
                 title: 'Auftragsart',
-                data: globalData.auftragsart
+                data: globalData.auftragsart,
             };
 
 
             modalService.openMenuModal('views/order_type.html', 'OrderTypeController', 'animated zoomIn', obj).then( (data) => {
                 
                 if (typeof data !== 'undefined') {
-                    console.log('====================================');
-                    console.log('data', data.value);
-                    console.log('====================================');
-
-                    modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', {orderTypeId: data.id}).then(
+                    
+                    var newObj = {
+                        orderTypeId: data.id,
+                        detail: {
+                            listItems: vm.data
+                        }
+                    }
+                    modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
                         (data) => {
                             if (typeof data !== 'undefined') {
-                                // ProjectHandler.postData(data).then((res) => {
-                                //     console.log('====================================');
-                                //     console.log('response: ', res);
-                                //     console.log('====================================');
-                                // });    
+                                ProjectHandler.postData(data).then((res) => {
+                                    vm.data = res.data;
+                                });    
                             }
                         }
                     );
                 }
-                
             });
-            
         }
 
         function editProject() {
@@ -203,7 +202,7 @@
             modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', obj).then(
                 (data) => {
                     if (typeof data !== 'undefined') {
-                        ProjectHandler.postData(data).then((res) => {
+                        ProjectHandler.updateData(data.id, data).then((res) => {
                             console.log('====================================');
                             console.log('response: ', res);
                             console.log('====================================');

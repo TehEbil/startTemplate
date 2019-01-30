@@ -516,7 +516,7 @@
         },
         "object": {
           "objectNumber": 0,
-          "objectType": "Einfamilienhaus",
+          "objectType": 7,
           "address": {
             "route": "Mecidiyekoy st.",
             "country": {
@@ -889,7 +889,7 @@
         },
         "object": {
           "objectNumber": 0,
-          "objectType": "Einfamilienhaus",
+          "objectType": 20,
           "address": {
             "route": "Mecidiyekoy st.",
             "country": {
@@ -1231,6 +1231,100 @@
           "documents": []
         }
       ]
+    },
+    {
+      "id": 3,
+      "projectNumber": "",
+      "projectName": "",
+      "ownPerformanceBuilder": "",
+      "documents": [],
+      "intenalNotes": "",
+      "orderDatas": {
+        "customer": {
+          "customerNumber": "",
+          "privatFirma": "privat",
+          "selectedGen": "",
+          "selectedTit": "",
+          "firstName": "",
+          "lastName": "",
+          "companyName": "",
+          "additive": "",
+          "address": {
+            "route": "",
+            "country": {},
+            "postal_code": "",
+            "locality": ""
+          },
+          "phone": "",
+          "mobile": "",
+          "email": "mahmut.akyol@outlook.com.tr"
+        },
+        "object": {
+          "objectNumber": 0,
+          "objectType": "",
+          "address": {
+            "route": "",
+            "country": {},
+            "postal_code": "",
+            "locality": ""
+          }
+        },
+        "otherInformations": {
+          "orderNumber": "",
+          "orderDate": "2019-01-30T12:51:30.186Z",
+          "referenceNumber": "",
+          "orderType": 5
+        }
+      },
+      "detectionDatas": [],
+      "protocolDatas": []
+    },
+    {
+      "id": 4,
+      "projectNumber": "",
+      "projectName": "",
+      "ownPerformanceBuilder": "",
+      "documents": [],
+      "intenalNotes": "",
+      "orderDatas": {
+        "customer": {
+          "customerNumber": "",
+          "privatFirma": "privat",
+          "selectedGen": "",
+          "selectedTit": "",
+          "firstName": "",
+          "lastName": "",
+          "companyName": "",
+          "additive": "",
+          "address": {
+            "route": "",
+            "country": {},
+            "postal_code": "",
+            "locality": ""
+          },
+          "phone": "",
+          "mobile": "",
+          "email": ""
+        },
+        "object": {
+          "objectNumber": 0,
+          "objectType": "",
+          "address": {
+            "route": "",
+            "country": {},
+            "postal_code": "",
+            "locality": ""
+          }
+        },
+        "otherInformations": {
+          "orderNumber": "",
+          "orderDate": "2019-01-30T13:00:39.516Z",
+          "referenceNumber": "mahmut.akyol@bauexperts.de",
+          "orderType": 5
+        }
+      },
+      "detectionDatas": [],
+      "protocolDatas": []
     }
   ],
   "files": [

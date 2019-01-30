@@ -1098,27 +1098,86 @@ var globalData = {
         }
     ],
     "objektTypen": [
-        "Bankgebäude",
-        "Bürogebäude",
-        "Doppelhaushälfte",
-        "Eigentumswohnung",
-        "Freistehendes Einfamilienhaus",
-        "Freistehendes Zweifamilienhaus",
-        "Freistehendes Dreifamilienhaus",
-        "Einfamilienhaus",
-        "Einfamilienhaus Neubau",
-        "Zweifamilienhaus",
-        "Zweifamilienhaus Neubau",
-        "Dreifamilienhaus",
-        "Dreifamilienhaus Neubau",
-        "Garage",
-        "Wohnunseigentümergemeinschaft",
-        "Geschäftshaus",
-        "Mehrfamilienhaus",
-        "Reihenendhaus",
-        "Reihenmittelhaus",
-        "Wohn-/ Geschäftshaus",
-        "Sonstige"
+        {
+            "id": 1,
+            "value": "Bankgebäude"
+        },
+        {
+            "id": 2,
+            "value": "Bürogebäude"
+        },
+        {
+            "id": 3,
+            "value": "Doppelhaushälfte"
+        },
+        {
+            "id": 4,
+            "value": "Eigentumswohnung"
+        },
+        {
+            "id": 5,
+            "value": "Freistehendes Einfamilienhaus"
+        },
+        {
+            "id": 6,
+            "value": "Freistehendes Zweifamilienhaus"
+        },
+        {
+            "id": 7,
+            "value": "Freistehendes Dreifamilienhaus"
+        },
+        {
+            "id": 8,
+            "value": "Einfamilienhaus Neubau"
+        },
+        {
+            "id": 9,
+            "value": "Zweifamilienhaus"
+        },
+        {
+            "id": 10,
+            "value": "Zweifamilienhaus Neubau"
+        },
+        {
+            "id": 11,
+            "value": "Dreifamilienhaus"
+        },
+        {
+            "id": 12,
+            "value": "Dreifamilienhaus Neubau"
+        },
+        {
+            "id": 13,
+            "value": "Garage"
+        },
+        {
+            "id": 14,
+            "value": "Wohnunseigentümergemeinschaft"
+        },
+        {
+            "id": 15,
+            "value": "Geschäftshaus"
+        },
+        {
+            "id": 16,
+            "value": "Mehrfamilienhaus"
+        },
+        {
+            "id": 17,
+            "value": "Reihenendhaus"
+        },
+        {
+            "id": 18,
+            "value": "Reihenmittelhaus"
+        },
+        {
+            "id": 19,
+            "value": "Wohn-/ Geschäftshaus"
+        },
+        {
+            "id": 20,
+            "value": "Sonstige"
+        }
     ],
     "prüffeld": [
         {
@@ -1827,6 +1886,16 @@ var globalData = {
         {
           "id": 36,
           "name": "Wärmeschutznachweis"
+        }
+    ],
+    "status": [
+        {
+            "id": 1,
+            "value": "vorhaben"
+        },
+        {
+            "id": 2,
+            "value": "fehlt"
         }
     ]
 };
