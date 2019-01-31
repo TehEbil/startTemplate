@@ -5,10 +5,10 @@
         .module('MetronicApp')
         .controller('ProjectsController', ProjectsController);
 
-    ProjectsController.$inject = ['$rootScope', '$scope', '$stateParams', 'modalService', 'ProjectHandler', '$interval', '$timeout', 'uiGridConstants'];
+    ProjectsController.$inject = ['$rootScope', '$scope', '$stateParams', 'modalService', 'ProjectHandler', 'uiGridConstants', 'BaseDataHandler'];
 
     /* @ngInject */
-    function ProjectsController($rootScope, $scope, $stateParams, modalService, ProjectHandler, $interval, $timeout, uiGridConstants) {
+    function ProjectsController($rootScope, $scope, $stateParams, modalService, ProjectHandler, uiGridConstants, BaseDataHandler) {
         var vm = this;
         vm.title = 'ProjectsController';
         vm.type = "Protocol";
@@ -162,33 +162,35 @@
 
         function newProject() {
 
-            /* you will not need project data for new */
-            let obj = {
-                title: 'Auftragsart',
-                data: globalData.auftragsart,
-            };
+            BaseDataHandler.getData('auftragsart').then((res) => {
+                /* you will not need project data for new */
+                let obj = {
+                    title: 'Auftragsart',
+                    data: res.data,
+                };
 
 
-            modalService.openMenuModal('views/order_type.html', 'OrderTypeController', 'animated zoomIn', obj).then( (data) => {
-                
-                if (typeof data !== 'undefined') {
+                modalService.openMenuModal('views/order_type.html', 'OrderTypeController', 'animated zoomIn', obj).then( (data) => {
                     
-                    var newObj = {
-                        orderTypeId: data.id,
-                        detail: {
-                            listItems: vm.data
-                        }
-                    }
-                    modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
-                        (data) => {
-                            if (typeof data !== 'undefined') {
-                                ProjectHandler.postData(data).then((res) => {
-                                    vm.data = res.data;
-                                });    
+                    if (typeof data !== 'undefined') {
+                        
+                        var newObj = {
+                            orderTypeId: data.id,
+                            detail: {
+                                listItems: vm.data
                             }
                         }
-                    );
-                }
+                        modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
+                            (data) => {
+                                if (typeof data !== 'undefined') {
+                                    ProjectHandler.postData(data).then((res) => {
+                                        vm.data = res.data;
+                                    });    
+                                }
+                            }
+                        );
+                    }
+                });
             });
         }
 

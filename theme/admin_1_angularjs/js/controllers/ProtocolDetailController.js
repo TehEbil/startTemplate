@@ -5,18 +5,15 @@
 		.module('MetronicApp')
 		.controller('ProtocolDetailController', ProtocolDetailController);
 
-        ProtocolDetailController.$inject = ['$rootScope', '$scope', 'getId', 'modalService'];
+        ProtocolDetailController.$inject = ['$rootScope', '$scope', 'getId', 'modalService', 'BaseDataHandler'];
 
 	/* @ngInject */
-	function ProtocolDetailController($rootScope, $scope, getId, modalService) {
+	function ProtocolDetailController($rootScope, $scope, getId, modalService, BaseDataHandler) {
 		// console.log("ProtocolDetailController Loaded");
 		var vm = this;
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
-        vm.projectTypes = globalData.artDesVorhabens;
-        vm.constructionStates = globalData.bautenstand;
-        vm.acceptances = globalData.abnahme;
         vm.setSelected = setSelected;
         vm.ondelete = ondelete;
         vm.deleteDocument = deleteDocument;
@@ -49,12 +46,7 @@
 
         init();
 
-        
-
         function init() {
-
-
-
             vm.untouched = getId.data;
             vm.baseDetections = getId.detail.detections;
             vm.selectedIdx = getId.detail.selectedIdx;
@@ -95,6 +87,10 @@
             console.log('====================================');
             vm.protocol.date = new Date(vm.protocol.date);
             vm.protocol.reportDate = new Date(vm.protocol.reportDate);
+
+            getConstructionStates();
+            getAcceptances();
+            getProjectTypes();
         }
 
         $scope.selectedTab = $scope.tabs[0];
@@ -212,6 +208,24 @@
                 };
                 $scope.$close(obj);    
             }
+        }
+
+        function getConstructionStates() {
+            BaseDataHandler.getData('bautenstand').then((res) => {
+                vm.constructionStates = res.data;
+            });
+        }
+
+        function getProjectTypes() {
+            BaseDataHandler.getData('artDesVorhabens').then((res) => {
+                vm.projectTypes = res.data;
+            });
+        }
+
+        function getAcceptances() {
+            BaseDataHandler.getData('abnahme').then((res) => {
+                vm.acceptances = res.data;
+            });
         }
 }
 })();

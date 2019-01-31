@@ -5,10 +5,10 @@
 	.module('MetronicApp')
 	.controller('FormProjektController', FormProjektController);
 
-	FormProjektController.$inject = ['$rootScope', '$scope', 'ProjectHandler', 'getId', 'modalService'];
+	FormProjektController.$inject = ['$rootScope', '$scope', 'ProjectHandler', 'getId', 'modalService', 'BaseDataHandler'];
 
 	/* @ngInject */
-	function FormProjektController($rootScope, $scope, ProjectHandler, getId, modalService) {
+	function FormProjektController($rootScope, $scope, ProjectHandler, getId, modalService, BaseDataHandler) {
 		var vm = this;
 		vm.title = 'FormProjektController';
         vm.closeModal = closeModal;
@@ -25,7 +25,6 @@
     	];
 
         vm.tabs = $scope.tabs;
-        vm.statuses = globalData.status;
 		
 		//#region Project Detail Methods & Variables definitions
         vm.newDocument = newDocument;
@@ -78,6 +77,8 @@
             } else {
                 initForm(emptyProject(getId.detail.listItems));
             }
+
+            getStatuses();
 		}
 
         function initForm(data) {
@@ -91,8 +92,8 @@
             vm.order = vm.baseData.orderDatas;
             vm.protocols = vm.baseData.protocolDatas;
             vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
-            vm.orderTypes = globalData.auftragsart;
-            vm.objectTypes = globalData.objektTypen;
+            getOrderTypes();
+            getObjectTypes();
             vm.tmpSelected = false;
         }
 
@@ -418,6 +419,23 @@
             }
         }
 
+        function getStatuses() {
+            BaseDataHandler.getData('detectionStatus').then((res) => {
+                vm.statuses = res.data;
+            });
+        }
+
+        function getOrderTypes() {
+            BaseDataHandler.getData('auftragsart').then((res) => {
+                vm.orderTypes = res.data;
+            });
+        }
+
+        function getObjectTypes() {
+            BaseDataHandler.getData('objektTypen').then((res) => {
+                vm.objectTypes = res.data;
+            });
+        }
 
     	$scope.selectedTab = $scope.tabs[0];
     	$scope.setSelectedTab = function(tab) {

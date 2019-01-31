@@ -17,6 +17,8 @@ db._.mixin(mixins);
 
 server.get('/', getAllCB);
 
+server.get('/:name', getByNameCB);
+
 server.post('/', saveCB);
 
 // server.get('/byId/:id', getProjectByIdCB);
@@ -29,8 +31,14 @@ function getAllCB(req, res) {
     res.status(200).json(dbHelper.getDataByFieldName(db, 'baseDatas'));
 }
 
+function getByNameCB(req, res) {
+    res.status(200).json(dbHelper.getDataByFieldName(db, `baseDatas.${req.params.name}`));
+}
+
 function saveCB(req, res) {
 
 }
+
+
 
 module.exports = server;

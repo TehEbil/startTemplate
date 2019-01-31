@@ -1724,7 +1724,7 @@ var globalData = {
           "shortcut": "F"
         }
     ],
-    "status": [
+    "detectionStatus": [
         {
           "id": 1,
           "name": "noch nicht abgestellt"

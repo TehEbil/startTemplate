@@ -5,10 +5,10 @@
 		.module('MetronicApp')
 		.controller('DetectionDetailController', DetectionDetailController);
 
-        DetectionDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'getId', 'passDataService'];
+        DetectionDetailController.$inject = ['$rootScope', '$scope', '$state', 'DTOptionsBuilder', 'DTColumnDefBuilder', 'modalService', 'getId', 'BaseDataHandler'];
 
 	/* @ngInject */
-	function DetectionDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, getId, passDataService) {
+	function DetectionDetailController($rootScope, $scope, $state, DTOptionsBuilder, DTColumnDefBuilder, modalService, getId, BaseDataHandler) {
 		// console.log("DetectionDetailController Loaded");
 		var vm = this;
 
@@ -18,12 +18,6 @@
         vm.nextPage = nextPage;
         vm.previousPage = previousPage;
         vm.stringToDate = stringToDate;
-        
-        /* Global Data Definitions */
-        vm.testFields = globalData.prüffeld;
-        vm.evaluations = globalData.beurteilungen;
-        vm.statuses = globalData.status;
-        vm.basics = globalData.grundlagen;
 
         vm.detections = [];
         vm.selectedDetection = {};
@@ -46,11 +40,12 @@
                 vm.selectedDetection = angular.copy(vm.detections[vm.selectedIdx]);
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
             }
-            
-            
-            
+            getTestFields();
+            getEvaluations();
+            getStatuses();
+            getBasics();
         }
-
+        
         function openTextSnippetModal() {
             let obj = {
                 title: 'Text Snippets',
@@ -136,6 +131,36 @@
                 };
                 $scope.$close(obj);
             }
+        }
+
+        function getTestFields() {
+            BaseDataHandler.getData('prüffeld').then((res) => {
+                vm.testFields = res.data;
+            });
+        }
+
+        function getEvaluations() {
+            BaseDataHandler.getData('beurteilungen').then((res) => {
+                vm.evaluations = res.data;
+            });
+        }
+
+        function getStatuses() {
+            BaseDataHandler.getData('detectionStatus').then((res) => {
+                vm.statuses = res.data;
+                console.log('====================================');
+                console.log('statuses', vm.statuses);
+                console.log('====================================');
+            });
+        }
+
+        function getBasics() {
+            BaseDataHandler.getData('grundlagen').then((res) => {
+                vm.basics = res.data;
+                console.log('====================================');
+                console.log('basics', vm.basics);
+                console.log('====================================');
+            });
         }
 }
 })();
