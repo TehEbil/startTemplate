@@ -54,7 +54,7 @@
             if (vm.selectedIdx === -1) { // new item
                 vm.protocols = angular.copy(vm.untouched);    
                 vm.protocol = {
-                    id: vm.protocols[vm.protocols.length - 1].id + 1,
+                    id: vm.protocols.length > 0 ? vm.protocols[vm.protocols.length - 1].id + 1 : 1,
                     isLocalInspection: true,
                     localInspectionDate: new Date().toISOString(),
                     protocolType: "",
@@ -88,9 +88,7 @@
             vm.protocol.date = new Date(vm.protocol.date);
             vm.protocol.reportDate = new Date(vm.protocol.reportDate);
 
-            getConstructionStates();
-            getAcceptances();
-            getProjectTypes();
+            getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme']);
         }
 
         $scope.selectedTab = $scope.tabs[0];
@@ -170,8 +168,6 @@
                 }
             }
         }
-            
-        
 
         function ondelete() {
             vm.protocol.splice(vm.selectedDocumentIdx, 1);
@@ -210,22 +206,19 @@
             }
         }
 
-        function getConstructionStates() {
-            BaseDataHandler.getData('bautenstand').then((res) => {
-                vm.constructionStates = res.data;
-            });
-        }
-
-        function getProjectTypes() {
-            BaseDataHandler.getData('artDesVorhabens').then((res) => {
-                vm.projectTypes = res.data;
-            });
-        }
-
-        function getAcceptances() {
-            BaseDataHandler.getData('abnahme').then((res) => {
-                vm.acceptances = res.data;
-            });
+        function getBaseDatas(baseDatas) {
+            for (const baseData of baseDatas) { // prüffeld
+                BaseDataHandler.getData(baseData).then((res) => {
+                    var responseKeys = res.config.url.split('/');
+                    if (responseKeys[responseKeys.length - 1] === 'bautenstand') {
+                        vm.constructionStates = res.data;
+                    } else if (responseKeys[responseKeys.length - 1] === 'detectionStatus') {
+                        vm.projectTypes = res.data;
+                    } else if (responseKeys[responseKeys.length - 1] === 'abnahme') {
+                        vm.acceptances = res.data;
+                    }
+                });    
+            }
         }
 }
 })();

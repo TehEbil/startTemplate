@@ -1320,7 +1320,7 @@ function maxId(arr) {
             transclude: true,
             template: function ($element, $attrs) {
                 return `
-                    <div class="bxp-form-anschrift bxp-form">
+                    <div class="bxp-form-anschrift bxp-form" close-esc-key>
                         <div ng-if="!vm.mobile">
                             <ng-transclude></ng-transclude>
                         </div>

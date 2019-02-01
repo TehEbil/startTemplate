@@ -1,5 +1,5 @@
 <form action="#" name="Detection" role="form" id="detection" ng-dirty ng-model="state" func="FormCtrl.closeModal"
- close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
+close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
  novalidate autocomplete="off"></form>
 <bxp-responsive-in-modal form-name="Detection" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
  submit-form="FormCtrl.submitForm">
@@ -14,9 +14,9 @@
 
 			<div class="bxp-col-6 float-right form-group group" style="display:flex; justify-content: flex-end;">
 				<div>{{ FormCtrl.selectedIdx + 1 }}/{{ FormCtrl.detections.length }}</div>
-				<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.previousPage()"
+				<button class="bxp-rounded-button small add" ng-disabled="!FormCtrl.isCanGoPrev" style="margin-left:10px!important;" ng-click="FormCtrl.previousPage()"
 				 required><i class="fa fa-arrow-left"></i></button>
-				<button class="bxp-rounded-button small add" style="margin-left:10px!important;" ng-click="FormCtrl.nextPage()"
+				<button class="bxp-rounded-button small add" ng-disabled="!FormCtrl.isCanGoNext" style="margin-left:10px!important;" ng-click="FormCtrl.nextPage()"
 				 required><i class="fa fa-arrow-right"></i></button>
 			</div>
 		</div>

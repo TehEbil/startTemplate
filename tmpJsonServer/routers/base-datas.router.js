@@ -32,6 +32,7 @@ function getAllCB(req, res) {
 }
 
 function getByNameCB(req, res) {
+    res.baseData = req.params.name;
     res.status(200).json(dbHelper.getDataByFieldName(db, `baseDatas.${req.params.name}`));
 }
 

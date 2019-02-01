@@ -78,7 +78,7 @@
                 initForm(emptyProject(getId.detail.listItems));
             }
 
-            getStatuses();
+            getBaseDatas(['detectionStatus']);
 		}
 
         function initForm(data) {
@@ -92,9 +92,8 @@
             vm.order = vm.baseData.orderDatas;
             vm.protocols = vm.baseData.protocolDatas;
             vm.order.otherInformations.orderDate = new Date(vm.order.otherInformations.orderDate);
-            getOrderTypes();
-            getObjectTypes();
             vm.tmpSelected = false;
+            getBaseDatas(['auftragsart', 'objektTypen']);
         }
 
 
@@ -244,14 +243,14 @@
             vm.subData.data.push(
                 {
                     /* we need to add data models */
-                    number: vm.baseData.detectionDatas[vm.subData.data.length - 1].number + 1,
+                    number: vm.baseData.detectionDatas.length > 0 ? vm.baseData.detectionDatas[vm.subData.data.length - 1].number + 1 : 1 ,
                     date: "",
                     status: "",
                     title: "",
                     coverPicUrl: "",
                     detection: "",
                     detail: {
-                        id: vm.baseData.detectionDatas[vm.subData.data.length - 1].detail.id + 1,
+                        id: vm.baseData.detectionDatas.length > 0 ? vm.baseData.detectionDatas[vm.subData.data.length - 1].detail.id + 1 : 1,
                         date: "",
                         datetime: "",
                         testField: {
@@ -419,22 +418,19 @@
             }
         }
 
-        function getStatuses() {
-            BaseDataHandler.getData('detectionStatus').then((res) => {
-                vm.statuses = res.data;
-            });
-        }
-
-        function getOrderTypes() {
-            BaseDataHandler.getData('auftragsart').then((res) => {
-                vm.orderTypes = res.data;
-            });
-        }
-
-        function getObjectTypes() {
-            BaseDataHandler.getData('objektTypen').then((res) => {
-                vm.objectTypes = res.data;
-            });
+        function getBaseDatas(baseDatas) {
+            for (const baseData of baseDatas) { // prüffeld
+                BaseDataHandler.getData(baseData).then((res) => {
+                    var responseKeys = res.config.url.split('/');
+                    if (responseKeys[responseKeys.length - 1] === 'auftragsart') {
+                        vm.orderTypes = res.data;
+                    } else if (responseKeys[responseKeys.length - 1] === 'detectionStatus') {
+                        vm.statuses = res.data;
+                    } else if (responseKeys[responseKeys.length - 1] === 'objektTypen') {
+                        vm.objectTypes = res.data;
+                    }
+                });    
+            }
         }
 
     	$scope.selectedTab = $scope.tabs[0];

@@ -813,28 +813,6 @@
               "title": ""
             }
           ]
-        },
-        {
-          "id": 4,
-          "isLocalInspection": true,
-          "localInspectionDate": "2019-01-22T06:54:05.605Z",
-          "protocolType": "",
-          "participants": "",
-          "tempreture": 23,
-          "weather": "",
-          "particularties": "",
-          "reportDate": "2019-01-22T06:54:05.605Z",
-          "projectType": {},
-          "constructionState": {},
-          "acceptance": {},
-          "acceptanceComment": "",
-          "note": "",
-          "selectedDetection": "",
-          "titlePicUrl": "https://picsum.photos/100/100/?random",
-          "date": "2019-01-22T06:54:05.605Z",
-          "members": "",
-          "selectedDetections": [],
-          "documents": []
         }
       ]
     },
@@ -2002,94 +1980,94 @@
     ],
     "status": [
       {
-          "id": 1,
-          "value": "vorhaben"
+        "id": 1,
+        "value": "vorhaben"
       },
       {
-          "id": 2,
-          "value": "fehlt"
+        "id": 2,
+        "value": "fehlt"
       }
     ],
     "objektTypen": [
       {
-          "id": 1,
-          "value": "Bankgebäude"
+        "id": 1,
+        "value": "Bankgebäude"
       },
       {
-          "id": 2,
-          "value": "Bürogebäude"
+        "id": 2,
+        "value": "Bürogebäude"
       },
       {
-          "id": 3,
-          "value": "Doppelhaushälfte"
+        "id": 3,
+        "value": "Doppelhaushälfte"
       },
       {
-          "id": 4,
-          "value": "Eigentumswohnung"
+        "id": 4,
+        "value": "Eigentumswohnung"
       },
       {
-          "id": 5,
-          "value": "Freistehendes Einfamilienhaus"
+        "id": 5,
+        "value": "Freistehendes Einfamilienhaus"
       },
       {
-          "id": 6,
-          "value": "Freistehendes Zweifamilienhaus"
+        "id": 6,
+        "value": "Freistehendes Zweifamilienhaus"
       },
       {
-          "id": 7,
-          "value": "Freistehendes Dreifamilienhaus"
+        "id": 7,
+        "value": "Freistehendes Dreifamilienhaus"
       },
       {
-          "id": 8,
-          "value": "Einfamilienhaus Neubau"
+        "id": 8,
+        "value": "Einfamilienhaus Neubau"
       },
       {
-          "id": 9,
-          "value": "Zweifamilienhaus"
+        "id": 9,
+        "value": "Zweifamilienhaus"
       },
       {
-          "id": 10,
-          "value": "Zweifamilienhaus Neubau"
+        "id": 10,
+        "value": "Zweifamilienhaus Neubau"
       },
       {
-          "id": 11,
-          "value": "Dreifamilienhaus"
+        "id": 11,
+        "value": "Dreifamilienhaus"
       },
       {
-          "id": 12,
-          "value": "Dreifamilienhaus Neubau"
+        "id": 12,
+        "value": "Dreifamilienhaus Neubau"
       },
       {
-          "id": 13,
-          "value": "Garage"
+        "id": 13,
+        "value": "Garage"
       },
       {
-          "id": 14,
-          "value": "Wohnunseigentümergemeinschaft"
+        "id": 14,
+        "value": "Wohnunseigentümergemeinschaft"
       },
       {
-          "id": 15,
-          "value": "Geschäftshaus"
+        "id": 15,
+        "value": "Geschäftshaus"
       },
       {
-          "id": 16,
-          "value": "Mehrfamilienhaus"
+        "id": 16,
+        "value": "Mehrfamilienhaus"
       },
       {
-          "id": 17,
-          "value": "Reihenendhaus"
+        "id": 17,
+        "value": "Reihenendhaus"
       },
       {
-          "id": 18,
-          "value": "Reihenmittelhaus"
+        "id": 18,
+        "value": "Reihenmittelhaus"
       },
       {
-          "id": 19,
-          "value": "Wohn-/ Geschäftshaus"
+        "id": 19,
+        "value": "Wohn-/ Geschäftshaus"
       },
       {
-          "id": 20,
-          "value": "Sonstige"
+        "id": 20,
+        "value": "Sonstige"
       }
     ],
     "abnahme": [
