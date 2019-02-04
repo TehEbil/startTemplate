@@ -419,18 +419,18 @@
         }
 
         function getBaseDatas(baseDatas) {
-            for (const baseData of baseDatas) { // prüffeld
-                BaseDataHandler.getData(baseData).then((res) => {
-                    var responseKeys = res.config.url.split('/');
-                    if (responseKeys[responseKeys.length - 1] === 'auftragsart') {
-                        vm.orderTypes = res.data;
-                    } else if (responseKeys[responseKeys.length - 1] === 'detectionStatus') {
-                        vm.statuses = res.data;
-                    } else if (responseKeys[responseKeys.length - 1] === 'objektTypen') {
-                        vm.objectTypes = res.data;
+            BaseDataHandler.getData().then((res) => {
+                for (const baseData of baseDatas) {
+                    if (baseData === 'auftragsart') {
+                        vm.orderTypes = res.data.auftragsart.data;                        
+                    } else if (baseData === 'detectionStatus') {
+                        vm.statuses = res.data.detectionStatus.data;    
+                    } else if (baseData === 'objektTypen') {
+                        vm.objectTypes = res.data.objektTypen.data;
                     }
-                });    
-            }
+                    
+                }
+            });    
         }
 
     	$scope.selectedTab = $scope.tabs[0];

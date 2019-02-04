@@ -7,17 +7,17 @@
             bindings: {
                 data: '=',
                 save: '=',
-                route: '='
+                route: '@'
             },
             controller: StammdataController,
             controllerAs: 'vm',
             templateUrl: '/components/stammdata/stammdata.template.html'
         });
 
-    StammdataController.$inject = ["$rootScope", "$scope", "$http", "$timeout", "$stateParams", "$state", "modalService", "localStorageService", "StammDatenHandler"];
+    StammdataController.$inject = ["$rootScope", "$scope", "$http", "$timeout", "$stateParams", "$state", "modalService", "localStorageService", "BaseDataHandler"];
 
     /* @ngInject */
-    function StammdataController($rootScope, $scope, $http, $timeout, $stateParams, $state, modalService, localStorageService, StammDatenHandler) {
+    function StammdataController($rootScope, $scope, $http, $timeout, $stateParams, $state, modalService, localStorageService, BaseDataHandler) {
 
         var vm = this;
         vm.state = true;
@@ -29,9 +29,11 @@
         vm.onsave = onsave;
         vm.ondelete = ondelete;
 
-
         function init() {
-            vm.baseData.data = vm.data;
+            BaseDataHandler.getData().then((res) => {
+                vm.baseData.data = res.data[vm.route].data;
+                vm.baseData.changedCounter = res.data[vm.route].changedCounter;
+            });
         }
 
         vm.$onInit = () => {
@@ -51,7 +53,7 @@
                 uploads: vm.uploads,
                 callback: onsave,
                 data: vm.baseData.data,
-                title: "Stammdata"
+                title: vm.route
             };
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
@@ -65,12 +67,16 @@
                     changedCounter: vm.baseData.changedCounter
                 };
 
-                StammDatenHandler.postData(obj).then(
+                console.log('====================================');
+                console.log('changed baseData => ', obj);
+                console.log('====================================');
+
+                BaseDataHandler.updateData(vm.route, obj).then(
                     (res) => {
                         // vm.baseData.data = res.data.data;
 
                         // fixed changedCounter issue and wrapped them together like in init
-                        vm.baseData = res.data;
+                        vm.baseData.data = res.data.data;
                     },
                     (err) => {
                         $rootScope.sharedService.alert('data has been changed!', "danger");

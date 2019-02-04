@@ -19,7 +19,7 @@ server.get('/', getAllCB);
 
 server.get('/:name', getByNameCB);
 
-server.post('/', saveCB);
+server.put('/:type', compareDataCB, saveCB);
 
 // server.get('/byId/:id', getProjectByIdCB);
 
@@ -36,7 +36,30 @@ function getByNameCB(req, res) {
     res.status(200).json(dbHelper.getDataByFieldName(db, `baseDatas.${req.params.name}`));
 }
 
+function compareDataCB(req, res, next) {
+
+    var type = req.params.type;
+    var data = dbHelper.getDataByFieldName(db, `baseDatas.${type}`);
+
+    if((typeof data.changedCounter) !== 'undefined' && (data.changedCounter === req.body.changedCounter)) {
+        next();
+    } else {
+        res.status(409).json(req.data);
+    } 
+}
+
 function saveCB(req, res) {
+    var type = req.params.type;
+    var items  = dbHelper.getDataByFieldName(db, `baseDatas.${type}`);
+    var changedCounter = req.body.changedCounter + 1;
+
+    items.data = req.body.data;
+    items.changedCounter = changedCounter;
+
+    db.write();
+
+    res.status(200).json(items);
+
 
 }
 

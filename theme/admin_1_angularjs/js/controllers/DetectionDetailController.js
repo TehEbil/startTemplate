@@ -25,14 +25,13 @@
         vm.date = null;
         vm.datetime = null;
         vm.newItem = false;
-        vm.isCanGoNext = true;
-        vm.isCanGoPrev = true;
 
         init();
 
         function init() {
             vm.selectedIdx = getId.detail.selectedIdx;
             vm.detections = getId.data;
+            vm.untouched = angular.copy(vm.detections);
             if (vm.selectedIdx === -1) {
                 vm.newItem = true;
                 vm.selectedDetection = angular.copy(vm.detections[vm.detections.length - 1]);
@@ -41,15 +40,8 @@
             } else {
                 vm.selectedDetection = angular.copy(vm.detections[vm.selectedIdx]);
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
-                if (vm.selectedIdx === 0) {
-                    vm.isCanGoNext = true;
-                    vm.isCanGoPrev = false;
-                } else if (vm.selectedIdx === vm.detections.length - 1 ) {
-                    vm.isCanGoNext = false; 
-                    vm.isCanGoPrev = true; 
-                }
             }
-            getBaseDatas(['prüffeld', 'beurteilungen', 'detectionStatus', 'grundlagen']);
+            getBaseDatas();
         }
         
         function openTextSnippetModal() {
@@ -94,10 +86,6 @@
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);   
             }
-            if (vm.selectedIdx === vm.detections.length - 1) {
-                vm.isCanGoNext = false;
-                vm.isCanGoPrev = true;
-            }
         }
 
         function previousPage() {
@@ -106,11 +94,6 @@
                 vm.selectedIdx --;
                 vm.selectedDetection = vm.detections[vm.selectedIdx];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
-            }
-
-            if (vm.selectedIdx === 0) {
-                vm.isCanGoNext = true;
-                vm.isCanGoPrev = false;
             }
         }
 
@@ -122,7 +105,11 @@
         }
 
         function closeModal() {
-            if (angular.equals(angular.toJson(vm.selectedDetection), angular.toJson(vm.detections[vm.selectedIdx]))) {
+            console.log('====================================');
+            console.log('undouched', vm.untouched);
+            console.log('Detections', vm.detections);
+            console.log('====================================');
+            if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.detections))) {
                 $scope.$close();
             } else {
                 $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
@@ -148,21 +135,14 @@
             }
         }
 
-        function getBaseDatas(baseDatas) {
-            for (const baseData of baseDatas) { // prüffeld
-                BaseDataHandler.getData(baseData).then((res) => {
-                    var responseKeys = res.config.url.split('/');
-                    if (responseKeys[responseKeys.length - 1] === 'prüffeld') {
-                        vm.testFields = res.data;
-                    } else if (responseKeys[responseKeys.length - 1] === 'beurteilungen') {
-                        vm.evaluations = res.data;
-                    } else if (responseKeys[responseKeys.length - 1] === 'detectionStatus') {
-                        vm.statuses = res.data;
-                    } else if (responseKeys[responseKeys.length - 1] === 'grundlagen') {
-                        vm.basics = res.data;
-                    }
-                });    
-            }
+        function getBaseDatas() {
+
+            BaseDataHandler.getData().then((res) => {
+                vm.testFields = res.data.prüffeld.data;
+                vm.evaluations = res.data.beurteilungen.data;
+                vm.statuses = res.data.detectionStatus.data;
+                vm.basics = res.data.grundlagen.data;
+            });
         }
 }
 })();

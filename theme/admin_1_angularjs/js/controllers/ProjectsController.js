@@ -162,11 +162,11 @@
 
         function newProject() {
 
-            BaseDataHandler.getData('auftragsart').then((res) => {
+            BaseDataHandler.getData().then((res) => {
                 /* you will not need project data for new */
                 let obj = {
                     title: 'Auftragsart',
-                    data: res.data,
+                    data: res.data.auftragsart.data,
                 };
 
 

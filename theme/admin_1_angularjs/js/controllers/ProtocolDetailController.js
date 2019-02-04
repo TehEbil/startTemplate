@@ -54,7 +54,7 @@
             if (vm.selectedIdx === -1) { // new item
                 vm.protocols = angular.copy(vm.untouched);    
                 vm.protocol = {
-                    id: vm.protocols.length > 0 ? vm.protocols[vm.protocols.length - 1].id + 1 : 1,
+                    id: helperFuncs.maxId(vm.protocols) + 1,
                     isLocalInspection: true,
                     localInspectionDate: new Date().toISOString(),
                     protocolType: "",
@@ -75,6 +75,8 @@
                     selectedDetections: [],
                     documents: [],
                 };
+
+
             } else {
                 vm.protocol = angular.copy(vm.untouched);
             }
@@ -207,18 +209,17 @@
         }
 
         function getBaseDatas(baseDatas) {
-            for (const baseData of baseDatas) { // prüffeld
-                BaseDataHandler.getData(baseData).then((res) => {
-                    var responseKeys = res.config.url.split('/');
-                    if (responseKeys[responseKeys.length - 1] === 'bautenstand') {
-                        vm.constructionStates = res.data;
-                    } else if (responseKeys[responseKeys.length - 1] === 'detectionStatus') {
-                        vm.projectTypes = res.data;
-                    } else if (responseKeys[responseKeys.length - 1] === 'abnahme') {
-                        vm.acceptances = res.data;
+            BaseDataHandler.getData().then((res) => {
+                for (const baseData of baseDatas) { // prüffeld
+                    if (baseData === 'bautenstand') {
+                        vm.constructionStates = res.data[baseData].data;
+                    } else if (baseData === 'detectionStatus') {
+                        vm.projectTypes = res.data[baseData].data;
+                    } else if (baseData === 'abnahme') {
+                        vm.acceptances = res.data[baseData].data;
                     }
-                });    
-            }
+                }
+            });    
         }
 }
 })();

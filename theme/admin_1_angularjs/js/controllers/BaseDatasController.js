@@ -31,21 +31,12 @@
         init();
 
         function init() {
+            console.log('====================================');
+            console.log('Load base datas' );
+            console.log('====================================');
             BaseDataHandler.getData().then( (res) => {
-                console.log('====================================');
-                console.log(res.data.auftragsart);
-                console.log('====================================');
                 vm.baseData = res.data;
             });
-            // StammDatenHandler.getData().then(
-            //     (res) => {
-            //         // vm.baseData.data = res.data.customers.sources.data;
-            //         // vm.baseData.changedCounter = res.data.customers.sources.changedCounter;
-
-            //         // saving 1 step of assignment
-            //         vm.baseData = res.data.customers.sources;
-            //     }
-            // );
         }
 
         function onsave(item) {
