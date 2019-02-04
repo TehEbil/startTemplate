@@ -342,13 +342,12 @@
 										<ui-select ng-disabled="vm.make" ng-model="detection.detail.status" theme="bootstrap"
 										 remove-selected="false">
 											<ui-select-match allow-clear>{{
-												$select.selected.name
+												$select.selected.value
 												}}</ui-select-match>
 											<ui-select-choices repeat="item.id as item in FormCtrl.statuses | filter: $select.search">
-												<span ng-bind-html="item.name  | highlight: $select.search"></span>
+												<span ng-bind-html="item.value  | highlight: $select.search"></span>
 											</ui-select-choices>
 										</ui-select>
-										<a class="edit-icon"><i class="fa fa-cog"></i></a>
 									</div>
 								</td>
 								<td>{{ detection.title }}</td>

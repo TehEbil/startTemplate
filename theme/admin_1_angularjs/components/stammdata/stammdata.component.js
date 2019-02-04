@@ -82,8 +82,6 @@
                         $rootScope.sharedService.alert('data has been changed!', "danger");
                     }
                 );
-
-                console.log("Modal closed, vm.uploads now = ", vm.baseData);
             });
         }
     }

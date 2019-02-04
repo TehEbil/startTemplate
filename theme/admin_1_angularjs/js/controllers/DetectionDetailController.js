@@ -18,6 +18,7 @@
         vm.nextPage = nextPage;
         vm.previousPage = previousPage;
         vm.stringToDate = stringToDate;
+        vm.openBaseDataModel = openBaseDataModel;
 
         vm.detections = [];
         vm.selectedDetection = {};
@@ -142,6 +143,40 @@
                 vm.evaluations = res.data.beurteilungen.data;
                 vm.statuses = res.data.detectionStatus.data;
                 vm.basics = res.data.grundlagen.data;
+            });
+        }
+
+        function openBaseDataModel(route, data) {
+            var obj = {
+                data: data,
+                title: route
+            };
+            // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
+            modalService.openComponentModal('editStammdata', obj).then((data) => {
+
+                // this is so we don't send a request when we "cancel" modal
+                if(typeof data ===  "undefined")
+                    return;
+
+                var obj = {
+                    data, // same as data: data -> because key and value is the same
+                    changedCounter: vm.baseData.changedCounter
+                };
+
+                console.log('====================================');
+                console.log('changed baseData => ', obj);
+                console.log('====================================');
+
+                BaseDataHandler.updateData(vm.route, obj).then(
+                    (res) => {
+                        getBaseDatas();
+                    },
+                    (err) => {
+                        $rootScope.sharedService.alert('data has been changed!', "danger");
+                    }
+                );
+
+                console.log("Modal closed, vm.uploads now = ", vm.baseData);
             });
         }
 }

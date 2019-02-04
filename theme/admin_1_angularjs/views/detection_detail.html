@@ -51,20 +51,12 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 				<div class="bxp-input float-left edit-icon-container">
 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.testField" theme="bootstrap"
 					 remove-selected="false">
-						<ui-select-match allow-clear>{{ $select.selected.name }}</ui-select-match>
+						<ui-select-match allow-clear>{{ $select.selected.value }}</ui-select-match>
 						<ui-select-choices repeat="item.id as item in FormCtrl.testFields | filter: $select.search | groupBy: item.group">
-							<span ng-bind-html="item.name  | highlight: $select.search"></span>
+							<span ng-bind-html="item.value  | highlight: $select.search"></span>
 						</ui-select-choices>
 					</ui-select>
-
-					<!-- <ui-select class="bxp-input float-left" ng-model="FormCtrl.selectedDetection.detail.testField" theme="bootstrap" title="Choose Art" on-select="" on-remove="" remove-selected="false">
-						<ui-select-match allow-clear placeholder=''>{{$select.selected.value}}</ui-select-match>
-						<ui-select-choices repeat="leistung.id as leistung in FormCtrl.orderTypes | filter: $select.search">
-							<div ng-bind-html="leistung.value | highlight: $select.search"></div>
-						</ui-select-choices>
-					</ui-select> -->
-
-					<a class="edit-icon"><i class="fa fa-cog"></i></a>
+					<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('prüffeld', FormCtrl.testFields)"><i class="fa fa-cog"></i></a>
 				</div>
 			</div>
 		</div>
@@ -86,13 +78,13 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.evaluation" theme="bootstrap"
 				 remove-selected="false">
 					<ui-select-match allow-clear>{{
-						$select.selected.name
+						$select.selected.value
 						}}</ui-select-match>
 					<ui-select-choices repeat="item.id as item in FormCtrl.evaluations | filter: $select.search">
-						<span ng-bind-html="item.name  | highlight: $select.search"></span>
+						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
-				<a class="edit-icon"><i class="fa fa-cog"></i></a>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('beurteilungen', FormCtrl.evaluations)"><i class="fa fa-cog"></i></a>
 			</div>
 		</div>
 
@@ -102,13 +94,13 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.status" theme="bootstrap"
 				 remove-selected="false">
 					<ui-select-match allow-clear>{{
-						$select.selected.name
+						$select.selected.value
 						}}</ui-select-match>
 					<ui-select-choices repeat="item.id as item in FormCtrl.statuses | filter: $select.search">
-						<span ng-bind-html="item.name  | highlight: $select.search"></span>
+						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
-				<a class="edit-icon"><i class="fa fa-cog"></i></a>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('detectionStatus', FormCtrl.statuses)"><i class="fa fa-cog"></i></a>
 			</div>
 		</div>
 
@@ -124,7 +116,7 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
-				<a class="edit-icon"><i class="fa fa-cog"></i></a>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('grundlagen', FormCtrl.basics)"><i class="fa fa-cog"></i></a>
 			</div>
 		</div>
 
