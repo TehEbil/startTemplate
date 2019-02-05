@@ -21,6 +21,7 @@
         vm.documents = [];
         vm.dynamic = -1;
         vm.docName = '';
+        vm.upload = upload;
 		$scope.state = true;
 
         init();
@@ -38,7 +39,7 @@
         function submitUpload() {
 
             if (vm.files) {
-                upload(vm.files);
+                vm.upload(vm.files);
             }
             else {
                 var upload = {
@@ -71,7 +72,11 @@
                 data: {file: files, name: vm.docName}
             }).then(function (resp) {
 
-                var upload = {
+                console.log('====================================');
+                console.log(resp);
+                console.log('====================================');
+            
+                let upload = {
                     'id': helperFuncs.maxId(vm.documents) + 1, 
                     'name': vm.docName,
                     'isDisplay': false,

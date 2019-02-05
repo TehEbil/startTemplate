@@ -63,11 +63,12 @@
 							<!-- Dropdown from land as placeholder -->
 							<div id="country-select" class="bxp-input country-select float-left">
 								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.projectType" theme="bootstrap" remove-selected="false">
-									<ui-select-match allow-clear>{{$select.selected.name}}</ui-select-match>
+									<ui-select-match allow-clear>{{$select.selected.value}}</ui-select-match>
 									<ui-select-choices repeat="item.id as item in FormCtrl.projectTypes | filter: $select.search">
-										<span ng-bind-html="item.name  | highlight: $select.search"></span>
+										<span ng-bind-html="item.value  | highlight: $select.search"></span>
 									</ui-select-choices>
 								</ui-select>
+								<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('Vorhaben', FormCtrl.projectTypes)"><i class="fa fa-cog"></i></a>
 							</div>
 
 						</div>
@@ -78,11 +79,12 @@
 					<!-- Dropdown from land as placeholder -->
 					<div id="country-select" class="bxp-input country-select float-left">
 						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.constructionState" theme="bootstrap" remove-selected="false">
-							<ui-select-match allow-clear>{{$select.selected.name}}</ui-select-match>
+							<ui-select-match allow-clear>{{$select.selected.value}}</ui-select-match>
 							<ui-select-choices repeat="item.id as item in FormCtrl.constructionStates | filter: $select.search">
-								<span ng-bind-html="item.name  | highlight: $select.search"></span>
+								<span ng-bind-html="item.value  | highlight: $select.search"></span>
 							</ui-select-choices>
 						</ui-select>
+						<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('Bautenstand', FormCtrl.constructionStates)"><i class="fa fa-cog"></i></a>
 					</div>
 				</div>
 				<div class="form-group group">
@@ -90,11 +92,12 @@
 					<!-- Dropdown from land as placeholder -->
 					<div id="country-select" class="bxp-input country-select float-left">
 						<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.acceptance" theme="bootstrap" remove-selected="false">
-							<ui-select-match allow-clear>{{$select.selected.name}}</ui-select-match>
+							<ui-select-match allow-clear>{{$select.selected.value}}</ui-select-match>
 							<ui-select-choices repeat="item.id as item in FormCtrl.acceptances | filter: $select.search">
-								<span ng-bind-html="item.name  | highlight: $select.search"></span>
+								<span ng-bind-html="item.value  | highlight: $select.search"></span>
 							</ui-select-choices>
 						</ui-select>
+						<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('abnahme', FormCtrl.acceptance)"><i class="fa fa-cog"></i></a>
 					</div>
 				</div>
 
@@ -118,9 +121,10 @@
 								<tr>
 									<th>Nr</th>
 									<th>Datum</th>
-									<th>Protokolltyp</th>
-									<th>Teilnehmer</th>
-									<th>Bautenstand</th>
+									<th>Status</th>
+									<th>Prüffeld</th>
+									<th>Beurteilung</th>
+									<th>Bild</th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('detections', FormCtrl.selectAllAdd,'isAddProtocol')" ng-model="FormCtrl.selectAllAdd"> Add to Protocol </th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('detections', FormCtrl.selectAllShortInfo, 'isAddShortInfo')" ng-model="FormCtrl.selectAllShortInfo"> Add Short Info </th>
 								</tr>
@@ -130,10 +134,25 @@
 								<tr ng-dblclick="FormCtrl.editDetection(detection)" ng-repeat="detection in FormCtrl.detections" ng-click="FormCtrl.setSelected('detection', $index, detection)"
 								ng-class="{selected: detection.number === FormCtrl.selectedDetection.number}">
 									<td>{{ detection.number }}</td>
-									<td>{{ detection.date }}</td>
-									<td>{{ detection.protocolType }}</td>
-									<td>{{ detection.members }}</td>
-									<td>{{ detection.constructionState.name }}</td>
+									<td>{{ detection.detail.date | date }}</td>
+									<td>
+										<div class="bxp-input float-left edit-icon-container">
+											<ui-select ng-disabled="vm.make" ng-model="detection.detail.status" theme="bootstrap"
+											 remove-selected="false">
+												<ui-select-match allow-clear>{{
+													$select.selected.value
+													}}</ui-select-match>
+												<ui-select-choices repeat="item.id as item in FormCtrl.statuses | filter: $select.search">
+													<span ng-bind-html="item.value  | highlight: $select.search"></span>
+												</ui-select-choices>
+											</ui-select>
+										</div>
+									</td>
+									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prüffeld') }}</td>
+									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.evaluation, 'beurteilung') }}</td>
+									<td>
+										<img ng-src="{{ detection.coverPicUrl }}" alt="Random Photo" height="40" width="40">
+									</td>
 									<td> <input type="checkbox" ng-model="detection.isAddProtocol"> </td>
 									<td> <input type="checkbox" ng-model="detection.isAddShortInfo"> </td>
 								</tr>
@@ -163,8 +182,7 @@
 									<th>Nr</th>
 									<th>Datum</th>
 									<th>Protokolltyp</th>
-									<th>Teilnehmer</th>
-									<th>Bautenstand</th>
+									<th>Icon</th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('documents', FormCtrl.selectAllAddJustName,'isAddJustName')" ng-model="FormCtrl.selectAllAddJustName"> Add Just Name </th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('documents', FormCtrl.selectAllAddAsAttachment, 'isAddAttachment')" ng-model="FormCtrl.selectAllAddAsAttachment"> Add as Attachment </th>
 								</tr>
@@ -174,10 +192,9 @@
 								<tr ng-dblclick="FormCtrl.editProtocolDocument(document)" ng-repeat="document in FormCtrl.protocol.documents" ng-click="FormCtrl.setSelected('document', $index, document)"
 								ng-class="{selected: document.id === FormCtrl.selectedDocument.id}">
 									<td>{{ document.id }}</td>
+									<td>{{ document.date | date }}</td>
 									<td>{{ document.filename }}</td>
-									<td>{{ document.filename }}</td>
-									<td>{{ document.filename }}</td>
-									<td>{{ document.filename }}</td>
+									<td>{{ document.type }}</td>
 									<td> <input type="checkbox" ng-model="document.isAddJustName"> </td>
 									<td> <input type="checkbox" ng-model="document.isAddAttachment"> </td>
 								</tr>
@@ -191,8 +208,8 @@
 						<!-- <button class="bxp-rounded-button small delete" ng-disabled="vm.detections.length === 0" ng-click="FormCtrl.deleteDocument()"
 							type="button"><i class="fa fa-trash"></i></button>
 						<button class="bxp-rounded-button small edit" ng-disabled="!vm.detections.length === 0" ng-click="vm.editAnschrift()"
-							type="button"><i class="fa fa-pencil"></i></button> -->
-						<button class="bxp-rounded-button small add" ng-click="FormCtrl.newDocument()" type="button"><i class="fa fa-plus"></i></button>
+							type="button"><i class="fa fa-pencil"></i></button>
+						<button class="bxp-rounded-button small add" ng-click="FormCtrl.newDocument()" type="button"><i class="fa fa-plus"></i></button> -->
 					</span>
 				</div>
 			</bxp-responsive-tab>

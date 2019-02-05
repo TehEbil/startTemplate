@@ -549,12 +549,12 @@
             "datetime": "2019-01-04T09:15:48.000Z",
             "hour": 14,
             "minute": 25,
-            "testField": 1,
+            "testField": 3,
             "position": "asdfasdf",
             "title": "title",
-            "evaluation": 3,
-            "basics": 6,
-            "status": 2,
+            "evaluation": 2,
+            "basics": 1,
+            "status": 1,
             "description": "desc",
             "costs": {
               "disposalCost": 500,
@@ -571,15 +571,6 @@
               "oldfilename": "Ekran Resmi 2018-08-03 13.48.21.png",
               "refName": "2-Ekran Resmi 2018-08-03 13.48.21.png",
               "date": "2019-01-14T07:51:56.272Z",
-              "editMode": false
-            },
-            {
-              "id": 7,
-              "filename": "Ekran Resmi 2018-11-22 11.49.13.png",
-              "filepath": "public/uploads/Ekran Resmi 2018-11-22 11.49.13.png",
-              "oldfilename": "Ekran Resmi 2018-11-22 11.49.13.png",
-              "refName": "Ekran Resmi 2018-11-22 11.49.13.png",
-              "date": "2019-01-14T07:54:49.676Z",
               "editMode": false
             }
           ]
@@ -598,12 +589,12 @@
             "datetime": "2019-01-04T09:36:48.000Z",
             "hour": 14,
             "minute": 25,
-            "testField": 5,
+            "testField": 3,
             "position": "positionczvzxcvzxcvzxvzxasdfasdfasdf",
             "title": "title",
-            "evaluation": 5,
-            "basics": 4,
-            "status": 2,
+            "evaluation": 4,
+            "basics": 3,
+            "status": 3,
             "description": "desc",
             "costs": {
               "disposalCost": 500,
@@ -628,22 +619,11 @@
             "datetime": "2019-01-04T09:27:48.000Z",
             "hour": 14,
             "minute": 25,
-            "testField": {
-              "id": 5,
-              "name": "Brunnenbauarbeiten und Aufschlussbohrungen",
-              "group": "ROHBAU"
-            },
+            "testField": 1,
             "position": "positionasdfasfddsf",
             "title": "title",
-            "evaluation": {
-              "id": "03",
-              "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-              "shortcut": "AT"
-            },
-            "basics": {
-              "id": "03",
-              "name": "Baubeschreibung"
-            },
+            "evaluation": 2,
+            "basics": 1,
             "status": 1,
             "description": "desc",
             "costs": {
@@ -668,14 +648,8 @@
           "particularties": "1. particularity, 2. particularity",
           "reportDate": "2019-01-23T21:00:00.000Z",
           "projectType": 3,
-          "constructionState": {
-            "id": "04",
-            "name": "Rohinstallation der Heizungsanlagen"
-          },
-          "acceptance": {
-            "id": "2",
-            "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-          },
+          "constructionState": 4,
+          "acceptance": 2,
           "acceptanceComment": "As a result of the researching of a defect has not been found.",
           "note": "All we need a just a little lahmacun!",
           "titlePicUrl": "https://picsum.photos/100/100/?random",
@@ -738,18 +712,9 @@
           "weather": "",
           "particularties": "",
           "reportDate": "2019-01-26T21:00:00.000Z",
-          "projectType": {
-            "id": "02",
-            "name": "Änderung ( Umbau / Nutzungsänderung )"
-          },
-          "constructionState": {
-            "id": 3,
-            "name": "Dachflächen, Dachrinnen"
-          },
-          "acceptance": {
-            "id": "2",
-            "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-          },
+          "projectType": 3,
+          "constructionState": 2,
+          "acceptance": 1,
           "acceptanceComment": "test",
           "note": "",
           "titlePicUrl": "",
@@ -772,18 +737,9 @@
           "weather": "",
           "particularties": "",
           "reportDate": "2019-01-29T21:00:00.000Z",
-          "projectType": {
-            "id": 1,
-            "name": "Errichtung ( Neubau / Erweiterung )"
-          },
-          "constructionState": {
-            "id": 2,
-            "name": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
-          },
-          "acceptance": {
-            "id": 1,
-            "name": "Abnahme kann ohne Vorbehalte erteilt werden"
-          },
+          "projectType": 2,
+          "constructionState": 3,
+          "acceptance": 1,
           "acceptanceComment": "",
           "note": "",
           "titlePicUrl": "",
@@ -2079,15 +2035,15 @@
       "data": [
         {
           "id": 0,
-          "name": "Abnahme kann nicht erteilt werden"
+          "value": "Abnahme kann nicht erteilt werden"
         },
         {
           "id": 1,
-          "name": "Abnahme kann ohne Vorbehalte erteilt werden"
+          "value": "Abnahme kann ohne Vorbehalte erteilt werden"
         },
         {
           "id": 2,
-          "name": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
+          "value": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
         }
       ],
       "changedCounter": 0
@@ -2096,55 +2052,55 @@
       "data": [
         {
           "id": 1,
-          "name": "Baugrundstück nach Beginn der Erdarbeiten"
+          "value": "Baugrundstück nach Beginn der Erdarbeiten"
         },
         {
           "id": 2,
-          "name": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
+          "value": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
         },
         {
           "id": 3,
-          "name": "Dachflächen, Dachrinnen"
+          "value": "Dachflächen, Dachrinnen"
         },
         {
           "id": 4,
-          "name": "Rohinstallation der Heizungsanlagen"
+          "value": "Rohinstallation der Heizungsanlagen"
         },
         {
           "id": 5,
-          "name": "Rohinstallation der Sanitäranlagen"
+          "value": "Rohinstallation der Sanitäranlagen"
         },
         {
           "id": 6,
-          "name": "Rohinstallation der Elektroanlagen"
+          "value": "Rohinstallation der Elektroanlagen"
         },
         {
           "id": 7,
-          "name": "Fenster mit Verglasung"
+          "value": "Fenster mit Verglasung"
         },
         {
           "id": 8,
-          "name": "Innenputz ohne Beiputzarbeiten"
+          "value": "Innenputz ohne Beiputzarbeiten"
         },
         {
           "id": 9,
-          "name": "Estrich"
+          "value": "Estrich"
         },
         {
           "id": 10,
-          "name": "Fliesenarbeiten im Sanitärbereich"
+          "value": "Fliesenarbeiten im Sanitärbereich"
         },
         {
           "id": 11,
-          "name": "nach Bezugsfertigkeit (innen komplett fertig)"
+          "value": "nach Bezugsfertigkeit (innen komplett fertig)"
         },
         {
           "id": 12,
-          "name": "Fassadenarbeiten"
+          "value": "Fassadenarbeiten"
         },
         {
           "id": 13,
-          "name": "Fertigstellung"
+          "value": "Fertigstellung"
         }
       ],
       "changedCounter": 0
@@ -2153,15 +2109,15 @@
       "data": [
         {
           "id": 1,
-          "name": "Errichtung ( Neubau / Erweiterung )"
+          "value": "Errichtung ( Neubau / Erweiterung )"
         },
         {
           "id": 2,
-          "name": "Änderung ( Umbau / Nutzungsänderung )"
+          "value": "Änderung ( Umbau / Nutzungsänderung )"
         },
         {
           "id": 3,
-          "name": "Abbruch"
+          "value": "Abbruch"
         }
       ],
       "changedCounter": 0

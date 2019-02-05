@@ -1643,6 +1643,10 @@ function maxId(arr) {
 
         vm.editEntry = function (id = -1) {
             // console.log(id);
+
+            console.log('====================================');
+            console.log(id);
+            console.log('====================================');
             if(id == -1 && vm.id == false)
                 return console.error("Fehler bei editEntry");
 

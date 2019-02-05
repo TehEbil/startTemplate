@@ -326,7 +326,8 @@
 								<th>Nr</th>
 								<th>Datum</th>
 								<th>Status</th>
-								<th>Titel</th>
+								<th>Prüffeld</th>
+								<th>Beurteilung</th>
 								<th>Bild</th>
 							</tr>
 						</thead>
@@ -350,8 +351,8 @@
 										</ui-select>
 									</div>
 								</td>
-								<td>{{ detection.title }}</td>
-								<!-- <td>{{ detection.detection }}</td> -->
+								<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prüffeld') }}</td>
+								<td>{{ FormCtrl.getBaseDataValueById(detection.detail.evaluation, 'beurteilung') }}</td>
 								<!-- <td>{{ detection.detail.position }}</td> -->
 								<td>
 									<img ng-src="{{ detection.coverPicUrl }}" alt="Random Photo" height="40" width="40">
@@ -383,8 +384,6 @@
 							<tr>
 								<th>Nr</th>
 								<th>Datum</th>
-								<th>Protokolltyp</th>
-								<th>Teilnehmer</th>
 								<th>Bautenstand</th>
 							</tr>
 						</thead>
@@ -394,9 +393,7 @@
 							 ng-class="{selected: $index === FormCtrl.selectedProtocolIdx}">
 								<td>{{ protocol.id }}</td>
 								<td>{{ protocol.date | date}}</td>
-								<td>{{ protocol.protocolType }}</td>
-								<td>{{ protocol.participants }}</td>
-								<td>{{ protocol.constructionState.name }}</td>
+								<td>{{ FormCtrl.getBaseDataValueById(protocol.constructionState, 'bautenstand') }}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -404,9 +401,9 @@
 			</div>
 			<div class="bxp-button-container compact group">
 				<span class="ta-right float-right">
-					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0 && FormCtrl.selectedProtocolIdx === -1" ng-click="FormCtrl.deleteProtocol()"
+					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0" ng-click="FormCtrl.deleteProtocol()"
 					 type="button"><i class="fa fa-trash"></i></button>
-					<button class="bxp-rounded-button small edit" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0 && FormCtrl.selectedProtocolIdx === -1" ng-click="FormCtrl.editProtocol()"
+					<button class="bxp-rounded-button small edit" ng-disabled="FormCtrl.baseData.protocolDatas.length === 0" ng-click="FormCtrl.editProtocol()"
 					 type="button"><i class="fa fa-pencil"></i></button>
 					<button class="bxp-rounded-button small add" ng-click="FormCtrl.addProtocol()" type="button"><i class="fa fa-plus"></i></button>
 				</span>

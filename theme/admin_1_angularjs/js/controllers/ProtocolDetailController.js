@@ -19,6 +19,8 @@
         vm.deleteDocument = deleteDocument;
         vm.newDocument = newDocument;
         vm.checkAll = checkAll;
+        vm.openBaseDataModel = openBaseDataModel;
+        vm.getBaseDataValueById = getBaseDataValueById;
 
         vm.selectAllAdd = false;
         vm.selectAllShortInfo = false;
@@ -90,7 +92,7 @@
             vm.protocol.date = new Date(vm.protocol.date);
             vm.protocol.reportDate = new Date(vm.protocol.reportDate);
 
-            getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme']);
+            getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme', 'beurteilungen', 'prüffeld']);
         }
 
         $scope.selectedTab = $scope.tabs[0];
@@ -100,9 +102,6 @@
         };
         
         function setSelected(field, idx, obj) {
-            console.log('====================================');
-            console.log('selected', obj);
-            console.log('====================================');
             if (field === 'document') {
                 vm.selectedDocument = obj;
                 vm.selectedDocumentIdx = idx;   
@@ -208,18 +207,72 @@
             }
         }
 
+        function getBaseDataValueById(id, type) {
+            let value = '';
+            if(type === 'bautenstand') {
+                value = vm.constructionStates.filter(f => f.id === id);
+            } else if (type === 'beurteilung' && typeof vm.evaluations !== 'undefined') {
+                value = vm.evaluations.filter(f => f.id === id);
+            } else if (type === 'prüffeld' && typeof vm.testFields !== 'undefined') {
+                value = vm.testFields.filter(f => f.id === id);
+            }
+            if (typeof value[0] !== 'undefined') {
+                return value[0].value;    
+            }
+        }
+
         function getBaseDatas(baseDatas) {
             BaseDataHandler.getData().then((res) => {
-                for (const baseData of baseDatas) { // prüffeld
+                for (const baseData of baseDatas) { 
                     if (baseData === 'bautenstand') {
                         vm.constructionStates = res.data[baseData].data;
                     } else if (baseData === 'detectionStatus') {
                         vm.projectTypes = res.data[baseData].data;
                     } else if (baseData === 'abnahme') {
                         vm.acceptances = res.data[baseData].data;
+                    } else if (baseData === 'prüffeld') {
+                        vm.testFields = res.data.prüffeld.data;
+                    } else if (baseData === 'beurteilungen') {
+                        vm.evaluations = res.data.beurteilungen.data;
+                    } else if (baseData === 'detectionStatus') {
+                        vm.statuses = res.data.detectionStatus.data;    
                     }
                 }
             });    
+        }
+
+        function openBaseDataModel(route, data) {
+            var obj = {
+                data: data,
+                title: route
+            };
+            // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
+            modalService.openComponentModal('editStammdata', obj).then((data) => {
+
+                // this is so we don't send a request when we "cancel" modal
+                if(typeof data ===  "undefined")
+                    return;
+
+                var obj = {
+                    data, // same as data: data -> because key and value is the same
+                    changedCounter: vm.baseData.changedCounter
+                };
+
+                console.log('====================================');
+                console.log('changed baseData => ', obj);
+                console.log('====================================');
+
+                BaseDataHandler.updateData(vm.route, obj).then(
+                    (res) => {
+                        getBaseDatas();
+                    },
+                    (err) => {
+                        $rootScope.sharedService.alert('data has been changed!', "danger");
+                    }
+                );
+
+                console.log("Modal closed, vm.uploads now = ", vm.baseData);
+            });
         }
 }
 })();

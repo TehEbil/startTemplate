@@ -19,6 +19,7 @@
         vm.previousPage = previousPage;
         vm.stringToDate = stringToDate;
         vm.openBaseDataModel = openBaseDataModel;
+        vm.deleteUpload = deleteUpload;
 
         vm.detections = [];
         vm.selectedDetection = {};
@@ -135,6 +136,15 @@
                 $scope.$close(obj);
             }
         }
+
+        function deleteUpload(id) {
+            /* File Deletion Callback */
+            console.log('====================================');
+            console.log('delete documents', id);
+            console.log('====================================');
+            vm.selectedDetection.documents.splice(vm.selectedDetection.documents.findIndex(o => o.id == id), 1);
+            $rootScope.sharedService.alert("File has been deleted", "success");
+        } 
 
         function getBaseDatas() {
 

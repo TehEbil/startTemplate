@@ -13,7 +13,8 @@
 		vm.title = 'FormProjektController';
         vm.closeModal = closeModal;
 		vm.submitForm = submitForm;
-		vm.setSelected = setSelected;
+        vm.setSelected = setSelected;
+        vm.getBaseDataValueById = getBaseDataValueById;
 
         $scope.state = true; // so modal closes with ESC
         
@@ -78,7 +79,7 @@
                 initForm(emptyProject(getId.detail.listItems));
             }
 
-            getBaseDatas(['detectionStatus']);
+            getBaseDatas(['detectionStatus', 'bautenstand', 'prüffeld', 'beurteilung']);
 		}
 
         function initForm(data) {
@@ -418,6 +419,20 @@
             }
         }
 
+        function getBaseDataValueById(id, type) {
+            let value = '';
+            if(type === 'bautenstand') {
+                value = vm.constructionStates.filter(f => f.id === id);
+            } else if (type === 'beurteilung') {
+                value = vm.evaluations.filter(f => f.id === id);
+            } else if (type === 'prüffeld') {
+                value = vm.testFields.filter(f => f.id === id);
+            }
+            if (value[0] !== 'undefined') {
+                return value[0].value;    
+            }
+        }
+
         function getBaseDatas(baseDatas) {
             BaseDataHandler.getData().then((res) => {
                 for (const baseData of baseDatas) {
@@ -427,8 +442,13 @@
                         vm.statuses = res.data.detectionStatus.data;    
                     } else if (baseData === 'objektTypen') {
                         vm.objectTypes = res.data.objektTypen.data;
+                    } else if (baseData === 'bautenstand') {
+                        vm.constructionStates = res.data.bautenstand.data;
+                    } else if (baseData === 'prüffeld') {
+                        vm.testFields = res.data.prüffeld.data;
+                    } else if (baseData === 'beurteilung') {
+                        vm.evaluations = res.data.beurteilungen.data;
                     }
-                    
                 }
             });    
         }
