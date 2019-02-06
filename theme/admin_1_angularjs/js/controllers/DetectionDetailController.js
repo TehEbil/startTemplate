@@ -32,8 +32,8 @@
 
         function init() {
             vm.selectedIdx = getId.detail.selectedIdx;
-            vm.detections = getId.data;
-            vm.untouched = angular.copy(vm.detections);
+            vm.untouched = getId.data;
+            vm.detections = angular.copy(vm.untouched);
             if (vm.selectedIdx === -1) {
                 vm.newItem = true;
                 vm.selectedDetection = angular.copy(vm.detections[vm.detections.length - 1]);
@@ -107,25 +107,29 @@
         }
 
         function closeModal() {
+
             console.log('====================================');
-            console.log('undouched', vm.untouched);
-            console.log('Detections', vm.detections);
+            console.log('untouched', angular.toJson(vm.untouched));
+            console.log('detections', angular.toJson(vm.detections));
+            let a  = angular.toJson(vm.untouched) === angular.toJson(vm.detections);
+            console.log('comparing', a);
             console.log('====================================');
-            if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.detections))) {
-                $scope.$close();
-            } else {
-                $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
-                    $scope.$close({
-                        data: vm.newItem,
-                        type: 'decline'
-                    });
-                });
-            }
+
+            // if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.detections))) {
+            //     $scope.$close();
+            // } else {
+            //     $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+            //         $scope.$close({
+            //             data: vm.newItem,
+            //             type: 'decline'
+            //         });
+            //     });
+            // }
             
         }
 
         function submitForm() {
-            if (angular.equals(angular.toJson(vm.selectedDetection), angular.toJson(vm.detections[vm.selectedIdx]))) {
+            if (angular.equals(angular.vm.untouched, angular.vm.detections)) {
                 $scope.$close();
             } else {
                 vm.detections[vm.selectedIdx] = vm.selectedDetection;

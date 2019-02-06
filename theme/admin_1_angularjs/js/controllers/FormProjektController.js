@@ -428,7 +428,7 @@
             } else if (type === 'prüffeld') {
                 value = vm.testFields.filter(f => f.id === id);
             }
-            if (value[0] !== 'undefined') {
+            if (typeof value[0] !== 'undefined') {
                 return value[0].value;    
             }
         }
