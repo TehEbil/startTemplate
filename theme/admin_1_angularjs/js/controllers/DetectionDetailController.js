@@ -32,15 +32,15 @@
 
         function init() {
             vm.selectedIdx = getId.detail.selectedIdx;
-            vm.untouched = getId.data;
-            vm.detections = angular.copy(vm.untouched);
+            vm.detections = getId.data;
+            vm.untouched = angular.copy(vm.detections);
             if (vm.selectedIdx === -1) {
                 vm.newItem = true;
-                vm.selectedDetection = angular.copy(vm.detections[vm.detections.length - 1]);
+                vm.selectedDetection = vm.detections[vm.detections.length - 1];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
                 vm.selectedIdx = vm.detections.length - 1;
             } else {
-                vm.selectedDetection = angular.copy(vm.detections[vm.selectedIdx]);
+                vm.selectedDetection = vm.detections[vm.selectedIdx];
                 vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
             }
             getBaseDatas();
@@ -108,28 +108,23 @@
 
         function closeModal() {
 
-            console.log('====================================');
-            console.log('untouched', angular.toJson(vm.untouched));
-            console.log('detections', angular.toJson(vm.detections));
-            let a  = angular.toJson(vm.untouched) === angular.toJson(vm.detections);
-            console.log('comparing', a);
-            console.log('====================================');
-
-            // if (angular.equals(angular.toJson(vm.untouched), angular.toJson(vm.detections))) {
-            //     $scope.$close();
-            // } else {
-            //     $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
-            //         $scope.$close({
-            //             data: vm.newItem,
-            //             type: 'decline'
-            //         });
-            //     });
-            // }
+            if (angular.toJson(vm.untouched) === angular.toJson(vm.detections)) {
+                $scope.$close();
+            } else {
+                $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
+                    vm.untouched.splice(-1, 1);
+                    $scope.$close({
+                        data: vm.newItem,
+                        type: 'decline',
+                        detail: vm.untouched
+                    });
+                });
+            }
             
         }
 
         function submitForm() {
-            if (angular.equals(angular.vm.untouched, angular.vm.detections)) {
+            if (angular.toJson(vm.untouched) === angular.toJson(vm.detections)) {
                 $scope.$close();
             } else {
                 vm.detections[vm.selectedIdx] = vm.selectedDetection;
