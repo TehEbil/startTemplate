@@ -298,10 +298,8 @@
 
 			<div class="bxp-button-container compact group">
 				<span class="ta-right float-right">
-					<button class="bxp-rounded-button small delete" ng-disabled="FormCtrl.document.length === 0" ng-click="FormCtrl.deleteDocument(FormCtrl.selectedDocument.id)"
-					 type="button"><i class="fa fa-trash"></i></button>
-					<button class="bxp-rounded-button small edit" ng-click="FormCtrl.editEntry(FormCtrl.selectedDocument.id)"
-					 ng-disabled="!FormCtrl.document.length === 0" type="button"><i class="fa fa-pencil"></i></button>
+					<button class="bxp-rounded-button small delete" ng-click="FormCtrl.deleteDocument(FormCtrl.selectedDocument.id)"  ng-disabled="FormCtrl.document.length === 0" type="button"><i class="fa fa-trash"></i></button>
+					<button class="bxp-rounded-button small edit" ng-click="FormCtrl.editEntry(FormCtrl.selectedDocument.id)" ng-disabled="!FormCtrl.document.length === 0" type="button"><i class="fa fa-pencil"></i></button>
 					<button class="bxp-rounded-button small add" ng-click="FormCtrl.newDocument()" type="button"><i class="fa fa-plus"></i></button>
 				</span>
 			</div>

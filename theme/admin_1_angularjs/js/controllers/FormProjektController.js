@@ -423,6 +423,7 @@
 
         function getBaseDataValueById(id, type) {
             let value = '';
+            
             if(type === 'bautenstand') {
                 value = vm.constructionStates.filter(f => f.id === id);
             } else if (type === 'beurteilung') {
