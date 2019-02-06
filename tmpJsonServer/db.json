@@ -554,7 +554,7 @@
             "title": "title",
             "evaluation": 2,
             "basics": 1,
-            "status": 1,
+            "status": 4,
             "description": "desc",
             "costs": {
               "disposalCost": 500,

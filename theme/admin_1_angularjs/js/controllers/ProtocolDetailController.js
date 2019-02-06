@@ -215,6 +215,8 @@
                 value = vm.evaluations.filter(f => f.id === id);
             } else if (type === 'prüffeld' && typeof vm.testFields !== 'undefined') {
                 value = vm.testFields.filter(f => f.id === id);
+            } else if (type === 'detectionStatus' && typeof vm.statuses !== 'undefined') {
+                value = vm.statuses.filter(f => f.id === id);
             }
             if (typeof value[0] !== 'undefined') {
                 return value[0].value;    

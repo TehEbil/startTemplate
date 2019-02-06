@@ -136,7 +136,13 @@
 									<td>{{ detection.number }}</td>
 									<td>{{ detection.detail.date | date }}</td>
 									<td>
-										<div class="bxp-input float-left edit-icon-container">
+											<div popover-placement="right" uib-popover="FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus')" class="bxp-state" ng-class="{
+												'bxp-state-leistungen':         detection.detail.status === 4,
+												'bxp-state-inactive':           detection.detail.status === 1,
+												'bxp-state-active':             detection.detail.status === 2 || detection.detail.status === 3
+												}">
+											</div>
+										<!-- <div class="bxp-input float-left edit-icon-container">
 											<ui-select ng-disabled="vm.make" ng-model="detection.detail.status" theme="bootstrap"
 											 remove-selected="false">
 												<ui-select-match allow-clear>{{
@@ -146,7 +152,7 @@
 													<span ng-bind-html="item.value  | highlight: $select.search"></span>
 												</ui-select-choices>
 											</ui-select>
-										</div>
+										</div> -->
 									</td>
 									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prüffeld') }}</td>
 									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.evaluation, 'beurteilung') }}</td>
