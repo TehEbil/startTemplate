@@ -4033,3 +4033,76 @@ input#idKundennummer {
     left: auto;
     right: 0;
     top: 18px; }
+
+.bxp-order-header {
+  border-bottom: none;
+  margin-bottom: 10px;
+}
+
+.bxp-order-header h3{
+  color: #5c5c5c;
+  margin-bottom: 15px;
+  font-size: 26px;
+}
+
+.bxp-order-header p {
+  margin: 0;
+  font-size: 11px;
+}
+
+.bxp-table-menu {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.bxp-order-no-padding {
+  padding: 0!important;
+}
+
+.bxp-table-menu td {
+  border: none;
+}
+
+.bxp-menu-button {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: all .2s;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.bxp-menu-button:active {
+  outline: none;
+  transform: translateY(-1px);
+  border: none;
+  box-shadow: 0 3px 5px rgba(0,0,0,.2);
+}
+
+.bxp-menu-button:hover {
+  transform: translateY(-3px);
+  border: none;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  background-color: inherit;
+}
+
+tr.ng-scope:nth-child(1) .bxp-menu-button {
+  background-color: #002060;
+}
+
+tr.ng-scope:nth-child(2) .bxp-menu-button {
+  background-color: #0070c0;
+}
+
+tr.ng-scope:nth-child(3) .bxp-menu-button {
+  background-color: #00b0f0;
+}
+
+tr.ng-scope:nth-child(4) .bxp-menu-button {
+  background-color: #00b050;
+}
+
+tr.ng-scope:nth-child(5) .bxp-menu-button {
+  background-color: #91d050;
+}
