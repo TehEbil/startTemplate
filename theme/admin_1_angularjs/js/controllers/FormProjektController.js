@@ -29,7 +29,8 @@
 		
 		//#region Project Detail Methods & Variables definitions
         vm.newDocument = newDocument;
-        vm.addDocument = addDocument;
+        vm.editDocument = editDocument;
+        vm.attachDocument = attachDocument;
 		vm.deleteDocument = deleteDocument;
 		vm.saveEntry = saveEntry;
 		vm.editEntry = editEntry;
@@ -152,7 +153,7 @@
             var obj = {
               data: vm.baseData.documents,
               detail: {
-
+                isNew: true
               }
             };
 
@@ -163,7 +164,22 @@
             });
         }
 
-        function addDocument() {
+        function editDocument(id) {
+            let obj = {
+                data: id,
+                detail: {
+                    isNew: false
+                }
+            }; 
+
+            modalService.openMenuModal('views/project_data_documents.html', 'ProjectDataDocumentController', 'animated zoomIn', obj).then((res) => {
+                if (res.type === 'success') {
+                    vm.selectedDocument = res.data;
+                }
+            });
+        }
+
+        function attachDocument() {
             var obj = {
                 uploads: vm.selectedDocument.document,
                 callback: vm.onsave

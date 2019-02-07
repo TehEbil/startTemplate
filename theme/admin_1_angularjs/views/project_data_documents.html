@@ -25,6 +25,10 @@
           <div class="">
             <strong>Document name:</strong>
           </div>
+          <div>
+            <label for="">is Display</label>
+            <input type="checkbox" ng-model="FormCtrl.isDisplay">
+          </div>
           <input name="Dokumentenname" ng-model="FormCtrl.docName" class="form-control bxp-dokumentenname" type="text"
             placeholder="">
           <input type="file" ngf-select ng-model="FormCtrl.files" name="files" ngf-accept="'.pdf,.jpg,.gif,.png,.jpeg,.doc,.docx,.txt,.xlsx,.xls,.csv'"
