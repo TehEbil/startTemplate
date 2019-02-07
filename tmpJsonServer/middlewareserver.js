@@ -119,7 +119,7 @@ const options = {
   dhparam: fs.readFileSync("./keys/dh-strong.pem")
 };
 
-spdy.createServer(options, clientServer_app).listen(444, () => {
+spdy.createServer(options, clientServer_app).listen(443, () => {
     console.log('Client-Server is running');
  });
 
