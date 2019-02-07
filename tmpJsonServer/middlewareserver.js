@@ -54,35 +54,6 @@ const FileUploadController = require('./controllers/FileUploadController');
 /* init settings */
 var serverPort = (serverConfig.runOnServer) ? 3010 : 3006;
 
-if(serverConfig.runOnServer) {
-    process.env.NODE_ENV = 'production';
-    setInterval(checkDispos, 600 * 1000); // 10 Minuten
-
-    clientPort = 443;
-    serverPort = 3007;
-
-    serverip = "https://partner.bauexperts.de:" + serverPort + "/";
-    clientip = "https://partner.bauexperts.de:" + clientPort + "/";
-
-    serveripwoport = "https://partner.bauexperts.de";
-    
-    gKey = 'AIzaSyCGddpVu_R1w4VUqGLBcOpnh_vrm4oD8cs' // Prod's
-
-}
-else {
-    clientPort = 443;
-    serverPort = 3006;
-
-    serverip = "https://127.0.0.1:" + serverPort + "/";
-    clientip = "https://127.0.0.1:" + clientPort + "/";
-
-    serveripwoport = "https://127.0.0.1";
-
-    // gKey = 'AIzaSyDhTkxfSvGz_RIhdSFk371OZJvC5CRYnHM'   // Can's
-    // gKey = 'AIzaSyBO6MqXfbN5OVfJQk_F6tAwXHQR76VIUpE' // Moh's
-    gKey = 'AIzaSyD8BI35JwyInSE4FqyJ-yNkj6cpucX_44A' // Moh's2
-}
-
 const server = jsonServer.create();
 const routerx = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults({logger: false});
@@ -148,7 +119,7 @@ const options = {
   dhparam: fs.readFileSync("./keys/dh-strong.pem")
 };
 
-spdy.createServer(options, clientServer_app).listen(443, () => {
+spdy.createServer(options, clientServer_app).listen(444, () => {
     console.log('Client-Server is running');
  });
 
