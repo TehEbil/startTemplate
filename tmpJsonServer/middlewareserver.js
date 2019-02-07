@@ -79,8 +79,10 @@ clientServer_app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-clientServer.listen(80, () => {
-	console.log('Client-Server is running');
+
+var cport = (serverConfig.runOnServer) ? 81 : 80
+clientServer.listen(cport, () => {
+	console.log('Client-Server is running on Port:', cport);
 })
 
 /** Router Configurations */
