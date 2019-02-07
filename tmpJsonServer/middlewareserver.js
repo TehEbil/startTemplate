@@ -93,6 +93,17 @@ server.use(compression());
 clientServer_app.use(helmet());
 server.use(helmet());
 
+clientServer_app.use(redirectToHttps);
+server.use(redirectToHttps);
+
+function redirectToHttps(req, res, next) {
+    console.log("redirecting")
+    console.log(req.secure)
+    if(req.secure)
+        return next();
+    res.redirect('https://' + req.hostname + req.url); // express 4.x
+}
+
 server.set('superSecret', "abcdef"); // secret variable
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
@@ -189,15 +200,7 @@ server.use(morgan((tokens, req, res) => {
   	}
 }));
 
-clientServer_app.use(redirectToHttps);
-server.use(redirectToHttps);
 
-function redirectToHttps(req, res, next) {
-    console.log("redirecting")
-    if(req.secure)
-        return next();
-    res.redirect('https://' + req.hostname + req.url); // express 4.x
-}
 
 exports.writeToDB = function(x) {
   db.get('project.documents').insert(x).write();
