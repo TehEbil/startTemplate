@@ -3,14 +3,14 @@
         <div class="bxp-header-modal bxp-order-header">
             <h3>{{FormCtrl.typeKind.charAt(0).toUpperCase() + FormCtrl.typeKind.substr(1).toLowerCase()}}</h3>
             <p>Welchen Projekttyp wollen Sie anlegen?</p>
-            <p>Hinweis: Die Auswahl ist anschließend niche mehr ânderbar.</p>
+            <p>Hinweis: Die Auswahl ist anschließend nicht mehr änderbar.</p>
         </div>
         <div class="bxp-table-container bxp-order-no-padding" style="width: 400px;">
             <table class="table table-striped bxp-table-menu">
                 <tbody>
                     <tr ng-repeat="item in FormCtrl.items track by item.id">
                         <td>
-                            <div ng-class="{'activex': FormCtrl.id === item.id}" ng-click="FormCtrl.id = item.id" class="bxp-grundatensatz bxp-menu-item" ng-dblclick="FormCtrl.submitForm()">
+                            <div ng-class="{'activex': FormCtrl.id === item.id}" ng-click="FormCtrl.id = item.id" class="bxp-menu-button" ng-dblclick="FormCtrl.submitForm()">
                                 <input type="text" id="editInput" ng-if="item.editMode" ng-enter="FormCtrl.saveEntry(item.id)" ng-blur="FormCtrl.saveEntry(item.id)" ng-keyup="onInputKeyup($event)" ng-model="item.value" placeholder="" auto-focus>
 
                                 <div class="hover-text-field" ng-click="FormCtrl.onSelect(item)">
