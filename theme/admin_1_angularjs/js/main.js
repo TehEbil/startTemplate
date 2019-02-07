@@ -4,9 +4,9 @@ var counter = 0;
 // gIp = 'http://127.0.0.1:3006/';
 // gIp = serverConfig.mode + "://" + serverConfig.ip + ":" + serverConfig.port + "/";
 if(serverConfig.runOnServer)
-    gIp = "http://partner.bauexperts.de:3010/";
+    gIp = "https://partner.bauexperts.de:3010/";
 else
-    gIp = 'http://127.0.0.1:3006/';
+    gIp = 'https://127.0.0.1:3006/';
 
 function raw(x) {
     return JSON.parse(JSON.stringify(x));

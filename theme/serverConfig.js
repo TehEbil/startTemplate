@@ -1,5 +1,5 @@
 var serverConfig = {
-    runOnServer: true
+    runOnServer: false
     /*
     mode: "http",
     ip: "127.0.0.1",
