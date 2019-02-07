@@ -17,6 +17,7 @@ const bodyParser  = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const clone = require('clone');
+const serverConfig = require('../theme/serverConfig').serverConfig;
 
 /* db */
 const jsonServer = require('json-server');
@@ -50,15 +51,7 @@ const logger = createLogger({
 const FileUploadController = require('./controllers/FileUploadController');
 
 /* init settings */
-var clientPort, serverPort, serverip, clientip, serveripwoport;
-
-clientPort = 443;
-serverPort = 3006;
-
-serverip = "https://127.0.0.1:" + serverPort + "/";
-clientip = "https://127.0.0.1:" + clientPort + "/";
-
-serveripwoport = "https://127.0.0.1";
+var serverPort = (serverConfig.runOnServer) ? 3010 : 3006;
 
 const server = jsonServer.create();
 const routerx = jsonServer.router('db.json');
@@ -75,12 +68,9 @@ server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 server.use(middlewares);  		// ALLOW CORS!!
 
-
 const db = routerx.db;
 db._.mixin(lodashId);
 db._.mixin(mixins);
-
-console.log("hi");
 
 clientServer_app.use('/', express.static(__dirname + '/../theme/admin_1_angularjs/'));
 clientServer_app.use('/', express.static(__dirname + '/../theme/'));
@@ -100,7 +90,7 @@ const project = require('./routers/project.router');
 const baseDatas = require('./routers/base-datas.router');
 
 server.listen(serverPort, () => {
-  console.log('JSON Server is running');
+  console.log('JSON Server is running on Port:', serverPort);
 
   server.use('/project', project);
   server.use('/partnerForm', partnerForm);

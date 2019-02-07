@@ -1,9 +1,12 @@
 var debug = 0;
-var gIp;
 var counter = 0;
 
+// gIp = 'http://127.0.0.1:3006/';
+// gIp = serverConfig.mode + "://" + serverConfig.ip + ":" + serverConfig.port + "/";
+if(serverConfig.runOnServer)
+    gIp = "http://partner.bauexperts.de:3010/";
+else
     gIp = 'http://127.0.0.1:3006/';
-/* IF NOT DEBUG -> PRODUCTION:::::!!!*/
 
 function raw(x) {
     return JSON.parse(JSON.stringify(x));
