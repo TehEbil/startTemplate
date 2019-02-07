@@ -168,7 +168,9 @@
             let obj = {
                 data: id,
                 detail: {
-                    isNew: false
+                    isNew: false,
+                    projectId: getId.id,
+                    documents: vm.baseData.documents
                 }
             }; 
 
