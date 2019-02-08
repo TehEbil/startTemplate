@@ -9,6 +9,7 @@ console.time("Time to boot")
 /* server */
 const express = require('express');
 const compression = require('compression');
+const spdy = require('spdy');
 const clientServer_app = express();
 const clientServer = require('http').createServer(clientServer_app);
 const https = require("https");
@@ -17,6 +18,7 @@ const bodyParser  = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const clone = require('clone');
+const serverConfig = require('../theme/serverConfig').serverConfig;
 
 /* db */
 const jsonServer = require('json-server');
@@ -50,15 +52,7 @@ const logger = createLogger({
 const FileUploadController = require('./controllers/FileUploadController');
 
 /* init settings */
-var clientPort, serverPort, serverip, clientip, serveripwoport;
-
-clientPort = 443;
-serverPort = 3006;
-
-serverip = "https://127.0.0.1:" + serverPort + "/";
-clientip = "https://127.0.0.1:" + clientPort + "/";
-
-serveripwoport = "https://127.0.0.1";
+var serverPort = (serverConfig.runOnServer) ? 3010 : 3006;
 
 const server = jsonServer.create();
 const routerx = jsonServer.router('db.json');
@@ -70,17 +64,25 @@ server.use(compression());
 clientServer_app.use(helmet());
 server.use(helmet());
 
+clientServer_app.use(redirectToHttps);
+server.use(redirectToHttps);
+
+function redirectToHttps(req, res, next) {
+    console.log("redirecting")
+    console.log(req.secure)
+    if(req.secure)
+        return next();
+    res.redirect('https://' + req.hostname + req.url); // express 4.x
+}
+
 server.set('superSecret', "abcdef"); // secret variable
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 server.use(middlewares);  		// ALLOW CORS!!
 
-
 const db = routerx.db;
 db._.mixin(lodashId);
 db._.mixin(mixins);
-
-console.log("hi");
 
 clientServer_app.use('/', express.static(__dirname + '/../theme/admin_1_angularjs/'));
 clientServer_app.use('/', express.static(__dirname + '/../theme/'));
@@ -89,8 +91,10 @@ clientServer_app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-clientServer.listen(80, () => {
-	console.log('Client-Server is running');
+
+var cport = (serverConfig.runOnServer) ? 81 : 80
+clientServer.listen(cport, () => {
+	console.log('Client-Server is running on Port:', cport);
 })
 
 /** Router Configurations */
@@ -99,14 +103,30 @@ const stammDaten = require('./routers/stamm-daten.router');
 const project = require('./routers/project.router');
 const baseDatas = require('./routers/base-datas.router');
 
-server.listen(serverPort, () => {
-  console.log('JSON Server is running');
+server.listen(serverPort - 1, () => {
+  console.log('JSON Server is running on Port:', serverPort);
 
   server.use('/project', project);
   server.use('/partnerForm', partnerForm);
   server.use('/stammDaten', stammDaten);
   server.use('/baseDatas', baseDatas);
 })
+
+const options = {
+  key: fs.readFileSync("./keys/privkey.pem"),
+  cert: fs.readFileSync("./keys/cert.pem"),
+  ca: fs.readFileSync('./keys/chain.pem'),
+  dhparam: fs.readFileSync("./keys/dh-strong.pem")
+};
+
+spdy.createServer(options, clientServer_app).listen(443, () => {
+    console.log('Client-Server is running');
+ });
+
+spdy.createServer(options, server).listen(serverPort, () => {
+    console.log('JSON Server is running on port ' + serverPort);
+ });
+
 
 console.timeEnd("Time to boot")
 
@@ -150,6 +170,8 @@ server.use(morgan((tokens, req, res) => {
 	  	return req.method == "OPTIONS";
   	}
 }));
+
+
 
 exports.writeToDB = function(x) {
   db.get('project.documents').insert(x).write();
