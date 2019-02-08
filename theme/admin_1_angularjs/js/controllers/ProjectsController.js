@@ -12,7 +12,7 @@
         var vm = this;
         vm.title = 'ProjectsController';
         vm.type = "Protocol";
-        vm.data = undefined
+        vm.data = undefined;
         vm.id = false;
         vm.allData = {};
         vm.untouched = [];

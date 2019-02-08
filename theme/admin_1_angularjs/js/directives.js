@@ -336,7 +336,7 @@ function maxId(arr) {
                     //      $timeout(() => console.log("FILTERED"), 800);
                     //  });
                     vm.gridApi.core.on.sortChanged( $scope, function( grid, sort ) {
-                        //vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
+                        // vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
                     })
                     vm.gridApi.core.on.filterChanged( $scope, function( grid, sort ) {
                     //    console.log(grid, sort)
@@ -346,6 +346,8 @@ function maxId(arr) {
                     // var msg = row.entity;
                     // console.log("Row Selected!",  msg);
                     });
+
+                    // vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
                 }
         };
 

@@ -29,7 +29,7 @@
 		
 		//#region Project Detail Methods & Variables definitions
         vm.newDocument = newDocument;
-        vm.editDocument = editDocument;
+        // vm.editDocument = editDocument;
         vm.attachDocument = attachDocument;
 		vm.deleteDocument = deleteDocument;
 		vm.saveEntry = saveEntry;
@@ -159,27 +159,32 @@
 
             modalService.openMenuModal('views/project_data_documents.html', 'ProjectDataDocumentController', 'animated zoomIn', obj).then((res) => {
                 if (res.type === 'success') {
+                    console.log('====================================');
+                    console.log(res.data);
+                    console.log('====================================');
                     vm.baseData.documents = res.data;
                 }
             });
         }
 
-        function editDocument(id) {
-            let obj = {
-                data: id,
-                detail: {
-                    isNew: false,
-                    projectId: getId.id,
-                    documents: vm.baseData.documents
-                }
-            }; 
+        // function editDocument(id) {
+        //     let obj = {
+        //         data: vm.baseData.documents,
+        //         detail: {
+        //             isNew: false,
+        //             projectId: getId.id,
+        //             selectedId: id
+        //         }
+        //     }; 
 
-            modalService.openMenuModal('views/project_data_documents.html', 'ProjectDataDocumentController', 'animated zoomIn', obj).then((res) => {
-                if (res.type === 'success') {
-                    vm.selectedDocument = res.data;
-                }
-            });
-        }
+        //     modalService.openMenuModal('views/project_data_documents.html', 'ProjectDataDocumentController', 'animated zoomIn', obj).then((res) => {
+        //         if (res.type === 'success') {
+        //             console.log('====================================');
+        //             console.log(res);
+        //             console.log('====================================');
+        //         }
+        //     });
+        // }
 
         function attachDocument() {
             var obj = {

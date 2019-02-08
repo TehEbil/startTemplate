@@ -524,6 +524,19 @@
           "id": 4,
           "name": "Test Dökümanı 4",
           "isDisplay": true
+        },
+        {
+          "id": 5,
+          "name": "testtt",
+          "isDisplay": true,
+          "document": {
+            "success": true,
+            "id": 16,
+            "filename": "4-Ekran Resmi 2018-08-03 13.48.21.png",
+            "filepath": "public/uploads/4-Ekran Resmi 2018-08-03 13.48.21.png",
+            "oldfilename": "Ekran Resmi 2018-08-03 13.48.21.png",
+            "refName": "testtt"
+          }
         }
       ],
       "intenalNotes": "test text field",
@@ -1185,7 +1198,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 5,
       "projectNumber": "",
       "projectName": "",
       "ownPerformanceBuilder": "",
@@ -1202,14 +1215,14 @@
           "companyName": "",
           "additive": "",
           "address": {
-            "route": "",
+            "route": "University st. Teknokent B Blok Office  B 102",
             "country": {},
-            "postal_code": "",
-            "locality": ""
+            "postal_code": "54000",
+            "locality": "Sakarya"
           },
           "phone": "",
           "mobile": "",
-          "email": "mahmut.akyol@outlook.com"
+          "email": ""
         },
         "object": {
           "objectNumber": 0,
@@ -1223,12 +1236,39 @@
         },
         "otherInformations": {
           "orderNumber": "",
-          "orderDate": "2019-01-30T14:43:33.536Z",
+          "orderDate": "2019-02-08T12:33:43.943Z",
           "referenceNumber": "",
-          "orderType": 4
+          "orderType": 1
         }
       },
-      "detectionDatas": [],
+      "detectionDatas": [
+        {
+          "number": 1,
+          "date": "",
+          "status": "",
+          "title": "test",
+          "coverPicUrl": "",
+          "detection": "",
+          "detail": {
+            "id": 1,
+            "date": "2019-02-08T12:33:50.218Z",
+            "datetime": "2019-02-08T12:33:50.218Z",
+            "testField": 3,
+            "position": "rest",
+            "title": "",
+            "evaluation": 2,
+            "basics": 3,
+            "status": 1,
+            "description": "test text snippet 3",
+            "costs": {
+              "disposalCost": 0,
+              "impairment": 0,
+              "recoup": 0,
+              "isPrint": true
+            }
+          }
+        }
+      ],
       "protocolDatas": []
     }
   ],
