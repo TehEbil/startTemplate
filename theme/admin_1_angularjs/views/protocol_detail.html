@@ -191,6 +191,7 @@
 									<th>Icon</th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('documents', FormCtrl.selectAllAddJustName,'isAddJustName')" ng-model="FormCtrl.selectAllAddJustName"> Add Just Name </th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('documents', FormCtrl.selectAllAddAsAttachment, 'isAddAttachment')" ng-model="FormCtrl.selectAllAddAsAttachment"> Add as Attachment </th>
+									<th><input type="checkbox" ng-click="FormCtrl.checkAll(FormCtrl.isDisplayAll,'isDisplay')" ng-model="FormCtrl.isDisplayAll"> Display </th>
 								</tr>
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
@@ -203,6 +204,7 @@
 									<td>{{ document.type }}</td>
 									<td> <input type="checkbox" ng-model="document.isAddJustName"> </td>
 									<td> <input type="checkbox" ng-model="document.isAddAttachment"> </td>
+									<td> <input type="checkbox" ng-model="document.isDisplay"> </td>
 								</tr>
 							</tbody>
 						</table>
