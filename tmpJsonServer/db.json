@@ -1198,7 +1198,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 3,
       "projectNumber": "",
       "projectName": "",
       "ownPerformanceBuilder": "",
@@ -1236,39 +1236,12 @@
         },
         "otherInformations": {
           "orderNumber": "",
-          "orderDate": "2019-02-08T12:33:43.943Z",
+          "orderDate": "2019-02-11T08:33:37.071Z",
           "referenceNumber": "",
-          "orderType": 1
+          "orderType": 3
         }
       },
-      "detectionDatas": [
-        {
-          "number": 1,
-          "date": "",
-          "status": "",
-          "title": "test",
-          "coverPicUrl": "",
-          "detection": "",
-          "detail": {
-            "id": 1,
-            "date": "2019-02-08T12:33:50.218Z",
-            "datetime": "2019-02-08T12:33:50.218Z",
-            "testField": 3,
-            "position": "rest",
-            "title": "",
-            "evaluation": 2,
-            "basics": 3,
-            "status": 1,
-            "description": "test text snippet 3",
-            "costs": {
-              "disposalCost": 0,
-              "impairment": 0,
-              "recoup": 0,
-              "isPrint": true
-            }
-          }
-        }
-      ],
+      "detectionDatas": [],
       "protocolDatas": []
     }
   ],
