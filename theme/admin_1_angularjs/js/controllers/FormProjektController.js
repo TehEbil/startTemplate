@@ -20,7 +20,8 @@
         
     	$scope.tabs = [
 	    	'Auftragsdaten',
-	    	'Projektdaten',
+            'Projektdaten',
+            'Objektbeschreibung',
 	    	'Feststellungen',
 	    	'Protokolle'
     	];
