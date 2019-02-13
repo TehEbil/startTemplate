@@ -75,6 +75,11 @@
             var protocolNr = '1-2018-BBQ-14';
             var sv = 'Herr Frank Tekook';
             var thirdHeader = '3. Überprüfung der Abarbeitung bisher festgestellter Mängel';
+
+            // if Auftragsart === Stellungnahme pdfHeader = Gutachterlicht; for Beweissicherung pdfHeader = Beweissicherung;
+            // TODO: for Stellungnahme and Beweissicherung do not print 3. and 4. in pdf
+            let pdfHeader = 'Baubegleitende Qualitätskontrolle';
+
             var docDefinition = {
                 header: function() {
                     return [
@@ -213,7 +218,7 @@
                                     {
                                         border: [false, false, false, false],
                                         fillColor: '#ccc',
-                                        text: 'Baubegleitende Qualitätskontrolle',
+                                        text: pdfHeader,
                                         bold: true,
                                         alignment: 'center',
                                         fontSize: 14
@@ -399,7 +404,7 @@
                                     {
                                         border: [false, false, false, false],
                                         fillColor: '#ccc',
-                                        text: 'Baubegleitende Qualitätskontrolle',
+                                        text: pdfHeader,
                                         bold: true,
                                         alignment: 'center',
                                         fontSize: 14,
@@ -444,7 +449,7 @@
                                     {
                                         border: [false, false, false, false],
                                         fillColor: '#ccc',
-                                        text: 'Baubegleitende Qualitätskontrolle',
+                                        text: pdfHeader,
                                         bold: true,
                                         alignment: 'center',
                                         fontSize: 14,
@@ -536,7 +541,7 @@
                                     {
                                         border: [false, false, false, false],
                                         fillColor: '#ccc',
-                                        text: 'Baubegleitende Qualitätskontrolle',
+                                        text: pdfHeader,
                                         bold: true,
                                         alignment: 'center',
                                         fontSize: 14,
@@ -594,7 +599,7 @@
                                     {
                                         border: [false, false, false, false],
                                         fillColor: '#ccc',
-                                        text: 'Baubegleitende Qualitätskontrolle',
+                                        text: pdfHeader,
                                         bold: true,
                                         alignment: 'center',
                                         fontSize: 14,
@@ -652,7 +657,7 @@
                                     {
                                         border: [false, false, false, false],
                                         fillColor: '#ccc',
-                                        text: 'Baubegleitende Qualitätskontrolle',
+                                        text: pdfHeader,
                                         bold: true,
                                         alignment: 'center',
                                         fontSize: 14,
@@ -857,7 +862,7 @@
                                     {
                                         border: [false, false, false, false],
                                         fillColor: '#ccc',
-                                        text: 'Baubegleitende Qualitätskontrolle',
+                                        text: pdfHeader,
                                         bold: true,
                                         alignment: 'center',
                                         fontSize: 14,
