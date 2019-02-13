@@ -4106,3 +4106,12 @@ tr.ng-scope:nth-child(4) .bxp-menu-button {
 tr.ng-scope:nth-child(5) .bxp-menu-button {
   background-color: #91d050;
 }
+
+.bxp-modal-close {
+  color: #5c5c5c;
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  line-height: 1;
+}
