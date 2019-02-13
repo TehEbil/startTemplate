@@ -190,7 +190,7 @@
 								<tr ng-dblclick="FormCtrl.editProtocolDocument(document)" ng-repeat="document in FormCtrl.protocol.documents" ng-click="FormCtrl.setSelected('document', $index, document)"
 								ng-class="{selected: document.id === FormCtrl.selectedDocument.id}">
 									<td>{{ document.id }}</td>
-									<td>{{ document.date | date }}</td>
+									<td>{{ document.document.date | date }}</td>
 									<td>{{ document.filename }}</td>
 									<td>{{ document.type }}</td>
 									<td> <input type="checkbox" ng-model="document.isAddJustName"> </td>

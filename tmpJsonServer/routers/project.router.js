@@ -27,23 +27,30 @@ server.get('/byId/:id', getProjectByIdCB);
 
 server.get('/byPn/:pn', getProjectByProjectNumberCB);
 
-server.get('/documents', getProjectDocumentsCB);
+server.get('/:pId/documents', getProjectDocumentsCB);
 
 server.get('/documents/:pId/:dId', getProjectDocumentByIdCB);
+
+server.get('/detections', getProjectDetectionsCB);
 
 function getAllCB(req, res) {
     res.status(200).json(dbHelper.getDataByFieldName(db, 'projects'));
 }
 
 function getProjectDocumentsCB(req, res) {
-    res.status(200).json(dbHelper.getDataByFieldName(db, 'project.documents'));
+    let pId = req.params.pId;
+    res.status(200).json(dbHelper.getDataByFieldName(db, `projects[${pId-1}].documents`));
+}
+
+function getProjectDetectionsCB(req, res) {
+    res.status(200).json(dbHelper.getDataByFieldName(db, 'projects.detectionDatas'));
 }
 
 function getProjectDocumentByIdCB(req, res) {
     let pId = req.params.pId;
     let dId = req.params.dId;
 
-    res.status(200).json(dbHelper.findById(db, `projects[${pId}].documents`, dId));
+    res.status(200).json(dbHelper.findById(db, `projects[${pId-1}].documents`, dId));
 }
 
 function getProjectByIdCB(req, res) {

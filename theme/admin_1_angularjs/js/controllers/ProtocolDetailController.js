@@ -5,10 +5,10 @@
 		.module('MetronicApp')
 		.controller('ProtocolDetailController', ProtocolDetailController);
 
-        ProtocolDetailController.$inject = ['$rootScope', '$scope', 'getId', 'modalService', 'BaseDataHandler'];
+        ProtocolDetailController.$inject = ['$rootScope', '$scope', 'getId', 'modalService', 'BaseDataHandler', 'ProjectHandler'];
 
 	/* @ngInject */
-	function ProtocolDetailController($rootScope, $scope, getId, modalService, BaseDataHandler) {
+	function ProtocolDetailController($rootScope, $scope, getId, modalService, BaseDataHandler, ProjectHandler) {
 		// console.log("ProtocolDetailController Loaded");
 		var vm = this;
 
@@ -16,8 +16,8 @@
         vm.submitForm = submitForm;
         vm.setSelected = setSelected;
         vm.ondelete = ondelete;
-        vm.deleteDocument = deleteDocument;
-        vm.newDocument = newDocument;
+        // vm.deleteDocument = deleteDocument;
+        // vm.newDocument = newDocument;
         vm.checkAll = checkAll;
         vm.openBaseDataModel = openBaseDataModel;
         vm.getBaseDataValueById = getBaseDataValueById;
@@ -52,45 +52,46 @@
             vm.untouched = getId.data;
             vm.baseDetections = getId.detail.detections;
             vm.selectedIdx = getId.detail.selectedIdx;
+            vm.projectId = getId.detail.projectId;
 
-            if (vm.selectedIdx === -1) { // new item
-                vm.protocols = angular.copy(vm.untouched);    
-                vm.protocol = {
-                    id: helperFuncs.maxId(vm.protocols) + 1,
-                    isLocalInspection: true,
-                    localInspectionDate: new Date().toISOString(),
-                    protocolType: "",
-                    participants: "",
-                    tempreture: "",
-                    weather: "",
-                    particularties: "",
-                    reportDate: new Date().toISOString(),
-                    projectType: {},
-                    constructionState: {},
-                    acceptance: {},
-                    acceptanceComment: "",
-                    note: "",
-                    selectedDetection: "",
-                    titlePicUrl: "https://picsum.photos/100/100/?random",
-                    date: new Date().toISOString(),
-                    members: "",
-                    selectedDetections: [],
-                    documents: [],
-                };
-
-
-            } else {
-                vm.protocol = angular.copy(vm.untouched);
-            }
-
-            vm.detections = angular.copy(vm.baseDetections); 
-            
-            console.log('====================================');
-            console.log(vm.protocol);
-            console.log(vm.detections);
-            console.log('====================================');
-            vm.protocol.date = new Date(vm.protocol.date);
-            vm.protocol.reportDate = new Date(vm.protocol.reportDate);
+            ProjectHandler.getData(`${vm.projectId}/documents`).then((res) => {
+                if (vm.selectedIdx === -1) { // new item
+                    vm.protocols = angular.copy(vm.untouched);    
+                    
+                    vm.protocol = {
+                        id: helperFuncs.maxId(vm.protocols) + 1,
+                        isLocalInspection: true,
+                        localInspectionDate: new Date().toISOString(),
+                        protocolType: "",
+                        participants: "",
+                        tempreture: "",
+                        weather: "",
+                        particularties: "",
+                        reportDate: new Date().toISOString(),
+                        projectType: {},
+                        constructionState: {},
+                        acceptance: {},
+                        acceptanceComment: "",
+                        note: "",
+                        selectedDetection: "",
+                        titlePicUrl: "https://picsum.photos/100/100/?random",
+                        date: new Date().toISOString(),
+                        members: "",
+                        selectedDetections: [],
+                        documents: res.data,
+                    };
+                } else {
+                    console.log('====================================');
+                    console.log(res.data);
+                    console.log('====================================');
+                    vm.protocol = angular.copy(vm.untouched);
+                    vm.protocol.documents = res.data;
+                }        
+                
+                vm.detections = angular.copy(vm.baseDetections); 
+                vm.protocol.date = new Date(vm.protocol.date);
+                vm.protocol.reportDate = new Date(vm.protocol.reportDate);
+            });
 
             getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme', 'beurteilungen', 'prüffeld']);
         }
@@ -109,49 +110,6 @@
                 vm.selectedDetection = obj;
                 vm.selectedDetectionIdx = idx;
             }
-        }
-
-        function deleteDocument (id = -1) {
-
-            if(id == -1)
-                return console.error("Fehler bei deleteEntry");
-
-            var idx = getIndex(id);
-            $rootScope.sharedService.showConfirmDialog("delete").then(function () {
-                if (vm.ondelete)
-                    vm.ondelete(vm.protocol.documents[idx].id);
-            });
-        }
-
-        function newDocument() {
-            var obj = {
-              uploads: vm.protocol.documents,
-              callback: vm.onsave
-            };
-            if(vm.uploadtype)
-              obj['uploadtype'] = vm.uploadtype;
-
-            obj.single = true;
-
-            // console.log(obj);
-            modalService.openMenuModal('views/form_upload.html', 'ProtocolDocumentUploadController', 'animated zoomIn', obj).then(() => {
-                if(vm.disablesub && vm.uploadsLen < vm.uploads.length)
-                    vm.disablesub = false;
-            });
-        }
-
-        function getIndex(id) {
-            if(id === -1)
-                return $rootScope.sharedService.alert("ID not set", "danger");
-
-            if(vm.protocol.documents && vm.protocol.documents.length <= 0)
-                return $rootScope.sharedService.alert("No items", "danger");
-             
-            var idx = vm.protocol.documents.findIndex(o => o.id === id);
-            if(idx < 0)  
-                return $rootScope.sharedService.alert("ID not found", "danger");
-
-            return idx;
         }
         
         function checkAll(elements, state, field) {
