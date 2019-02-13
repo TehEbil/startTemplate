@@ -282,73 +282,74 @@ function maxId(arr) {
             </div>`;
 
         vm.gridOptions = {
-                enableRowSelection: true,
-                enableRowHeaderSelection: false,
-                enableFiltering: true,
-                enableGridMenu: true,
-                enableColumnMenus: false,
-                scrollDebounce: 70,
-                multiSelect: false,
-                modifierKeysToMultiSelect: false,
-                enableHorizontalScrollbar: 2,
-                enableVerticalScrollbar: 2,
-                showGridFooter: true,
-                enableSelectAll: false,
-                exporterMenuAllData: false,
-                exporterMenuCsv: false,
-                exporterMenuExcel: false,
-                exporterMenuPdf: false,
+            enableRowSelection: true,
+            enableRowHeaderSelection: false,
+            enableFiltering: true,
+            enableGridMenu: true,
+            enableColumnMenus: false,
+            scrollDebounce: 70,
+            multiSelect: false,
+            modifierKeysToMultiSelect: false,
+            enableHorizontalScrollbar: 2,
+            enableVerticalScrollbar: 2,
+            showGridFooter: true,
+            enableSelectAll: false,
+            exporterMenuAllData: false,
+            exporterMenuCsv: false,
+            exporterMenuExcel: false,
+            exporterMenuPdf: false,
 
-                rowTemplate: markup,
-                onRegisterApi: function(gridApi) {
-                    vm.gridApi = gridApi;
+            rowTemplate: markup,
+            onRegisterApi: function(gridApi) {
+                vm.gridApi = gridApi;
 
-                    vm.gridApi.colMovable.on.columnPositionChanged($scope, () => {
-                        saveState();
-                    })
-                    vm.gridApi.colResizable.on.columnSizeChanged($scope, () => {
-                        saveState();
-                    })
-                    //vm.gridApi.grouping.on.aggregationChanged($scope, saveState);
-                    //vm.gridApi.grouping.on.groupingChanged($scope, saveState);
-                    vm.gridApi.core.on.columnVisibilityChanged($scope, () => {
-                        // console.log("columnVisibilityChanged")
-                        saveState();
-                    })
-                    vm.gridApi.core.on.filterChanged($scope, () => {
-                        // console.log("filterChanged")
-                        // saveState();
-                    })
-                    // vm.gridApi.core.on.filterChanged($scope, checkIfFiltered);
-                    vm.gridApi.core.on.sortChanged($scope, () => {
-                        saveState();
-                    })
+                vm.gridApi.colMovable.on.columnPositionChanged($scope, () => {
+                    saveState();
+                });
 
-                    // Restore previously saved state.
-                    restoreState();
+                vm.gridApi.colResizable.on.columnSizeChanged($scope, () => {
+                    saveState();
+                });
 
+                //vm.gridApi.grouping.on.aggregationChanged($scope, saveState);
+                //vm.gridApi.grouping.on.groupingChanged($scope, saveState);
+                vm.gridApi.core.on.columnVisibilityChanged($scope, () => {
+                    // console.log("columnVisibilityChanged")
+                    saveState();
+                });
+                vm.gridApi.core.on.filterChanged($scope, () => {
+                    // console.log("filterChanged")
+                    // saveState();
+                });
 
+                // vm.gridApi.core.on.filterChanged($scope, checkIfFiltered);
+                vm.gridApi.core.on.sortChanged($scope, () => {
+                    saveState();
+                });
 
-                    //vm.gridApi.core.on.rowsVisibleChanged( $scope, vm.onFiltered );
-                    //console.log(vm.gridApi.core.on);
-                    // vm.gridApi.core.on.filterChanged($scope, function() {
-                    //      console.log('filter changed');
-                    //      $timeout(() => console.log("FILTERED"), 800);
-                    //  });
-                    vm.gridApi.core.on.sortChanged( $scope, function( grid, sort ) {
-                        // vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
-                    })
-                    vm.gridApi.core.on.filterChanged( $scope, function( grid, sort ) {
-                    //    console.log(grid, sort)
-                        //vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
-                    })
-                    vm.gridApi.selection.on.rowSelectionChanged($scope, function(row) {
-                    // var msg = row.entity;
-                    // console.log("Row Selected!",  msg);
-                    });
+                // Restore previously saved state.
+                restoreState();
 
+                //vm.gridApi.core.on.rowsVisibleChanged( $scope, vm.onFiltered );
+                //console.log(vm.gridApi.core.on);
+                // vm.gridApi.core.on.filterChanged($scope, function() {
+                //      console.log('filter changed');
+                //      $timeout(() => console.log("FILTERED"), 800);
+                //  });
+                vm.gridApi.core.on.sortChanged( $scope, function( grid, sort ) {
                     // vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
-                }
+                }); 
+
+                vm.gridApi.core.on.filterChanged( $scope, function( grid, sort ) {
+                //    console.log(grid, sort)
+                    //vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.ALL);
+                });
+                
+                vm.gridApi.selection.on.rowSelectionChanged($scope, function(row) {
+                // var msg = row.entity;
+                // console.log("Row Selected!",  msg);
+                });
+            }
         };
 
         function resetState() {
@@ -366,12 +367,16 @@ function maxId(arr) {
         }
 
         function restoreState() {
+            console.log('====================================');
+            console.log('hereeeeeeee');
+            console.log('====================================');
             $timeout(function () {
-            var state = localStorageService.get('gridState' + vm.pagetitle);
-            if (state) 
-                vm.gridApi.saveState.restore($scope, state);
 
-            vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN); //Performance Improvement?
+                var state = localStorageService.get('gridState' + vm.pagetitle);
+                if (state) 
+                    vm.gridApi.saveState.restore($scope, state);
+
+                vm.gridApi.core.notifyDataChange(uiGridConstants.dataChange.COLUMN); //Performance Improvement?
             });
         }
 
@@ -389,35 +394,10 @@ function maxId(arr) {
             
             });
             //vm.gridOptions.data = data; // 'Data to send'
-
-            // console.error(vm.gridOptions.data)
-            // console.error(vm.gridOptions.data)
-            // console.error(vm.gridOptions.data)
+            console.log('====================================');
+            console.log(vm.gridOptions.data);
+            console.log('====================================');
          });
-
-        // function * foo(x) {
-        //     while (true) {
-        //         x = x * 2;
-        //         yield x;
-        //     }
-        // }
-        //
-        // var test = foo(5);
-        // test.next();
-        //
-        //
-        // function testFunc2() {
-        //     return new Promise(resolve => {
-        //         if(vm.data !=)
-        //       setTimeout(() => {
-        //         resolve(x);
-        //       }, 2000);
-        //     });
-        // }
-        // async function testFunc() {
-        //     var data = await testFunc2;
-        //     console.log(data);
-        // }
 
         vm.leistungen = globalData.leistungen;
         // vm.leistungen = [{ "id": "1", "leistung": "Kaufberatung", "group": "Beratung" }, { "id": "2", "leistung": "Verkaufsberatung", "group": "Beratung" }, { "id": "3", "leistung": "Baubegleitung / Bauabnahme", "group": "Beratung" }, { "id": "4", "leistung": "Wohnraumvermessung", "group": "Beratung" }, { "id": "5", "leistung": "Feuchtemessung", "group": "Beratung" }, { "id": "6", "leistung": "Schimmelpilzanalysen", "group": "Beratung" }, { "id": "7", "leistung": "Energieausweis", "group": "Beratung" }, { "id": "8", "leistung": "Kurzgutachten", "group": "Immobilienbewertung" }, { "id": "9", "leistung": "Verkehrswertgutachten", "group": "Immobilienbewertung" }, { "id": "10", "leistung": "Mietwertgutachten", "group": "Immobilienbewertung" }, { "id": "11", "leistung": "Beleihungswertgutachten", "group": "Immobilienbewertung" }, { "id": "12", "leistung": "Portfolioanalyse", "group": "Immobilienbewertung" }, { "id": "13", "leistung": "Gutachten für Entschädigung", "group": "Immobilienbewertung" }, { "id": "14", "leistung": "Bauschäden", "group": "Begutachtung" }, { "id": "15", "leistung": "Baumängel", "group": "Begutachtung" }, { "id": "16", "leistung": "Schimmelpilzschäden", "group": "Begutachtung" }, { "id": "17", "leistung": "Versicherungsschäden", "group": "Begutachtung" }, { "id": "18", "leistung": "Beweissicherung", "group": "Begutachtung" }, { "id": "19", "leistung": "Prüfung von Schadensgutachten", "group": "Begutachtung" }, { "id": "20", "leistung": "Planungsleistungen", "group": "Planung" }, { "id": "21", "leistung": "Prüfung von Planungsleistungen", "group": "Planung" }, { "id": "22", "leistung": "Bauleitung", "group": "Planung" }, { "id": "23", "leistung": "Baubegleitende Qualitätsüberwachung", "group": "Planung" }, { "id": "24", "leistung": "SiGeKo", "group": "Planung" }, { "id": "25", "leistung": "Übergabeprotokoll", "group": "Beratung" }, { "id": "26", "leistung": "Kanaldichtheitsprüfung", "group": "Begutachtung" }];
