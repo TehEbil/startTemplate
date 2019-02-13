@@ -345,7 +345,8 @@
 				data: vm.baseData.protocolDatas,
 				detail: {
                     selectedIdx: -1,
-                    detections: vm.baseData.detectionDatas
+                    detections: vm.baseData.detectionDatas,
+                    projectId: vm.baseData.id
 				}
             };
 
@@ -366,7 +367,8 @@
                     data: vm.selectedProtocol,
                     detail: {
                         selectedIdx: vm.selectedProtocolIdx,
-                        detections: vm.baseData.detectionDatas
+                        detections: vm.baseData.detectionDatas,
+                        projectId: vm.baseData.id
                     }
                 }
                 /* Open detection detail modal */
