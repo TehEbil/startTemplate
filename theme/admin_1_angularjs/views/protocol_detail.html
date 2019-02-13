@@ -59,13 +59,15 @@
 
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">
-							<label class="control-label bxp-label float-left">Vorhaben</label>
+							<label class="control-label bxp-label float-left">Gesamtbeurteilung</label>
 							<!-- Dropdown from land as placeholder -->
 							<div id="country-select" class="bxp-input country-select float-left">
 								<ui-select ng-disabled="vm.make" ng-model="FormCtrl.protocol.projectType" theme="bootstrap" remove-selected="false">
-									<ui-select-match allow-clear>{{$select.selected.value}}</ui-select-match>
-									<ui-select-choices repeat="item.id as item in FormCtrl.projectTypes | filter: $select.search">
-										<span ng-bind-html="item.value  | highlight: $select.search"></span>
+									<ui-select-match allow-clear>
+										{{$select.selected.value}}
+									</ui-select-match>
+									<ui-select-choices repeat="item.id as item in FormCtrl.overals | filter: $select.search">
+										<span ng-bind-html="item.value | highlight: $select.search"></span>
 									</ui-select-choices>
 								</ui-select>
 								<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('Vorhaben', FormCtrl.projectTypes)"><i class="fa fa-cog"></i></a>

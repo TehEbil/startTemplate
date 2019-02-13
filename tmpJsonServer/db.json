@@ -2170,6 +2170,23 @@
         }
       ],
       "changedCounter": 0
+    },
+    "gesamtbeurteilung": {
+      "data": [
+        {
+          "id": 1,
+          "value": "red"
+        },
+        {
+          "id": 2,
+          "value": "yellow"
+        },
+        {
+          "id": 3,
+          "value": "green"
+        }
+      ],
+      "changedCounter": 0
     }
   },
   "partners": [
