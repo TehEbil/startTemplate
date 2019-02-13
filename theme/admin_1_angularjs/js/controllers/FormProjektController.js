@@ -267,7 +267,7 @@
             vm.subData.data.push(
                 {
                     /* we need to add data models */
-                    number: vm.baseData.detectionDatas.length > 0 ? vm.baseData.detectionDatas[vm.subData.data.length - 1].number + 1 : 1 ,
+                    number: generateNumber(vm.baseData.detectionDatas),
                     date: "",
                     status: "",
                     title: "",
@@ -336,6 +336,11 @@
                 vm.selectedDetectionIdx = 0;
                 vm.selectedDetection = vm.baseData.detectionDatas[vm.selectedDetectionIdx];
             });
+        }
+
+        function generateNumber(detections) {
+            let date = new Date();
+            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${detections.length > 0 ? vm.baseData.detectionDatas[vm.subData.data.length - 1].number + 1 : 1}`;
         }
 		//#endregion
 

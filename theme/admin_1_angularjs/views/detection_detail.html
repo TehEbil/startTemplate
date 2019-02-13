@@ -1,4 +1,4 @@
-<form action="#" name="Detection" role="form" id="detection" ng-dirty ng-model="state" func="FormCtrl.closeModal"
+<form action="#" name="detection" role="form" id="detection" ng-dirty ng-model="state" func="FormCtrl.closeModal"
 close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
  novalidate autocomplete="off"></form>
 <bxp-responsive-in-modal form-name="Detection" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
@@ -124,10 +124,11 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 			<label class="control-label bxp-label float-left">Beschreibung</label>
 
 			<div class="bxp-input float-left edit-icon-container">
-				<textarea class="form-control" rows="4" cols="50" ng-model="FormCtrl.selectedDetection.detail.description">
+				<textarea name="Beschreibung" class="form-control" rows="4" cols="50" ng-model="FormCtrl.selectedDetection.detail.description" required> 
 										</textarea>
 				<a class="edit-icon" ng-click="FormCtrl.openTextSnippetModal()"><i class="fa fa-cog"></i></a>
 			</div>
+			<p ng-if="!detection.Beschreibung.$valid"> required field </p>
 		</div>
 
 		<div class="bxp-form-note mt-5px mb-10px">Kosten</div>
@@ -153,9 +154,6 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 					<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2"
 					 maxlength="" ng-disabled="" ng-model="FormCtrl.selectedDetection.detail.costs.recoup" />
 				</div>
-
-				<input id="printable" type="checkbox" name="doNotprintItMan" value="doNotprintItMan" ng-model="FormCtrl.selectedDetection.detail.costs.isPrint" />
-				<label for="printable">Kosten nicht ausdrucken</label><br />
 			</div>
 		</div>
 

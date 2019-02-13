@@ -119,22 +119,21 @@
 						 style="width: 100%!important">
 							<thead>
 								<tr>
+									<th>Status</th>
 									<th>Nr</th>
 									<th>Datum</th>
-									<th>Status</th>
 									<th>Prüffeld</th>
 									<th>Beurteilung</th>
 									<th>Bild</th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('detections', FormCtrl.selectAllAdd,'isAddProtocol')" ng-model="FormCtrl.selectAllAdd"> Add to Protocol </th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('detections', FormCtrl.selectAllShortInfo, 'isAddShortInfo')" ng-model="FormCtrl.selectAllShortInfo"> Add Short Info </th>
+									<th>Kosten</th>
 								</tr>
 							</thead>
 							<tbody ng-if="vm.anschriften.length == 0" ng-click="vm.newAnschrift()"></tbody>
 							<tbody ng-if="vm.anschriften.length != 0">
 								<tr ng-dblclick="FormCtrl.editDetection(detection)" ng-repeat="detection in FormCtrl.detections" ng-click="FormCtrl.setSelected('detection', $index, detection)"
 								ng-class="{selected: detection.number === FormCtrl.selectedDetection.number}">
-									<td>{{ detection.number }}</td>
-									<td>{{ detection.detail.date | date }}</td>
 									<td>
 											<div popover-placement="right" uib-popover="FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus')" class="bxp-state" ng-class="{
 												'bxp-state-leistungen':         detection.detail.status === 4,
@@ -142,18 +141,9 @@
 												'bxp-state-active':             detection.detail.status === 2 || detection.detail.status === 3
 												}">
 											</div>
-										<!-- <div class="bxp-input float-left edit-icon-container">
-											<ui-select ng-disabled="vm.make" ng-model="detection.detail.status" theme="bootstrap"
-											 remove-selected="false">
-												<ui-select-match allow-clear>{{
-													$select.selected.value
-													}}</ui-select-match>
-												<ui-select-choices repeat="item.id as item in FormCtrl.statuses | filter: $select.search">
-													<span ng-bind-html="item.value  | highlight: $select.search"></span>
-												</ui-select-choices>
-											</ui-select>
-										</div> -->
 									</td>
+									<td>{{ detection.number }}</td>
+									<td>{{ detection.detail.date | date }}</td>
 									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prüffeld') }}</td>
 									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.evaluation, 'beurteilung') }}</td>
 									<td>
@@ -161,6 +151,7 @@
 									</td>
 									<td> <input type="checkbox" ng-model="detection.isAddProtocol"> </td>
 									<td> <input type="checkbox" ng-model="detection.isAddShortInfo"> </td>
+									<td> <input type="checkbox" ng-model="detection.detail.costs.isPrint" /> </td>
 								</tr>
 							</tbody>
 						</table>
