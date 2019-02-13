@@ -93,7 +93,7 @@
                 vm.protocol.reportDate = new Date(vm.protocol.reportDate);
             });
 
-            getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme', 'beurteilungen', 'prüffeld']);
+            getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme', 'beurteilungen', 'prüffeld', 'gesamtbeurteilung']);
         }
 
         $scope.selectedTab = $scope.tabs[0];
@@ -175,7 +175,10 @@
                 value = vm.testFields.filter(f => f.id === id);
             } else if (type === 'detectionStatus' && typeof vm.statuses !== 'undefined') {
                 value = vm.statuses.filter(f => f.id === id);
+            } else if (type === 'gesamtbeurteilung' && typeof vm.overals !== 'undefined') {
+                value = vm.overals.filter(f => f.id === id); 
             }
+
             if (typeof value[0] !== 'undefined') {
                 return value[0].value;    
             }
@@ -196,6 +199,8 @@
                         vm.evaluations = res.data.beurteilungen.data;
                     } else if (baseData === 'detectionStatus') {
                         vm.statuses = res.data.detectionStatus.data;    
+                    } else if (baseData === 'gesamtbeurteilung') {
+                        vm.overals = res.data.gesamtbeurteilung.data;
                     }
                 }
             });    
