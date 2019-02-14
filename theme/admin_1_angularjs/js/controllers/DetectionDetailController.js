@@ -108,7 +108,7 @@
         }
 
         function closeModal() {
-
+            
             if (angular.toJson(vm.untouched) === angular.toJson(vm.detections)) {
                 $scope.$close();
             } else {
