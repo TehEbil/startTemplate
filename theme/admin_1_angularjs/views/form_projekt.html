@@ -335,14 +335,14 @@
 							<tr ng-dblclick="FormCtrl.editDetection()" ng-repeat="detection in FormCtrl.baseData.detectionDatas" ng-click="FormCtrl.setSelected('detection',detection, $index)"
 							 ng-class="{selected: $index === FormCtrl.selectedDetectionIdx}">
 							 <td>
-									 <div popover-placement="right" uib-popover="FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus')" class="bxp-state" ng-class="{
+									 <div tooltip-placement="right" uib-tooltip="{{ FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus') }}" class="" ng-class="{
 										 'bxp-state-leistungen':         detection.detail.status === 4,
 										 'bxp-state-inactive':           detection.detail.status === 1,
 										 'bxp-state-active':             detection.detail.status === 2 || detection.detail.status === 3
 										 }">
 									 </div>
 							 </td>
-								<td>{{ detection.detail.id }}</td>
+								<td>{{ detection.id }}</td>
 								<td>{{ detection.detail.date | date }}</td>
 								<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prüffeld') }}</td>
 								<td>{{ FormCtrl.getBaseDataValueById(detection.detail.evaluation, 'beurteilung') }}</td>
@@ -365,6 +365,14 @@
 					<button class="bxp-rounded-button small add" ng-click="FormCtrl.addDetection()" type="button"><i class="fa fa-plus"></i></button>
 				</span>
 			</div>
+
+			<div class="legende-netzwerk">
+					<ul>
+						<li class="lightgreen">t3est1</li>
+						<li class="keine-leistungen">test2g</li>
+						<li class="gesperrt">Btest3</li>
+					</ul>
+				</div>
 		</bxp-responsive-tab>
 
 		<bxp-responsive-tab tab="Protokolle" selected-tab="FormCtrl.selectedTab">

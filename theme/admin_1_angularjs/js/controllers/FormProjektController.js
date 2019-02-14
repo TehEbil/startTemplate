@@ -267,6 +267,7 @@
             vm.subData.data.push(
                 {
                     /* we need to add data models */
+                    id: vm.baseData.detectionDatas.length > 0 ? helperFuncs.maxId(vm.baseData.detectionDatas) + 1 : 1,
                     number: generateNumber(vm.baseData.detectionDatas),
                     date: "",
                     status: "",
@@ -274,7 +275,6 @@
                     coverPicUrl: "",
                     detection: "",
                     detail: {
-                        id: vm.baseData.detectionDatas.length > 0 ? vm.baseData.detectionDatas[vm.subData.data.length - 1].detail.id + 1 : 1,
                         date: "",
                         datetime: "",
                         testField: {
@@ -324,6 +324,10 @@
                     (res) => {
                         if (typeof res !== 'undefined' && res.type === 'success') {
                             vm.baseData.detectionDatas = res.data;
+                        } else if (typeof res != 'undefined' && res.data && res.type === 'decline') {
+                            vm.baseData.detectionDatas.splice(-1, 1);
+                        } else if (typeof res !== 'undefined' && !res.data && res.type === 'decline') {
+                            vm.baseData.detectionDatas = res.detail;
                         }
                     }
                 );
@@ -340,7 +344,7 @@
 
         function generateNumber(detections) {
             let date = new Date();
-            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${detections.length > 0 ? vm.baseData.detectionDatas[vm.subData.data.length - 1].number + 1 : 1}`;
+            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${detections.length > 0 ? helperFuncs.maxId(detections) + 1 : 1}`;
         }
 		//#endregion
 
@@ -461,6 +465,7 @@
             } else if (type === 'prüffeld') {
                 value = vm.testFields.filter(f => f.id === id);
             } else if (type === 'detectionStatus' && typeof vm.statuses !== 'undefined') {
+                
                 value = vm.statuses.filter(f => f.id === id);
             }
             if (typeof value[0] !== 'undefined') {

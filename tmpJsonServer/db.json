@@ -594,6 +594,7 @@
       },
       "detectionDatas": [
         {
+          "id": 8743,
           "number": 1,
           "status": "status",
           "title": "test",
@@ -602,7 +603,6 @@
           "isAddProtocol": true,
           "isAddShortInfo": true,
           "detail": {
-            "id": 8743,
             "date": "2019-01-30T21:00:00.000Z",
             "datetime": "2019-01-04T09:15:48.000Z",
             "hour": 14,
@@ -634,6 +634,7 @@
           ]
         },
         {
+          "id": 8744,
           "number": 2,
           "status": "status",
           "title": "foo",
@@ -642,7 +643,6 @@
           "isAddProtocol": false,
           "isAddShortInfo": true,
           "detail": {
-            "id": 8744,
             "date": "2019-01-24T21:00:00.000Z",
             "datetime": "2019-01-04T09:36:48.000Z",
             "hour": 14,
@@ -664,6 +664,7 @@
           "documents": []
         },
         {
+          "id": 8745,
           "number": 3,
           "status": "status",
           "title": "foo",
@@ -672,7 +673,6 @@
           "isAddProtocol": true,
           "isAddShortInfo": true,
           "detail": {
-            "id": 8745,
             "date": "2019-01-27T21:00:00.000Z",
             "datetime": "2019-01-04T09:27:48.000Z",
             "hour": 14,
@@ -883,6 +883,7 @@
       },
       "detectionDatas": [
         {
+          "id": 8743,
           "number": 1,
           "status": "status",
           "title": "test",
@@ -891,7 +892,6 @@
           "isAddProtocol": true,
           "isAddShortInfo": true,
           "detail": {
-            "id": 8743,
             "date": "2019-01-30T21:00:00.000Z",
             "datetime": "2019-01-04T09:15:48.000Z",
             "hour": 14,
@@ -951,6 +951,7 @@
           ]
         },
         {
+          "id": 8744,
           "number": 2,
           "status": "status",
           "title": "foo",
@@ -959,7 +960,6 @@
           "isAddProtocol": false,
           "isAddShortInfo": true,
           "detail": {
-            "id": 8744,
             "date": "2019-01-24T21:00:00.000Z",
             "datetime": "2019-01-04T09:36:48.000Z",
             "hour": 14,
@@ -995,6 +995,7 @@
           "documents": []
         },
         {
+          "id": 8745,
           "number": 3,
           "status": "status",
           "title": "foo",
@@ -1003,7 +1004,6 @@
           "isAddProtocol": true,
           "isAddShortInfo": true,
           "detail": {
-            "id": 8745,
             "date": "2019-01-27T21:00:00.000Z",
             "datetime": "2019-01-04T09:27:48.000Z",
             "hour": 14,
@@ -1535,391 +1535,469 @@
         {
           "id": 1,
           "value": "Sicherheitseinrichtungen, Baustelleneinrichtungen",
+          "iso": "000",
           "group": "ROHBAU"
         },
         {
           "id": 2,
           "value": "Gerüstarbeiten",
+          "iso": "001",
           "group": "ROHBAU"
         },
         {
           "id": 3,
           "value": "Erdarbeiten",
+          "iso": "002",
           "group": "ROHBAU"
         },
         {
           "id": 5,
           "value": "Brunnenbauarbeiten und Aufschlussbohrungen",
+          "iso": "005",
           "group": "ROHBAU"
         },
         {
           "id": 6,
           "value": "Spezialtiefbauarbeiten",
+          "iso": "006",
           "group": "ROHBAU"
         },
         {
           "id": 7,
           "value": "Untertagebauarbeiten",
+          "iso": "007",
           "group": "ROHBAU"
         },
         {
           "id": 8,
           "value": "Wasserhaltungsarbeiten",
+          "iso": "008",
           "group": "ROHBAU"
         },
         {
           "id": 9,
           "value": "Entwässerungskanalarbeiten",
+          "iso": "009",
           "group": "ROHBAU"
         },
         {
           "id": 10,
           "value": "Drän- und Versickerarbeiten",
+          "iso": "010",
           "group": "ROHBAU"
         },
         {
           "id": 11,
           "value": "Abscheider- und Kleinkläranlagen",
+          "iso": "011",
           "group": "ROHBAU"
         },
         {
           "id": 12,
           "value": "Mauerarbeiten",
+          "iso": "012",
           "group": "ROHBAU"
         },
         {
           "id": 13,
           "value": "Betonarbeiten",
+          "iso": "013",
           "group": "ROHBAU"
         },
         {
           "id": 14,
           "value": "Natur-, Betonwerksteinarbeiten",
+          "iso": "014",
           "group": "ROHBAU"
         },
         {
           "id": 16,
           "value": "Zimmer- und Holzbauarbeiten",
+          "iso": "016",
           "group": "ROHBAU"
         },
         {
           "id": 17,
           "value": "Stahlbauarbeiten",
+          "iso": "017",
           "group": "ROHBAU"
         },
         {
           "id": 18,
           "value": "Abdichtungsarbeiten",
+          "iso": "018",
           "group": "ROHBAU"
         },
         {
           "id": 20,
           "value": "Dachdeckungsarbeiten",
+          "iso": "020",
           "group": "ROHBAU"
         },
         {
           "id": 21,
           "value": "Dachabdichtungsarbeiten",
+          "iso": "021",
           "group": "ROHBAU"
         },
         {
           "id": 22,
           "value": "Klempnerarbeiten",
+          "iso": "022",
           "group": "ROHBAU"
         },
         {
           "id": 23,
           "value": "Putz- und Stuckarbeiten, Wärmedämmsysteme",
+          "iso": "023",
           "group": "AUSBAU"
         },
         {
           "id": 24,
           "value": "Fliesen- und Plattenarbeiten",
+          "iso": "024",
           "group": "AUSBAU"
         },
         {
           "id": 25,
           "value": "Estricharbeiten",
+          "iso": "025",
           "group": "AUSBAU"
         },
         {
           "id": 26,
           "value": "Fenster, Außentüren",
+          "iso": "026",
           "group": "AUSBAU"
         },
         {
           "id": 27,
           "value": "Tischlerarbeiten",
+          "iso": "027",
           "group": "AUSBAU"
         },
         {
           "id": 28,
           "value": "Parkett-, Holzpflasterarbeiten",
+          "iso": "028",
           "group": "AUSBAU"
         },
         {
           "id": 29,
           "value": "Beschlagarbeiten",
+          "iso": "029",
           "group": "AUSBAU"
         },
         {
           "id": 30,
           "value": "Rollladenarbeiten",
+          "iso": "030",
           "group": "AUSBAU"
         },
         {
           "id": 31,
           "value": "Metallbauarbeiten",
+          "iso": "031",
           "group": "AUSBAU"
         },
         {
           "id": 32,
           "value": "Verglasungsarbeiten",
+          "iso": "032",
           "group": "AUSBAU"
         },
         {
           "id": 33,
           "value": "Baureinigungsarbeiten",
+          "iso": "033",
           "group": "AUSBAU"
         },
         {
           "id": 34,
           "value": "Maler- und Lackierarbeiten - Beschichtungen",
+          "iso": "034",
           "group": "AUSBAU"
         },
         {
           "id": 35,
           "value": "Korrosionsschutzarbeiten an Stahlbauten",
+          "iso": "035",
           "group": "AUSBAU"
         },
         {
           "id": 36,
           "value": "Bodenbelagarbeiten",
+          "iso": "036",
           "group": "AUSBAU"
         },
         {
           "id": 37,
           "value": "Tapezierarbeiten",
+          "iso": "037",
           "group": "AUSBAU"
         },
         {
           "id": 38,
           "value": "Vorgehängte hinterlüftete Fassaden",
+          "iso": "038",
           "group": "AUSBAU"
         },
         {
           "id": 39,
           "value": "Trockenbauarbeiten",
+          "iso": "039",
           "group": "AUSBAU"
         },
         {
           "id": 40,
           "value": "Wärmeversorgungsanlagen - Betriebseinrichtungen",
+          "iso": "040",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 41,
           "value": "Wärmeversorgungsanlagen - Leitungen, Armaturen, Heizflächen",
+          "iso": "041",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 42,
           "value": "Gas- und Wasseranlagen - Leitungen, Armaturen",
+          "iso": "042",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 43,
           "value": "Druckrohrleitungen für Gas, Wasser und Abwasser",
+          "iso": "043",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 44,
           "value": "Abwasseranlagen - Leitungen, Abläufe, Armaturen",
+          "iso": "044",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 45,
           "value": "Gas-, Wasser- und Entwässerungsanlagen - Ausstattung, Elemente, Fertigbäder",
+          "iso": "045",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 46,
           "value": " Gas-, Wasser- und Entwässerungsanlagen - Betriebseinrichtungen",
+          "iso": "046",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 47,
           "value": "Dämm- und Brandschutzarbeiten an technischen Anlagen",
+          "iso": "047",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 49,
           "value": "Feuerlöschanlagen, Feuerlöschgeräte",
+          "iso": "049",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 50,
           "value": "Blitzschutz- / Erdungsanlagen, Überspannungsschutz",
+          "iso": "050",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 51,
           "value": "Kabelleitungstiefbauarbeiten",
+          "iso": "051",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 52,
           "value": "Mittelspannungsanlagen",
+          "iso": "052",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 53,
           "value": "Niederspannungsanlagen - Kabel / Leitungen, Verlegesysteme, Installationsgeräte",
+          "iso": "053",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 54,
           "value": "Niederspannungsanlagen - Verteilersysteme und Einbaugeräte",
+          "iso": "054",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 55,
           "value": "Ersatzstromversorgungsanlagen",
+          "iso": "055",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 57,
           "value": "Gebäudesystemtechnik",
+          "iso": "057",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 58,
           "value": "Leuchten und Lampen",
+          "iso": "058",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 59,
           "value": "Sicherheitsbeleuchtungsanlagen",
+          "iso": "059",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 60,
           "value": "Elektroakustische Anlagen, Sprechanlagen, Personenrufanlagen",
+          "iso": "060",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 61,
           "value": "Kommunikationsnetze",
+          "iso": "061",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 62,
           "value": "Kommunikationsanlagen",
+          "iso": "062",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 63,
           "value": "Gefahrenmeldeanlagen",
+          "iso": "063",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 64,
           "value": "Zutrittskontroll-, Zeiterfassungssysteme",
+          "iso": "064",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 65,
           "value": "Aufzüge",
+          "iso": "065",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 70,
           "value": "Gebäudeautomation",
+          "iso": "070",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 75,
           "value": "Raumlufttechnische Anlagen",
+          "iso": "075",
           "group": "GEBÄUDETECHNIK"
         },
         {
           "id": 76,
           "value": "Landschaftsbauarbeiten",
+          "iso": "003",
           "group": "AUßENANLAGEN"
         },
         {
           "id": 77,
           "value": "Landschaftsbauarbeiten - Pflanzen",
+          "iso": "004",
           "group": "AUßENANLAGEN"
         },
         {
           "id": 80,
           "value": "Straßen, Wege, Plätze",
+          "iso": "080",
           "group": "AUßENANLAGEN"
         },
         {
           "id": 81,
           "value": "Betonerhaltungsarbeiten",
+          "iso": "081",
           "group": "SONSTIGE"
         },
         {
           "id": 82,
           "value": "Bekämpfender Holzschutz",
+          "iso": "082",
           "group": "SONSTIGE"
         },
         {
           "id": 83,
           "value": "Sanierungsarbeiten an schadstoffhaltigen Bauteilen",
+          "iso": "083",
           "group": "SONSTIGE"
         },
         {
           "id": 84,
           "value": "Abbruch- und Rückbauarbeiten",
+          "iso": "084",
           "group": "SONSTIGE"
         },
         {
           "id": 85,
           "value": "Rohrvortriebsarbeiten",
+          "iso": "085",
           "group": "SONSTIGE"
         },
         {
           "id": 87,
           "value": "Abfallentsorgung, Verwertung und Beseitigung",
+          "iso": "087",
           "group": "SONSTIGE"
         },
         {
           "id": 90,
           "value": "Baulogistik",
+          "iso": "090",
           "group": "SONSTIGE"
         },
         {
           "id": 91,
           "value": "Stundenlohnarbeiten",
+          "iso": "091",
           "group": "SONSTIGE"
         },
         {
           "id": 96,
           "value": "Bauarbeiten an Bahnübergängen",
+          "iso": "096",
           "group": "SONSTIGE"
         },
         {
           "id": 97,
           "value": "Bauarbeiten an Gleisen und Weichen",
+          "iso": "097",
           "group": "SONSTIGE"
         },
         {
           "id": 98,
           "value": "Witterungsschutzmaßnahmen",
+          "iso": "098",
           "group": "SONSTIGE"
         },
         {
           "id": 99,
           "value": "Barrierefreies Bauen",
+          "iso": "099",
           "group": "SONSTIGE"
         },
         {
           "id": 100,
           "value": "Brandschutz",
+          "iso": "100",
           "group": "SONSTIGE"
         }
       ],

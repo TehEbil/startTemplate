@@ -1293,9 +1293,10 @@ function maxId(arr) {
         .module('MetronicApp')
         .component('bxpResponsiveInModal', {
             bindings: {
-                selectedTab: '=',
+                selectedTab: '@',
                 submitForm: '=',
-                closeModal: '='
+                closeModal: '=',
+                addDetection: '='
             },
             controller: responsiveDetailController,
             controllerAs: 'vm',
@@ -1313,6 +1314,7 @@ function maxId(arr) {
 
                         <div class="bxp-button-container group">
                             <span class="ta-right float-right">
+                                <button type="button" class="btn btn-success bxp-button-ok" ng-click="vm.addDetection()" ng-if="vm.selectedTab === 'Feststellung'">Next Detection</button>
                                 <button type="button" class="btn btn-primary bxp-button-ok" ng-click="vm.submitForm()">Speichern</button>
                                 <button type="button" class="btn default bxp-button-ok" ng-click="vm.closeModal()">Abbrechen</button>
                             </span>
@@ -1332,7 +1334,7 @@ function maxId(arr) {
         vm.setSelectedTab = setSelectedTab;
 
         vm.$onInit = () => {
-            
+            vm.setSelectedTab(vm.selectedTab);
         };
 
         function setSelectedTab(tab) {

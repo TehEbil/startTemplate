@@ -1,8 +1,8 @@
 <form action="#" name="detection" role="form" id="detection" ng-dirty ng-model="state" func="FormCtrl.closeModal"
 close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
  novalidate autocomplete="off"></form>
-<bxp-responsive-in-modal form-name="Detection" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
- submit-form="FormCtrl.submitForm">
+<bxp-responsive-in-modal form-name="Detection" selected-tab="Feststellung" close-modal="FormCtrl.closeModal"
+ submit-form="FormCtrl.submitForm" add-detection="FormCtrl.addDetection">
 
 	<div class="bxp-header-modal">
 		<h3>Feststellung</h3>
@@ -51,9 +51,10 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 				<div class="bxp-input float-left edit-icon-container">
 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.testField" theme="bootstrap"
 					 remove-selected="false">
-						<ui-select-match allow-clear>{{ $select.selected.value }}</ui-select-match>
-						<ui-select-choices repeat="item.id as item in FormCtrl.testFields | filter: $select.search | groupBy: item.group">
-							<span ng-bind-html="item.value  | highlight: $select.search"></span>
+						<ui-select-match allow-clear>{{ $select.selected.iso }} - {{ $select.selected.value }}</ui-select-match>
+						<ui-select-choices group-by="'group'" repeat="item.id as item in FormCtrl.testFields | filter: $select.search | groupBy: item.group">
+							<span ng-bind-html="item.iso | highlight: $select.search"></span> - 
+							<span ng-bind-html="item.value | highlight: $select.search"></span>
 						</ui-select-choices>
 					</ui-select>
 					<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('prüffeld', FormCtrl.testFields)"><i class="fa fa-cog"></i></a>
@@ -159,7 +160,6 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 
 		<div>
             <h4>Images</h4>
-            <p>This demonstrates use of upload-component. Note: it has testData on Server, upload and delete just changes local data. We actually use vm.uploads inside our forms, so, when we submit our forms, it also sends our vm.uploads. Like that, we have advantage that on closing the form without submitting, all 'deleted files' are reverted in case the customer wants to revert his changes </p>
             <bxp-image-upload make-disabled="false" hide-content="false" uploadtype="normal" onsave="vm.onsave" uploads="FormCtrl.selectedDetection.documents" ondelete="FormCtrl.deleteUpload">
             </bxp-image-upload>
         </div>

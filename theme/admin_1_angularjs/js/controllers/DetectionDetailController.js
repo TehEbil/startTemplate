@@ -20,6 +20,7 @@
         vm.stringToDate = stringToDate;
         vm.openBaseDataModel = openBaseDataModel;
         vm.deleteUpload = deleteUpload;
+        vm.addDetection = addDetection; 
 
         vm.detections = [];
         vm.selectedDetection = {};
@@ -136,6 +137,50 @@
             }
         }
 
+        function addDetection() {
+            console.log('====================================');
+            console.log('Next Detection');
+            console.log('====================================');
+            vm.detections.push(
+                {
+                    /* we need to add data models */
+                    id: vm.detections.length > 0 ? helperFuncs.maxId(vm.detections) + 1 : 1,
+                    number: generateNumber(vm.detections),
+                    date: "",
+                    status: "",
+                    title: "",
+                    coverPicUrl: "",
+                    detection: "",
+                    detail: {
+                        date: "",
+                        datetime: "",
+                        testField: {
+                        },
+                        position: "",
+                        title: "",
+                        evaluation: {
+                        },
+                        basics: {
+                        },
+                        status: {
+                        },
+                        description: "",
+                        costs: {
+                            disposalCost: 0,
+                            impairment: 0,
+                            recoup: 0,
+                            isPrint: true
+                        }
+                    }
+                }
+            );
+
+            vm.newItem = true;
+            vm.selectedDetection = vm.detections[vm.detections.length - 1];
+            vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
+            vm.selectedIdx = vm.detections.length - 1;
+        }   
+
         function deleteUpload(id) {
             /* File Deletion Callback */
             console.log('====================================');
@@ -153,6 +198,10 @@
                 vm.statuses = res.data.detectionStatus.data;
                 vm.basics = res.data.grundlagen.data;
             });
+        }
+        function generateNumber(detections) {
+            let date = new Date();
+            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${detections.length > 0 ? helperFuncs.maxId(detections) + 1 : 1}`;
         }
 
         function openBaseDataModel(route, data) {

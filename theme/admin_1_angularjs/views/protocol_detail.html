@@ -67,7 +67,14 @@
 										{{$select.selected.value}}
 									</ui-select-match>
 									<ui-select-choices repeat="item.id as item in FormCtrl.overals | filter: $select.search">
-										<span ng-bind-html="item.value | highlight: $select.search"></span>
+											<ul>
+												<li class="lightgreen" ng-class="{
+													'lightgreen':         item.value === green,
+													'keine-leistungen':   item.value === yellow,
+													'gesperrt':           item.value === red 
+													}"><span ng-bind-html="item.value | highlight: $select.search"></span></li>
+											</ul>
+										
 									</ui-select-choices>
 								</ui-select>
 								<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('Vorhaben', FormCtrl.projectTypes)"><i class="fa fa-cog"></i></a>
@@ -137,12 +144,12 @@
 								<tr ng-dblclick="FormCtrl.editDetection(detection)" ng-repeat="detection in FormCtrl.detections" ng-click="FormCtrl.setSelected('detection', $index, detection)"
 								ng-class="{selected: detection.number === FormCtrl.selectedDetection.number}">
 									<td>
-											<div popover-placement="right" uib-popover="FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus')" class="bxp-state" ng-class="{
-												'bxp-state-leistungen':         detection.detail.status === 4,
-												'bxp-state-inactive':           detection.detail.status === 1,
-												'bxp-state-active':             detection.detail.status === 2 || detection.detail.status === 3
-												}">
-											</div>
+										<div tooltip-placement="right" uib-tooltip="{{ FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus') }}" class="" ng-class="{
+											'bxp-state-leistungen':         detection.detail.status === 4,
+											'bxp-state-inactive':           detection.detail.status === 1,
+											'bxp-state-active':             detection.detail.status === 2 || detection.detail.status === 3
+											}">
+										</div>
 									</td>
 									<td>{{ detection.number }}</td>
 									<td>{{ detection.detail.date | date }}</td>
@@ -157,6 +164,14 @@
 								</tr>
 							</tbody>
 						</table>
+
+						<div class="legende-netzwerk">
+							<ul>
+								<li class="lightgreen">t3est1</li>
+								<li class="keine-leistungen">test2g</li>
+								<li class="gesperrt">Btest3</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</bxp-responsive-tab>
