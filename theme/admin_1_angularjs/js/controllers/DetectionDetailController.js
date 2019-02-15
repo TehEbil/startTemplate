@@ -164,6 +164,7 @@
                         },
                         status: {
                         },
+                        class: 1,
                         description: "",
                         costs: {
                             disposalCost: 0,
@@ -197,6 +198,7 @@
                 vm.evaluations = res.data.beurteilungen.data;
                 vm.statuses = res.data.detectionStatus.data;
                 vm.basics = res.data.grundlagen.data;
+                vm.classes = res.data.classes.data;
             });
         }
         function generateNumber(detections) {

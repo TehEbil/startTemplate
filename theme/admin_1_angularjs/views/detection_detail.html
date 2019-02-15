@@ -132,6 +132,22 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 			<p ng-if="!detection.Beschreibung.$valid"> required field </p>
 		</div>
 
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Klassifizierung</label>
+			<div class="bxp-input float-left edit-icon-container">
+				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.class" theme="bootstrap"
+				 remove-selected="false">
+					<ui-select-match allow-clear>{{
+						$select.selected.value
+						}}</ui-select-match>
+					<ui-select-choices repeat="item.id as item in FormCtrl.classes | filter: $select.search">
+						<span ng-bind-html="item.value  | highlight: $select.search"></span>
+					</ui-select-choices>
+				</ui-select>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('grundlagen', FormCtrl.basics)"><i class="fa fa-cog"></i></a>
+			</div>
+		</div>
+
 		<div class="bxp-form-note mt-5px mb-10px">Kosten</div>
 
 		<div class="form-group group">

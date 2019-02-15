@@ -1550,7 +1550,7 @@ function maxId(arr) {
                                     <input ng-if="vm.note" type="text" ng-model="item.note" placeholder="">
                                     <input type="text" id="editInput" ng-if="item.editMode" ng-enter="vm.saveEntry()" ng-blur="vm.saveEntry()" ng-keyup="onInputKeyup($event)" ng-model="item.refName" placeholder="" auto-focus>
                                         <img style="max-width: 146px;" ng-src="https://picsum.photos/150/150">
-                                        <span style="margin: 5px 0 !important; font-size:10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="inline-block" ng-if="!item.editMode">{{item.refName}}
+                                        <span style="margin: 5px 0 !important; font-size:10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="inline-block" ng-if="!item.editMode">{{item.filename}}
                                         <div ng-if="!vm.hide" style="display: none;" class="animate-show float-right">
                                             <i class="fa fa-trash bauexperts-blue" ng-click="vm.deleteEntry(item.id)"></i>
                                             <i class="fa fa-pencil bauexperts-blue" ng-click="vm.editEntry(item.id)"></i>

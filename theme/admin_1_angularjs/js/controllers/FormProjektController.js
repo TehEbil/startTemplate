@@ -80,7 +80,7 @@
                 initForm(emptyProject(getId.detail.listItems));
             }
 
-            getBaseDatas(['detectionStatus', 'bautenstand', 'prüffeld', 'beurteilung']);
+            getBaseDatas(['detectionStatus', 'bautenstand', 'prüffeld', 'beurteilung', 'classes']);
 		}
 
         function initForm(data) {
@@ -288,6 +288,7 @@
                         status: {
                         },
                         description: "",
+                        class: 1,
                         costs: {
                             disposalCost: 0,
                             impairment: 0,
@@ -464,10 +465,12 @@
                 value = vm.evaluations.filter(f => f.id === id);
             } else if (type === 'prüffeld') {
                 value = vm.testFields.filter(f => f.id === id);
-            } else if (type === 'detectionStatus' && typeof vm.statuses !== 'undefined') {
-                
+            } else if (type === 'detectionStatus' && typeof vm.statuses !== 'undefined') {    
                 value = vm.statuses.filter(f => f.id === id);
+            } else if (type === 'classes' && typeof vm.classes !== 'undefined') {
+                value = vm.classes.filter(f => f.id === id);
             }
+
             if (typeof value[0] !== 'undefined') {
                 return value[0].value;    
             }
@@ -488,6 +491,8 @@
                         vm.testFields = res.data.prüffeld.data;
                     } else if (baseData === 'beurteilung') {
                         vm.evaluations = res.data.beurteilungen.data;
+                    } else if (baseData === 'classes') {
+                        vm.classes = res.data.classes.data;
                     }
                 }
             });    
