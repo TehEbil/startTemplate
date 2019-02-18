@@ -5,10 +5,10 @@
     .module('MetronicApp')
     .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ["$rootScope", "$http", "modalService", "ProjectHandler"];
+    DashboardController.$inject = ["$rootScope", "$http", "modalService", "ProjectHandler", "BaseDataHandler"];
 
     /* @ngInject */
-    function DashboardController($rootScope, $http, modalService, ProjectHandler) {
+    function DashboardController($rootScope, $http, modalService, ProjectHandler, BaseDataHandler) {
         var vm = this;
         vm.title = 'DashboardController';
         vm.alertExample = alertExample;
@@ -30,6 +30,12 @@
                 vm.uploads.push(elem);
             });
         });
+
+        function init() {
+            BaseDataHandler.getData().then((res) => {
+                vm.testFields = res.data.prüffeld.data;
+            });
+        }
 
         function alertExample() {
             $rootScope.sharedService.alert("hi", "danger");
@@ -75,6 +81,24 @@
             var protocolNr = '1-2018-BBQ-14';
             var sv = 'Herr Frank Tekook';
             var thirdHeader = '3. Überprüfung der Abarbeitung bisher festgestellter Mängel';
+            let leftSide = [];  // for prüffeld
+            let rightside = []; // for prüffeld
+            console.log("opened");
+            // TODO: find prüffeld list middle element and parse two pieces to test fields array. 
+            // TODO: detect selected prüffeld dats coming from to server.
+            // TODO: add listType property in object if has been selected. 
+            for (const testField in vm.testFields) {
+                if (vm.testFields.hasOwnProperty(testField)) {
+                    const element = vm.testFields[testField];
+                    leftSide.push(
+                        { text: 'item 3', listType: 'circle', style: 'tableContent' }
+                    );
+                }
+                console.log('====================================');
+                console.log("opened");
+                console.log(leftSide);
+                console.log('====================================');
+            }
 
             // if Auftragsart === Stellungnahme pdfHeader = Gutachterlicht; for Beweissicherung pdfHeader = Beweissicherung;
             // TODO: for Stellungnahme and Beweissicherung do not print 3. and 4. in pdf
