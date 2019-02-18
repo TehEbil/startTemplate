@@ -67,14 +67,16 @@
 										{{$select.selected.value}}
 									</ui-select-match>
 									<ui-select-choices repeat="item.id as item in FormCtrl.overals | filter: $select.search">
+										<div class="legende-netzwerk">
 											<ul>
-												<li class="lightgreen" ng-class="{
-													'lightgreen':         item.value === green,
-													'keine-leistungen':   item.value === yellow,
-													'gesperrt':           item.value === red 
-													}"><span ng-bind-html="item.value | highlight: $select.search"></span></li>
+												<li class="" ng-class="{
+													'lightgreen':         item.value === 'green',
+													'keine-leistungen':   item.value === 'yellow',
+													'gesperrt':           item.value === 'red' 
+												}">
+												<span ng-bind-html="item.value | highlight: $select.search"></span></li>
 											</ul>
-										
+										</div>	
 									</ui-select-choices>
 								</ui-select>
 								<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('Vorhaben', FormCtrl.projectTypes)"><i class="fa fa-cog"></i></a>
