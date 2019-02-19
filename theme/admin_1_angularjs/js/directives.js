@@ -1348,6 +1348,55 @@ function maxId(arr) {
 
     angular
         .module('MetronicApp')
+        .component('bxpParticipantsList', {
+            bindings: {
+                data: '=',
+                onsave: '=',
+                ondelete: '='
+            },
+            controller: ParticipantsListController,
+            controllerAs: 'vm',
+            template: function ($element, $attrs) {
+                return `
+                    <ul>
+                        <li ng-repeat="item in vm.data | track by $index">
+                            {{::item.name}} - {{item.funktion}}
+                        </li>
+                    </ul>
+                `;
+            }
+
+        });
+
+    ParticipantsListController.$inject = ['$rootScope', 'modalService', '$http'];
+
+    /* @ngInject */
+    function ParticipantsListController($rootScope, modalService, $http) {
+        var vm = this;
+        // vm.data = [
+        //     {
+        //         "name": "Ali",
+        //         "funktion": "SV"
+
+        //     },
+        //     {
+        //         "name": "Ali2",
+        //         "funktion": "Gutachter"
+
+        //     }
+        // ]
+
+        vm.$onInit = function () {
+        };
+
+    }
+})();
+
+(function () {
+    'use strict';
+
+    angular
+        .module('MetronicApp')
         .component('bxpUploadComponent', {
             bindings: {
                 uploads: '=',

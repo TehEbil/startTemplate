@@ -68,8 +68,6 @@ clientServer_app.use(redirectToHttps);
 server.use(redirectToHttps);
 
 function redirectToHttps(req, res, next) {
-    console.log("redirecting")
-    console.log(req.secure)
     if(req.secure)
         return next();
     res.redirect('https://' + req.hostname + req.url); // express 4.x

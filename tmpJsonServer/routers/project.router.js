@@ -76,14 +76,16 @@ function createCB(req, res) {
 
     db.write();
 
-    res.status(200).json(items);
+    res.status(200).json(req.body);
 }
 
 function editCB(req, res) {
     var id = req.params.id;
-    var item = dbHelper.findById(db, 'projects', id);
+    // var item = dbHelper.findById(db, 'projects', id);
+    var item = dbHelper.updateElementById(db, 'projects', id, req.body);
     if (item) {
-        res.status(200).json(item.assign(req.body).write());
+        res.json(item);
+        db.write();
     } else {
         res.status(404).json({error: "item not found!"});
     }
