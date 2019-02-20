@@ -79,7 +79,7 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 				<ui-select ng-disabled="vm.make" multiple ng-model="FormCtrl.selectedDetection.detail.evaluation" theme="bootstrap"
 				 remove-selected="false">
 					<ui-select-match allow-clear>{{
-						$select.selected.value
+						$item.value
 						}}</ui-select-match>
 					<ui-select-choices repeat="item.id as item in FormCtrl.evaluations.data | filter: $select.search">
 						<span ng-bind-html="item.value  | highlight: $select.search"></span>

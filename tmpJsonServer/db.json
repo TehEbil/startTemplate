@@ -191,15 +191,8 @@
           },
           "position": "position",
           "title": "title",
-          "evaluation": {
-            "id": "03",
-            "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-            "shortcut": "AT"
-          },
-          "basics": {
-            "id": "03",
-            "name": "Baubeschreibung"
-          },
+          "evaluation": [3],
+          "basics": [3],
           "status": {
             "id": 4,
             "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
@@ -254,15 +247,8 @@
           },
           "position": "position",
           "title": "title",
-          "evaluation": {
-            "id": "03",
-            "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-            "shortcut": "AT"
-          },
-          "basics": {
-            "id": "03",
-            "name": "Baubeschreibung"
-          },
+          "evaluation": [3],
+          "basics": [3],
           "status": {
             "id": 2,
             "name": "abgestellt und durch den Sachverständigen kontrolliert"
@@ -298,15 +284,8 @@
           },
           "position": "position",
           "title": "title",
-          "evaluation": {
-            "id": "03",
-            "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-            "shortcut": "AT"
-          },
-          "basics": {
-            "id": "03",
-            "name": "Baubeschreibung"
-          },
+          "evaluation": [3],
+          "basics": [3],
           "status": {
             "id": 3,
             "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
@@ -619,8 +598,8 @@
             "testField": 3,
             "position": "test",
             "title": "title",
-            "evaluation": 2,
-            "basics": 1,
+            "evaluation": [2],
+            "basics": [1],
             "status": 4,
             "description": "desc",
             "class": 1,
@@ -669,8 +648,8 @@
             "testField": 3,
             "position": "test",
             "title": "title",
-            "evaluation": 4,
-            "basics": 3,
+            "evaluation": [4],
+            "basics": [3],
             "status": 3,
             "class": 1,
             "description": "desc",
@@ -700,8 +679,8 @@
             "testField": 1,
             "position": "test3",
             "title": "title",
-            "evaluation": 2,
-            "basics": 1,
+            "evaluation": [2],
+            "basics": [1],
             "status": 1,
             "class": 1,
             "description": "desc",
@@ -921,15 +900,8 @@
             "position": "position",
             "title": "title",
             "class": 1,
-            "evaluation": {
-              "id": "03",
-              "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-              "shortcut": "AT"
-            },
-            "basics": {
-              "id": "03",
-              "name": "Baubeschreibung"
-            },
+            "evaluation": [3],
+            "basics": [3],
             "status": {
               "id": 4,
               "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
@@ -994,15 +966,8 @@
             },
             "position": "position",
             "title": "title",
-            "evaluation": {
-              "id": "03",
-              "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-              "shortcut": "AT"
-            },
-            "basics": {
-              "id": "03",
-              "name": "Baubeschreibung"
-            },
+            "evaluation": [3],
+            "basics": [3],
             "status": {
               "id": 2,
               "name": "abgestellt und durch den Sachverständigen kontrolliert"
@@ -1039,15 +1004,8 @@
             },
             "position": "position",
             "title": "title",
-            "evaluation": {
-              "id": "03",
-              "name": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-              "shortcut": "AT"
-            },
-            "basics": {
-              "id": "03",
-              "name": "Baubeschreibung"
-            },
+            "evaluation": [3],
+            "basics": [3],
             "status": {
               "id": 3,
               "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"

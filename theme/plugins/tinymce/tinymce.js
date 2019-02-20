@@ -1,4 +1,4 @@
-// 4.8.2 (2018-08-09)
+
 (function () {
 (function () {
   'use strict';

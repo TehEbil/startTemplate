@@ -197,6 +197,9 @@
                 vm.statuses = res.data.statuses;
                 vm.basics = res.data.grundlagen;
                 vm.classes = res.data.classes;
+
+                console.log('beur....', vm.evaluations);
+                
             });
         }
         function generateNumber(detections) {
