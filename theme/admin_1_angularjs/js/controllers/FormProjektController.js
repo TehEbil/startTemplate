@@ -80,7 +80,7 @@
                 initForm(emptyProject(getId.detail.listItems));
             }
 
-            getBaseDatas(['detectionStatus', 'bautenstand', 'prüffeld', 'beurteilung', 'classes']);
+            getBaseDatas(['statuses', 'bautenstand', 'prueffeld', 'beurteilung', 'classes']);
 		}
 
         function initForm(data) {
@@ -463,9 +463,9 @@
                 value = vm.constructionStates.filter(f => f.id === id);
             } else if (type === 'beurteilung') {
                 value = vm.evaluations.filter(f => f.id === id);
-            } else if (type === 'prüffeld') {
-                value = vm.testFields.filter(f => f.id === id);
-            } else if (type === 'detectionStatus' && typeof vm.statuses !== 'undefined') {    
+            } else if (type === 'prueffeld') {
+                value = vm.prueffeld.filter(f => f.id === id);
+            } else if (type === 'statuses' && typeof vm.statuses !== 'undefined') {    
                 value = vm.statuses.filter(f => f.id === id);
             } else if (type === 'classes' && typeof vm.classes !== 'undefined') {
                 value = vm.classes.filter(f => f.id === id);
@@ -481,14 +481,14 @@
                 for (const baseData of baseDatas) {
                     if (baseData === 'auftragsart') {
                         vm.orderTypes = res.data.auftragsart.data;                        
-                    } else if (baseData === 'detectionStatus') {
-                        vm.statuses = res.data.detectionStatus.data;    
+                    } else if (baseData === 'statuses') {
+                        vm.statuses = res.data.statuses.data;    
                     } else if (baseData === 'objektTypen') {
                         vm.objectTypes = res.data.objektTypen.data;
                     } else if (baseData === 'bautenstand') {
                         vm.constructionStates = res.data.bautenstand.data;
-                    } else if (baseData === 'prüffeld') {
-                        vm.testFields = res.data.prüffeld.data;
+                    } else if (baseData === 'prueffeld') {
+                        vm.prueffeld = res.data.prueffeld.data;
                     } else if (baseData === 'beurteilung') {
                         vm.evaluations = res.data.beurteilungen.data;
                     } else if (baseData === 'classes') {

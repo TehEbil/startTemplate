@@ -93,7 +93,7 @@
                 vm.protocol.reportDate = new Date(vm.protocol.reportDate);
             });
 
-            getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme', 'beurteilungen', 'prüffeld', 'gesamtbeurteilung']);
+            getBaseDatas(['bautenstand', 'statuses', 'abnahme', 'beurteilungen', 'prueffeld', 'gesamtbeurteilung']);
         }
 
         $scope.selectedTab = $scope.tabs[0];
@@ -171,9 +171,9 @@
                 value = vm.constructionStates.filter(f => f.id === id);
             } else if (type === 'beurteilung' && typeof vm.evaluations !== 'undefined') {
                 value = vm.evaluations.filter(f => f.id === id);
-            } else if (type === 'prüffeld' && typeof vm.testFields !== 'undefined') {
-                value = vm.testFields.filter(f => f.id === id);
-            } else if (type === 'detectionStatus' && typeof vm.statuses !== 'undefined') {
+            } else if (type === 'prueffeld' && typeof vm.prueffeld !== 'undefined') {
+                value = vm.prueffeld.filter(f => f.id === id);
+            } else if (type === 'statuses' && typeof vm.statuses !== 'undefined') {
                 value = vm.statuses.filter(f => f.id === id);
             } else if (type === 'gesamtbeurteilung' && typeof vm.overals !== 'undefined') {
                 value = vm.overals.filter(f => f.id === id); 
@@ -189,16 +189,16 @@
                 for (const baseData of baseDatas) { 
                     if (baseData === 'bautenstand') {
                         vm.constructionStates = res.data[baseData].data;
-                    } else if (baseData === 'detectionStatus') {
+                    } else if (baseData === 'statuses') {
                         vm.projectTypes = res.data[baseData].data;
                     } else if (baseData === 'abnahme') {
                         vm.acceptances = res.data[baseData].data;
-                    } else if (baseData === 'prüffeld') {
-                        vm.testFields = res.data.prüffeld.data;
+                    } else if (baseData === 'prueffeld') {
+                        vm.prueffeld = res.data.prueffeld.data;
                     } else if (baseData === 'beurteilungen') {
                         vm.evaluations = res.data.beurteilungen.data;
-                    } else if (baseData === 'detectionStatus') {
-                        vm.statuses = res.data.detectionStatus.data;    
+                    } else if (baseData === 'statuses') {
+                        vm.statuses = res.data.statuses.data;    
                     } else if (baseData === 'gesamtbeurteilung') {
                         vm.overals = res.data.gesamtbeurteilung.data;
                     }

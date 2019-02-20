@@ -46,18 +46,18 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 							</div> -->
 
 		<div class="form-group group">
-			<label class="control-label bxp-label float-left">Prüffeld</label>
+			<label class="control-label bxp-label float-left">prueffeld</label>
 			<div class="form-group modal-form-group width-100 group">
 				<div class="bxp-input float-left edit-icon-container">
 					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.testField" theme="bootstrap"
 					 remove-selected="false">
 						<ui-select-match allow-clear>{{ $select.selected.iso }} - {{ $select.selected.value }}</ui-select-match>
-						<ui-select-choices group-by="'group'" repeat="item.id as item in FormCtrl.testFields | filter: $select.search | groupBy: item.group">
+						<ui-select-choices group-by="'group'" repeat="item.id as item in FormCtrl.prueffeld.data | filter: $select.search | groupBy: item.group">
 							<span ng-bind-html="item.iso | highlight: $select.search"></span> - 
 							<span ng-bind-html="item.value | highlight: $select.search"></span>
 						</ui-select-choices>
 					</ui-select>
-					<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('prüffeld', FormCtrl.testFields)"><i class="fa fa-cog"></i></a>
+					<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('prueffeld', FormCtrl.prueffeld.data)"><i class="fa fa-cog"></i></a>
 				</div>
 			</div>
 		</div>
@@ -81,11 +81,11 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 					<ui-select-match allow-clear>{{
 						$select.selected.value
 						}}</ui-select-match>
-					<ui-select-choices repeat="item.id as item in FormCtrl.evaluations | filter: $select.search">
+					<ui-select-choices repeat="item.id as item in FormCtrl.evaluations.data | filter: $select.search">
 						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
-				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('beurteilungen', FormCtrl.evaluations)"><i class="fa fa-cog"></i></a>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('beurteilungen', FormCtrl.evaluations.data)"><i class="fa fa-cog"></i></a>
 			</div>
 		</div>
 
@@ -97,11 +97,11 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 					<ui-select-match allow-clear>{{
 						$select.selected.value
 						}}</ui-select-match>
-					<ui-select-choices repeat="item.id as item in FormCtrl.statuses | filter: $select.search">
+					<ui-select-choices repeat="item.id as item in FormCtrl.statuses.data | filter: $select.search">
 						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
-				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('detectionStatus', FormCtrl.statuses)"><i class="fa fa-cog"></i></a>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('statuses', FormCtrl.statuses.data)"><i class="fa fa-cog"></i></a>
 			</div>
 		</div>
 
@@ -113,11 +113,11 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 					<ui-select-match allow-clear>{{
 						$select.selected.value
 						}}</ui-select-match>
-					<ui-select-choices repeat="item.id as item in FormCtrl.basics | filter: $select.search">
+					<ui-select-choices repeat="item.id as item in FormCtrl.basics.data | filter: $select.search">
 						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
-				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('grundlagen', FormCtrl.basics)"><i class="fa fa-cog"></i></a>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('grundlagen', FormCtrl.basics.data)"><i class="fa fa-cog"></i></a>
 			</div>
 		</div>
 
@@ -138,13 +138,13 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.class" theme="bootstrap"
 				 remove-selected="false">
 				 <ui-select-match allow-clear>{{ $select.selected.code }} - {{ $select.selected.value }} </ui-select-match>
-				 <ui-select-choices repeat="item.id as item in FormCtrl.classes | filter: $select.search">
+				 <ui-select-choices repeat="item.id as item in FormCtrl.classes.data | filter: $select.search">
 					 <span ng-bind-html="item.code  | highlight: $select.search"></span> - 
 						<span ng-bind-html="item.value  | highlight: $select.search"></span> - 
 						<span ng-bind-html="item.description  | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
-				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('classes', FormCtrl.classes)"><i class="fa fa-cog"></i></a>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('classes', FormCtrl.classes.data)"><i class="fa fa-cog"></i></a>
 			</div>
 		</div>
 

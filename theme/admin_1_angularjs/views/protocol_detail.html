@@ -133,7 +133,7 @@
 									<th>Status</th>
 									<th>Nr</th>
 									<th>Datum</th>
-									<th>Prüffeld</th>
+									<th>prueffeld</th>
 									<th>Beurteilung</th>
 									<th>Bild</th>
 									<th><input type="checkbox" ng-click="FormCtrl.checkAll('detections', FormCtrl.selectAllAdd,'isAddProtocol')" ng-model="FormCtrl.selectAllAdd"> Add to Protocol </th>
@@ -146,7 +146,7 @@
 								<tr ng-dblclick="FormCtrl.editDetection(detection)" ng-repeat="detection in FormCtrl.detections" ng-click="FormCtrl.setSelected('detection', $index, detection)"
 								ng-class="{selected: detection.number === FormCtrl.selectedDetection.number}">
 									<td>
-										<div tooltip-placement="right" uib-tooltip="{{ FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus') }}" class="" ng-class="{
+										<div tooltip-placement="right" uib-tooltip="{{ FormCtrl.getBaseDataValueById(detection.detail.status, 'statuses') }}" class="" ng-class="{
 											'bxp-state-leistungen':         detection.detail.status === 4,
 											'bxp-state-inactive':           detection.detail.status === 1,
 											'bxp-state-active':             detection.detail.status === 2 || detection.detail.status === 3
@@ -155,7 +155,7 @@
 									</td>
 									<td>{{ detection.number }}</td>
 									<td>{{ detection.detail.date | date }}</td>
-									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prüffeld') }}</td>
+									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prueffeld') }}</td>
 									<td>{{ FormCtrl.getBaseDataValueById(detection.detail.evaluation, 'beurteilung') }}</td>
 									<td>
 										<img ng-src="{{ detection.coverPicUrl }}" alt="Random Photo" height="40" width="40">
