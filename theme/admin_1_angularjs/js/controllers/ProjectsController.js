@@ -5,10 +5,10 @@
         .module('MetronicApp')
         .controller('ProjectsController', ProjectsController);
 
-    ProjectsController.$inject = ['$rootScope', '$scope', '$stateParams', 'modalService', 'ProjectHandler', 'uiGridConstants', 'BaseDataHandler'];
+    ProjectsController.$inject = ['$rootScope', '$scope', '$stateParams', 'modalService', 'ProjectHandler', 'uiGridConstants', 'BaseDataHandler', '$timeout'];
 
     /* @ngInject */
-    function ProjectsController($rootScope, $scope, $stateParams, modalService, ProjectHandler, uiGridConstants, BaseDataHandler) {
+    function ProjectsController($rootScope, $scope, $stateParams, modalService, ProjectHandler, uiGridConstants, BaseDataHandler, $timeout) {
         var vm = this;
         vm.title = 'ProjectsController';
         vm.type = "Protocol";
@@ -91,19 +91,19 @@
             {
                 text: 'Neu',
                 click: function ($itemScope, $event, modelValue, text, $li) {
-                    vm.newData()
+                    vm.newProject()
                 }
             },
             {
                 text: 'Bearbeiten',
                 click: function ($itemScope, $event, modelValue, text, $li) {
-                    vm.editData()
+                    vm.editProject()
                 }
             },
             {
                 text: 'Löschen',
                 click: function ($itemScope, $event, modelValue, text, $li) {
-                    vm.deleteData()
+                    vm.deleteProject()
                 }
             },
             // {
@@ -152,45 +152,53 @@
         ];
 
         function init() {
+            BaseDataHandler.getData().then((res) => {
+                vm.baseData = res.data;
+            });
+
             ProjectHandler.getData().then((res) => {
                 vm.data = res.data; // getData() should get all Projects instead of only one;
                 // vm.data[0].id = 1 // fakeId, it has no id;
 
                 console.log("data", vm.data);
             });
+
+
+            // $rootScope.authService.func = () => ProjectHandler.getData($rootScope.userId + '/hidelog').then( (data) => {
+            //     $rootScope.authService.changedCounter = data.globalRandomValue;
+            //     vm.data = res.data;
+            // });
         }
 
         function newProject() {
 
-            BaseDataHandler.getData().then((res) => {
-                /* you will not need project data for new */
-                let obj = {
-                    title: 'Auftragsart',
-                    data: res.data.auftragsart.data,
-                };
+            console.log(vm.baseData);
+            let obj = {
+                title: 'Auftragsart',
+                data: vm.baseData.auftragsart.data,
+            };
 
 
-                modalService.openMenuModal('views/order_type.html', 'OrderTypeController', 'animated zoomIn', obj).then( (data) => {
+            modalService.openMenuModal('views/order_type.html', 'OrderTypeController', 'animated zoomIn', obj).then( (data) => {
+                
+                if (typeof data !== 'undefined') {
                     
-                    if (typeof data !== 'undefined') {
-                        
-                        var newObj = {
-                            orderTypeId: data.id,
-                            detail: {
-                                listItems: vm.data
+                    var newObj = {
+                        orderTypeId: data.id,
+                        detail: {
+                            listItems: vm.data
+                        }
+                    }
+                    modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
+                        (data) => {
+                            if (typeof data !== 'undefined') {
+                                ProjectHandler.postData(data).then((res) => {
+                                    vm.data.push(res.data);
+                                });    
                             }
                         }
-                        modalService.openMenuModal('views/form_projekt.html', 'FormProjektController', 'animated zoomIn', newObj).then(
-                            (data) => {
-                                if (typeof data !== 'undefined') {
-                                    ProjectHandler.postData(data).then((res) => {
-                                        vm.data = res.data;
-                                    });    
-                                }
-                            }
-                        );
-                    }
-                });
+                    );
+                }
             });
         }
 
@@ -206,6 +214,11 @@
                 (data) => {
                     if (typeof data !== 'undefined') {
                         ProjectHandler.updateData(data.id, data).then((res) => {
+                            let idx = vm.data.findIndex(o => o.id === vm.id);
+                            if(idx == -1)
+                                return console.error("element not found, may be deleted?");
+
+                            vm.data[idx] = res.data;
                             console.log('====================================');
                             console.log('response: ', res);
                             console.log('====================================');
@@ -218,6 +231,12 @@
         function deleteProject() {
             $scope.sharedService.showConfirmDialog("sure","Löschen").then(function (){
                 ProjectHandler.deleteData(vm.id).then((res) => {
+                    let idx = vm.data.findIndex(o => o.id == vm.id);
+                    if(idx == -1)
+                        return console.error("element not found, maybe already deleted?");
+
+                    vm.data.splice(idx, 1);
+                    vm.id = false;
                     console.log('====================================');
                     console.log(res.data);
                     console.log('====================================');

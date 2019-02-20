@@ -5,7 +5,7 @@
 		<bxp-responsive-tabs form-name="Order" tabs="tabs" selected-tab="FormCtrl.selectedTab" close-modal="FormCtrl.closeModal"
 		 submit-form="FormCtrl.submitForm">
 			<bxp-responsive-tab tab="NewProtocol" selected-tab="FormCtrl.selectedTab">
-				<div class="bxp-form-note mt-5px mb-10px">Creating new Protocol</div>
+				<div class="bxp-form-note mt-5px mb-10px">Ortstermin</div>
 				<div class="form-group group">
 					<label class="radio-inline">
 						<input ng-disabled="" type="radio" value="inspectionYes" ng-model="FormCtrl.protocol.isLocalInspection">Es konnte besichtigt werden
@@ -25,7 +25,7 @@
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">
 							<label class="control-label bxp-label float-left">Teilnehmer</label>
-							<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.participants"></textarea>
+							<bxp-participants-list data="FormCtrl.protocol.participants"></bxp-participants-list>
 						</div>
 					</div>
 				</div>
@@ -49,6 +49,9 @@
 					<label class="control-label bxp-label float-left">Besonderheiten</label>
 					<textarea class="form-control bxp-input float-left" rows="4" cols="50" ng-model="FormCtrl.protocol.particularties"></textarea>
 				</div>
+                <hr>
+                <div class="bxp-form-note mt-5px mb-10px">Protokoll</div>
+
 				<div class="form-group group">
 					<div class="bxp-col-6 float-left form-group group">
 						<div ng-class="">

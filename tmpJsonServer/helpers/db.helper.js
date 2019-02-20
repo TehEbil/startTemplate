@@ -27,6 +27,25 @@ module.exports = {
         return item;
     },
 
+    updateElementByIdx(db, fieldname, idx, newData) {
+        let data = db.get(fieldname).value();
+        
+        if(data[idx])
+            return undefined;
+
+        data[idx] = newData;
+        return newData;
+    },
+
+    updateElementById(db, fieldname, id, newData) {
+        let data = db.get(fieldname).value();
+        let idx = data.findIndex(o => o.id == id);
+        if(idx === -1)
+            return undefined;
+        data[idx] = newData;
+        return newData;
+    },
+
     findByPn(db, fieldname, projectNumber) {
         var item = db.get(fieldname).find({projectNumber: projectNumber});
         return item;
@@ -57,8 +76,8 @@ module.exports = {
     },
 
     delete(db, fieldname, id) {
-        var items = db.get(fieldname).removeById(id);
-
+        let data = db.get(fieldname);
+        let item = data.removeById(id).value();
         db.write();
 
         return items;
