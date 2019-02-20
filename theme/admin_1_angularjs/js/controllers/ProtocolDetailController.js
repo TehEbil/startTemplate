@@ -1,16 +1,16 @@
 (function() {
-	'use strict';
+    'use strict';
 
-	angular
-		.module('MetronicApp')
-		.controller('ProtocolDetailController', ProtocolDetailController);
+    angular
+        .module('MetronicApp')
+        .controller('ProtocolDetailController', ProtocolDetailController);
 
         ProtocolDetailController.$inject = ['$rootScope', '$scope', 'getId', 'modalService', 'BaseDataHandler', 'ProjectHandler'];
 
-	/* @ngInject */
-	function ProtocolDetailController($rootScope, $scope, getId, modalService, BaseDataHandler, ProjectHandler) {
-		// console.log("ProtocolDetailController Loaded");
-		var vm = this;
+    /* @ngInject */
+    function ProtocolDetailController($rootScope, $scope, getId, modalService, BaseDataHandler, ProjectHandler) {
+        // console.log("ProtocolDetailController Loaded");
+        var vm = this;
 
         vm.closeModal = closeModal;
         vm.submitForm = submitForm;
@@ -42,63 +42,62 @@
             'NewProtocol',
             'ChoosingDetections',
             'Documents'
-    	];
+        ];
 
         vm.tabs = $scope.tabs;
 
         init();
 
         function init() {
+            console.log("hi");
+
             vm.untouched = getId.data;
             vm.baseDetections = getId.detail.detections;
             vm.selectedIdx = getId.detail.selectedIdx;
             vm.projectId = getId.detail.projectId;
 
-            ProjectHandler.getData(`${vm.projectId}/documents`).then((res) => {
-                if (vm.selectedIdx === -1) { // new item
-                    vm.protocols = angular.copy(vm.untouched);    
-                    
-                    vm.protocol = {
-                        id: helperFuncs.maxId(vm.protocols) + 1,
-                        isLocalInspection: true,
-                        localInspectionDate: new Date().toISOString(),
-                        protocolType: "",
-                        participants: "",
-                        tempreture: "",
-                        weather: "",
-                        particularties: "",
-                        reportDate: new Date().toISOString(),
-                        projectType: {},
-                        constructionState: {},
-                        acceptance: {},
-                        acceptanceComment: "",
-                        note: "",
-                        selectedDetection: "",
-                        titlePicUrl: "https://picsum.photos/100/100/?random",
-                        date: new Date().toISOString(),
-                        members: "",
-                        selectedDetections: [],
-                        documents: res.data,
-                    };
-                } else {
-                    console.log('====================================');
-                    console.log(res.data);
-                    console.log('====================================');
-                    vm.protocol = angular.copy(vm.untouched);
-                    vm.protocol.documents = res.data;
-                }        
-                
-                vm.detections = angular.copy(vm.baseDetections); 
-                vm.protocol.date = new Date(vm.protocol.date);
-                vm.protocol.reportDate = new Date(vm.protocol.reportDate);
-            });
+
+
+            // ProjectHandler.getData(`${vm.projectId}/documents`).then((res) => {
+
+            if (vm.selectedIdx !== -1) // new item
+                vm.protocol = angular.copy(vm.untouched);
+            else
+                vm.protocol = {
+                    id: helperFuncs.maxId(vm.untouched) + 1,
+                    isLocalInspection: true,
+                    localInspectionDate: new Date(),
+                    protocolType: "",
+                    tempreture: "",
+                    weather: "",
+                    particularties: "",
+                    reportDate: new Date(),
+                    projectType: {},
+                    participants: [],
+                    constructionState: {},
+                    acceptance: {},
+                    acceptanceComment: "",
+                    note: "",
+                    selectedDetection: "",
+                    titlePicUrl: "https://picsum.photos/100/100/?random",
+                    date: new Date(),
+                    members: "",
+                    selectedDetections: [],
+                }
+
+            vm.documents = getId.documents;
+
+            vm.detections = angular.copy(vm.baseDetections); 
+            vm.protocol.date = new Date(vm.protocol.date);
+            vm.protocol.reportDate = new Date(vm.protocol.reportDate);
+            // });
 
             getBaseDatas(['bautenstand', 'detectionStatus', 'abnahme', 'beurteilungen', 'prüffeld', 'gesamtbeurteilung']);
         }
 
         $scope.selectedTab = $scope.tabs[0];
-    	$scope.setSelectedTab = function(tab) {
-			$scope.selectedTab = tab;
+        $scope.setSelectedTab = function(tab) {
+            $scope.selectedTab = tab;
 
         };
         
@@ -115,15 +114,15 @@
         function checkAll(elements, state, field) {
             if (elements === 'detections') {
                 if ( !state ) {
-                    vm.detections.map( d => d[field] = true );
+                    vm.detections.map( d => d[field] = true ); /* map -> forEach!, map is just to change list itself, not for every value*/
                 } else {
                     vm.detections.map( d => d[field] = false );
                 }
             } else if(elements === 'documents') {
                 if ( !state ) {
-                    vm.protocol.documents.map( d => d[field] = true );
+                    vm.documents.map( d => d[field] = true );
                 } else {
-                    vm.protocol.documents.map( d => d[field] = false );
+                    vm.documents.map( d => d[field] = false );
                 }
             }
         }

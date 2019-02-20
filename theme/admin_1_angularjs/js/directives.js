@@ -1359,10 +1359,29 @@ function maxId(arr) {
             template: function ($element, $attrs) {
                 return `
                     <ul>
-                        <li ng-repeat="item in vm.data | track by $index">
-                            {{::item.name}} - {{item.funktion}}
+                        <li ng-repeat="item in vm.data">
+                            {{::item.name}} - {{item.funktion}} <i class="fa fa-trash" ng-click="vm.deleteEntry($index)"></i>
                         </li>
                     </ul>
+                    <div ng-if="vm.addNew === true">
+                        <input type="text" auto-focus esc-key="vm.addNew = false;" ng-model="vm.name"
+                            class="bxp-input-grundatensatz"/>
+
+                        <input type="text" ng-model="vm.funktion"
+                            uib-typeahead="item for item in ['Sachverständiger', 'Anfragender', 'Gutachter']  | filter:$viewValue | limitTo:8"
+                            class="form-control bxp-input float-left" autocomplete="off" placeholder="Funktion"/>
+
+                            <button class="bxp-rounded-button add tiny" ng-click="vm.newEntry()" type="button"><i class="fa fa-check"></i></button>
+
+                            <a ng-click="vm.addNew = false">
+                              <button class="bxp-rounded-button delete tiny" type="button"><i class="fa fa-close"></i></button>
+                            </a>
+                    </div>
+
+                    <button type="button" ng-show="!vm.addNew" ng-click="vm.addNew = !vm.addNew" class="bxp-rounded-button tiny add">
+                      <i class="fa fa-plus"></i>
+                    </button>
+
                 `;
             }
 
@@ -1387,8 +1406,24 @@ function maxId(arr) {
         // ]
 
         vm.$onInit = function () {
+            console.log(vm.data);
+            // vm.data = [];
         };
 
+
+        vm.newEntry = () => {
+            vm.data.push({
+                funktion: vm.funktion,
+                name: vm.name
+            });
+            vm.funktion = "";
+            vm.name = "";
+            vm.addNew = false;
+        }
+
+        vm.deleteEntry = (idx) => {
+            vm.data.splice(idx, 1);
+        }
     }
 })();
 

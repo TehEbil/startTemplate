@@ -158,10 +158,8 @@
                         },
                         position: "",
                         title: "",
-                        evaluation: {
-                        },
-                        basics: {
-                        },
+                        evaluation: [],
+                        basics: [],
                         status: {
                         },
                         class: 1,

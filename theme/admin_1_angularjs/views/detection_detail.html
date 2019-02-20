@@ -76,11 +76,9 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 		<div class="form-group group">
 			<label class="control-label bxp-label float-left">Beurteilung</label>
 			<div class="bxp-input float-left edit-icon-container">
-				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.evaluation" theme="bootstrap"
+				<ui-select ng-disabled="vm.make" multiple ng-model="FormCtrl.selectedDetection.detail.evaluation" theme="bootstrap"
 				 remove-selected="false">
-					<ui-select-match allow-clear>{{
-						$select.selected.value
-						}}</ui-select-match>
+					<ui-select-match allow-clear>{{$item.value}}</ui-select-match>
 					<ui-select-choices repeat="item.id as item in FormCtrl.evaluations | filter: $select.search">
 						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
@@ -94,11 +92,9 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 			<div class="bxp-input float-left edit-icon-container">
 				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.status" theme="bootstrap"
 				 remove-selected="false">
-					<ui-select-match allow-clear>{{
-						$select.selected.value
-						}}</ui-select-match>
+					<ui-select-match allow-clear>{{$select.selected.value}}</ui-select-match>
 					<ui-select-choices repeat="item.id as item in FormCtrl.statuses | filter: $select.search">
-						<span ng-bind-html="item.value  | highlight: $select.search"></span>
+						<span ng-bind-html="item.value | highlight: $select.search"></span>
 					</ui-select-choices>
 				</ui-select>
 				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('detectionStatus', FormCtrl.statuses)"><i class="fa fa-cog"></i></a>
@@ -108,11 +104,9 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 		<div class="form-group group">
 			<label class="control-label bxp-label float-left">Grundlagen</label>
 			<div class="bxp-input float-left edit-icon-container">
-				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.basics" theme="bootstrap"
+				<ui-select ng-disabled="vm.make" multiple ng-model="FormCtrl.selectedDetection.detail.basics" theme="bootstrap"
 				 remove-selected="false">
-					<ui-select-match allow-clear>{{
-						$select.selected.value
-						}}</ui-select-match>
+					<ui-select-match allow-clear>{{$item.value}}</ui-select-match>
 					<ui-select-choices repeat="item.id as item in FormCtrl.basics | filter: $select.search">
 						<span ng-bind-html="item.value  | highlight: $select.search"></span>
 					</ui-select-choices>
@@ -126,7 +120,7 @@ close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 
 
 			<div class="bxp-input float-left edit-icon-container">
 				<textarea name="Beschreibung" class="form-control" rows="4" cols="50" ng-model="FormCtrl.selectedDetection.detail.description" required> 
-										</textarea>
+				</textarea>
 				<a class="edit-icon" ng-click="FormCtrl.openTextSnippetModal()"><i class="fa fa-cog"></i></a>
 			</div>
 			<p ng-if="!detection.Beschreibung.$valid"> required field </p>

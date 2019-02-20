@@ -281,10 +281,8 @@
                         },
                         position: "",
                         title: "",
-                        evaluation: {
-                        },
-                        basics: {
-                        },
+                        evaluation: [],
+                        basics: [],
                         status: {
                         },
                         description: "",
@@ -353,6 +351,7 @@
 		function addProtocol() {
             vm.subData = {
 				data: vm.baseData.protocolDatas,
+                documents: vm.baseData.documents,
 				detail: {
                     selectedIdx: -1,
                     detections: vm.baseData.detectionDatas,
@@ -375,6 +374,7 @@
             if (vm.selectedProtocolIdx !== -1) {
                 vm.subData = {
                     data: vm.selectedProtocol,
+                    documents: vm.baseData.documents,
                     detail: {
                         selectedIdx: vm.selectedProtocolIdx,
                         detections: vm.baseData.detectionDatas,
