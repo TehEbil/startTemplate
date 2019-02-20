@@ -25,6 +25,15 @@
                 </tbody>
             </table>
             <div ng-if="FormCtrl.show">
+                <input ng-if="FormCtrl.options.type === 'string'" type="text" auto-focus esc-key="FormCtrl.show = false;" ng-model="FormCtrl.optString" ng-enter="FormCtrl.newEntry()" class="bxp-input-grundatensatz"/>
+
+                <ui-select ng-if="FormCtrl.options.type === 'list'" ng-disabled="vm.make" ng-model="FormCtrl.selectedListElement" theme="bootstrap" remove-selected="false">
+                    <ui-select-match allow-clear>{{ $select.selected }}</ui-select-match>
+                    <ui-select-choices repeat="item in FormCtrl.options.listElements | filter: $select.search">
+                        <span ng-bind-html="item  | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>                
+
                 <input type="text" auto-focus esc-key="FormCtrl.show = false;" ng-model="FormCtrl.newItem" ng-enter="FormCtrl.newEntry()" class="bxp-input-grundatensatz"/>
                 <button class="bxp-rounded-button add tiny" ng-click="FormCtrl.newEntry()" type="button"><i class="fa fa-check"></i></button>
                 <a ng-click="FormCtrl.show = false">
@@ -40,7 +49,8 @@
 
         <div class="bxp-button-container group">
             <span class="ta-right float-right">
-                <button class="btn btn-primary" ng-click="FormCtrl.onSelect()" type="button">Speichern</button><button id="idAbbrechen" class="btn default" ng-click="FormCtrl.closeModal()" type="button">Abbrechen</button>
+                <button class="btn btn-primary" ng-click="FormCtrl.onSelect()" type="button">Speichern</button>
+                <button id="idAbbrechen" class="btn default" ng-click="FormCtrl.closeModal()" type="button">Abbrechen</button>
             </span>
         </div>
     </div>

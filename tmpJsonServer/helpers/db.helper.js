@@ -79,6 +79,20 @@ module.exports = {
         let data = db.get(fieldname);
         let item = data.removeById(id).value();
         db.write();
-        return item;
+
+        return items;
+    },
+
+    isHaveField(db, fieldname, field) {
+
+        // get('stammdata.136')
+        var items = db.get(`${fieldname}.${field}`).value();
+
+        if (items !== 'undefined') {
+            return true;
+        } else {
+            return false; 
+        }
+
     }
 };

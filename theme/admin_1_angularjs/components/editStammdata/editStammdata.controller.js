@@ -37,6 +37,7 @@
             vm.typeKind = getId.title;
             vm.items = angular.copy(getId.data) || [];
             vm.selected = getId.selected; // first init undefined 
+            vm.options = getId.options || {}; 
             if(getId.type)
                 vm.type = getId.type;
 
@@ -65,8 +66,8 @@
             console.log('====================================');
             console.log('New Entry');
             console.log('====================================');
-            var obj = {"id": helperFuncs.maxId(vm.items) + 1, "value": vm.newItem};
-            vm.items.push(obj);
+            
+            vm.options.type === undefined ? addDefaultValue() : addValueWithOptions(vm.options.optName);
 
             if(typeof vm.onsave === "function")
                 vm.onsave(obj);
@@ -74,6 +75,31 @@
             vm.newItem = "";
             vm.editStatus = true;
             vm.show = false;
+        }
+
+        function addDefaultValue() {
+            let obj = {"id": helperFuncs.maxId(vm.items) + 1, "value": vm.newItem};
+            vm.items.push(obj);    
+        }
+
+        function addValueWithOptions(optName) {
+            if (vm.options.type === 'list') {
+                let obj = {
+                    "id": helperFuncs.maxId(vm.items) + 1, 
+                    "value": vm.newItem, 
+                };
+                obj[optName] = vm.selectedListElement;
+                vm.items.push(obj);    
+            } else if ( vm.options.type === 'string' ) {
+                let obj = {
+                    "id": helperFuncs.maxId(vm.items) + 1, 
+                    "value": vm.newItem, 
+                };
+                obj[optName] = vm.optString;
+                vm.items.push(obj); 
+            } else {
+                return;
+            }
         }
 
         function editEntry(id = -1) {
@@ -141,6 +167,11 @@
 
         function onSelect() {
             // vm.master = vm.items;
+
+            console.log('====================================');
+            console.log(vm.items);
+            console.log('====================================');
+
             $scope.$close(vm.items);
         }
 

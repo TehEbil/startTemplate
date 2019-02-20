@@ -1378,960 +1378,1285 @@
     }
   },
   "baseDatas": {
-    "auftragsart": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Kauf - Verkaufsberatung"
-        },
-        {
-          "id": 2,
-          "value": "Baubegleitung",
-          "editMode": false
-        },
-        {
-          "id": 3,
-          "value": "Stellungnahme"
-        },
-        {
-          "id": 4,
-          "value": "Beweissicherung",
-          "editMode": false
-        },
-        {
-          "id": 5,
-          "value": "Modernisierungs - Check"
-        }
-      ],
-      "changedCounter": 3
+    "1": {
+      "auftragsart": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Kauf - Verkaufsberatung",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Baubegleitung",
+            "editMode": false,
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Stellungnahme",
+            "flag": "SYS"
+          },
+          {
+            "id": 4,
+            "value": "Beweissicherung",
+            "editMode": false,
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "Modernisierungs - Check",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 3
+      },
+      "grundlagen": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Allg. anerkannte Regeln der Technik",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Ausführungspläne / Zeichnungen",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Baubeschreibung",
+            "flag": "SYS"
+          },
+          {
+            "id": 4,
+            "value": "DIN 1045 (Stahl- und Stahlbetonbau)",
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "DIN 1053 (Mauerwerk)",
+            "flag": "SYS"
+          },
+          {
+            "id": 6,
+            "value": "DIN 18195 (Bauwerksabdichtungen)",
+            "flag": "SYS"
+          },
+          {
+            "id": 7,
+            "value": "DIN 18202 (Toleranzen im Hochbau)",
+            "flag": "SYS"
+          },
+          {
+            "id": 8,
+            "value": "DIN 18350",
+            "flag": "SYS"
+          },
+          {
+            "id": 9,
+            "value": "DIN 18353",
+            "flag": "SYS"
+          },
+          {
+            "id": 10,
+            "value": "DIN 18381",
+            "flag": "SYS"
+          },
+          {
+            "id": 11,
+            "value": "DIN 18550",
+            "flag": "SYS"
+          },
+          {
+            "id": 12,
+            "value": "DIN 18560",
+            "flag": "SYS"
+          },
+          {
+            "id": 13,
+            "value": "DIN 1986",
+            "flag": "SYS"
+          },
+          {
+            "id": 14,
+            "value": "DIN 1988",
+            "flag": "SYS"
+          },
+          {
+            "id": 15,
+            "value": "DIN 4102",
+            "flag": "SYS"
+          },
+          {
+            "id": 16,
+            "value": "DIN 4108",
+            "flag": "SYS"
+          },
+          {
+            "id": 17,
+            "value": "DIN 4109",
+            "flag": "SYS"
+          },
+          {
+            "id": 18,
+            "value": "DIN 4759 (Heizungsanlagen in Gebäuden)",
+            "flag": "SYS"
+          },
+          {
+            "id": 19,
+            "value": "DIN EN 13163:2001-10",
+            "flag": "SYS"
+          },
+          {
+            "id": 20,
+            "value": "DIN EN 13813",
+            "flag": "SYS"
+          },
+          {
+            "id": 21,
+            "value": "DIN EN 806",
+            "flag": "SYS"
+          },
+          {
+            "id": 22,
+            "value": "EnEV-Nachweis",
+            "flag": "SYS"
+          },
+          {
+            "id": 23,
+            "value": "Heizungsanlagenverordnung HeizAnIV",
+            "flag": "SYS"
+          },
+          {
+            "id": 24,
+            "value": "Hersteller-Verarbeitungsrichtlinien",
+            "flag": "SYS"
+          },
+          {
+            "id": 25,
+            "value": "KMB - Richtlinie",
+            "flag": "SYS"
+          },
+          {
+            "id": 26,
+            "value": "Landesbauordnung Bau O NRW",
+            "flag": "SYS"
+          },
+          {
+            "id": 27,
+            "value": "Planungsvorgaben",
+            "flag": "SYS"
+          },
+          {
+            "id": 28,
+            "value": "Regeln für Abdichtungen - Flachdachrichtlinien des Zentralverbandes Deutschen Dachdeckerhandwerks",
+            "flag": "SYS"
+          },
+          {
+            "id": 29,
+            "value": "Regeln für Metallarbeiten im Dachdeckerhandwerk des Zentralverbandes Deutschen Dachdeckerhandwerks",
+            "flag": "SYS"
+          },
+          {
+            "id": 30,
+            "value": "Siehe vorherige Protokollpunkte",
+            "flag": "SYS"
+          },
+          {
+            "id": 31,
+            "value": "Statik",
+            "flag": "SYS"
+          },
+          {
+            "id": 32,
+            "value": "Technische Richtlinie RAL-Gütegemeinschaft Fenster und Haustüren e.V.",
+            "flag": "SYS"
+          },
+          {
+            "id": 33,
+            "value": "VDE",
+            "flag": "SYS"
+          },
+          {
+            "id": 34,
+            "value": "VDI",
+            "flag": "SYS"
+          },
+          {
+            "id": 35,
+            "value": "Vertrag",
+            "flag": "SYS"
+          },
+          {
+            "id": 36,
+            "value": "Wärmeschutznachweis",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "prueffeld": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Sicherheitseinrichtungen, Baustelleneinrichtungen",
+            "iso": "000",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Gerüstarbeiten",
+            "iso": "001",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Erdarbeiten",
+            "iso": "002",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "Brunnenbauarbeiten und Aufschlussbohrungen",
+            "iso": "005",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 6,
+            "value": "Spezialtiefbauarbeiten",
+            "iso": "006",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 7,
+            "value": "Untertagebauarbeiten",
+            "iso": "007",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 8,
+            "value": "Wasserhaltungsarbeiten",
+            "iso": "008",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 9,
+            "value": "Entwässerungskanalarbeiten",
+            "iso": "009",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 10,
+            "value": "Drän- und Versickerarbeiten",
+            "iso": "010",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 11,
+            "value": "Abscheider- und Kleinkläranlagen",
+            "iso": "011",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 12,
+            "value": "Mauerarbeiten",
+            "iso": "012",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 13,
+            "value": "Betonarbeiten",
+            "iso": "013",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 14,
+            "value": "Natur-, Betonwerksteinarbeiten",
+            "iso": "014",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 16,
+            "value": "Zimmer- und Holzbauarbeiten",
+            "iso": "016",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 17,
+            "value": "Stahlbauarbeiten",
+            "iso": "017",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 18,
+            "value": "Abdichtungsarbeiten",
+            "iso": "018",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 20,
+            "value": "Dachdeckungsarbeiten",
+            "iso": "020",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 21,
+            "value": "Dachabdichtungsarbeiten",
+            "iso": "021",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 22,
+            "value": "Klempnerarbeiten",
+            "iso": "022",
+            "group": "ROHBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 23,
+            "value": "Putz- und Stuckarbeiten, Wärmedämmsysteme",
+            "iso": "023",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 24,
+            "value": "Fliesen- und Plattenarbeiten",
+            "iso": "024",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 25,
+            "value": "Estricharbeiten",
+            "iso": "025",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 26,
+            "value": "Fenster, Außentüren",
+            "iso": "026",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 27,
+            "value": "Tischlerarbeiten",
+            "iso": "027",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 28,
+            "value": "Parkett-, Holzpflasterarbeiten",
+            "iso": "028",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 29,
+            "value": "Beschlagarbeiten",
+            "iso": "029",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 30,
+            "value": "Rollladenarbeiten",
+            "iso": "030",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 31,
+            "value": "Metallbauarbeiten",
+            "iso": "031",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 32,
+            "value": "Verglasungsarbeiten",
+            "iso": "032",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 33,
+            "value": "Baureinigungsarbeiten",
+            "iso": "033",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 34,
+            "value": "Maler- und Lackierarbeiten - Beschichtungen",
+            "iso": "034",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 35,
+            "value": "Korrosionsschutzarbeiten an Stahlbauten",
+            "iso": "035",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 36,
+            "value": "Bodenbelagarbeiten",
+            "iso": "036",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 37,
+            "value": "Tapezierarbeiten",
+            "iso": "037",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 38,
+            "value": "Vorgehängte hinterlüftete Fassaden",
+            "iso": "038",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 39,
+            "value": "Trockenbauarbeiten",
+            "iso": "039",
+            "group": "AUSBAU",
+            "flag": "SYS"
+          },
+          {
+            "id": 40,
+            "value": "Wärmeversorgungsanlagen - Betriebseinrichtungen",
+            "iso": "040",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 41,
+            "value": "Wärmeversorgungsanlagen - Leitungen, Armaturen, Heizflächen",
+            "iso": "041",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 42,
+            "value": "Gas- und Wasseranlagen - Leitungen, Armaturen",
+            "iso": "042",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 43,
+            "value": "Druckrohrleitungen für Gas, Wasser und Abwasser",
+            "iso": "043",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 44,
+            "value": "Abwasseranlagen - Leitungen, Abläufe, Armaturen",
+            "iso": "044",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 45,
+            "value": "Gas-, Wasser- und Entwässerungsanlagen - Ausstattung, Elemente, Fertigbäder",
+            "iso": "045",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 46,
+            "value": " Gas-, Wasser- und Entwässerungsanlagen - Betriebseinrichtungen",
+            "iso": "046",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 47,
+            "value": "Dämm- und Brandschutzarbeiten an technischen Anlagen",
+            "iso": "047",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 49,
+            "value": "Feuerlöschanlagen, Feuerlöschgeräte",
+            "iso": "049",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 50,
+            "value": "Blitzschutz- / Erdungsanlagen, Überspannungsschutz",
+            "iso": "050",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 51,
+            "value": "Kabelleitungstiefbauarbeiten",
+            "iso": "051",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 52,
+            "value": "Mittelspannungsanlagen",
+            "iso": "052",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 53,
+            "value": "Niederspannungsanlagen - Kabel / Leitungen, Verlegesysteme, Installationsgeräte",
+            "iso": "053",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 54,
+            "value": "Niederspannungsanlagen - Verteilersysteme und Einbaugeräte",
+            "iso": "054",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 55,
+            "value": "Ersatzstromversorgungsanlagen",
+            "iso": "055",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 57,
+            "value": "Gebäudesystemtechnik",
+            "iso": "057",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 58,
+            "value": "Leuchten und Lampen",
+            "iso": "058",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 59,
+            "value": "Sicherheitsbeleuchtungsanlagen",
+            "iso": "059",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 60,
+            "value": "Elektroakustische Anlagen, Sprechanlagen, Personenrufanlagen",
+            "iso": "060",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 61,
+            "value": "Kommunikationsnetze",
+            "iso": "061",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 62,
+            "value": "Kommunikationsanlagen",
+            "iso": "062",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 63,
+            "value": "Gefahrenmeldeanlagen",
+            "iso": "063",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 64,
+            "value": "Zutrittskontroll-, Zeiterfassungssysteme",
+            "iso": "064",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 65,
+            "value": "Aufzüge",
+            "iso": "065",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 70,
+            "value": "Gebäudeautomation",
+            "iso": "070",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 75,
+            "value": "Raumlufttechnische Anlagen",
+            "iso": "075",
+            "group": "GEBÄUDETECHNIK",
+            "flag": "SYS"
+          },
+          {
+            "id": 76,
+            "value": "Landschaftsbauarbeiten",
+            "iso": "003",
+            "group": "AUßENANLAGEN",
+            "flag": "SYS"
+          },
+          {
+            "id": 77,
+            "value": "Landschaftsbauarbeiten - Pflanzen",
+            "iso": "004",
+            "group": "AUßENANLAGEN",
+            "flag": "SYS"
+          },
+          {
+            "id": 80,
+            "value": "Straßen, Wege, Plätze",
+            "iso": "080",
+            "group": "AUßENANLAGEN",
+            "flag": "SYS"
+          },
+          {
+            "id": 81,
+            "value": "Betonerhaltungsarbeiten",
+            "iso": "081",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 82,
+            "value": "Bekämpfender Holzschutz",
+            "iso": "082",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 83,
+            "value": "Sanierungsarbeiten an schadstoffhaltigen Bauteilen",
+            "iso": "083",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 84,
+            "value": "Abbruch- und Rückbauarbeiten",
+            "iso": "084",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 85,
+            "value": "Rohrvortriebsarbeiten",
+            "iso": "085",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 87,
+            "value": "Abfallentsorgung, Verwertung und Beseitigung",
+            "iso": "087",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 90,
+            "value": "Baulogistik",
+            "iso": "090",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 91,
+            "value": "Stundenlohnarbeiten",
+            "iso": "091",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 96,
+            "value": "Bauarbeiten an Bahnübergängen",
+            "iso": "096",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 97,
+            "value": "Bauarbeiten an Gleisen und Weichen",
+            "iso": "097",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 98,
+            "value": "Witterungsschutzmaßnahmen",
+            "iso": "098",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 99,
+            "value": "Barrierefreies Bauen",
+            "iso": "099",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          },
+          {
+            "id": 100,
+            "value": "Brandschutz",
+            "iso": "100",
+            "group": "SONSTIGE",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "beurteilungen": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Unfertige Leistung",
+            "shortcut": "U",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Hinweis allgemeiner Art",
+            "shortcut": "H",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
+            "shortcut": "AT",
+            "flag": "SYS"
+          },
+          {
+            "id": 4,
+            "value": "Abweichung vom Vertrag / Baubeschreilbung",
+            "shortcut": "AV",
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "Planungsfehler",
+            "shortcut": "P",
+            "flag": "SYS"
+          },
+          {
+            "id": 6,
+            "value": "Ausführungsfehler",
+            "shortcut": "A",
+            "flag": "SYS"
+          },
+          {
+            "id": 7,
+            "value": "Beschädigung durch außere Einwirkung",
+            "shortcut": "E",
+            "flag": "SYS"
+          },
+          {
+            "id": 8,
+            "value": "Verwendung falscher Baustoffe",
+            "shortcut": "F",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "statuses": {
+        "data": [
+          {
+            "id": 1,
+            "value": "noch nicht abgestellt",
+            "color": "red",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "abgestellt und durch den Sachverständigen kontrolliert",
+            "color": "green",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert",
+            "color": "green",
+            "flag": "SYS"
+          },
+          {
+            "id": 4,
+            "value": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend",
+            "color": "yellow",
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "sadfsf",
+            "color": "yellow",
+            "flag": "SYS"
+          },
+          {
+            "id": 6,
+            "value": "dfgsgsdgf",
+            "color": "yellow",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 2
+      },
+      "status": {
+        "data": [
+          {
+            "id": 1,
+            "value": "vorhaben",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "fehlt",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "objektTypen": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Bankgebäude",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Bürogebäude",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Doppelhaushälfte",
+            "flag": "SYS"
+          },
+          {
+            "id": 4,
+            "value": "Eigentumswohnung",
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "Freistehendes Einfamilienhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 6,
+            "value": "Freistehendes Zweifamilienhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 7,
+            "value": "Freistehendes Dreifamilienhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 8,
+            "value": "Einfamilienhaus Neubau",
+            "flag": "SYS"
+          },
+          {
+            "id": 9,
+            "value": "Zweifamilienhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 10,
+            "value": "Zweifamilienhaus Neubau",
+            "flag": "SYS"
+          },
+          {
+            "id": 11,
+            "value": "Dreifamilienhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 12,
+            "value": "Dreifamilienhaus Neubau",
+            "flag": "SYS"
+          },
+          {
+            "id": 13,
+            "value": "Garage",
+            "flag": "SYS"
+          },
+          {
+            "id": 14,
+            "value": "Wohnunseigentümergemeinschaft",
+            "flag": "SYS"
+          },
+          {
+            "id": 15,
+            "value": "Geschäftshaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 16,
+            "value": "Mehrfamilienhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 17,
+            "value": "Reihenendhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 18,
+            "value": "Reihenmittelhaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 19,
+            "value": "Wohn-/ Geschäftshaus",
+            "flag": "SYS"
+          },
+          {
+            "id": 20,
+            "value": "Sonstige",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "abnahme": {
+        "data": [
+          {
+            "id": 0,
+            "value": "Abnahme kann nicht erteilt werden",
+            "flag": "SYS"
+          },
+          {
+            "id": 1,
+            "value": "Abnahme kann ohne Vorbehalte erteilt werden",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "bautenstand": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Baugrundstück nach Beginn der Erdarbeiten",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Rohbaufertigstellung einschließlich Zimmererarbeiten",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Dachflächen, Dachrinnen",
+            "flag": "SYS"
+          },
+          {
+            "id": 4,
+            "value": "Rohinstallation der Heizungsanlagen",
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "Rohinstallation der Sanitäranlagen",
+            "flag": "SYS"
+          },
+          {
+            "id": 6,
+            "value": "Rohinstallation der Elektroanlagen",
+            "flag": "SYS"
+          },
+          {
+            "id": 7,
+            "value": "Fenster mit Verglasung",
+            "flag": "SYS"
+          },
+          {
+            "id": 8,
+            "value": "Innenputz ohne Beiputzarbeiten",
+            "flag": "SYS"
+          },
+          {
+            "id": 9,
+            "value": "Estrich",
+            "flag": "SYS"
+          },
+          {
+            "id": 10,
+            "value": "Fliesenarbeiten im Sanitärbereich",
+            "flag": "SYS"
+          },
+          {
+            "id": 11,
+            "value": "nach Bezugsfertigkeit (innen komplett fertig)",
+            "flag": "SYS"
+          },
+          {
+            "id": 12,
+            "value": "Fassadenarbeiten",
+            "flag": "SYS"
+          },
+          {
+            "id": 13,
+            "value": "Fertigstellung",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "artDesVorhabens": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Errichtung ( Neubau / Erweiterung )",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Änderung ( Umbau / Nutzungsänderung )",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Abbruch",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "gesamtbeurteilung": {
+        "data": [
+          {
+            "id": 1,
+            "value": "red",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "yellow",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "green",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "classes": {
+        "data": [
+          {
+            "id": 1,
+            "value": "Massiv",
+            "description": "nur mit hohem Aufwand zu beseitigen. (Hinweis Text für SV Beispiel: falsch verlegte Abdichtung.)",
+            "code": "I",
+            "flag": "SYS"
+          },
+          {
+            "id": 2,
+            "value": "Stark",
+            "description": "mit durchschnittlichem Aufwand behebbar. Hinweis Text für SV Beispiel: Fehlstelle in Abdichtungsbahn.",
+            "code": "II",
+            "flag": "SYS"
+          },
+          {
+            "id": 3,
+            "value": "Mäßig",
+            "description": "führt zu kürzerer Lebensdauer oder erhöht die Instandhaltungskosten. Hinweis Text für SV Beispiel: zu breite dauerelastische Verfugung.",
+            "code": "III",
+            "flag": "SYS"
+          },
+          {
+            "id": 4,
+            "value": "Leicht",
+            "description": "einfach zu behebende Mängel. Hinweis Text für SV Beispiel: Ausbesserung durch Maler, Richten von Dachziegeln.",
+            "code": "IV",
+            "flag": "SYS"
+          },
+          {
+            "id": 5,
+            "value": "Hinweis",
+            "description": "s Auffälligkeit oder Abweichung die noch nicht als Mangel zu bezeichnen ist, jedoch durch den Planer, die Bauleitung, Fachplaner oder ausführende Firma zu überprüfen ist",
+            "code": "H",
+            "flag": "SYS"
+          }
+        ],
+        "changedCounter": 0
+      }
     },
-    "grundlagen": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Allg. anerkannte Regeln der Technik"
-        },
-        {
-          "id": 2,
-          "value": "Ausführungspläne / Zeichnungen"
-        },
-        {
-          "id": 3,
-          "value": "Baubeschreibung"
-        },
-        {
-          "id": 4,
-          "value": "DIN 1045 (Stahl- und Stahlbetonbau)"
-        },
-        {
-          "id": 5,
-          "value": "DIN 1053 (Mauerwerk)"
-        },
-        {
-          "id": 6,
-          "value": "DIN 18195 (Bauwerksabdichtungen)"
-        },
-        {
-          "id": 7,
-          "value": "DIN 18202 (Toleranzen im Hochbau)"
-        },
-        {
-          "id": 8,
-          "value": "DIN 18350"
-        },
-        {
-          "id": 9,
-          "value": "DIN 18353"
-        },
-        {
-          "id": 10,
-          "value": "DIN 18381"
-        },
-        {
-          "id": 11,
-          "value": "DIN 18550"
-        },
-        {
-          "id": 12,
-          "value": "DIN 18560"
-        },
-        {
-          "id": 13,
-          "value": "DIN 1986"
-        },
-        {
-          "id": 14,
-          "value": "DIN 1988"
-        },
-        {
-          "id": 15,
-          "value": "DIN 4102"
-        },
-        {
-          "id": 16,
-          "value": "DIN 4108"
-        },
-        {
-          "id": 17,
-          "value": "DIN 4109"
-        },
-        {
-          "id": 18,
-          "value": "DIN 4759 (Heizungsanlagen in Gebäuden)"
-        },
-        {
-          "id": 19,
-          "value": "DIN EN 13163:2001-10"
-        },
-        {
-          "id": 20,
-          "value": "DIN EN 13813"
-        },
-        {
-          "id": 21,
-          "value": "DIN EN 806"
-        },
-        {
-          "id": 22,
-          "value": "EnEV-Nachweis"
-        },
-        {
-          "id": 23,
-          "value": "Heizungsanlagenverordnung HeizAnIV"
-        },
-        {
-          "id": 24,
-          "value": "Hersteller-Verarbeitungsrichtlinien"
-        },
-        {
-          "id": 25,
-          "value": "KMB - Richtlinie"
-        },
-        {
-          "id": 26,
-          "value": "Landesbauordnung Bau O NRW"
-        },
-        {
-          "id": 27,
-          "value": "Planungsvorgaben"
-        },
-        {
-          "id": 28,
-          "value": "Regeln für Abdichtungen - Flachdachrichtlinien des Zentralverbandes Deutschen Dachdeckerhandwerks"
-        },
-        {
-          "id": 29,
-          "value": "Regeln für Metallarbeiten im Dachdeckerhandwerk des Zentralverbandes Deutschen Dachdeckerhandwerks"
-        },
-        {
-          "id": 30,
-          "value": "Siehe vorherige Protokollpunkte"
-        },
-        {
-          "id": 31,
-          "value": "Statik"
-        },
-        {
-          "id": 32,
-          "value": "Technische Richtlinie RAL-Gütegemeinschaft Fenster und Haustüren e.V."
-        },
-        {
-          "id": 33,
-          "value": "VDE"
-        },
-        {
-          "id": 34,
-          "value": "VDI"
-        },
-        {
-          "id": 35,
-          "value": "Vertrag"
-        },
-        {
-          "id": 36,
-          "value": "Wärmeschutznachweis"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "prüffeld": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Sicherheitseinrichtungen, Baustelleneinrichtungen",
-          "iso": "000",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 2,
-          "value": "Gerüstarbeiten",
-          "iso": "001",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 3,
-          "value": "Erdarbeiten",
-          "iso": "002",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 5,
-          "value": "Brunnenbauarbeiten und Aufschlussbohrungen",
-          "iso": "005",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 6,
-          "value": "Spezialtiefbauarbeiten",
-          "iso": "006",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 7,
-          "value": "Untertagebauarbeiten",
-          "iso": "007",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 8,
-          "value": "Wasserhaltungsarbeiten",
-          "iso": "008",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 9,
-          "value": "Entwässerungskanalarbeiten",
-          "iso": "009",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 10,
-          "value": "Drän- und Versickerarbeiten",
-          "iso": "010",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 11,
-          "value": "Abscheider- und Kleinkläranlagen",
-          "iso": "011",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 12,
-          "value": "Mauerarbeiten",
-          "iso": "012",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 13,
-          "value": "Betonarbeiten",
-          "iso": "013",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 14,
-          "value": "Natur-, Betonwerksteinarbeiten",
-          "iso": "014",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 16,
-          "value": "Zimmer- und Holzbauarbeiten",
-          "iso": "016",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 17,
-          "value": "Stahlbauarbeiten",
-          "iso": "017",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 18,
-          "value": "Abdichtungsarbeiten",
-          "iso": "018",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 20,
-          "value": "Dachdeckungsarbeiten",
-          "iso": "020",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 21,
-          "value": "Dachabdichtungsarbeiten",
-          "iso": "021",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 22,
-          "value": "Klempnerarbeiten",
-          "iso": "022",
-          "group": "ROHBAU"
-        },
-        {
-          "id": 23,
-          "value": "Putz- und Stuckarbeiten, Wärmedämmsysteme",
-          "iso": "023",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 24,
-          "value": "Fliesen- und Plattenarbeiten",
-          "iso": "024",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 25,
-          "value": "Estricharbeiten",
-          "iso": "025",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 26,
-          "value": "Fenster, Außentüren",
-          "iso": "026",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 27,
-          "value": "Tischlerarbeiten",
-          "iso": "027",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 28,
-          "value": "Parkett-, Holzpflasterarbeiten",
-          "iso": "028",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 29,
-          "value": "Beschlagarbeiten",
-          "iso": "029",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 30,
-          "value": "Rollladenarbeiten",
-          "iso": "030",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 31,
-          "value": "Metallbauarbeiten",
-          "iso": "031",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 32,
-          "value": "Verglasungsarbeiten",
-          "iso": "032",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 33,
-          "value": "Baureinigungsarbeiten",
-          "iso": "033",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 34,
-          "value": "Maler- und Lackierarbeiten - Beschichtungen",
-          "iso": "034",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 35,
-          "value": "Korrosionsschutzarbeiten an Stahlbauten",
-          "iso": "035",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 36,
-          "value": "Bodenbelagarbeiten",
-          "iso": "036",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 37,
-          "value": "Tapezierarbeiten",
-          "iso": "037",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 38,
-          "value": "Vorgehängte hinterlüftete Fassaden",
-          "iso": "038",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 39,
-          "value": "Trockenbauarbeiten",
-          "iso": "039",
-          "group": "AUSBAU"
-        },
-        {
-          "id": 40,
-          "value": "Wärmeversorgungsanlagen - Betriebseinrichtungen",
-          "iso": "040",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 41,
-          "value": "Wärmeversorgungsanlagen - Leitungen, Armaturen, Heizflächen",
-          "iso": "041",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 42,
-          "value": "Gas- und Wasseranlagen - Leitungen, Armaturen",
-          "iso": "042",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 43,
-          "value": "Druckrohrleitungen für Gas, Wasser und Abwasser",
-          "iso": "043",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 44,
-          "value": "Abwasseranlagen - Leitungen, Abläufe, Armaturen",
-          "iso": "044",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 45,
-          "value": "Gas-, Wasser- und Entwässerungsanlagen - Ausstattung, Elemente, Fertigbäder",
-          "iso": "045",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 46,
-          "value": " Gas-, Wasser- und Entwässerungsanlagen - Betriebseinrichtungen",
-          "iso": "046",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 47,
-          "value": "Dämm- und Brandschutzarbeiten an technischen Anlagen",
-          "iso": "047",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 49,
-          "value": "Feuerlöschanlagen, Feuerlöschgeräte",
-          "iso": "049",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 50,
-          "value": "Blitzschutz- / Erdungsanlagen, Überspannungsschutz",
-          "iso": "050",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 51,
-          "value": "Kabelleitungstiefbauarbeiten",
-          "iso": "051",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 52,
-          "value": "Mittelspannungsanlagen",
-          "iso": "052",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 53,
-          "value": "Niederspannungsanlagen - Kabel / Leitungen, Verlegesysteme, Installationsgeräte",
-          "iso": "053",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 54,
-          "value": "Niederspannungsanlagen - Verteilersysteme und Einbaugeräte",
-          "iso": "054",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 55,
-          "value": "Ersatzstromversorgungsanlagen",
-          "iso": "055",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 57,
-          "value": "Gebäudesystemtechnik",
-          "iso": "057",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 58,
-          "value": "Leuchten und Lampen",
-          "iso": "058",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 59,
-          "value": "Sicherheitsbeleuchtungsanlagen",
-          "iso": "059",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 60,
-          "value": "Elektroakustische Anlagen, Sprechanlagen, Personenrufanlagen",
-          "iso": "060",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 61,
-          "value": "Kommunikationsnetze",
-          "iso": "061",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 62,
-          "value": "Kommunikationsanlagen",
-          "iso": "062",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 63,
-          "value": "Gefahrenmeldeanlagen",
-          "iso": "063",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 64,
-          "value": "Zutrittskontroll-, Zeiterfassungssysteme",
-          "iso": "064",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 65,
-          "value": "Aufzüge",
-          "iso": "065",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 70,
-          "value": "Gebäudeautomation",
-          "iso": "070",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 75,
-          "value": "Raumlufttechnische Anlagen",
-          "iso": "075",
-          "group": "GEBÄUDETECHNIK"
-        },
-        {
-          "id": 76,
-          "value": "Landschaftsbauarbeiten",
-          "iso": "003",
-          "group": "AUßENANLAGEN"
-        },
-        {
-          "id": 77,
-          "value": "Landschaftsbauarbeiten - Pflanzen",
-          "iso": "004",
-          "group": "AUßENANLAGEN"
-        },
-        {
-          "id": 80,
-          "value": "Straßen, Wege, Plätze",
-          "iso": "080",
-          "group": "AUßENANLAGEN"
-        },
-        {
-          "id": 81,
-          "value": "Betonerhaltungsarbeiten",
-          "iso": "081",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 82,
-          "value": "Bekämpfender Holzschutz",
-          "iso": "082",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 83,
-          "value": "Sanierungsarbeiten an schadstoffhaltigen Bauteilen",
-          "iso": "083",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 84,
-          "value": "Abbruch- und Rückbauarbeiten",
-          "iso": "084",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 85,
-          "value": "Rohrvortriebsarbeiten",
-          "iso": "085",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 87,
-          "value": "Abfallentsorgung, Verwertung und Beseitigung",
-          "iso": "087",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 90,
-          "value": "Baulogistik",
-          "iso": "090",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 91,
-          "value": "Stundenlohnarbeiten",
-          "iso": "091",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 96,
-          "value": "Bauarbeiten an Bahnübergängen",
-          "iso": "096",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 97,
-          "value": "Bauarbeiten an Gleisen und Weichen",
-          "iso": "097",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 98,
-          "value": "Witterungsschutzmaßnahmen",
-          "iso": "098",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 99,
-          "value": "Barrierefreies Bauen",
-          "iso": "099",
-          "group": "SONSTIGE"
-        },
-        {
-          "id": 100,
-          "value": "Brandschutz",
-          "iso": "100",
-          "group": "SONSTIGE"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "beurteilungen": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Unfertige Leistung",
-          "shortcut": "U"
-        },
-        {
-          "id": 2,
-          "value": "Hinweis allgemeiner Art",
-          "shortcut": "H"
-        },
-        {
-          "id": 3,
-          "value": "Abweichung von den allg. anerkannten Regeln der Technik(a.a.R.d.T.)",
-          "shortcut": "AT"
-        },
-        {
-          "id": 4,
-          "value": "Abweichung vom Vertrag / Baubeschreilbung",
-          "shortcut": "AV"
-        },
-        {
-          "id": 5,
-          "value": "Planungsfehler",
-          "shortcut": "P"
-        },
-        {
-          "id": 6,
-          "value": "Ausführungsfehler",
-          "shortcut": "A"
-        },
-        {
-          "id": 7,
-          "value": "Beschädigung durch außere Einwirkung",
-          "shortcut": "E"
-        },
-        {
-          "id": 8,
-          "value": "Verwendung falscher Baustoffe",
-          "shortcut": "F"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "detectionStatus": {
-      "data": [
-        {
-          "id": 1,
-          "value": "noch nicht abgestellt"
-        },
-        {
-          "id": 2,
-          "value": "abgestellt und durch den Sachverständigen kontrolliert"
-        },
-        {
-          "id": 3,
-          "value": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
-        },
-        {
-          "id": 4,
-          "value": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "status": {
-      "data": [
-        {
-          "id": 1,
-          "value": "vorhaben"
-        },
-        {
-          "id": 2,
-          "value": "fehlt"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "objektTypen": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Bankgebäude"
-        },
-        {
-          "id": 2,
-          "value": "Bürogebäude"
-        },
-        {
-          "id": 3,
-          "value": "Doppelhaushälfte"
-        },
-        {
-          "id": 4,
-          "value": "Eigentumswohnung"
-        },
-        {
-          "id": 5,
-          "value": "Freistehendes Einfamilienhaus"
-        },
-        {
-          "id": 6,
-          "value": "Freistehendes Zweifamilienhaus"
-        },
-        {
-          "id": 7,
-          "value": "Freistehendes Dreifamilienhaus"
-        },
-        {
-          "id": 8,
-          "value": "Einfamilienhaus Neubau"
-        },
-        {
-          "id": 9,
-          "value": "Zweifamilienhaus"
-        },
-        {
-          "id": 10,
-          "value": "Zweifamilienhaus Neubau"
-        },
-        {
-          "id": 11,
-          "value": "Dreifamilienhaus"
-        },
-        {
-          "id": 12,
-          "value": "Dreifamilienhaus Neubau"
-        },
-        {
-          "id": 13,
-          "value": "Garage"
-        },
-        {
-          "id": 14,
-          "value": "Wohnunseigentümergemeinschaft"
-        },
-        {
-          "id": 15,
-          "value": "Geschäftshaus"
-        },
-        {
-          "id": 16,
-          "value": "Mehrfamilienhaus"
-        },
-        {
-          "id": 17,
-          "value": "Reihenendhaus"
-        },
-        {
-          "id": 18,
-          "value": "Reihenmittelhaus"
-        },
-        {
-          "id": 19,
-          "value": "Wohn-/ Geschäftshaus"
-        },
-        {
-          "id": 20,
-          "value": "Sonstige"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "abnahme": {
-      "data": [
-        {
-          "id": 0,
-          "value": "Abnahme kann nicht erteilt werden"
-        },
-        {
-          "id": 1,
-          "value": "Abnahme kann ohne Vorbehalte erteilt werden"
-        },
-        {
-          "id": 2,
-          "value": "Abnahme kann mit Vorbehalten erteilt werden, siehe nachstehende Begründung"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "bautenstand": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Baugrundstück nach Beginn der Erdarbeiten"
-        },
-        {
-          "id": 2,
-          "value": "Rohbaufertigstellung einschließlich Zimmererarbeiten"
-        },
-        {
-          "id": 3,
-          "value": "Dachflächen, Dachrinnen"
-        },
-        {
-          "id": 4,
-          "value": "Rohinstallation der Heizungsanlagen"
-        },
-        {
-          "id": 5,
-          "value": "Rohinstallation der Sanitäranlagen"
-        },
-        {
-          "id": 6,
-          "value": "Rohinstallation der Elektroanlagen"
-        },
-        {
-          "id": 7,
-          "value": "Fenster mit Verglasung"
-        },
-        {
-          "id": 8,
-          "value": "Innenputz ohne Beiputzarbeiten"
-        },
-        {
-          "id": 9,
-          "value": "Estrich"
-        },
-        {
-          "id": 10,
-          "value": "Fliesenarbeiten im Sanitärbereich"
-        },
-        {
-          "id": 11,
-          "value": "nach Bezugsfertigkeit (innen komplett fertig)"
-        },
-        {
-          "id": 12,
-          "value": "Fassadenarbeiten"
-        },
-        {
-          "id": 13,
-          "value": "Fertigstellung"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "artDesVorhabens": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Errichtung ( Neubau / Erweiterung )"
-        },
-        {
-          "id": 2,
-          "value": "Änderung ( Umbau / Nutzungsänderung )"
-        },
-        {
-          "id": 3,
-          "value": "Abbruch"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "gesamtbeurteilung": {
-      "data": [
-        {
-          "id": 1,
-          "value": "red"
-        },
-        {
-          "id": 2,
-          "value": "yellow"
-        },
-        {
-          "id": 3,
-          "value": "green"
-        }
-      ],
-      "changedCounter": 0
-    },
-    "classes": {
-      "data": [
-        {
-          "id": 1,
-          "value": "Massiv",
-          "description": "nur mit hohem Aufwand zu beseitigen. (Hinweis Text für SV Beispiel: falsch verlegte Abdichtung.)",
-          "code": "I"
-        },
-        {
-          "id": 2,
-          "value": "Stark",
-          "description": "mit durchschnittlichem Aufwand behebbar. Hinweis Text für SV Beispiel: Fehlstelle in Abdichtungsbahn.",
-          "code": "II"
-        },
-        {
-          "id": 3,
-          "value": "Mäßig",
-          "description": "führt zu kürzerer Lebensdauer oder erhöht die Instandhaltungskosten. Hinweis Text für SV Beispiel: zu breite dauerelastische Verfugung.",
-          "code": "III"
-        },
-        {
-          "id": 4,
-          "value": "Leicht",
-          "description": "einfach zu behebende Mängel. Hinweis Text für SV Beispiel: Ausbesserung durch Maler, Richten von Dachziegeln.",
-          "code": "IV"
-        },
-        {
-          "id": 5,
-          "value": "Hinweis",
-          "description": "s Auffälligkeit oder Abweichung die noch nicht als Mangel zu bezeichnen ist, jedoch durch den Planer, die Bauleitung, Fachplaner oder ausführende Firma zu überprüfen ist",
-          "code": "H"
-        }
-      ]
+    "136": {
+      "auftragsart": {
+        "data": [
+          {
+            "id": 6,
+            "value": "auftragsart test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "grundlagen": {
+        "data": [
+          {
+            "id": 37,
+            "value": "grundlagen test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "prueffeld": {
+        "data": [
+          {
+            "id": 101,
+            "value": "prueffeld test",
+            "iso": "200",
+            "group": "ROHBAU"
+          },
+          {
+            "id": 102,
+            "value": "test",
+            "iso": "103"
+          },
+          {
+            "id": 103,
+            "value": "asdad",
+            "iso": "1234"
+          }
+        ],
+        "changedCounter": 2
+      },
+      "beurteilungen": {
+        "data": [
+          {
+            "id": 9,
+            "value": "beurteilungen test",
+            "shortcut": "U"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "statuses": {
+        "data": [
+          {
+            "id": 7,
+            "value": "statuses test",
+            "color": "red"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "status": {
+        "data": [
+          {
+            "id": 3,
+            "value": "status test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "objektTypen": {
+        "data": [
+          {
+            "id": 21,
+            "value": "object type test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "abnahme": {
+        "data": [
+          {
+            "id": 3,
+            "value": "abnahme test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "bautenstand": {
+        "data": [
+          {
+            "id": 14,
+            "value": "bautenstand test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "artDesVorhabens": {
+        "data": [
+          {
+            "id": 4,
+            "value": "artDesVothabens test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "gesamtbeurteilung": {
+        "data": [
+          {
+            "id": 4,
+            "value": "gesamtbeurteilung test"
+          }
+        ],
+        "changedCounter": 0
+      },
+      "classes": {
+        "data": [
+          {
+            "id": 6,
+            "value": "Classes test",
+            "description": "classes test object",
+            "code": "I"
+          }
+        ],
+        "changedCounter": 0
+      }
     }
   },
   "partners": [

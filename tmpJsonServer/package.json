@@ -19,7 +19,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -w middlewareserver.js"
+    "start": "nodemon -w middlewareserver.js -w routers"
   },
   "author": "",
   "license": "ISC"

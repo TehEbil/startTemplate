@@ -192,11 +192,11 @@
         function getBaseDatas() {
 
             BaseDataHandler.getData().then((res) => {
-                vm.testFields = res.data.prüffeld.data;
-                vm.evaluations = res.data.beurteilungen.data;
-                vm.statuses = res.data.detectionStatus.data;
-                vm.basics = res.data.grundlagen.data;
-                vm.classes = res.data.classes.data;
+                vm.prueffeld = res.data.prueffeld;
+                vm.evaluations = res.data.beurteilungen;
+                vm.statuses = res.data.statuses;
+                vm.basics = res.data.grundlagen;
+                vm.classes = res.data.classes;
             });
         }
         function generateNumber(detections) {
@@ -205,10 +205,12 @@
         }
 
         function openBaseDataModel(route, data) {
-            var obj = {
+            let obj = {
                 data: data,
-                title: route
+                title: route,
+                options: setOptions(route)
             };
+
             // $rootScope.modalService.openMenuModal would work too, globally defined to use more easily
             modalService.openComponentModal('editStammdata', obj).then((data) => {
 
@@ -216,16 +218,12 @@
                 if(typeof data ===  "undefined")
                     return;
 
-                var obj = {
+                let obj = {
                     data, // same as data: data -> because key and value is the same
-                    changedCounter: vm.baseData.changedCounter
+                    changedCounter: vm[route].changedCounter
                 };
 
-                console.log('====================================');
-                console.log('changed baseData => ', obj);
-                console.log('====================================');
-
-                BaseDataHandler.updateData(vm.route, obj).then(
+                BaseDataHandler.updateData(route, obj).then(
                     (res) => {
                         getBaseDatas();
                     },
@@ -236,6 +234,32 @@
 
                 console.log("Modal closed, vm.uploads now = ", vm.baseData);
             });
+        }
+
+        function setOptions(route) {
+
+            let options = {};
+
+            if (route === 'statuses') {
+                options = {
+                    type: 'list',
+                    optName: 'color',
+                    listElements: [
+                        'red',
+                        'yellow',
+                        'green'
+                    ]
+                };
+            } else if (route === 'prueffeld') {
+                options = {
+                    type: 'string',
+                    optName: 'iso'
+                };
+            }
+            console.log('====================================');
+            console.log('options = ', options);
+            console.log('====================================');
+            return options;
         }
 }
 })();

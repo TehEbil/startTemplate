@@ -324,7 +324,7 @@
 								<th>Status</th>
 								<th>Nr</th>
 								<th>Datum</th>
-								<th>Prüffeld</th>
+								<th>prueffeld</th>
 								<th>Beurteilung</th>
 								<th>Bild</th>
 							</tr>
@@ -335,7 +335,7 @@
 							<tr ng-dblclick="FormCtrl.editDetection()" ng-repeat="detection in FormCtrl.baseData.detectionDatas" ng-click="FormCtrl.setSelected('detection',detection, $index)"
 							 ng-class="{selected: $index === FormCtrl.selectedDetectionIdx}">
 							 <td>
-									 <div tooltip-placement="right" uib-tooltip="{{ FormCtrl.getBaseDataValueById(detection.detail.status, 'detectionStatus') }}" class="" ng-class="{
+									 <div tooltip-placement="right" uib-tooltip="{{ FormCtrl.getBaseDataValueById(detection.detail.status, 'statuses') }}" class="" ng-class="{
 										 'bxp-state-leistungen':         detection.detail.status === 4,
 										 'bxp-state-inactive':           detection.detail.status === 1,
 										 'bxp-state-active':             detection.detail.status === 2 || detection.detail.status === 3
@@ -344,7 +344,7 @@
 							 </td>
 								<td>{{ detection.id }}</td>
 								<td>{{ detection.detail.date | date }}</td>
-								<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prüffeld') }}</td>
+								<td>{{ FormCtrl.getBaseDataValueById(detection.detail.testField, 'prueffeld') }}</td>
 								<td>{{ FormCtrl.getBaseDataValueById(detection.detail.evaluation, 'beurteilung') }}</td>
 								<!-- <td>{{ detection.detail.position }}</td> -->
 								<td>

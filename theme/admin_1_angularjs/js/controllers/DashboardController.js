@@ -33,7 +33,7 @@
 
         function init() {
             BaseDataHandler.getData().then((res) => {
-                vm.testFields = res.data.prüffeld.data;
+                vm.prueffeld = res.data.prueffeld.data;
             });
         }
 
@@ -81,15 +81,15 @@
             var protocolNr = '1-2018-BBQ-14';
             var sv = 'Herr Frank Tekook';
             var thirdHeader = '3. Überprüfung der Abarbeitung bisher festgestellter Mängel';
-            let leftSide = [];  // for prüffeld
-            let rightside = []; // for prüffeld
+            let leftSide = [];  // for prueffeld
+            let rightside = []; // for prueffeld
             console.log("opened");
-            // TODO: find prüffeld list middle element and parse two pieces to test fields array. 
-            // TODO: detect selected prüffeld dats coming from to server.
+            // TODO: find prueffeld list middle element and parse two pieces to test fields array. 
+            // TODO: detect selected prueffeld dats coming from to server.
             // TODO: add listType property in object if has been selected. 
-            for (const testField in vm.testFields) {
-                if (vm.testFields.hasOwnProperty(testField)) {
-                    const element = vm.testFields[testField];
+            for (const testField in vm.prueffeld) {
+                if (vm.prueffeld.hasOwnProperty(testField)) {
+                    const element = vm.prueffeld[testField];
                     leftSide.push(
                         { text: 'item 3', listType: 'circle', style: 'tableContent' }
                     );
@@ -613,7 +613,7 @@
                     },
                     //#endregion
 
-                    //#region Prüffeld Page Start 
+                    //#region prueffeld Page Start 
                     {
                         style: 'tableExample',
                         table: {
@@ -637,14 +637,14 @@
                         }
                     },
                     {
-                        text: '2. Prüffelder und Feststellungen zum Ortstermin ',
+                        text: '2. prueffelder und Feststellungen zum Ortstermin ',
                         style: 'mainHeader',
                         tocItem: true,
                         tocStyle: { bold: false },
                         tocMargin: [52, 10, 0, 0]
                     },
                     {
-                        text: 'Zum Ortstermin wurden folgende Prüffelder baubegleitend geprüft:',
+                        text: 'Zum Ortstermin wurden folgende prueffelder baubegleitend geprüft:',
                         style: 'paragraph'
                     },
                     {
@@ -716,7 +716,7 @@
                     {
                         columns: [
                             {
-                                text: 'Prüffelder: ',
+                                text: 'prueffelder: ',
                                 fontSize: 10,
                                 bold: true,
                                 aligment: 'left',

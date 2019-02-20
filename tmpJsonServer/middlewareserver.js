@@ -107,7 +107,7 @@ server.listen(serverPort - 1, () => {
   server.use('/project', project);
   server.use('/partnerForm', partnerForm);
   server.use('/stammDaten', stammDaten);
-	server.use('/baseDatas', baseDatas);
+	server.use('/baseDatas', baseDatas); 
 })
 
 const options = {
