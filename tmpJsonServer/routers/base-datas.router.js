@@ -122,7 +122,9 @@ function saveCB(req, res) {
         console.log('====================================');
 
         let cstDatas = req.body.data.filter(f => f.flag !== 'SYS');
-        
+        if (items.length !== csDatas.length) {
+            dbHelper.setNextId(db, `baseDatas.${uId}.${type}`, items.length < cstDatas.length ? cstDatas : items);
+        }
         items.data = cstDatas;
         items.changedCounter = changedCounter;   
         console.log('====================================');

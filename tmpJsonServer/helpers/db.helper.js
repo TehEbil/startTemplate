@@ -11,6 +11,15 @@ module.exports = {
         }));
         return (x == "-Infinity") ? 0 : x;
     },
+
+    setNextId(db, fieldName, arr) {
+
+        let items = db.get(fieldName).value();
+
+        items.nextId = this.maxId(arr) + 1;
+
+        db.write();
+    },
     
     /**
      * if you use this method, 
