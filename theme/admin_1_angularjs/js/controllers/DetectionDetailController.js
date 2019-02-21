@@ -216,7 +216,11 @@
             
             
             vm.selectedDetection.number = 
-            `${detectionsOfSameDay.length > 1 ? `${helperFuncs.generateDate(vm.selectedDetection.detail.date)}${(helperFuncs.maxId(detectionsOfSameDay) === vm.selectedDetection.id ? helperFuncs.maxId(detectionsOfSameDay) : helperFuncs.maxId(detectionsOfSameDay) + 1).toString().padStart(5, "0")}` : `${helperFuncs.generateDate(vm.selectedDetection.detail.date)}00001`}`;
+            `${detectionsOfSameDay.length > 1 ? 
+            `${helperFuncs.generateDate(vm.selectedDetection.detail.date)}${(helperFuncs.maxId(detectionsOfSameDay) === vm.selectedDetection.id ?
+            helperFuncs.maxId(detectionsOfSameDay) :
+            helperFuncs.maxId(detectionsOfSameDay) + 1).toString().padStart(5, "0")}` :
+            `${helperFuncs.generateDate(vm.selectedDetection.detail.date)}00001`}`;
         }
 
         function openBaseDataModel(route, data) {
