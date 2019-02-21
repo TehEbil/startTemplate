@@ -20,7 +20,8 @@
         vm.stringToDate = stringToDate;
         vm.openBaseDataModel = openBaseDataModel;
         vm.deleteUpload = deleteUpload;
-        vm.addDetection = addDetection; 
+        vm.addDetection = addDetection;
+        vm.generateNumber = generateNumber;
 
         vm.detections = [];
         vm.selectedDetection = {};
@@ -145,14 +146,14 @@
                 {
                     /* we need to add data models */
                     id: vm.detections.length > 0 ? helperFuncs.maxId(vm.detections) + 1 : 1,
-                    number: generateNumber(vm.detections),
+                    number: "",
                     date: "",
                     status: "",
                     title: "",
                     coverPicUrl: "",
                     detection: "",
                     detail: {
-                        date: "",
+                        date: new Date(),
                         datetime: "",
                         testField: {
                         },
@@ -177,6 +178,7 @@
             vm.newItem = true;
             vm.selectedDetection = vm.detections[vm.detections.length - 1];
             vm.stringToDate(vm.selectedDetection.detail.date, vm.selectedDetection.detail.datetime);
+            vm.generateNumber(vm.detections);
             vm.selectedIdx = vm.detections.length - 1;
         }   
 
@@ -197,14 +199,24 @@
                 vm.statuses = res.data.statuses;
                 vm.basics = res.data.grundlagen;
                 vm.classes = res.data.classes;
-
-                console.log('beur....', vm.evaluations);
-                
             });
         }
         function generateNumber(detections) {
-            let date = new Date();
-            return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}-${detections.length > 0 ? helperFuncs.maxId(detections) + 1 : 1}`;
+
+            let detectionsOfSameDay = [];
+            
+            for (const detection of detections) {
+                if (helperFuncs.isSameDate(new Date(detection.detail.date), vm.selectedDetection.detail.date)) {
+                    
+                    detectionsOfSameDay.push(detection);
+                    
+                }
+            }
+            console.log(detectionsOfSameDay);
+            
+            
+            vm.selectedDetection.number = 
+            `${detectionsOfSameDay.length > 1 ? `${helperFuncs.generateDate(vm.selectedDetection.detail.date)}${(helperFuncs.maxId(detectionsOfSameDay) === vm.selectedDetection.id ? helperFuncs.maxId(detectionsOfSameDay) : helperFuncs.maxId(detectionsOfSameDay) + 1).toString().padStart(5, "0")}` : `${helperFuncs.generateDate(vm.selectedDetection.detail.date)}00001`}`;
         }
 
         function openBaseDataModel(route, data) {
