@@ -1,0 +1,57 @@
+<form name="projectDataDocumentUpload" novalidate autocomplete="off">
+
+  <div name="projectDataDocumentUploadx" id="projectDataDocumentUpload" close-esc-key="FormCtrl.closeModal" func="FormCtrl.closeModal"
+    ng-model="state" class="bxp-form group" novalidate autocomplete="false">
+
+    <div class="bxp-header-modal">
+      <h3>Document Name</h3>
+    </div>
+
+    <div class="bxp-inner-modal bxp-container">
+      <!-- Upload on form submit or button click-->
+      <div ng-if="FormCtrl.dynamic == 101" class="ta-center upload-success">
+        <br>
+        <br>
+        <br>
+        <i class="icon-check success-color large-icon"></i>
+        <br>
+        <h4> Super, File has been uploaded! <br><!-- {{FormCtrl.docName}} -->
+        </h4>
+        <br />
+        <!--button class="btn btn-primary bxp-button-ok" ng-click="FormCtrl.dynamic = -1; FormCtrl.docName = ''">Weiteres Dokument hochladen</button-->
+      </div>
+      <div ng-if="FormCtrl.dynamic != 101">
+        <div class="bxp-upload-container group">
+          <div class="">
+            <strong>Document name:</strong>
+          </div>
+          <div>
+            <label for="">is Display</label>
+            <input type="checkbox" ng-model="FormCtrl.isDisplay">
+          </div>
+          <input name="Dokumentenname" ng-model="FormCtrl.docName" class="form-control bxp-dokumentenname" type="text"
+            placeholder="">
+          <input type="file" ngf-select ng-model="FormCtrl.files" name="files" ngf-accept="'.pdf,.jpg,.gif,.png,.jpeg,.doc,.docx,.txt,.xlsx,.xls,.csv'"
+            ngf-pattern="'.pdf,.jpg,.gif,.png,.jpeg,.doc,.docx,.txt,.xlsx,.xls,.csv'" ngf-max-size="15MB" required
+            ngf-model-invalid="errorFile">
+
+          <!-- <input type="button" ng-click="FormCtrl.files = undefined" ng-show="FormCtrl.files" value="x"/> -->
+          <img ng-show="formUpload.files.$valid && FormCtrl.checkPdf() >= 0" ngf-thumbnail="FormCtrl.files" class="thumb">
+          <img ng-show="formUpload.files.$valid && FormCtrl.checkPdf() == -1" src="..\pictures\pdf.png" class="thumb">
+          <button ng-if="FormCtrl.isNew" class="bxp-rounded-button delete tiny" ng-click="FormCtrl.files = undefined" ng-show="FormCtrl.files"><i
+              class="fa fa-close"></i></button>
+          <!--div class="button bxp-upload-field ta-center float-left" style="height: 10px; width: 200px;" ngf-accept="'.pdf,.jpg,.gif,.png,.jpeg,.doc,.docx,.txt,.xlsx,.xls,.csv'" ngf-pattern="'.pdf,.jpg,.gif,.png,.jpeg,.doc,.docx,.txt,.xlsx,.xls,.csv'" ngf-select ng-model="FormCtrl.files" ngf-multiple="true"></div-->
+          <!--input value="Hochladen" class="bxp-hochladen" type="button" ng-click="FormCtrl.submitUpload()"></input-->
+          <p><i>(max. 15 MB)</i></p>
+          <p>Allowed Types: .pdf,.jpg,.gif,.png,.jpeg,.doc,.docx,.txt,.xlsx,.xls,.csv</p>
+        </div>
+      </div>
+    </div>
+</form>
+
+<div class="bxp-button-container group">
+  <span class="display-block ta-center">
+    <button class="btn btn-primary bxp-button-ok" ng-click="FormCtrl.submitUpload()">Ok</button>
+    <button class="btn default" ng-click="FormCtrl.closeModal()" type="button">Cancel</button>
+  </span>
+</div>
