@@ -191,8 +191,12 @@
           },
           "position": "position",
           "title": "title",
-          "evaluation": [3],
-          "basics": [3],
+          "evaluation": [
+            3
+          ],
+          "basics": [
+            3
+          ],
           "status": {
             "id": 4,
             "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
@@ -247,8 +251,12 @@
           },
           "position": "position",
           "title": "title",
-          "evaluation": [3],
-          "basics": [3],
+          "evaluation": [
+            3
+          ],
+          "basics": [
+            3
+          ],
           "status": {
             "id": 2,
             "name": "abgestellt und durch den Sachverständigen kontrolliert"
@@ -284,8 +292,12 @@
           },
           "position": "position",
           "title": "title",
-          "evaluation": [3],
-          "basics": [3],
+          "evaluation": [
+            3
+          ],
+          "basics": [
+            3
+          ],
           "status": {
             "id": 3,
             "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
@@ -598,8 +610,12 @@
             "testField": 3,
             "position": "test",
             "title": "title",
-            "evaluation": [2],
-            "basics": [1],
+            "evaluation": [
+              2
+            ],
+            "basics": [
+              1
+            ],
             "status": 4,
             "description": "desc",
             "class": 1,
@@ -648,8 +664,12 @@
             "testField": 3,
             "position": "test",
             "title": "title",
-            "evaluation": [4],
-            "basics": [3],
+            "evaluation": [
+              4
+            ],
+            "basics": [
+              3
+            ],
             "status": 3,
             "class": 1,
             "description": "desc",
@@ -679,8 +699,12 @@
             "testField": 1,
             "position": "test3",
             "title": "title",
-            "evaluation": [2],
-            "basics": [1],
+            "evaluation": [
+              2
+            ],
+            "basics": [
+              1
+            ],
             "status": 1,
             "class": 1,
             "description": "desc",
@@ -702,7 +726,7 @@
           "protocolType": "type 1",
           "participants": "Mahmut, Can, Muhammed",
           "tempreture": "26",
-          "weather": "Summer",
+          "weather": "test1",
           "particularties": "1. particularity, 2. particularity",
           "reportDate": "2019-01-23T21:00:00.000Z",
           "projectType": 3,
@@ -900,8 +924,12 @@
             "position": "position",
             "title": "title",
             "class": 1,
-            "evaluation": [3],
-            "basics": [3],
+            "evaluation": [
+              3
+            ],
+            "basics": [
+              3
+            ],
             "status": {
               "id": 4,
               "name": "Mengelbeseitigung durch den Sachverständigen nicht mehr einsehbar und somit nicht mehr kontrollierbar 1Dausend 2Dausend 3Dausend"
@@ -966,8 +994,12 @@
             },
             "position": "position",
             "title": "title",
-            "evaluation": [3],
-            "basics": [3],
+            "evaluation": [
+              3
+            ],
+            "basics": [
+              3
+            ],
             "status": {
               "id": 2,
               "name": "abgestellt und durch den Sachverständigen kontrolliert"
@@ -1004,8 +1036,12 @@
             },
             "position": "position",
             "title": "title",
-            "evaluation": [3],
-            "basics": [3],
+            "evaluation": [
+              3
+            ],
+            "basics": [
+              3
+            ],
             "status": {
               "id": 3,
               "name": "Mengelbeseitigung schriftlich vom BT / GU / NU bestätig und durch den Sachverständigen kontrolliert"
