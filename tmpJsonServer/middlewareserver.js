@@ -6,6 +6,7 @@
 /*jshint shadow:true*/
 console.time(1)
 
+console.log("hi");
 /* server */
 const express = require('express');
 const compression = require('compression');
