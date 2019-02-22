@@ -1,9 +1,12 @@
 var debug = 0;
-var gIp;
 var counter = 0;
 
-    gIp = 'http://127.0.0.1:3006/';
-/* IF NOT DEBUG -> PRODUCTION:::::!!!*/
+// gIp = 'http://127.0.0.1:3006/';
+// gIp = serverConfig.mode + "://" + serverConfig.ip + ":" + serverConfig.port + "/";
+if(serverConfig.runOnServer)
+    gIp = "https://partner.bauexperts.de:3010/";
+else
+    gIp = 'https://127.0.0.1:3006/';
 
 function raw(x) {
     return JSON.parse(JSON.stringify(x));
@@ -13,14 +16,13 @@ class DataHandler {
     //this.url = "";
     constructor($http, param) {
         this.$http = $http;
-        // this.url = 'http://localhost:3006/' + param;
         this.url = gIp + param;
     }
 
     getData (id="") {
         var options = undefined;
         if(typeof id == "string" && id.indexOf("hidelog") >= 0) {
-            options = {ignoreLoadingBar: true}
+            options = {ignoreLoadingBar: true};
         }
         return this.$http.get(this.url + '/' + id, options);
     }
@@ -59,22 +61,49 @@ class DataHandler {
 
 }
 
+class StammDatenHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'stammDaten');
+    }
+}
+class PartnerFormHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'partnerForm');
+    }
+}
+
 class KontakteHandler extends DataHandler {
     constructor($http) {
         super($http, 'kontakte');
     }
 }
 
+class ProjectHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'project');
+    }
+}
+
+class BaseDataHandler extends DataHandler {
+    constructor($http) {
+        super($http, 'baseDatas');
+    }
+}
+
+BaseDataHandler.$inject = ['$http'];
+StammDatenHandler.$inject = ['$http'];
+PartnerFormHandler.$inject = ['$http'];
 KontakteHandler.$inject = ['$http'];
+ProjectHandler.$inject = ['$http'];
 
 angular.uppercase=function(text){
  return text.toUpperCase();
- }
+ };
  angular.lowercase=function(text){
     if(text)
         return text.toLowerCase();
     return text;
- }
+ };
 
 /* Metronic App */
 var MetronicApp = angular.module("MetronicApp", [
@@ -106,7 +135,8 @@ var MetronicApp = angular.module("MetronicApp", [
     'angular.filter',
     "ngFlash",
     "angular-loading-bar",
-    "cfp.loadingBar"
+    "cfp.loadingBar",
+    'ui.utils.masks'
 ])
 .config(['$compileProvider', function($compileProvider){
     $compileProvider.commentDirectivesEnabled(false);
@@ -117,15 +147,11 @@ var MetronicApp = angular.module("MetronicApp", [
   // cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
 }])
 
-// .value('froalaConfig', {
-//     toolbarInline: false,
-//     placeholderText: '',
-//     // pastePlain: true,
-//     // toolbarButtons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', '|', 'paragraphStyle', '|', 'paragraphFormat', 'formatUL', 'outdent', 'indent', 'quote', '-', '|', 'specialCharacters', 'insertHR', 'selectAll', 'clearFormatting', '|', 'print', 'spellChecker', 'help', '|', 'undo', 'redo'],
-//     language: 'de'
-// })
-
 .factory('KontakteHandler', KontakteHandler)
+.factory('StammDatenHandler', StammDatenHandler)
+.factory('PartnerFormHandler', PartnerFormHandler)
+.factory('BaseDataHandler', BaseDataHandler)
+.factory('ProjectHandler', ProjectHandler);
 
     /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
 
@@ -136,7 +162,7 @@ MetronicApp.config(['$ocLazyLoadProvider', '$httpProvider', function($ocLazyLoad
     });
     $httpProvider.interceptors.push('AuthInterceptor');
     $httpProvider.useApplyAsync(true);
-}])
+}]);
 
 MetronicApp.config(['$controllerProvider', function($controllerProvider) {
     // $controllerProvider.allowGlobals();
@@ -233,7 +259,7 @@ MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
 
       //return the errors from the server as a promise
       return $q.reject(response);
-    }
+    };
 
     //return interceptorFactory
     return interceptorFactory;
@@ -253,7 +279,7 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', '$state', funct
         value = value.replace(/ö/g, 'oe');
         value = value.replace(/ü/g, 'ue');
         return 'site-' + value;
-    }
+    };
 
     $scope.replaceUmlauts= function() {
         var string =$state.current.data.pageTitle;
@@ -263,12 +289,26 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', '$state', funct
         value = value.replace(/ö/g, 'oe');
         value = value.replace(/ü/g, 'ue');
         return value;
-    }
+    };
 
     $scope.$on('$viewContentLoaded', function() {
         //App.initComponents(); // init core components
         //Layout.init(); //  Init entire layout(header, footer, sidebar, etc) on page load if the partials included in server side instead of loading with ng-include directive
     });
+}]);
+
+/* Passing datas one controller to another controller */
+MetronicApp.factory("passDataService", [function ($scope, $rootScope, $state) {
+    let obj = {};
+
+    return {
+        getObj: () => {
+            return obj;
+        },
+        setObj: (object) => {
+            obj = object;
+        }
+    };
 }]);
 
 MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
@@ -281,7 +321,7 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
       isOpen,
       showConfirmDialog,
       alert
-    }
+    };
 
     function alert(text, warn='success') {
         return showConfirmDialog("alert", "OK", text, warn);
@@ -321,8 +361,13 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
               }
               else if(choice == 'sure') {
                   $scope.title = "Sure";
+                  $scope.text = "Are you sure to close? Data will not be saved.";
+                  $scope.param2 = "Yes";
+              }
+              else if(choice == 'delete') {
+                  $scope.title = "Sure";
                   $scope.text = "Are you sure to delete file?";
-                  $scope.param2 = "Delete"
+                  $scope.param2 = "Delete";
               }
 
 
@@ -330,12 +375,12 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
                 {
                     defer.resolve(par);
                     $uibModalInstance.close();
-                }
+                };
 
                 $scope.cancel = function ()
                 {
                     $uibModalInstance.close();
-                }
+                };
             }
         }).closed.then( function () {
           xxx.isOpen = false;
@@ -350,8 +395,6 @@ MetronicApp.factory("sharedService",["$q", "$uibModal", function ($q, $uibModal)
 }]);
 
 
-
-
 MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibModal, $rootScope) {
   var cnt = 0;
 
@@ -364,17 +407,29 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
 
 
   return {
-    openMenuModal: function(templateLink, controller=undefined, windowAnimation=undefined, id=false) {
+    openComponentModal: function(comp, data) {
+        return this.openMenuModal(undefined, undefined, undefined, data, comp);
+    },
+
+    openMenuModal: function(templateLink="", controller=undefined, windowAnimation=undefined, id=false, comp=undefined) {
         var setClass = (isMobile.any) ? 'bxp-active-modal modal-fullscreen' : 'bxp-active-modal';
         // if(++cnt == 1)
         //     window.addEventListener("beforeunload", functionBeforeUnload);
+        // console.log(comp);
+        var controllerLabel;
+        if(comp) {
+            templateLink = '/components/' + comp + '/' + comp + '.template.html';
+            controllerLabel = comp.charAt(0).toUpperCase() + comp.substr(1) + "Controller";
+        }
+        else
+            controllerLabel = controller;
 
         return modalObj = $uibModal.open({
             templateUrl: templateLink,
             backdrop: 'true',
             animation: false,
             windowClass: windowAnimation || 'animated zoomIn',
-            controller: controller,
+            controller: controllerLabel,
             controllerAs: "FormCtrl",
             bindToController: true,
             size: 'lg inner-modal',
@@ -397,9 +452,15 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
                             '../assets/global/plugins/angularjs/plugins/ui-select/select.min.css',
                             '../assets/global/plugins/angularjs/plugins/ui-select/select.min.js'
                         ]
-                    }]
+                    }];
                     if(controller)
                         list[0].files.push('js/controllers/' + controller + '.js');
+
+                    else if(comp)
+                        list[0].files.push('/components/' + comp + '/' + comp + '.controller.js');
+                    // console.log(controller);
+                    // console.log("", '/components/' + comp + '/' + comp + '.controller.js');
+
                     return $ocLazyLoad.load(list);
                 }],
 
@@ -414,37 +475,18 @@ MetronicApp.factory('modalService', ['$uibModal', '$rootScope', function($uibMod
           //   window.removeEventListener("beforeunload", functionBeforeUnload);
           if(param3 != -1)
             return param3;
-        });
+        }, function(reason) {
+           // console.info("I was dimissed, so do what I need to do myContent's controller now.  Reason was->" + reason);
+           console.info("dismissed:", reason);
+       });
         /*}).result.finally((sib) => {
         });*/
     }
 };
-}])
+}]);
 
 
 MetronicApp.controller('HeaderController', ['$rootScope', '$scope', '$interval', 'modalService', '$http', function($rootScope, $scope, $interval, modalService, $http) {
-
-    // $scope.$on('userLoggedIn', function (params, data) {
-    //     // console.log("User logged In", data);
-
-    //     // var data = data.data;
-    //     $scope.data = data;
-    //     $scope.data.nachrichten = data.nachrichten;
-    //     $scope.data.wartend = data.wartend;
-    //     $scope.data.wartendlength = data.wartendlength;
-
-    //     $scope.data.nachrichtenLength = 0;
-    //     for(var key_s in data.nachrichten)
-    //         if(data.nachrichten[key_s].new == true)
-    //             $scope.data.nachrichtenLength++;
-
-
-    //     for(var key_s in $scope.data.nachrichten)
-    //         $scope.data.nachrichten[key_s].msg = $scope.data.nachrichten[key_s].messages[$scope.data.nachrichten[key_s].messages.length - 1]
-
-    //     $scope.$apply();
-    // });
-
     $scope.$on('$includeContentLoaded', function() {
         Layout.initHeader(); // init header
     });
@@ -494,8 +536,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             '../assets/global/plugins/jquery.sparkline.min.js',
 
                             'js/controllers/DashboardController.js',
+
                             'components/statistics/statistics.component.js',
                             'components/newRequests/newRequests.component.js',
+                            'components/stammdata/stammdata.component.js',
                         ]
                     });
                 }]
@@ -522,6 +566,53 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
             templateUrl: "views/impressum.html",
             data: {pageTitle: 'Impressum'}
         })
+        .state('partner-form', {
+            url: "/partner-form",
+            templateUrl: "views/partner-form.html",
+            data: { pageTitle: 'Partner Form'},
+            controller: 'PartnerFormController',
+            controllerAs: 'vm'
+        })
+        .state('pdfprotocol', {
+            url: "/protocol_pdf",
+            templateUrl: "views/protocol_pdf.html",
+            data: { pageTitle: 'ProtocolPdf'}
+        })
+        .state('projects', {
+            url: "/projects",
+            templateUrl: "views/listProjects.html",
+            data: { pageTitle: 'Protokolle'},
+            controller: "ProjectsController as vm",
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/ProjectsController.js',
+                        ]
+                    });
+                }]
+            }
+        })
+        .state('stammdaten', {
+            url: "/stammdaten",
+            templateUrl: 'views/base_datas.html',
+            data: { pageTitle: 'Stammdaten' },
+            controller: 'BaseDatasController as vm',
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before',
+                        files: [
+                            'js/controllers/BaseDatasController.js',
+                            'components/stammdata/stammdata.component.js',
+                        ]
+                    });
+                }]
+            }
+        });
 }]);
 
 /* Init global settings and run the app */
@@ -545,7 +636,7 @@ MetronicApp.run(["$rootScope", "$http", "settings", "$state", "sharedService", "
                 $state.go($state.previous, $state.previousParams);
             else
                 $state.go("waiting");
-        }
+        };
 
         $rootScope.download = function(fileResourceUrl, fileName) {
             var url = fileResourceUrl + fileName;
@@ -556,7 +647,7 @@ MetronicApp.run(["$rootScope", "$http", "settings", "$state", "sharedService", "
                 responseType: 'blob'
             }).then(function (response) {
                 var blob = response.data;
-                startBlobDownload(blob, fileName)
+                startBlobDownload(blob, fileName);
             }, () => $rootScope.sharedService.alert("Datei wurde nicht gefunden.", 'danger'));
 
         };
@@ -585,6 +676,40 @@ MetronicApp.run(["$rootScope", "$http", "settings", "$state", "sharedService", "
         $rootScope.$on('$stateChangeSuccess',function(event, toState, toParams, fromState, fromParams){
             $state.previous = fromState;
             $state.previousParams = fromParams;
+        });
+
+        $.extend( $.fn.dataTable.defaults, {
+            pagingType: "simple_numbers",
+            processing: true,
+            DT_RowId: true,
+            //order: true,
+            //orderClasses: false,
+            bSortClasses: false,
+            responsive: true,
+            paging: false,
+            searching: false,
+            // scrollCollapse: true,
+            // paging: false,
+            "language": {
+                "decimal":        "",
+                "emptyTable":     "Keine Daten vorhanden.",
+                    "info":           "", //Zeige Einträge _START_ bis _END_ von _TOTAL_
+                    "infoEmpty":      "", //Zeige 0 bis 0 von 0 Einträgen
+                    "infoFiltered":   "(Gefiltert von insgesamt _MAX_ Einträgen)",
+                    "infoPostFix":    "",
+                    "thousands":      ",",
+                    "lengthMenu":     "Zeige _MENU_ Einträge",
+                    "loadingRecords": "Lade...",
+                    "processing":     "Ausführen...",
+                    "search":         "",
+                    "zeroRecords":    "Keine Daten gefunden.",
+                    "paginate": {
+                        "first":      "<<",
+                        "last":       ">>",
+                        "next":       ">",
+                        "previous":   "<"
+                    }
+            }
         });
 }]);
 

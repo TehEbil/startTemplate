@@ -1,0 +1,185 @@
+<form action="#" name="detection" role="form" id="detection" ng-dirty ng-model="state" func="FormCtrl.closeModal"
+close-esc-key ng-submit="submitForm($event)" class="bxp-form group" ng-class="{ 'bxp-customer-auftrag': FormCtrl.isAuftrag}"
+ novalidate autocomplete="off"></form>
+<bxp-responsive-in-modal form-name="Detection" selected-tab="Feststellung" close-modal="FormCtrl.closeModal"
+ submit-form="FormCtrl.submitForm" add-detection="FormCtrl.addDetection">
+
+	<div class="bxp-header-modal">
+		<h3>Feststellung</h3>
+	</div>
+
+	<div class="bxp-container" style="padding-right: 30px;">
+		<div class="form-group group">
+			<div class="bxp-col-6 float-left form-group group">Nr: 
+				<input type="text" ng-model="FormCtrl.selectedDetection.number" disabled>
+				<!-- {{ FormCtrl.selectedDetection.number }} -->
+
+			</div>
+
+			<div class="bxp-col-6 float-right form-group group" style="display:flex; justify-content: flex-end;">
+				<div>{{ FormCtrl.selectedIdx + 1 }}/{{ FormCtrl.detections.length }}</div>
+				<button class="bxp-rounded-button small add" ng-disabled="FormCtrl.selectedIdx === 0" style="margin-left:10px!important;" ng-click="FormCtrl.previousPage()"
+				 required><i class="fa fa-arrow-left"></i></button>
+				<button class="bxp-rounded-button small add" ng-disabled="FormCtrl.selectedIdx === FormCtrl.detections.length - 1" style="margin-left:10px!important;" ng-click="FormCtrl.nextPage()"
+				 required><i class="fa fa-arrow-right"></i></button>
+			</div>
+		</div>
+
+		<div class="form-group group event-date-time-container">
+			<div class="float-left group">
+				<input class="form-control event-date float-left" type="date" name="date" ng-change="FormCtrl.generateNumber(FormCtrl.detections)" ng-model="FormCtrl.selectedDetection.detail.date"
+				 required>
+				<div class="event-time float-left" uib-timepicker ng-model="FormCtrl.selectedDetection.detail.datetime" hour-step="1"
+				 minute-step="5" show-meridian="false" required></div>
+			</div>
+		</div>
+
+		<!-- <div class="form-group group">
+								<div class="bxp-col-6 float-left form-group group">
+									<label class="control-label bxp-label float-left">Datum</label>
+									<input class="form-control bxp-input float-left" type="text" name="date" ng-disabled="" ng-model="" />
+								</div>
+			   
+								<div class="bxp-col-6 float-left form-group group">
+									<div class="row">
+									   <label class="control-label bxp-label float-left">Uhrzeit</label>
+									   <input class="form-control bxp-input float-left" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.selectedDetection.detail.hour"/>:
+									   <input class="form-control bxp-input float-right" ui-number-mask="0" maxlength="2" type="text" ng-disabled="" ng-model="FormCtrl.selectedDetection.detail.minute"/>
+									</div>
+								</div>
+							</div> -->
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">prueffeld</label>
+			<div class="form-group modal-form-group width-100 group">
+				<div class="bxp-input float-left edit-icon-container">
+					<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.testField" theme="bootstrap"
+					 remove-selected="false">
+						<ui-select-match allow-clear>{{ $select.selected.iso }} - {{ $select.selected.value }}</ui-select-match>
+						<ui-select-choices group-by="'group'" repeat="item.id as item in FormCtrl.prueffeld.data | filter: $select.search | groupBy: item.group">
+							<span ng-bind-html="item.iso | highlight: $select.search"></span> - 
+							<span ng-bind-html="item.value | highlight: $select.search"></span>
+						</ui-select-choices>
+					</ui-select>
+					<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('prueffeld', FormCtrl.prueffeld.data)"><i class="fa fa-cog"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Lage/Position</label>
+			<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.selectedDetection.detail.position"
+			 required />
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Titel</label>
+			<input class="form-control bxp-input float-left" type="text" ng-disabled="" ng-model="FormCtrl.selectedDetection.title" />
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Beurteilung</label>
+			<div class="bxp-input float-left edit-icon-container">
+				<ui-select ng-disabled="vm.make" multiple ng-model="FormCtrl.selectedDetection.detail.evaluation" theme="bootstrap"
+				 remove-selected="false">
+					<ui-select-match allow-clear>{{
+						$item.value
+						}}</ui-select-match>
+					<ui-select-choices repeat="item.id as item in FormCtrl.evaluations.data | filter: $select.search">
+						<span ng-bind-html="item.value  | highlight: $select.search"></span>
+					</ui-select-choices>
+				</ui-select>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('beurteilungen', FormCtrl.evaluations.data)"><i class="fa fa-cog"></i></a>
+			</div>
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Status</label>
+			<div class="bxp-input float-left edit-icon-container">
+				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.status" theme="bootstrap"
+				 remove-selected="false">
+					<ui-select-match allow-clear>{{$select.selected.value}}</ui-select-match>
+					<ui-select-choices repeat="item.id as item in FormCtrl.statuses.data | filter: $select.search">
+						<span ng-bind-html="item.value | highlight: $select.search"></span>
+					</ui-select-choices>
+				</ui-select>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('statuses', FormCtrl.statuses.data)"><i class="fa fa-cog"></i></a>
+			</div>
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Grundlagen</label>
+			<div class="bxp-input float-left edit-icon-container">
+				<ui-select ng-disabled="vm.make" multiple ng-model="FormCtrl.selectedDetection.detail.basics" theme="bootstrap"
+				 remove-selected="false">
+					<ui-select-match allow-clear>{{$item.value}}</ui-select-match>
+					<ui-select-choices repeat="item.id as item in FormCtrl.basics.data | filter: $select.search">
+						<span ng-bind-html="item.value  | highlight: $select.search"></span>
+					</ui-select-choices>
+				</ui-select>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('grundlagen', FormCtrl.basics.data)"><i class="fa fa-cog"></i></a>
+			</div>
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Beschreibung</label>
+
+			<div class="bxp-input float-left edit-icon-container">
+				<textarea name="Beschreibung" class="form-control" rows="4" cols="50" ng-model="FormCtrl.selectedDetection.detail.description" required> 
+				</textarea>
+				<a class="edit-icon" ng-click="FormCtrl.openTextSnippetModal()"><i class="fa fa-cog"></i></a>
+			</div>
+			<p ng-if="!detection.Beschreibung.$valid"> required field </p>
+		</div>
+
+		<div class="form-group group">
+			<label class="control-label bxp-label float-left">Klassifizierung</label>
+			<div class="bxp-input float-left edit-icon-container">
+				<ui-select ng-disabled="vm.make" ng-model="FormCtrl.selectedDetection.detail.class" theme="bootstrap"
+				 remove-selected="false">
+				 <ui-select-match allow-clear>{{ $select.selected.code }} - {{ $select.selected.value }} </ui-select-match>
+				 <ui-select-choices repeat="item.id as item in FormCtrl.classes.data | filter: $select.search">
+					 <span ng-bind-html="item.code  | highlight: $select.search"></span> - 
+						<span ng-bind-html="item.value  | highlight: $select.search"></span> - 
+						<span ng-bind-html="item.description  | highlight: $select.search"></span>
+					</ui-select-choices>
+				</ui-select>
+				<a class="edit-icon" ng-click="FormCtrl.openBaseDataModel('classes', FormCtrl.classes.data)"><i class="fa fa-cog"></i></a>
+			</div>
+		</div>
+
+		<div class="bxp-form-note mt-5px mb-10px">Kosten</div>
+
+		<div class="form-group group">
+			<div class="bxp-col-6 float-left group">
+				<div class="group" style="margin-bottom:15px;">
+					<label class="control-label bxp-label float-left" style="width:40%!important;">Beseitigung</label>
+					<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2"
+					 maxlength="" ng-disabled="" ng-model="FormCtrl.selectedDetection.detail.costs.disposalCost" />
+				</div>
+
+				<div class="group">
+					<label class="control-label bxp-label float-left" style="width:40%!important;">Wertminderung</label>
+					<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2"
+					 maxlength="" ng-disabled="" ng-model="FormCtrl.selectedDetection.detail.costs.impairment" />
+				</div>
+			</div>
+
+			<div class="bxp-col-6 float-left group">
+				<div class="group" style="margin-bottom:15px;">
+					<label class="control-label bxp-label float-left" style="width:40%!important;">Einbehalt</label>
+					<input class="form-control bxp-input float-left" style="width:58%!important;" type="text" ui-number-mask="2"
+					 maxlength="" ng-disabled="" ng-model="FormCtrl.selectedDetection.detail.costs.recoup" />
+				</div>
+			</div>
+		</div>
+
+		<div>
+            <h4>Images</h4>
+            <bxp-image-upload make-disabled="false" hide-content="false" uploadtype="normal" onsave="vm.onsave" uploads="FormCtrl.selectedDetection.documents" ondelete="FormCtrl.deleteUpload">
+            </bxp-image-upload>
+        </div>
+	</div>
+
+</bxp-responsive-in-modal>
+</form>
