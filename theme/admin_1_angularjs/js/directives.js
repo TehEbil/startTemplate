@@ -1626,7 +1626,7 @@ function maxId(arr) {
             template: function ($element, $attrs) {
                 return `
                     <div ng-if="!vm.hideContent" ng-show="vm.uploads.length > 0" class="bxp-form-container group">
-                        <ul class="table table-uploads table-striped table-bordered">
+                        <ul class="image-carousel table-uploads table-striped table-bordered">
                             <li ng-repeat="item in vm.uploads track by $index">
                                 <div ng-class="{'activex': vm.selected === $index}" ng-click="vm.id = item.id" class="bxp-grundatensatz" ng-dblclick="vm.editEntry()">
                                     <div class="hover-text-field" style="width:170px; display: flex; flex-wrap: wrap; justify-content: space-around; padding: 12px 12px;">
@@ -1634,7 +1634,7 @@ function maxId(arr) {
                                     <input ng-if="vm.note" type="text" ng-model="item.note" placeholder="">
                                     <input type="text" id="editInput" ng-if="item.editMode" ng-enter="vm.saveEntry()" ng-blur="vm.saveEntry()" ng-keyup="onInputKeyup($event)" ng-model="item.refName" placeholder="" auto-focus>
                                         <img style="max-width: 146px;" ng-src="https://picsum.photos/150/150">
-                                        <span style="margin: 5px 0 !important; font-size:10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="inline-block" ng-if="!item.editMode">{{item.filename}}
+                                        <span style="margin: 5px 0 !important; font-size:10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;" class="inline-block image-carousel-span" ng-if="!item.editMode">{{item.filename}}
                                         <div ng-if="!vm.hide" style="display: none;" class="animate-show float-right">
                                             <i class="fa fa-trash bauexperts-blue" ng-click="vm.deleteEntry(item.id)"></i>
                                             <i class="fa fa-pencil bauexperts-blue" ng-click="vm.editEntry(item.id)"></i>
@@ -1644,14 +1644,22 @@ function maxId(arr) {
                                     </div>
                                 </div>
                             </li>
+                            <li>
+                                <div class="image-upload-box">
+                                    <span>
+                                        <a ng-disabled="vm.makeDisabled" ng-if="!vm.hide" ng-click="vm.newDocument()" class="bxp-rounded-button add small">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </li>
                         </ul>
+
+
+
                     </div>
 
-                    <span>
-                      <a ng-disabled="vm.makeDisabled" ng-if="!vm.hide" ng-click="vm.newDocument()" class="bxp-rounded-button add small">
-                          <i class="fa fa-plus"></i>
-                      </a>
-                    </span>
+
                 `;
             }
 

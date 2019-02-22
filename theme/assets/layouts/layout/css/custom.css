@@ -4106,3 +4106,57 @@ tr.ng-scope:nth-child(4) .bxp-menu-button {
 tr.ng-scope:nth-child(5) .bxp-menu-button {
   background-color: #91d050;
 }
+
+/* Objektbeschreibung */
+
+.objekt-sub-tabs {
+  margin: -22px -25px;
+  margin-bottom: 22px;
+  background: #fff;
+}
+
+/* Grundstücksdaten TAB*/
+
+/* Feststellung Images */
+
+.image-carousel {
+  float: left;
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  align-content: center;
+  align-items: center;
+  padding: 26px 0;
+
+}
+
+.image-carousel li {
+  margin-top: 0;
+}
+
+.image-upload-box {
+  display: flex;
+  background: #F8F8F8;
+  border: 5px dashed #DDD;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  align-content: center;
+}
+
+.image-upload-box:hover {
+  border: 5px dashed #cacaca;
+}
+
+.image-carousel .image-carousel-span{
+  width: 100% !important;
+}
+
+.image-carousel .hover-text-field {
+  margin: 0!important;
+}
+
+            
