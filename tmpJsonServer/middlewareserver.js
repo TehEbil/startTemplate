@@ -90,12 +90,12 @@ clientServer_app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-clientServer.listen(80, () => {
+clientServer.listen(85, () => {
 	console.log('Client-Server is running');
 })
 
 
-server.listen(serverPort, () => {
+server.listen(serverPort2, () => {
   console.log('JSON Server is running');
 })
 
