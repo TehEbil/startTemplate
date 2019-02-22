@@ -17,10 +17,6 @@
 
 <div>
     <div class="centered">
-        
-        <h1>Mr. Papakci's Area <button ng-click="vm.addKunde()">(click me!)</button></h1>
-        <h1>Create PDF <button ng-click="vm.openAsPdf()">(+)</button></h1>
-
         <div class="dahsboard-flex-container">
             <div class="dashboard-flex one">
                 <div class="bxp-message-box warning no-margin-top">
@@ -39,8 +35,6 @@
 
         </div>
 
-
-
         <div class="bxp-message-box warning no-margin-top">
             <p>{{vm.testMessage}}</p>
             <a ng-click="vm.alertExample()" href="#">alertExample</a>
@@ -53,11 +47,6 @@
             <bxp-upload-component make-disabled="false" hide-content="false" uploadtype="normal" onsave="vm.onsave" uploads="vm.uploads" ondelete="vm.deleteUpload">
             </bxp-upload-component>
         </div>
-
-        <!-- <div>
-            <h4>editStammdata</h4>
-            <bxp-stammdata save="vm.onsave" data="vm.testMasterData"></bxp-stammdata>
-        </div> -->
     </div>
 </div>
 

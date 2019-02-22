@@ -1,0 +1,99 @@
+
+-- Answer1  -- 
+
+function find_key(myList,key){
+let newObj=[];
+myList.filter(function(obj,index){
+    if(myList[index].hasOwnProperty(key)){
+        newObj.push(myList[index]);
+    }
+
+});
+return newObj;
+}
+console.log(JSON.stringify(find_key(persons,'id')));
+
+
+-- Answer1 -- 
+
+function add_key(myList){
+    let hasAll = false;
+    let newObj=[];
+    myList.filter(function(obj,index){
+          hasAll = ["firstName","lastName"].every( prop => myList[index].hasOwnProperty(prop));
+          if( hasAll == true ){
+              myList[index].fullName =  myList[index].firstName + " " + myList[index].lastName;
+              newObj.push(myList[index]);
+          }
+    });
+    return newObj;
+}
+console.log(JSON.stringify(add_key(persons)));
+
+-- Answer 3 -- 
+
+function edit_key(myList){
+    let hasAll = false;
+    let newObj=[];
+    let objElement = {};
+    myList.filter(function(obj,index){
+        hasAll = ["firstName","lastName","details"].every( prop => myList[index].hasOwnProperty(prop));
+        if( hasAll == true ){
+            objElement.firstName = myList[index].firstName;
+            objElement.lastName  = myList[index].lastName;
+            objElement.details   = myList[index].details;
+            newObj.push(objElement);
+        }
+    });
+    return newObj;
+}
+console.log(JSON.stringify(edit_key(person)));
+
+-- Answer 4 -- 
+
+function find_key_value(myList){
+    let hasAll = false;
+    let newObj=[];
+    myList.filter(function(obj,index){
+        hasAll = ["details"].every( prop => myList[index].hasOwnProperty(prop));
+        if( hasAll == true ){
+            if(myList[index].details.hasOwnProperty('age')){
+                if( myList[index].details.age !== "" && myList[index].details.age > 16 ){
+
+                    newObj.push(myList[index]);
+                }
+
+            }
+
+        }
+    });
+    return newObj;
+}
+console.log(JSON.stringify(find_key_value(persons)));
+
+--Answer 5 -- 
+
+function checkDuplicateInObject(propertyName, myList) {
+    let testObject={};
+    let newObj = {};
+
+        myList.map(function(item){
+            var itemPropertyName = item[propertyName];
+            if (itemPropertyName in testObject) {
+
+                if( testObject[itemPropertyName].lastName == item["lastName"]  ||
+                    testObject[itemPropertyName].tnumber == item["tnumber"]  ||
+                    testObject[itemPropertyName].mnumber == item["mnumber"]  ||
+                    testObject[itemPropertyName].email == item["email"]
+                ){
+                newObj[itemPropertyName]= item;
+                }
+            }
+            else {
+                testObject[itemPropertyName] = item;
+                delete item.duplicate;
+            }
+      });
+return newObj;
+}
+console.log( JSON.stringify(checkDuplicateInObject('locality', dataSentToServer)));

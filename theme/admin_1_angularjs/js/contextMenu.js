@@ -108,7 +108,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
         }
 
         $li.append(optionText);
-    }
+    };
 
     /**
      * Process each individual item
@@ -138,7 +138,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
 
         registerCurrentItemEvents(currItemParam);
 
-    }
+    };
 
     /*
      * Registers the appropriate mouse events for options if the item is enabled.
@@ -211,8 +211,10 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
                       $(event.currentTarget).removeClass('context');
                       removeAllContextMenus();
                     };
-                    var clickFunction = angular.isFunction(item.click) ? item.click
-                      : (angular.isFunction(item[1]) ? item[1]
+                    var clickFunction = angular.isFunction(item.click)
+                      ? item.click
+                      : (angular.isFunction(item[1])
+                          ? item[1]
                           : null);
 
                     if (clickFunction) {
@@ -242,7 +244,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
             });
             $li.addClass('disabled');
         }
-    }
+    };
 
     /**
      * @param params - an object containing the `item` parameter
@@ -348,7 +350,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
           contextMenu: $ul,
           params: params
         });
-    }
+    };
 
     /**
      * calculate if drop down menu would go out of screen at left or bottom
@@ -392,12 +394,12 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
             var menuWidth = angular.element($ul[0]).prop('offsetWidth');
             var winWidth = event.view.innerWidth;
             var padding = 5;
-            var reduceThresholdX = 5;
 
             if (leftOriented) {
                 if (winWidth - leftCoordinate > menuWidth && leftCoordinate < menuWidth + padding) {
                     leftCoordinate = padding;
                 } else if (leftCoordinate < menuWidth) {
+                    var reduceThresholdX = 5;
                     if (winWidth - leftCoordinate < reduceThresholdX + padding) {
                         reduceThresholdX = winWidth - leftCoordinate + padding;
                     }
@@ -409,6 +411,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
                 if (leftCoordinate > menuWidth && winWidth - leftCoordinate - padding < menuWidth) {
                     leftCoordinate = winWidth - menuWidth - padding;
                 } else if(winWidth - leftCoordinate < menuWidth) {
+                    var reduceThresholdX = 5;
                     if(leftCoordinate < reduceThresholdX + padding) {
                         reduceThresholdX = leftCoordinate + padding;
                     }
@@ -424,7 +427,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
             });
         });
 
-    }
+    };
 
     /**
      * Creates the container of the context menu (a <ul> element),
@@ -468,7 +471,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
         } else {
             return true;
         }
-    }
+    };
 
     function isTouchDevice() {
       return 'ontouchstart' in window  || navigator.maxTouchPoints; // works on most browsers | works on IE10/11 and Surface
@@ -517,7 +520,7 @@ function ($rootScope, ContextMenuEvents, $parse, $q, custom, $sce) {
         $(document).off('scroll', removeOnScrollEvent);
         $(_clickedElement).removeClass('context');
         removeContextMenus();
-        $rootScope.$broadcast('');
+        $rootScope.$broadcast('')
     }
 
     return function ($scope, element, attrs) {

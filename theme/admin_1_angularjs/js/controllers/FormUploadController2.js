@@ -9,7 +9,7 @@
 
 	/* @ngInject */
 	function FormUploadController2($rootScope, $scope, Upload, $http, $timeout, modalService, sharedService, getId) {
-		console.log("FormUploadController2 loaded");
+		console.log("FormUploadController2 loaded")
 
         //getId is the parameterObject from the Modal, passed in openMenuModal() as fourth param.
 
@@ -18,11 +18,14 @@
         vm.closeModal = closeModal;
         vm.submitUpload = submitUpload;
         vm.dynamic = -1;
-        vm.uploads = [];
 		$scope.state = true;
 
-        if(getId) 
-            vm.uploads = getId.uploads;
+		if(getId) {
+			vm.uploads = getId.uploads
+		}
+		else {
+			vm.uploads = [];
+        }
 
         function submitUpload() {
             if (vm.files) {
@@ -31,7 +34,7 @@
             else {
                 $rootScope.sharedService.alert("File too big or invalid.");
             }
-        }
+        };
 
         // upload on file select or drop
         function upload(files) {
@@ -48,14 +51,13 @@
                     'filepath': resp.data.filepath, 
                     'oldfilename': resp.data.oldfilename, 
                     'refName': resp.data.refName,
-                    'date': new Date(),
-                    'editMode': false
+                    'date': new Date()
                 };
 
                 vm.uploads.push(upload);
 
                 if(getId.callback)
-                    getId.callback(upload);
+                    getId.callback(upload)
 
                 $timeout(() => {
                     vm.dynamic = 101;
