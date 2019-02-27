@@ -1,5 +1,6 @@
 <div class="bxp-form-container group" close-esc-key="FormCtrl.closeModal" func="FormCtrl.closeModal" ng-model="state">
     <div class="bxp-grunddaten">
+        <a href="#" ng-click="FormCtrl.closeModal()" class="bxp-modal-close"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
         <div class="bxp-header-modal bxp-order-header">
             <h3>{{FormCtrl.typeKind.charAt(0).toUpperCase() + FormCtrl.typeKind.substr(1).toLowerCase()}}</h3>
             <p>Welchen Projekttyp wollen Sie anlegen?</p>
@@ -15,7 +16,7 @@
 
                                 <div class="hover-text-field" ng-click="FormCtrl.onSelect(item)">
                                     <span ng-if="!item.editMode">{{item.value}}
-                                        <div style="display: none;" class="animate-show">
+                                        <div style="display: none !important;" class="animate-show">
                                         </div>
                                     </span>
                                 </div>
