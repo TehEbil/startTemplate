@@ -4,12 +4,12 @@
 /*jshint asi:true*/
 /*jshint forin:false*/
 /*jshint shadow:true*/
-console.time("Time to boot")
+console.time(1)
 
+console.log("hi");
 /* server */
 const express = require('express');
 const compression = require('compression');
-const spdy = require('spdy');
 const clientServer_app = express();
 const clientServer = require('http').createServer(clientServer_app);
 const https = require("https");
@@ -18,7 +18,6 @@ const bodyParser  = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 const clone = require('clone');
-const serverConfig = require('../theme/serverConfig').serverConfig;
 
 /* db */
 const jsonServer = require('json-server');
@@ -52,7 +51,15 @@ const logger = createLogger({
 const FileUploadController = require('./controllers/FileUploadController');
 
 /* init settings */
-var serverPort = (serverConfig.runOnServer) ? 3010 : 3006;
+var clientPort, serverPort, serverip, clientip, serveripwoport;
+
+clientPort = 443;
+serverPort = 3006;
+
+serverip = "https://127.0.0.1:" + serverPort + "/";
+clientip = "https://127.0.0.1:" + clientPort + "/";
+
+serveripwoport = "https://127.0.0.1";
 
 const server = jsonServer.create();
 const routerx = jsonServer.router('db.json');
@@ -64,23 +71,17 @@ server.use(compression());
 clientServer_app.use(helmet());
 server.use(helmet());
 
-clientServer_app.use(redirectToHttps);
-server.use(redirectToHttps);
-
-function redirectToHttps(req, res, next) {
-    if(req.secure)
-        return next();
-    res.redirect('https://' + req.hostname + req.url); // express 4.x
-}
-
 server.set('superSecret', "abcdef"); // secret variable
 server.use(bodyParser.urlencoded({ extended: false }));
 server.use(bodyParser.json());
 server.use(middlewares);  		// ALLOW CORS!!
 
+
 const db = routerx.db;
 db._.mixin(lodashId);
 db._.mixin(mixins);
+
+
 
 clientServer_app.use('/', express.static(__dirname + '/../theme/admin_1_angularjs/'));
 clientServer_app.use('/', express.static(__dirname + '/../theme/'));
@@ -89,48 +90,26 @@ clientServer_app.get('/', function (req, res) {
 	res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-
-var cport = (serverConfig.runOnServer) ? 81 : 80
-clientServer.listen(cport, () => {
-	console.log('Client-Server is running on Port:', cport);
+clientServer.listen(85, () => {
+	console.log('Client-Server is running');
 })
 
-/** Router Configurations */
-const partnerForm = require('./routers/partner-form.router');
-const stammDaten = require('./routers/stamm-daten.router');
-const project = require('./routers/project.router');
-const baseDatas = require('./routers/base-datas.router');
 
-server.listen(serverPort - 1, () => {
-  console.log('JSON Server is running on Port:', serverPort);
-
-  server.use('/project', project);
-  server.use('/partnerForm', partnerForm);
-  server.use('/stammDaten', stammDaten);
-	server.use('/baseDatas', baseDatas); 
+server.listen(serverPort2, () => {
+  console.log('JSON Server is running');
 })
 
-const options = {
-  key: fs.readFileSync("./keys/privkey.pem"),
-  cert: fs.readFileSync("./keys/cert.pem"),
-  ca: fs.readFileSync('./keys/chain.pem'),
-  dhparam: fs.readFileSync("./keys/dh-strong.pem")
-};
-
-spdy.createServer(options, clientServer_app).listen(443, () => {
-    console.log('Client-Server is running');
- });
-
-spdy.createServer(options, server).listen(serverPort, () => {
-    console.log('JSON Server is running on port ' + serverPort);
- });
+console.timeEnd(1)
 
 
-console.timeEnd("Time to boot")
+
+
+
+
+
+
 
 /* helper functions */
-
-const dbHelper = require('./helpers/db.helper');
 
 function loggerLog(req, type, text, obj = undefined) {
 	if(type !== "error")
@@ -146,7 +125,7 @@ function loggerLog(req, type, text, obj = undefined) {
 		});
 	else
 		logger.log(type, {
-			info: "No req available!",
+			hinweis: "Kein req vorhanden!",
 			message: text,
 			obj
 		});
@@ -169,12 +148,28 @@ server.use(morgan((tokens, req, res) => {
   	}
 }));
 
-
-
 exports.writeToDB = function(x) {
-  db.get('project.documents').insert(x).write();
+  db.get('files').insert(x).write();
   /* until mongodb */
-  return dbHelper.getMaxId(db, 'project.documents') - 1;
+  return getMaxId('files') - 1;
+}
+
+function getMaxId(_dbname, id="id") {
+    var x = maxId(db.get(_dbname).value());
+	return (x) ? x + 1 : 1;
+}
+
+function maxId(arr) {
+	if(Array.isArray(arr) == false) {
+		console.log("Not an array, defaults to 0");
+		return 0;
+	}
+	var x = Math.max.apply(this, arr.map(function (o) {
+        if(typeof o.id !== "undefined")
+            return o.id;
+        return -1;
+    }));
+	return (x == "-Infinity") ? 0 : x;
 }
 
 /* routing */
