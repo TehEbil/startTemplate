@@ -145,12 +145,7 @@
                     "orderType": getId.orderTypeId
                   }
                 },
-                "detectionDatas": [],
-
-
-
-
-
+                "detectionDatas": [], 
                 "protocolDatas": []
             }
         }
