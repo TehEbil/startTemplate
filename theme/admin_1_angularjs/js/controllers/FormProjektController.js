@@ -145,7 +145,16 @@
                     "orderType": getId.orderTypeId
                   }
                 },
+<<<<<<< HEAD
                 "detectionDatas": [], 
+=======
+                "detectionDatas": [],
+
+
+
+
+
+>>>>>>> fixed
                 "protocolDatas": []
             }
         }
